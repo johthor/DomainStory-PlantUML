@@ -1,0 +1,120 @@
+' Colors
+' ##################################
+
+!define ICON_COLOR Black
+
+' Styling
+' ##################################
+
+!define ICON_SCALE 1
+!define ICON_SCALE_ACTOR 2
+
+skinparam monochrome true
+skinparam defaultTextAlignment center
+
+hide stereotypes
+skinparam rectangle {
+    BackgroundColor none
+    BorderColor none
+    Shadowing false
+}
+
+skinparam rectangle<<boundary>> {
+    Shadowing false
+    StereotypeFontSize 0
+    FontColor #444444
+    BorderColor #444444
+    BorderStyle dashed
+}
+
+' Layout
+' ##################################
+left to right direction
+
+' Icons
+' ##################################
+' Include common to use material icon macros.
+!include <material/common>
+
+' Actors: include filled and outlined icons
+'!include <material/account>
+!include <material/account_outline>
+
+!include <material/account_multiple>
+!include <material/account_multiple_outline>
+
+!include <material/laptop>
+!include <material/laptop_windows>
+
+' Work objects: include filled and outlined icons
+!include <material/file>
+!include <material/file_document>
+
+!include <material/folder>
+!include <material/folder_outline>
+
+!include <material/phone>
+'!include <material/phone_outline>
+
+!include <material/at>
+!include <material/email>
+
+!include <material/message>
+!include <material/message_outline>
+
+!include <material/information>
+!include <material/information_outline>
+
+' Elements
+' ##################################
+
+' Actors
+!define Person(e_label) MA_ACCOUNT_OUTLINE(ICON_COLOR, ICON_SCALE_ACTOR, e_label, rectangle, e_label)
+!define Person(e_label, e_alias) MA_ACCOUNT_OUTLINE(ICON_COLOR, ICON_SCALE_ACTOR, e_alias, rectangle, e_label)
+!define Group(e_label) MA_ACCOUNT_MULTIPLE(ICON_COLOR, ICON_SCALE_ACTOR, e_label, rectangle, e_label)
+!define Group(e_label, e_alias) MA_ACCOUNT_MULTIPLE(ICON_COLOR, ICON_SCALE_ACTOR, e_alias, rectangle, e_label)
+!define System(e_label) MA_LAPTOP(ICON_COLOR, ICON_SCALE_ACTOR, e_label, rectangle, e_label)
+!define System(e_label, e_alias) MA_LAPTOP(ICON_COLOR, ICON_SCALE_ACTOR, e_alias, rectangle, e_label)
+
+' Work objects
+!define Document(e_label) MA_FILE_DOCUMENT(ICON_COLOR, ICON_SCALE, e_label, rectangle, e_label)
+!define Document(e_label, e_alias) MA_FILE_DOCUMENT(ICON_COLOR, ICON_SCALE, e_alias, rectangle, e_label)
+!define Folder(e_label) MA_FOLDER(ICON_COLOR, ICON_SCALE, e_label, rectangle, e_label)
+!define Folder(e_label, e_alias) MA_FOLDER(ICON_COLOR, ICON_SCALE, e_alias, rectangle, e_label)
+!define Call(e_label) MA_PHONE(ICON_COLOR, ICON_SCALE, e_label, rectangle, e_label)
+!define Call(e_label, e_alias) MA_PHONE(ICON_COLOR, ICON_SCALE, e_alias, rectangle, e_label)
+!define Email(e_label) MA_AT(ICON_COLOR, ICON_SCALE, e_label, rectangle, e_label)
+!define Email(e_label, e_alias) MA_AT(ICON_COLOR, ICON_SCALE, e_alias, rectangle, e_label)
+!define Conversation(e_label) MA_MESSAGE_OUTLINE(ICON_COLOR, ICON_SCALE, e_label, rectangle, e_label)
+!define Conversation(e_label, e_alias) MA_MESSAGE_OUTLINE(ICON_COLOR, ICON_SCALE, e_alias, rectangle, e_label)
+!define Info(e_label) MA_INFORMATION_OUTLINE(ICON_COLOR, ICON_SCALE, e_label, rectangle, e_label)
+!define Info(e_label, e_alias) MA_INFORMATION_OUTLINE(ICON_COLOR, ICON_SCALE, e_alias, rectangle, e_label)
+
+' Activities
+' ##################################
+
+!definelong activity(e_step, e_actor, e_action, e_object, e_target)
+e_actor "e_step" --> e_object : e_action
+e_object --> e_target
+!enddefinelong
+
+!definelong activity(e_step, e_actor, e_action, e_object, e_post, e_target)
+e_actor "e_step" --> e_object : e_action
+e_object --> e_target : e_post
+!enddefinelong
+
+!definelong activityBW(e_step, e_actor, e_action, e_object, e_target)
+e_object <-- "e_step" e_actor : e_action
+e_target <-- e_object
+!enddefinelong
+
+!definelong activityBW(e_step, e_actor, e_action, e_object, e_post, e_target)
+e_object <-- "e_step" e_actor : e_action
+e_target <-- e_object : e_post
+!enddefinelong
+
+' Boundaries
+' ##################################
+
+!define Boundary(e_label) rectangle "==e_label" <<boundary>>
+!define Boundary(e_label, e_alias) rectangle "==e_label" <<boundary>> as e_alias
