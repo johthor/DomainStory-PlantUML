@@ -1,0 +1,28 @@
+@startuml
+!include ../domainStory.puml
+
+Person(customer)
+
+Conversation(reservation)
+Conversation(available seats, availableSeats)
+Conversation(offered seats, offeredSeats)
+Conversation(reservation number, numberConv)
+
+Boundary(cash counter) {
+    Person(cashier)
+
+    Document(screen plan, availablePlan)
+    Document(screen plan, reservationPlan)
+    Info(reservation number, numberInfo)
+
+    System(ticket system, ticketSystem)
+}
+
+activity(1, customer, asks for, reservation, cashier)
+activity(2, cashier, finds available seats in, availablePlan, ticketSystem)
+activityBW(3, cashier, recommends, availableSeats, to, customer)
+activity(4, customer, confirms, offeredSeats, cashier)
+activity(5, cashier, marks seats as reserved in, reservationPlan, ticketSystem)
+activityBW(6, ticketSystem, generates, numberInfo, cashier)
+activityBW(7, cashier, tells, numberConv, customer)
+@enduml

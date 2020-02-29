@@ -7,6 +7,7 @@ document a domain story which was developed in a
 DomainStory-PlantUML includes macros for creating domain stories with PlantUML.
 
 * [Getting Started](#getting-started)
+* [Samples](#advanced-samples)
 * [License](#license)
 
 ## Getting Started
@@ -55,10 +56,39 @@ Email("EmailLabel")
 Conversation("ConversationLabel") 
 Info("InfoLabel") 
 
-node others
-Person(personAlias, "Label", "Optional Description")
 @enduml
 ```
+
+In addition to this,
+it is also possible to define a system boundary.
+
+Take a look a look at the following sample of a Domain Story:
+
+```csharp
+@startuml Basic Sample
+!includeurl https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/master/domainStory.puml
+
+Person(Alice)
+Boundary(System) {
+    Conversation(weather)
+    Person(Bob)
+}
+
+activity(1, Alice, talks about, weather, with, Bob)
+
+@enduml
+```
+
+More information can be found here:
+
+* [Domain Storytelling](http://www.domainstorytelling.org)
+* [REAL WORLD PlantUML - Sample Gallery](https://real-world-plantuml.com/)
+
+## Advanced Samples
+
+### Cinema
+
+Source: [cinema.puml](samples/cinema.puml)
 
 ## License
 

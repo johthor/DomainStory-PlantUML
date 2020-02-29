@@ -1,0 +1,16 @@
+@startuml
+!include ../domainStory.puml
+
+node actors
+Person("PersonLabel")
+Group("GroupLabel")
+System("SystemLabel")
+
+node "work objects"
+Document("DocumentLabel") 
+Folder("FolderLabel") 
+Call("CallLabel") 
+Email("EmailLabel") 
+Conversation("ConversationLabel") 
+Info("InfoLabel") 
+@enduml
