@@ -1,5 +1,6 @@
 @startuml
-!include ../domainStory.puml
+!includeurl https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/master/domainStory.puml
+' !include ../domainStory.puml
 
 node actors
 Person("PersonLabel")

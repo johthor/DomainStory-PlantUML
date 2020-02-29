@@ -88,6 +88,7 @@ More information can be found here:
 
 ### Cinema
 
+![cinema sample](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/master/samples/cinema.puml)
 Source: [cinema.puml](samples/cinema.puml)
 
 ## License
