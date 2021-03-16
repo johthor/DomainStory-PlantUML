@@ -1,0 +1,32 @@
+@startuml cinemaTogether
+!include ../domainStory.puml
+
+Person(customer)
+together {
+    Conversation(reservation)
+    Conversation(available seats, availableSeats)
+    Conversation(offered seats, offeredSeats)
+    Conversation(reservation number, numberConv)
+}
+
+Boundary(cash counter) {
+    Person(cashier)
+    together {
+        Document(screen plan, availablePlan)
+        Document(screen plan, reservationPlan)
+        Info(reservation number, numberInfo)
+    }
+
+    System(ticket system, ticketSystem)
+}
+
+activity(1, customer, asks for, reservation, cashier)
+activity(2, cashier, finds available seats in, availablePlan, ticketSystem)
+activity(3, cashier, recommends, availableSeats, to, customer)
+activity(4, customer, confirms, offeredSeats, cashier)
+activity(5, cashier, marks seats as reserved in, reservationPlan, ticketSystem)
+activity(6, ticketSystem, generates, numberInfo, cashier)
+activity(7, cashier, tells, numberConv, customer)
+
+availableSeats -[hidden]- cashier
+@enduml
