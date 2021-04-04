@@ -1,5 +1,6 @@
-@startuml airportBus
-!include ../domainStory.puml
+@startuml
+!includeurl https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/master/domainStory.puml
+'!include ../domainStory.puml
 
 !include <material/bus>
 !define Bus(e_label) MA_BUS(ICON_COLOR, ICON_SCALE, e_label, rectangle, e_label)

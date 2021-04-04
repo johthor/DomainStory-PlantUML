@@ -1,5 +1,6 @@
-@startuml cinemaTogether
-!include ../domainStory.puml
+@startuml
+!includeurl https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/master/domainStory.puml
+'!include ../domainStory.puml
 
 Person(customer)
 together {
@@ -9,7 +10,7 @@ together {
     Conversation(reservation number, numberConv)
 }
 
-Boundary(cash counter) {
+Boundary(cash counter, counter) {
     Person(cashier)
     together {
         Document(screen plan, availablePlan)

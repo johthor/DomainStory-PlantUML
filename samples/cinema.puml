@@ -1,6 +1,6 @@
 @startuml
 !includeurl https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/master/domainStory.puml
-' !include ../domainStory.puml
+'!include ../domainStory.puml
 
 Person(customer)
 
@@ -9,7 +9,7 @@ Conversation(available seats, availableSeats)
 Conversation(offered seats, offeredSeats)
 Conversation(reservation number, numberConv)
 
-Boundary(cash counter) {
+Boundary(cash counter, counter) {
     Person(cashier)
 
     Document(screen plan, availablePlan)
