@@ -1,26 +1,21 @@
-' Colors
-' ##################################
-
-!define ICON_COLOR Black
-
 ' Styling
 ' ##################################
 
+!define ICON_COLOR Black
 !define ICON_SCALE 1
 !define ICON_SCALE_ACTOR 2
 
-skinparam monochrome true
-skinparam defaultTextAlignment center
-
 hide stereotypes
+skinparam defaultTextAlignment center
+skinparam monochrome true
+skinparam shadowing false
+
 skinparam rectangle {
     BackgroundColor none
     BorderColor none
-    Shadowing false
 }
 
 skinparam rectangle<<boundary>> {
-    Shadowing false
     StereotypeFontSize 0
     FontColor #444444
     BorderColor #444444
@@ -93,6 +88,10 @@ left to right direction
 ' Activities
 ' ##################################
 
+!definelong activity(e_step, e_actor, e_action, e_object)
+e_actor "e_step" --> e_object : e_action
+!enddefinelong
+
 !definelong activity(e_step, e_actor, e_action, e_object, e_target)
 e_actor "e_step" --> e_object : e_action
 e_object --> e_target
@@ -101,6 +100,10 @@ e_object --> e_target
 !definelong activity(e_step, e_actor, e_action, e_object, e_post, e_target)
 e_actor "e_step" --> e_object : e_action
 e_object --> e_target : e_post
+!enddefinelong
+
+!definelong activityBW(e_step, e_actor, e_action, e_object)
+e_object <-- "e_step" e_actor : e_action
 !enddefinelong
 
 !definelong activityBW(e_step, e_actor, e_action, e_object, e_target)
@@ -116,5 +119,5 @@ e_target <-- e_object : e_post
 ' Boundaries
 ' ##################################
 
-!define Boundary(e_label) rectangle "==e_label" <<boundary>>
+!define Boundary(e_label) rectangle "==e_label" <<boundary>> as e_label
 !define Boundary(e_label, e_alias) rectangle "==e_label" <<boundary>> as e_alias

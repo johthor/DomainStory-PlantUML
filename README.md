@@ -96,6 +96,16 @@ More information can be found here:
 
 Source: [cinema.puml](samples/cinema.puml)
 
+### Airport Bus
+
+The following example is taken from _Collaborative Modelling -- Wie die
+Kommunikation mit den Fachexperten gelingt_ JavaSPEKTRUM 2/2020.
+
+![airport bus
+sample](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/master/samples/airportBus.puml)
+
+Source: [airportBus.puml](samples/airportBus.puml)
+
 ## License
 
 This project is licensed under the MIT License
