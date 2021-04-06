@@ -215,11 +215,10 @@ left to right direction
 
 ' Boundaries
 ' ##################################
-!unquoted procedure Boundary($name)
-    rectangle "==$name" <<Boundary>> as $name
-!endprocedure
-
-!unquoted procedure Boundary($name, $label)
+!unquoted procedure Boundary($name, $label = "")
+    !if $label == ""
+        !$label = $name
+    !endif
     rectangle "==$label" <<Boundary>> as $name
 !endprocedure
 

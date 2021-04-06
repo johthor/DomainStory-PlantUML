@@ -33,47 +33,26 @@ and reference it locally with
 After you have included `domainStory.puml` you can use the predefined macro
 definitions for the domain story actors:
 
-* `Person`
-* `Group`
-* `System`
+* `Person(name, [label], [color], [scale])`
+* `Group(name, [label], [color], [scale])`
+* `System(name, [label], [color], [scale])`
 
 As well as the domain story work items:
 
-* `Document`
-* `Folder`
-* `Call`
-* `Email`
-* `Conversation`
-* `Info`
+* `Document(name, [label], [color], [scale])`
+* `Folder(name, [label], [color], [scale])`
+* `Call(name, [label], [color], [scale])`
+* `Email(name, [label], [color], [scale])`
+* `Conversation(name, [label], [color], [scale])`
+* `Info(name, [label], [color], [scale])`
+
+In addition to these,
+it is also possible to define system boundaries via`Boundary(name, [label])`.
 
 ![pictografic language](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/samples/pictograficLanguage.puml)
 
-```csharp
-@startuml
-!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 
-Boundary(actors) {
-    Person(person, Person Label)
-    Group(group, Group Label)
-    System(system, System Label)
-}
-
-Boundary(object, work objects) {
-    Document(document, Document Label)
-    Folder(folder, Folder Label)
-    Call(call, Call Label)
-    Email(email, Email Label)
-    Conversation(conversation, Conversation Label)
-    Info(info, Info Label)
-}
-@enduml
-```
-
-
-In addition to this,
-it is also possible to define system boundaries.
-
-Now let's create a simple domain story:
+Now let's create our first domain story:
 
 ```csharp
 @startuml
@@ -85,7 +64,7 @@ Boundary(System) {
     Person(Bob)
 }
 
-activity(1, Alice, talks about, weather, with, Bob)
+activity(1, Alice, talks about the, weather, with, Bob)
 @enduml
 ```
 
