@@ -75,17 +75,16 @@ it is also possible to define system boundaries.
 Now let's create a simple domain story:
 
 ```csharp
-@startuml Basic Sample
+@startuml
 !include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 
-Person(Alice)
 Boundary(System) {
+    Person(Alice)
     Conversation(weather)
     Person(Bob)
 }
 
 activity(1, Alice, talks about, weather, with, Bob)
-
 @enduml
 ```
 

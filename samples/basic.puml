@@ -1,4 +1,4 @@
-@startuml Basic Sample
+@startuml
 !include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 '!include ../domainStory.puml
 
