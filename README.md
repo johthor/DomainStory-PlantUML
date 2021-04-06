@@ -46,25 +46,26 @@ As well as the domain story work items:
 * `Conversation`
 * `Info`
 
-![pictografic language](http://www.plantuml.com/plantuml/png/JOz1J_Cm38Rl-HNzSiftOBbpciG08GrfqiGPUQdNPYHsvJXC-_UiA-sul4_ov5Lahuk2QCsfsSMWt0aSO_ZS0dKLEZJ_8eLKMwoIcbvrA8_U2vnNNTI-7cf12KoAfAl0sP-urvx5RpX3fBsoN1vs2KW_thS-Gr4KtzxVLaFDoHZY5Xi8LrFC3gKmEJjn2mTCzhzv5Qw3ipVCRdyfYjdPYRETFhDdbg-63oSCMgpPSAWPIPsTJx_rnhnmQb6SdRZe9qZ9sJ4NzPmXNjqDznxJDqe1ZUFGVszBvOsExEoOYp9hf7PS_GS0)
+![pictografic language](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/samples/pictograficLanguage.puml)
 
 ```csharp
-@startuml Pictografic_Language
+@startuml
 !include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 
-node actors
-Person("PersonLabel")
-Group("GroupLabel")
-System("SystemLabel")
+Boundary(actors) {
+    Person(person, Person Label)
+    Group(group, Group Label)
+    System(system, System Label)
+}
 
-node "work objects"
-Document("DocumentLabel") 
-Folder("FolderLabel") 
-Call("CallLabel") 
-Email("EmailLabel") 
-Conversation("ConversationLabel") 
-Info("InfoLabel") 
-
+Boundary(object, work objects) {
+    Document(document, Document Label)
+    Folder(folder, Folder Label)
+    Call(call, Call Label)
+    Email(email, Email Label)
+    Conversation(conversation, Conversation Label)
+    Info(info, Info Label)
+}
 @enduml
 ```
 

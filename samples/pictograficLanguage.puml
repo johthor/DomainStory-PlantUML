@@ -1,17 +1,18 @@
 @startuml
 !include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 '!include ../domainStory.puml
+Boundary(actors) {
+    Person(person, Person Label)
+    Group(group, Group Label)
+    System(system, System Label)
+}
 
-node actors
-Person("PersonLabel")
-Group("GroupLabel")
-System("SystemLabel")
-
-node "work objects"
-Document("DocumentLabel") 
-Folder("FolderLabel") 
-Call("CallLabel") 
-Email("EmailLabel") 
-Conversation("ConversationLabel") 
-Info("InfoLabel") 
+Boundary(object, work objects) {
+    Document(document, Document Label)
+    Folder(folder, Folder Label)
+    Call(call, Call Label)
+    Email(email, Email Label)
+    Conversation(conversation, Conversation Label)
+    Info(info, Info Label)
+}
 @enduml
