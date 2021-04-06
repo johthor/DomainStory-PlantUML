@@ -1,0 +1,13 @@
+@startuml
+!include ../domainStory.puml
+
+Person(person)
+
+note left of person : foo
+
+activity(1, person, reads, thing2, $note=v down)
+activity(2, person, reads, thing3, $note=< left)
+activity(3, person, reads, thing4, $note=^ up)
+activity(4, person, reads, thing5, $note=> right)
+activity(5, person, reads, thing1, $note=  default)
+@enduml

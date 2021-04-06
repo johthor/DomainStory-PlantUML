@@ -260,7 +260,18 @@ left to right direction
     !endif
 
     !if $note != ""
-        note right of $object: $note
+        !$noteDir = %substr($note, 0, 1)
+        !if $noteDir == "v"
+            note bottom of $object: %substr($note, 1)
+        !elseif $noteDir == "<"
+            note left of $object: %substr($note, 1)
+        !elseif $noteDir == "^"
+            note top of $object: %substr($note, 1)
+        !elseif $noteDir == ">"
+            note right of $object: %substr($note, 1)
+        !else
+            note right of $object: $note
+        !endif
     !endif
 !endprocedure
 
