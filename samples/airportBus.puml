@@ -1,20 +1,21 @@
 @startuml
-!includeurl https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/master/domainStory.puml
+!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 '!include ../domainStory.puml
 
 !include <material/bus>
-!define Bus(e_label) MA_BUS(ICON_COLOR, ICON_SCALE, e_label, rectangle, e_label)
-!define Bus(e_label, e_alias) MA_BUS(ICON_COLOR, ICON_SCALE, e_alias, rectangle, e_label)
+!unquoted procedure Bus($name, $label = "", $color = "", $scale = "")
+    Object("Bus", "$ma_bus", $name, $label, $color, $scale)
+!endprocedure
 
-Person(gate agent, agent)
-Person(bus dispatcher, dispatcher)
-System(bus dispatching, dispatching)
-Person(bus driver, driver)
+Person(agent, gate agent)
+Person(dispatcher ,bus dispatcher)
+System(dispatching, bus dispatching)
+Person(driver, bus driver)
 Group(passengers)
 
 Boundary(contracting) {
-    Call(bus, busCall)
-    Document("job to order", jobOrder)
+    Call(busCall, bus)
+    Document(jobOrder, job to order)
     Call(order)
 }
 
@@ -23,10 +24,10 @@ Boundary(transport) {
 }
 
 Boundary(logging) {
-    Document("details of the journey", details1)
-    Document("details of the journey", details2)
-    Document("details of the journey", details3)
-    note left of details1
+    Document(details1, details of the journey)
+    Document(details2, details of the journey)
+    Document(details3, details of the journey)
+    note right of details1
         Disruptions,
         number of
         passengers
@@ -36,15 +37,11 @@ Boundary(logging) {
 
 activity(1, agent, orders, busCall, from, dispatcher)
 activity(2, dispatcher, creates, jobOrder, in, dispatching)
-activityBW(3, dispatcher, gives, order, to, driver)
-activityBW(4, driver, transports by, bus, passengers)
+activity(3, dispatcher, gives, order, to, driver)
+activity(4<, driver, transports by, bus, passengers)
 activity(5, driver, logs, details1)
 activity(6, driver, hands over, details2, at the end of the shift to, dispatcher)
 activity(7, dispatcher, enters, details3, in, dispatching)
 
-order -[hidden]left- driver
-details1 -[hidden]- details2
-details2 -[hidden]- details3
-busCall -[hidden]- jobOrder
-contracting -[hidden]down- logging
+contracting -[hidden]> transport
 @enduml

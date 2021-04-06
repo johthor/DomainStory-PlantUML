@@ -1,13 +1,12 @@
 @startuml Basic Sample
-!includeurl https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/master/domainStory.puml
+!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 '!include ../domainStory.puml
 
-Person(Alice)
-Boundary(System) {
+Boundary(Party) {
+    Person(Alice)
     Conversation(weather)
     Person(Bob)
 }
 
 activity(1, Alice, talks about, weather, with, Bob)
-
 @enduml

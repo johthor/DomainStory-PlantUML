@@ -1,0 +1,25 @@
+@startuml
+!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
+'!include ../domainStory.puml
+
+' Actors
+!include <material/store>
+!unquoted procedure Merchant($name, $label = "", $color = "", $scale = "")
+    Actor("Merchant", "$ma_store", $name, $label, $color, $scale)
+!endprocedure
+
+!include <material/crown>
+!unquoted procedure Customer($name, $label = "", $color = "", $scale = "")
+    Actor("Customer", "$ma_crown", $name, $label, $color, $scale)
+!endprocedure
+
+!include <material/settings_box>
+!unquoted procedure Process($name, $label = "", $color = "", $scale = "")
+    Actor("Process", "$ma_settings_box", $name, $label, $color, $scale)
+!endprocedure
+
+node actors
+Merchant(Merchant)
+Customer(Customer)
+Process(Process)
+@enduml
