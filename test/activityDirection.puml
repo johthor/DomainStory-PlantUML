@@ -1,0 +1,41 @@
+@startuml
+!include ../domainStory.puml
+
+Person(customer1)
+Conversation(topic1)
+Person(clerk1)
+Conversation(topic2)
+Person(clerk2)
+
+activity(1, customer1, talks about, topic1, with, clerk1)
+activity(2<, customer1, talks about, topic2, with, clerk2)
+
+Person(customer2)
+Conversation(topic3)
+Person(clerk3)
+Conversation(topic4)
+Person(clerk4)
+Conversation(topic5)
+Person(clerk5)
+Conversation(topic6)
+Person(clerk6)
+activity(3, customer2, talks about, topic3, with, clerk3, ->)
+activity(4, customer2, talks about, topic4, with, clerk4, <|)
+activity(5, customer2, talks about, topic5, with, clerk5, <-)
+activity(6, customer2, talks about, topic6, with, clerk6, |>)
+
+
+Person(customer3)
+Conversation(topic7)
+Person(clerk7)
+Conversation(topic8)
+Person(clerk8)
+Conversation(topic9)
+Person(clerk9)
+Conversation(topic10)
+Person(clerk10)
+activity(7, customer3, talks about, topic7, with, clerk7, ->, |>)
+activity(8, customer3, talks about, topic8, with, clerk8, <|, ->)
+activity(9, customer3, talks about, topic9, with, clerk9, <-, <|)
+activity(10, customer3, talks about, topic10, with, clerk10, <-, |>)
+@enduml

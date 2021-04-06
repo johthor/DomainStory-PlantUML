@@ -1,0 +1,12 @@
+@startuml
+!include ../domainStory.puml
+
+Person(person)
+
+activity(1, person, reads, Document:a document)
+activity(2, person, opens, Folder:a folder)
+activity(3, person, makes, Call:a call)
+activity(4, person, writes, Email:an email)
+activity(5, person, has, Conversation:a conversation)
+activity(6, person, asks for, Info:an information)
+@enduml

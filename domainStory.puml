@@ -226,7 +226,7 @@ left to right direction
 ' ##################################
 
 !global $objectCounter = 0
-!unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $arrowOne = "->", $arrowTwo = "->", $note = "")
+!unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $arrowOne = "->", $arrowTwo = "", $note = "")
     ' ensure object / create dynamic one
     !$objectSeparator = %strpos($object, ":")
     !if $objectSeparator > 0
@@ -243,6 +243,10 @@ left to right direction
         !$step = %substr($step, 0, $bwPosition)
         !$arrowOne = "<-"
         !$arrowTwo = "<-"
+    !endif
+
+    !if $arrowTwo == ""
+        !$arrowTwo = $arrowOne
     !endif
 
     ' create connecting arrows
@@ -264,14 +268,14 @@ left to right direction
 ' ##################################
 
 !function $arrow($from, $to, $spec)
-    !if $spec == "<-"
-        !return $to + "<--" + $from
-    !elif $spec == "<|"
-        !return $to + "<-" + $from
-    !elif $spec == "|>"
-        !return $from + "->" + $to
-    !else
-        !return $from + "-->" + $to
+    !if $spec == "<|"
+        !return $to+" <- "+$from
+    !elseif $spec == "<-"
+        !return $to+" <-- "+$from
+    !elseif $spec == "|>"
+        !return $from+" -> "+$to
+    !elseif $spec == "->"
+        !return $from+" --> "+$to
     !endif
 !endfunction
 
