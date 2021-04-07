@@ -207,6 +207,12 @@ activity(=10, Alice, asks about all the, talking, Bob) ' will create step 10
 activity(_, Bob, is embarassed about, talking) ' auto-increment, will create step 11
 ```
 
+### Extensions
+
+If the default actors and work objects are not enough to express your specific needs,
+see the [extensions sample](samples/extensions.puml) for a way to add new actors and objects.
+
+![extensions sample](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/samples/extensions.puml)
 
 ## Advanced Samples
 
