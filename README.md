@@ -134,6 +134,18 @@ For more details see [The Hitchhiker's Guide to PlantUML](https://crashedmind.gi
 activity(1, Alice, talks about the, weather, with, Bob, -->, ->)
 ```
 
+You can use underscores `_` in cases where you don't have a _post action_,
+or _target_ but want to specify the arrow orientation directly.
+When you specify only the arrow between subject and object,
+the specification will also be used for the arrow between object and target.
+So the following lines describe all more or less the same activity.
+
+```
+activity(1, Alice, talks about the, weather, , Bob, <--, <--)
+activity(1, Alice, talks about the, weather, Bob, _, <--)
+activity(1, Alice, talks about the, weather, _, _, <--)
+```
+
 If all of that does not help your layout problems,
 there's always the possibility to introduce hidden connections
 only for layout purposes.
