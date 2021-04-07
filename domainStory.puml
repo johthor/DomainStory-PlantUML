@@ -226,9 +226,9 @@ left to right direction
 ' ##################################
 
 !global $objectCounter = 0
-!unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $note = "")
+!unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $note = "", $color = "", $scale = "")
     ' ensure object exists / create one dynamically
-    !$object = $ensureObjectExists($object)
+    !$object = $ensureObjectExists($object, $color, $scale)
 
     ' handle forward or backward activity
     !if $objectArr == "" && $targetArr == ""
@@ -250,6 +250,7 @@ left to right direction
 
     ' create connecting arrows
     $arrow($subject, $object, $objectArr) : $stepLabel($step) $predicate
+
     !if $post != "" && $post != "_"
         !if $target != "" && $target != "_"
             $arrow($object, $target, $targetArr) : $post
@@ -303,15 +304,15 @@ left to right direction
     !if $note != ""
         !$noteDir = %substr($note, 0, 1)
         !if $noteDir == "v"
-            note bottom of $target: %substr($note, 1)
+            note bottom of $target : %substr($note, 1)
         !elseif $noteDir == "<"
-            note left of $target: %substr($note, 1)
+            note left of $target : %substr($note, 1)
         !elseif $noteDir == "^"
-            note top of $target: %substr($note, 1)
+            note top of $target : %substr($note, 1)
         !elseif $noteDir == ">"
-            note right of $target: %substr($note, 1)
+            note right of $target : %substr($note, 1)
         !else
-            note right of $target: $note
+            note right of $target : $note
         !endif
     !endif
 !endprocedure

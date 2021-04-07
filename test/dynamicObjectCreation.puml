@@ -7,6 +7,8 @@ activity(1, person, reads, Document:a document)
 activity(2, person, opens, Folder:a folder)
 activity(3, person, makes, Call:a call)
 activity(4, person, writes, Email:an email)
-activity(5, person, has, Conversation:a conversation)
-activity(6, person, asks for, Info:an information)
+
+Group(people, nice people, green)
+activity(5, people, has, Conversation:a conversation, $scale = 2)
+activity(6, people, ask for, Info:an information, $color = red)
 @enduml
