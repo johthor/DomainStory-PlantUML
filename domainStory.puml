@@ -226,44 +226,35 @@ left to right direction
 ' ##################################
 
 !global $objectCounter = 0
-!unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $arrowOne = "->", $arrowTwo = "", $note = "")
+!unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $note = "")
     ' ensure object exists / create one dynamically
     !$object = $ensureObjectExists($object)
 
     ' handle forward or backward activity
-    !$bwPosition = %strpos($step, "<")
-    !if $bwPosition > 0
-        !$step = %substr($step, 0, $bwPosition)
-        !$arrowOne = "<-"
-        !$arrowTwo = "<-"
-    !endif
-
-    !if $arrowTwo == ""
-        !$arrowTwo = $arrowOne
-    !endif
-
-    ' create connecting arrows
-    $arrow($subject, $object, $arrowOne) : $stepLabel($step) $predicate
-    !if $post != ""
-        !if $target != ""
-            $arrow($object, $target, $arrowTwo) : $post
-        !else
-            $arrow($object, $post, $arrowTwo)
+    !if $objectArr == "" && $targetArr == ""
+        !$bwPosition = %strpos($step, "<")
+        !if $bwPosition > 0
+            !$step = %substr($step, 0, $bwPosition)
+            !$objectArr = "<--"
+            !$targetArr = "<--"
         !endif
     !endif
 
-    !if $note != ""
-        !$noteDir = %substr($note, 0, 1)
-        !if $noteDir == "v"
-            note bottom of $object: %substr($note, 1)
-        !elseif $noteDir == "<"
-            note left of $object: %substr($note, 1)
-        !elseif $noteDir == "^"
-            note top of $object: %substr($note, 1)
-        !elseif $noteDir == ">"
-            note right of $object: %substr($note, 1)
+    !if $objectArr == ""
+        !$objectArr = "-->"
+    !endif
+
+    !if $targetArr == ""
+        !$targetArr = $objectArr
+    !endif
+
+    ' create connecting arrows
+    $arrow($subject, $object, $objectArr) : $stepLabel($step) $predicate
+    !if $post != "" && $post != "_"
+        !if $target != "" && $target != "_"
+            $arrow($object, $target, $targetArr) : $post
         !else
-            note right of $object: $note
+            $arrow($object, $post, $targetArr)
         !endif
     !endif
 
@@ -287,14 +278,10 @@ left to right direction
 !endfunction
 
 !function $arrow($from, $to, $spec)
-    !if $spec == "<|"
-        !return $to+" <- "+$from
-    !elseif $spec == "<-"
-        !return $to+" <-- "+$from
-    !elseif $spec == "|>"
-        !return $from+" -> "+$to
-    !elseif $spec == "->"
-        !return $from+" --> "+$to
+    !if %substr($spec, 0, 1) == "<"
+        !return $to + " " + $spec + " " + $from
+    !else
+        !return $from + " " + $spec + " " + $to
     !endif
 !endfunction
 
