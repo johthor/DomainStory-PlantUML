@@ -227,15 +227,8 @@ left to right direction
 
 !global $objectCounter = 0
 !unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $arrowOne = "->", $arrowTwo = "", $note = "")
-    ' ensure object / create dynamic one
-    !$objectSeparator = %strpos($object, ":")
-    !if $objectSeparator > 0
-        !$objectCounter = %intval($objectCounter) + 1
-        !$objectKind = %substr($object, 0, $objectSeparator)
-        !$objectLabel = %substr($object, $objectSeparator + 1)
-        !$object = $objectKind + $objectCounter
-        %invoke_procedure($objectKind, $object, $objectLabel)
-    !endif
+    ' ensure object exists / create one dynamically
+    !$object = $ensureObjectExists($object)
 
     ' handle forward or backward activity
     !$bwPosition = %strpos($step, "<")
@@ -277,6 +270,19 @@ left to right direction
 
 ' Helper
 ' ##################################
+
+!function $ensureObjectExists($object, $color = "", $scale = "")
+    !$objectName = $object
+    !$objectSeparator = %strpos($object, ":")
+    !if $objectSeparator > 0
+        !$objectCounter = %intval($objectCounter) + 1
+        !$objectKind = %substr($object, 0, $objectSeparator)
+        !$objectLabel = %substr($object, $objectSeparator + 1)
+        !$objectName = $objectKind + $objectCounter
+        %invoke_procedure($objectKind, $objectName, $objectLabel, $color, $scale)
+    !endif
+    !return $objectName
+!endfunction
 
 !function $arrow($from, $to, $spec)
     !if $spec == "<|"
