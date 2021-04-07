@@ -55,7 +55,7 @@ it is also possible to define system boundaries via`Boundary(name, [label])`.
 
 Now let's create our first domain story:
 
-```csharp
+```
 @startuml
 !include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 
@@ -86,7 +86,7 @@ followed by a colon e.g. `Conversation:`.
 Additionally, you can specify the color and scale of the created object
 via the keyword arguments `$color` and `$scale`
 
-```csharp
+```
 @startuml
 !include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 
@@ -141,6 +141,34 @@ Remember that every element of your story may be referenced by its name later.
 
 ```
 Bob ---[hidden]-> Alice
+```
+
+### Adding Notes
+
+All elements support adding notes via the keyword argument `$note`.
+
+```
+Person(Alice, $note=fizz)
+Conversation(weather, $note=buzz)
+activity(1, Alice, talks about the, weather, with, Bob, $note=sunny)
+```
+
+In when adding a note on an activity,
+the note will be added to the object of that activity.
+
+Furthermore, the first symbol of the note text controls the orientation of it.
+If its one of `^`, `<`, `v` or `>` the note will be placed
+above, left, below or right of its element of reference.
+Otherwise, it will be placed right of its element.
+
+Notes to boundaries can't be added via the mechanism above.
+So please use the basic PlantUML mechanism.
+
+```
+Boundary(wonderland) {
+    Person(Alice)
+}
+note right of wonderland : Drink me
 ```
 
 ## Advanced Samples

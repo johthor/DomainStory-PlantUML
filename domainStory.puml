@@ -70,7 +70,7 @@ left to right direction
 
 ' Actors
 ' ##################################
-!unquoted procedure Actor($kind, $sprite, $name, $label = "", $color = "", $scale = "")
+!unquoted procedure Actor($kind, $sprite, $name, $label = "", $color = "", $scale = "", $note = "")
     !if $label == ""
         !$label = $name
     !endif
@@ -81,6 +81,8 @@ left to right direction
         !$scale = $actorScale
     !endif
     agent "<color:$color><$sprite{scale=$scale}></color>\r $label" as $name <<$kind>>
+
+    $addNote($name, $note)
 !endprocedure
 
 !if $actorStyle == "default"
@@ -94,8 +96,8 @@ left to right direction
         !global $personSprite = "$ma_account"
     !endif
 !endif
-!unquoted procedure Person($name, $label = "", $color = "", $scale = "")
-    Actor("Person", "$personSprite", $name, $label, $color, $scale)
+!unquoted procedure Person($name, $label = "", $color = "", $scale = "", $note = "")
+    Actor("Person", "$personSprite", $name, $label, $color, $scale, $note)
 !endprocedure
 
 !if $actorStyle == "default"
@@ -109,18 +111,18 @@ left to right direction
         !global $groupSprite = "$ma_account_multiple"
     !endif
 !endif
-!unquoted procedure Group($name, $label = "", $color = "", $scale = "")
-    Actor("Group", "$groupSprite", $name, $label, $color, $scale)
+!unquoted procedure Group($name, $label = "", $color = "", $scale = "", $note = "")
+    Actor("Group", "$groupSprite", $name, $label, $color, $scale, $note)
 !endprocedure
 
 !include <material/laptop>
-!unquoted procedure System($name, $label = "", $color = "", $scale = "")
-    Actor("System", "$ma_laptop", $name, $label, $color, $scale)
+!unquoted procedure System($name, $label = "", $color = "", $scale = "", $note = "")
+    Actor("System", "$ma_laptop", $name, $label, $color, $scale, $note)
 !endprocedure
 
 ' Work objects
 ' ##################################
-!unquoted procedure Object($kind, $sprite, $name, $label = "", $color = "", $scale = "")
+!unquoted procedure Object($kind, $sprite, $name, $label = "", $color = "", $scale = "", $note = "")
     !if $label == ""
         !$label = $name
     !endif
@@ -131,6 +133,8 @@ left to right direction
         !$scale = $objectScale
     !endif
     card "<color:$color><$sprite{scale=$scale}></color>\r $label" as $name <<$kind>>
+
+    $addNote($name, $note)
 !endprocedure
 
 !if $objectStyle == "default"
@@ -144,8 +148,8 @@ left to right direction
         !global $documentSprite = "$ma_document"
     !endif
 !endif
-!unquoted procedure Document($name, $label = "", $color = "", $scale = "")
-    Object("Document", "$documentSprite", $name, $label, $color, $scale)
+!unquoted procedure Document($name, $label = "", $color = "", $scale = "", $note = "")
+    Object("Document", "$documentSprite", $name, $label, $color, $scale, $note)
 !endprocedure
 
 !if $objectStyle == "default"
@@ -159,13 +163,13 @@ left to right direction
         !global $folderSprite = "$ma_folder"
     !endif
 !endif
-!unquoted procedure Folder($name, $label = "", $color = "", $scale = "")
-    Object("Folder", "$folderSprite", $name, $label, $color, $scale)
+!unquoted procedure Folder($name, $label = "", $color = "", $scale = "", $note = "")
+    Object("Folder", "$folderSprite", $name, $label, $color, $scale, $note)
 !endprocedure
 
 !include <material/phone>
-!unquoted procedure Call($name, $label = "", $color = "", $scale = "")
-    Object("Call", "$ma_phone", $name, $label, $color, $scale)
+!unquoted procedure Call($name, $label = "", $color = "", $scale = "", $note = "")
+    Object("Call", "$ma_phone", $name, $label, $color, $scale, $note)
 !endprocedure
 
 !if $objectStyle == "default"
@@ -179,8 +183,8 @@ left to right direction
         !global $emailSprite = "$ma_email"
     !endif
 !endif
-!unquoted procedure Email($name, $label = "", $color = "", $scale = "")
-    Object("Email", "$emailSprite", $name, $label, $color, $scale)
+!unquoted procedure Email($name, $label = "", $color = "", $scale = "", $note = "")
+    Object("Email", "$emailSprite", $name, $label, $color, $scale, $note)
 !endprocedure
 
 !if $objectStyle == "default"
@@ -194,8 +198,8 @@ left to right direction
         !global $conversationSprite = "$ma_message"
     !endif
 !endif
-!unquoted procedure Conversation($name, $label = "", $color = "", $scale = "")
-    Object("Conversation", "$conversationSprite", $name, $label, $color, $scale)
+!unquoted procedure Conversation($name, $label = "", $color = "", $scale = "", $note = "")
+    Object("Conversation", "$conversationSprite", $name, $label, $color, $scale, $note)
 !endprocedure
 
 !if $objectStyle == "default"
@@ -209,8 +213,8 @@ left to right direction
         !global $infoSprite = "$ma_information"
     !endif
 !endif
-!unquoted procedure Info($name, $label = "", $color = "", $scale = "")
-    Object("Info", "$infoSprite", $name, $label, $color, $scale)
+!unquoted procedure Info($name, $label = "", $color = "", $scale = "", $note = "")
+    Object("Info", "$infoSprite", $name, $label, $color, $scale, $note)
 !endprocedure
 
 ' Boundaries
@@ -226,7 +230,7 @@ left to right direction
 ' ##################################
 
 !global $objectCounter = 0
-!unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $note = "", $color = "", $scale = "")
+!unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $color = "", $scale = "", $note = "")
     ' ensure object exists / create one dynamically
     !$object = $ensureObjectExists($object, $color, $scale)
 
@@ -265,6 +269,23 @@ left to right direction
 ' Helper
 ' ##################################
 
+!procedure $addNote($target, $note)
+    !if $note != ""
+        !$noteDir = %substr($note, 0, 1)
+        !if $noteDir == "v"
+            note bottom of $target : %substr($note, 1)
+        !elseif $noteDir == "<"
+            note left of $target : %substr($note, 1)
+        !elseif $noteDir == "^"
+            note top of $target : %substr($note, 1)
+        !elseif $noteDir == ">"
+            note right of $target : %substr($note, 1)
+        !else
+            note right of $target : $note
+        !endif
+    !endif
+!endprocedure
+
 !function $ensureObjectExists($object, $color = "", $scale = "")
     !$objectName = $object
     !$objectSeparator = %strpos($object, ":")
@@ -299,20 +320,3 @@ left to right direction
     !endif
     !return $result
 !endfunction
-
-!procedure $addNote($target, $note)
-    !if $note != ""
-        !$noteDir = %substr($note, 0, 1)
-        !if $noteDir == "v"
-            note bottom of $target : %substr($note, 1)
-        !elseif $noteDir == "<"
-            note left of $target : %substr($note, 1)
-        !elseif $noteDir == "^"
-            note top of $target : %substr($note, 1)
-        !elseif $noteDir == ">"
-            note right of $target : %substr($note, 1)
-        !else
-            note right of $target : $note
-        !endif
-    !endif
-!endprocedure

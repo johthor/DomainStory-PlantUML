@@ -10,4 +10,11 @@ activity(2, person, reads, thing3, $note=< left)
 activity(3, person, reads, thing4, $note=^ up)
 activity(4, person, reads, thing5, $note=> right)
 activity(5, person, reads, thing1, $note=  default)
+
+Boundary(office) {
+    Group(people, $note=^ nice)
+    Call(conference, $note=boring)
+}
+
+note right of office : foo
 @enduml
