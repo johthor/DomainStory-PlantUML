@@ -1,0 +1,19 @@
+@startuml
+'!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
+!include ../domainStory.puml
+
+
+Person(customer)
+
+Person(cashier)
+System(ticketSystem, ticket system)
+
+activity(_, customer, asks for, Conversation: reservation, cashier)
+activity(|, cashier, finds available seats in, Document: screen plan, with, ticketSystem)
+activity(|, cashier, recommends, Conversation: available seats, to, customer, <--)
+activity(42, cashier, empties, Document: screen plan, in, ticketSystem)
+activity(|, customer, confirms, Conversation: offered seats, cashier)
+activity(=5, cashier, marks seats as reserved in, Document: screen plan, with, ticketSystem)
+activity(_, ticketSystem, generates, Info: reservation number, for, cashier, <--)
+activity(_, cashier, tells, Conversation: reservation number, to, customer, <--)
+@enduml

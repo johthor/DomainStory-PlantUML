@@ -19,7 +19,7 @@ found in the root of this repository.
 If you want to use the always up-to-date version in this repository,
 use the following:
 
-```c#
+```puml
 !include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 ```
 
@@ -27,7 +27,7 @@ To be independent of any internet connectivity,
 you can also download the file found in the root
 and reference it locally with
 
-```c#
+```puml
 !include path/to/domainStory.puml
 ```
 
@@ -55,7 +55,7 @@ it is also possible to define system boundaries via`Boundary(name, [label])`.
 
 Now let's create our first domain story:
 
-```
+```puml
 @startuml
 !include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 
@@ -86,7 +86,7 @@ followed by a colon e.g. `Conversation:`.
 Additionally, you can specify the color and scale of the created object
 via the keyword arguments `$color` and `$scale`
 
-```
+```puml
 @startuml
 !include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 
@@ -95,6 +95,7 @@ Boundary(System) {
     Person(Bob)
     activity(1, Alice, talks about the, Conversation: weather, with, Bob, $color = red, $scale = 2)
 }
+@enduml
 ```
 > :warning: **If you want your dynamically created objects to be placed inside a boundary.**
 > You need to declare the activity inside said boundary.
@@ -121,7 +122,7 @@ The `activity` macro provides two features for better layout control.
 The step counter can be combined with a backwards indicator `<`.
 The following activity will be oriented backwards against the normal story flow.
 
-```
+```puml
 activity(1<, Alice, talks about the, weather, with, Bob)
 ```
 
@@ -130,7 +131,7 @@ which allow you to specify the arrow orientation in full.
 Some possible arrow specifications are `-->`, `->`, `<-`, `<--`, and `-up->`.
 For more details see [The Hitchhiker's Guide to PlantUML](https://crashedmind.github.io/PlantUMLHitchhikersGuide/layout/layout.html#arrows-for-layout).
 
-```
+```puml
 activity(1, Alice, talks about the, weather, with, Bob, -->, ->)
 ```
 
@@ -140,7 +141,7 @@ When you specify only the arrow between subject and object,
 the specification will also be used for the arrow between object and target.
 So the following lines describe all more or less the same activity.
 
-```
+```puml
 activity(1, Alice, talks about the, weather, , Bob, <--, <--)
 activity(1, Alice, talks about the, weather, Bob, _, <--)
 activity(1, Alice, talks about the, weather, _, _, <--)
@@ -151,7 +152,7 @@ there's always the possibility to introduce hidden connections
 only for layout purposes.
 Remember that every element of your story may be referenced by its name later.
 
-```
+```puml
 Bob ---[hidden]-> Alice
 ```
 
@@ -159,7 +160,7 @@ Bob ---[hidden]-> Alice
 
 All elements support adding notes via the keyword argument `$note`.
 
-```
+```puml
 Person(Alice, $note=fizz)
 Conversation(weather, $note=buzz)
 activity(1, Alice, talks about the, weather, with, Bob, $note=sunny)
@@ -176,12 +177,36 @@ Otherwise, it will be placed right of its element.
 Notes to boundaries can't be added via the mechanism above.
 So please use the basic PlantUML mechanism.
 
-```
+```puml
 Boundary(wonderland) {
     Person(Alice)
 }
 note right of wonderland : Drink me
 ```
+
+### Auto-Incrementing Steps
+
+When describing activities the current step is automatically incremented,
+if you pass an underscore `_` as step spec.
+If instead you pass a vertical bar `|`,
+the current step is declared as parallel to the last step,
+and the step counter won't be incremented.
+
+When you pass an integer value as step spec,
+the step label will be set to that value.
+If the integer is prefixed with an equal sign `=`,
+the step counter will also be set to that value and auto-increment will continue from there.
+
+```puml
+activity(_, Bob, talks about the, weather) ' auto-increment, will create step 1
+activity(_, Bob, talks about the, weather) ' auto-increment, will create step 2
+activity(|, Bob, talks about the, weather) ' no increment, will create step 2
+activity(42, Alice, asks about all the, talking, Bob) ' will create step 42
+activity(|, Bob, talks about the, weather) ' no increment, will create step 2
+activity(=10, Alice, asks about all the, talking, Bob) ' will create step 10
+activity(_, Bob, is embarassed about, talking) ' auto-increment, will create step 11
+```
+
 
 ## Advanced Samples
 

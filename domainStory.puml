@@ -229,7 +229,9 @@ left to right direction
 ' Activities
 ' ##################################
 
+!global $stepCounter = 0
 !global $objectCounter = 0
+
 !unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $color = "", $scale = "", $note = "")
     ' ensure object exists / create one dynamically
     !$object = $ensureObjectExists($object, $color, $scale)
@@ -307,16 +309,31 @@ left to right direction
     !endif
 !endfunction
 
-!function $stepLabel($counter)
-    !$result = "("+$counter+")"
+!unquoted function $computeStep($step)
+    !if $step == "_"
+        !$stepCounter = $stepCounter + 1
+        !return $stepCounter
+    !elseif $step == "|"
+        !return $stepCounter
+    !elseif %substr($step, 0, 1) == "="
+        !$stepCounter = %intval(%substr($step, 1))
+        !return $stepCounter
+    !else
+        !return $step
+    !endif
+!endfunction
+
+!function $stepLabel($step)
+    !$stepNum = $computeStep($step)
+    !$result = "(" + $stepNum + ")"
     !if ($stepColor != "")
-        !$result = "<back:"+$stepColor+">"+$result+"</back>"
+        !$result = "<back:" + $stepColor + ">" + $result + "</back>"
     !endif
     !if ($stepFontColor != "")
-        !$result = "<color:"+$stepFontColor+">"+$result+"</color>"
+        !$result = "<color:" + $stepFontColor + ">" + $result + "</color>"
     !endif
     !if ($stepFontSize != "")
-        !$result = "<size:"+$stepFontSize+">"+$result+"</size>"
+        !$result = "<size:" + $stepFontSize + ">" + $result + "</size>"
     !endif
     !return $result
 !endfunction
