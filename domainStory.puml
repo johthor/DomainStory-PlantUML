@@ -266,6 +266,8 @@ left to right direction
             note right of $object: $note
         !endif
     !endif
+
+    $addNote($object, $note)
 !endprocedure
 
 ' Helper
@@ -309,3 +311,20 @@ left to right direction
     !endif
     !return $result
 !endfunction
+
+!procedure $addNote($target, $note)
+    !if $note != ""
+        !$noteDir = %substr($note, 0, 1)
+        !if $noteDir == "v"
+            note bottom of $target: %substr($note, 1)
+        !elseif $noteDir == "<"
+            note left of $target: %substr($note, 1)
+        !elseif $noteDir == "^"
+            note top of $target: %substr($note, 1)
+        !elseif $noteDir == ">"
+            note right of $target: %substr($note, 1)
+        !else
+            note right of $target: $note
+        !endif
+    !endif
+!endprocedure
