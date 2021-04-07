@@ -76,7 +76,7 @@ More information can be found here:
 * [Domain Storytelling](http://www.domainstorytelling.org)
 * [REAL WORLD PlantUML - Sample Gallery](https://real-world-plantuml.com/)
 
-### Dynamic creation of work objects
+### Dynamic Creation of Work Objects
 
 Instead of predefining all work objects,
 they can also be defined on the fly when they are used.
@@ -98,6 +98,50 @@ Boundary(System) {
 ```
 > :warning: **If you want your dynamically created objects to be placed inside a boundary.**
 > You need to declare the activity inside said boundary.
+
+### Story Layout
+
+For single story diagrams a landscape orientation is preferred
+and is therefore the default orientation.
+If you combine multiple stories into a domain journey,
+a portrait orientation usually gives better results.
+The orientation can be switched via `top to bottom direction` and `left to right direction` at the top of your file.
+
+> :information_source: Wrangling diagram elements to an exact position
+> or layout is not what PlantUML is for.
+
+If the default layout does not please your inner artist,
+there are some possibilities to improve it.
+
+Group elements via `together { elements... }`.
+Those elements will be grouped together.
+ 
+The `activity` macro provides two features for better layout control.
+
+The step counter can be combined with a backwards indicator `<`.
+The following activity will be oriented backwards against the normal story flow.
+
+```
+activity(1<, Alice, talks about the, weather, with, Bob)
+```
+
+If this is not enough it also provides two optional parameters,
+which allow you to specify the arrow orientation in full.
+Some possible arrow specifications are `-->`, `->`, `<-`, `<--`, and `-up->`.
+For more details see [The Hitchhiker's Guide to PlantUML](https://crashedmind.github.io/PlantUMLHitchhikersGuide/layout/layout.html#arrows-for-layout).
+
+```
+activity(1, Alice, talks about the, weather, with, Bob, -->, ->)
+```
+
+If all of that does not help your layout problems,
+there's always the possibility to introduce hidden connections
+only for layout purposes.
+Remember that every element of your story may be referenced by its name later.
+
+```
+Bob ---[hidden]-> Alice
+```
 
 ## Advanced Samples
 
