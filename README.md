@@ -195,3 +195,8 @@ Source: [airportBus.puml](samples/airportBus.puml)
 
 This project is licensed under the MIT License
 - see the [LICENSE](LICENSE) file for details
+
+## Acknowledgements
+
+- [C4-PlantUML](https://github.com/plantuml-stdlib/C4-PlantUML) an inspiration to implement a collection of domain story macros
+- [@dirx improved domain story macros](https://gist.github.com/dirx/426e3099f07658965ee762cc70eba3cf) a more refined implementation of the first version
