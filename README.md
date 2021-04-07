@@ -16,7 +16,8 @@ At the top of your domain story PlantUML `.puml` file,
 you need to include the `domainStory.puml` file
 found in the root of this repository.
 
-If you want to use the always up-to-date version in this repository, use the following:
+If you want to use the always up-to-date version in this repository,
+use the following:
 
 ```c#
 !include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
@@ -74,6 +75,29 @@ More information can be found here:
 
 * [Domain Storytelling](http://www.domainstorytelling.org)
 * [REAL WORLD PlantUML - Sample Gallery](https://real-world-plantuml.com/)
+
+### Dynamic creation of work objects
+
+Instead of predefining all work objects,
+they can also be defined on the fly when they are used.
+Just prefix the work object with the kind of object you want to create
+followed by a colon e.g. `Conversation:`.
+
+Additionally, you can specify the color and scale of the created object
+via the keyword arguments `$color` and `$scale`
+
+```csharp
+@startuml
+!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
+
+Boundary(System) {
+    Person(Alice)
+    Person(Bob)
+    activity(1, Alice, talks about the, Conversation: weather, with, Bob, $color = red, $scale = 2)
+}
+```
+> :warning: **If you want your dynamically created objects to be placed inside a boundary.**
+> You need to declare the activity inside said boundary.
 
 ## Advanced Samples
 
