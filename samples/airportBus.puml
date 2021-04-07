@@ -35,13 +35,13 @@ Boundary(logging) {
     end note
 }
 
-activity(1, agent, orders, busCall, from, dispatcher)
-activity(2, dispatcher, creates, jobOrder, in, dispatching)
-activity(3, dispatcher, gives, order, to, driver)
-activity(4<, driver, transports by, bus, passengers)
-activity(5, driver, logs, details1)
-activity(6, driver, hands over, details2, at the end of the shift to, dispatcher)
-activity(7, dispatcher, enters, details3, in, dispatching)
+activity(_, agent, orders, busCall, from, dispatcher)
+activity(_, dispatcher, creates, jobOrder, in, dispatching, <--, -->)
+activity(_, dispatcher, gives, order, to, driver)
+activity(_, driver, transports by, bus, passengers, _, <--)
+activity(_, driver, logs, details1)
+activity(_, driver, hands over, details2, at the end of the shift to, dispatcher)
+activity(_, dispatcher, enters, details3, in, dispatching, -->, <--)
 
 contracting -[hidden]> transport
 @enduml
