@@ -50,7 +50,7 @@ As well as the domain story work items:
 In addition to these,
 it is also possible to define system boundaries via`Boundary(name, [label])`.
 
-![pictografic language](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/samples/pictograficLanguage.puml)
+![pictographic language](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/samples/pictographicLanguage.puml)
 
 
 Now let's create our first domain story:

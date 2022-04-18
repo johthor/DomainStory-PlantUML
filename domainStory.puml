@@ -85,13 +85,11 @@ left to right direction
     $addNote($name, $note)
 !endprocedure
 
-!if $actorStyle == "default"
-    !if %not(%variable_exists("$personSprite"))
+!if %not(%variable_exists("$personSprite"))
+    !if $actorStyle == "default"
         !include <material/account_outline>
         !global $personSprite = "$ma_account_outline"
-    !endif
-!else
-    !if %not(%variable_exists("$personSprite"))
+    !else
         !include <material/account>
         !global $personSprite = "$ma_account"
     !endif
@@ -100,13 +98,11 @@ left to right direction
     Actor("Person", "$personSprite", $name, $label, $color, $scale, $note)
 !endprocedure
 
-!if $actorStyle == "default"
-    !if %not(%variable_exists("$groupSprite"))
+!if %not(%variable_exists("$groupSprite"))
+    !if $actorStyle == "default"
         !include <material/account_multiple_outline>
         !global $groupSprite = "$ma_account_multiple_outline"
-    !endif
-!else
-    !if %not(%variable_exists("$groupSprite"))
+    !else
         !include <material/account_multiple>
         !global $groupSprite = "$ma_account_multiple"
     !endif
@@ -137,13 +133,11 @@ left to right direction
     $addNote($name, $note)
 !endprocedure
 
-!if $objectStyle == "default"
-    !if %not(%variable_exists("$documentSprite"))
+!if %not(%variable_exists("$documentSprite"))
+    !if $objectStyle == "default"
         !include <material/file_document>
         !global $documentSprite = "$ma_file_document"
-    !endif
-!else
-    !if %not(%variable_exists("$documentSprite"))
+    !else
         !include <material/document>
         !global $documentSprite = "$ma_document"
     !endif
@@ -152,13 +146,11 @@ left to right direction
     Object("Document", "$documentSprite", $name, $label, $color, $scale, $note)
 !endprocedure
 
-!if $objectStyle == "default"
-    !if %not(%variable_exists("$folderSprite"))
+!if %not(%variable_exists("$folderSprite"))
+    !if $objectStyle == "default"
         !include <material/folder_outline>
         !global $folderSprite = "$ma_folder_outline"
-    !endif
-!else
-    !if %not(%variable_exists("$folderSprite"))
+    !else
         !include <material/folder>
         !global $folderSprite = "$ma_folder"
     !endif
@@ -172,13 +164,11 @@ left to right direction
     Object("Call", "$ma_phone", $name, $label, $color, $scale, $note)
 !endprocedure
 
-!if $objectStyle == "default"
-    !if %not(%variable_exists("$emailSprite"))
+!if %not(%variable_exists("$emailSprite"))
+    !if $objectStyle == "default"
         !include <material/at>
         !global $emailSprite = "$ma_at"
-    !endif
-!else
-    !if %not(%variable_exists("$emailSprite"))
+    !else
         !include <material/email>
         !global $emailSprite = "$ma_email"
     !endif
@@ -187,13 +177,11 @@ left to right direction
     Object("Email", "$emailSprite", $name, $label, $color, $scale, $note)
 !endprocedure
 
-!if $objectStyle == "default"
-    !if %not(%variable_exists("$conversationSprite"))
+!if %not(%variable_exists("$conversationSprite"))
+    !if $objectStyle == "default"
         !include <material/message_outline>
         !global $conversationSprite = "$ma_message_outline"
-    !endif
-!else
-    !if %not(%variable_exists("$conversationSprite"))
+    !else
         !include <material/message>
         !global $conversationSprite = "$ma_message"
     !endif
@@ -202,13 +190,11 @@ left to right direction
     Object("Conversation", "$conversationSprite", $name, $label, $color, $scale, $note)
 !endprocedure
 
-!if $objectStyle == "default"
-    !if %not(%variable_exists("$infoSprite"))
+!if %not(%variable_exists("$infoSprite"))
+    !if $objectStyle == "default"
         !include <material/information_outline>
         !global $infoSprite = "$ma_information_outline"
-    !endif
-!else
-    !if %not(%variable_exists("$infoSprite"))
+    !else
         !include <material/information>
         !global $infoSprite = "$ma_information"
     !endif
@@ -309,7 +295,7 @@ left to right direction
     !endif
 !endfunction
 
-!unquoted function $computeStep($step)
+!function $computeStep($step)
     !if $step == "_"
         !$stepCounter = $stepCounter + 1
         !return $stepCounter
