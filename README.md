@@ -34,24 +34,29 @@ and reference it locally with
 After you have included `domainStory.puml` you can use the predefined macro
 definitions for the domain story actors:
 
-* `Person(name, [label], [color], [scale])`
-* `Group(name, [label], [color], [scale])`
-* `System(name, [label], [color], [scale])`
+* `Person(name, [label], [color], [scale], [note])`
+* `Group(name, [label], [color], [scale], [note])`
+* `System(name, [label], [color], [scale], [note])`
 
 As well as the domain story work items:
 
-* `Document(name, [label], [color], [scale])`
-* `Folder(name, [label], [color], [scale])`
-* `Call(name, [label], [color], [scale])`
-* `Email(name, [label], [color], [scale])`
-* `Conversation(name, [label], [color], [scale])`
-* `Info(name, [label], [color], [scale])`
+* `Document(name, [label], [color], [scale], [note])`
+* `Folder(name, [label], [color], [scale], [note])`
+* `Call(name, [label], [color], [scale], [note])`
+* `Email(name, [label], [color], [scale], [note])`
+* `Conversation(name, [label], [color], [scale], [note])`
+* `Info(name, [label], [color], [scale], [note])`
+
+Activities between actors and involving work items are described via the `activity` macro:
+
+```puml
+activity(step, subject, predicate, object, [post], [target], [objectArr], [targetArr], [color], [scale], [note])
+```
 
 In addition to these,
 it is also possible to define system boundaries via`Boundary(name, [label])`.
 
 ![pictographic language](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/samples/pictographicLanguage.puml)
-
 
 Now let's create our first domain story:
 
@@ -97,6 +102,7 @@ Boundary(System) {
 }
 @enduml
 ```
+
 > :warning: **If you want your dynamically created objects to be placed inside a boundary.**
 > You need to declare the activity inside said boundary.
 
@@ -116,7 +122,7 @@ there are some possibilities to improve it.
 
 Group elements via `together { elements... }`.
 Those elements will be grouped together.
- 
+
 The `activity` macro provides two features for better layout control.
 
 The step counter can be combined with a backwards indicator `<`.
@@ -129,7 +135,9 @@ activity(1<, Alice, talks about the, weather, with, Bob)
 If this is not enough it also provides two optional parameters,
 which allow you to specify the arrow orientation in full.
 Some possible arrow specifications are `-->`, `->`, `<-`, `<--`, and `-up->`.
-For more details see [The Hitchhiker's Guide to PlantUML](https://crashedmind.github.io/PlantUMLHitchhikersGuide/layout/layout.html#arrows-for-layout).
+For more details
+see [The Hitchhiker's Guide to PlantUML](https://crashedmind.github.io/PlantUMLHitchhikersGuide/layout/layout.html#arrows-for-layout)
+.
 
 ```puml
 activity(1, Alice, talks about the, weather, with, Bob, -->, ->)
@@ -207,6 +215,41 @@ activity(=10, Alice, asks about all the, talking, Bob) ' will create step 10
 activity(_, Bob, is embarassed about, talking) ' auto-increment, will create step 11
 ```
 
+### Styling
+
+The following style definitions are used by default.
+
+| Property         | Default Value | Description                                         |
+|------------------|---------------|-----------------------------------------------------|
+| `$textColor`     | `#0b0c10`     | Color of all text                                   |
+| `$actorStyle`    | `default`     | Use outlines instead of filled icons for actors     |
+| `$actorScale`    | `1`           | Size of all actors                                  |
+| `$actorColor`    | `#1f2833`     | Color of all actors                                 |
+| `$objectStyle`   | `default`     | Use outlines instead of filled icons for work items |
+| `$objectScale`   | `0.8`         | Size of all work items                              |
+| `$objectColor`   | `#1f2833`     | Color of all work items                             |
+| `$boundaryColor` | `#1f2833`     | Color of boundary borders                           |
+| `$activityColor` | `#c5c6c7`     | Color of the activity arrows                        |
+| `$stepColor`     | `#66fcf1`     | Background color for step numbers                   |
+| `$stepFontSize`  | `16`          | Font size for step numbers                          |
+| `$stepFontColor` | `$textColor`  | Font color for step numbers, same as `$textColor`   |
+| `$noteColor`     | `#c5c6c7`     | Background color for notes                          |
+| `$noteBorder`    | `#1f2833`     | Border color for notes                              |
+
+To use your own styling you need to define the relevant styling properties before including the library.
+The following example would combine green actor icons with red text.
+
+```puml
+@startuml
+!$textColor = "red"
+!$actorColor = "green"
+
+!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
+
+Person(Alice)
+@enduml
+```
+
 ### Extensions
 
 If the default actors and work objects are not enough to express your specific needs,
@@ -237,9 +280,12 @@ Source: [airportBus.puml](samples/airportBus.puml)
 ## License
 
 This project is licensed under the MIT License
+
 - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgements
 
-- [C4-PlantUML](https://github.com/plantuml-stdlib/C4-PlantUML) an inspiration to implement a collection of domain story macros
-- [@dirx improved domain story macros](https://gist.github.com/dirx/426e3099f07658965ee762cc70eba3cf) a more refined implementation of the first version
+- [C4-PlantUML](https://github.com/plantuml-stdlib/C4-PlantUML) an inspiration to implement a collection of domain story
+  macros
+- [@dirx improved domain story macros](https://gist.github.com/dirx/426e3099f07658965ee762cc70eba3cf) a more refined
+  implementation of the first version

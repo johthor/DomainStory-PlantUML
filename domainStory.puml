@@ -1,26 +1,26 @@
-' Styling
+' Default Styling
 ' ##################################
 
-!global $textColor = "#0b0c10"
+!$textColor ?= "#0b0c10"
 
-!global $actorStyle = "default"
-!global $actorScale = "1"
-!global $actorColor = "#1f2833"
+!$actorStyle ?= "default"
+!$actorScale ?= 1
+!$actorColor ?= "#1f2833"
 
-!global $objectStyle = "default"
-!global $objectScale = "0.8"
-!global $objectColor = "#1f2833"
+!$objectStyle ?= "default"
+!$objectScale ?= 0.8
+!$objectColor ?= "#1f2833"
 
-!global $boundaryColor = "#1f2833"
+!$boundaryColor ?= "#1f2833"
 
-!global $activityColor = "#c5c6c7"
+!$activityColor ?= "#c5c6c7"
 
-!global $stepColor = "#66fcf1"
-!global $stepFontSize = 16
-!global $stepFontColor = $textColor
+!$stepColor ?= "#66fcf1"
+!$stepFontSize ?= 16
+!$stepFontColor ?= $textColor
 
-!global $noteColor = "#c5c6c7"
-!global $noteBorder = "#1f2833"
+!$noteColor ?= "#c5c6c7"
+!$noteBorder ?= "#1f2833"
 
 hide stereotypes
 skinparam Shadowing false
@@ -94,6 +94,7 @@ left to right direction
         !global $personSprite = "$ma_account"
     !endif
 !endif
+
 !unquoted procedure Person($name, $label = "", $color = "", $scale = "", $note = "")
     Actor("Person", "$personSprite", $name, $label, $color, $scale, $note)
 !endprocedure
@@ -107,6 +108,7 @@ left to right direction
         !global $groupSprite = "$ma_account_multiple"
     !endif
 !endif
+
 !unquoted procedure Group($name, $label = "", $color = "", $scale = "", $note = "")
     Actor("Group", "$groupSprite", $name, $label, $color, $scale, $note)
 !endprocedure
@@ -142,6 +144,7 @@ left to right direction
         !global $documentSprite = "$ma_document"
     !endif
 !endif
+
 !unquoted procedure Document($name, $label = "", $color = "", $scale = "", $note = "")
     Object("Document", "$documentSprite", $name, $label, $color, $scale, $note)
 !endprocedure
@@ -155,6 +158,7 @@ left to right direction
         !global $folderSprite = "$ma_folder"
     !endif
 !endif
+
 !unquoted procedure Folder($name, $label = "", $color = "", $scale = "", $note = "")
     Object("Folder", "$folderSprite", $name, $label, $color, $scale, $note)
 !endprocedure
@@ -173,6 +177,7 @@ left to right direction
         !global $emailSprite = "$ma_email"
     !endif
 !endif
+
 !unquoted procedure Email($name, $label = "", $color = "", $scale = "", $note = "")
     Object("Email", "$emailSprite", $name, $label, $color, $scale, $note)
 !endprocedure
@@ -186,6 +191,7 @@ left to right direction
         !global $conversationSprite = "$ma_message"
     !endif
 !endif
+
 !unquoted procedure Conversation($name, $label = "", $color = "", $scale = "", $note = "")
     Object("Conversation", "$conversationSprite", $name, $label, $color, $scale, $note)
 !endprocedure
@@ -199,6 +205,7 @@ left to right direction
         !global $infoSprite = "$ma_information"
     !endif
 !endif
+
 !unquoted procedure Info($name, $label = "", $color = "", $scale = "", $note = "")
     Object("Info", "$infoSprite", $name, $label, $color, $scale, $note)
 !endprocedure
