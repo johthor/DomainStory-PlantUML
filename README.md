@@ -169,27 +169,32 @@ Bob ---[hidden]-> Alice
 All elements support adding notes via the keyword argument `$note`.
 
 ```puml
-Person(Alice, $note=fizz)
-Conversation(weather, $note=buzz)
-activity(1, Alice, talks about the, weather, with, Bob, $note=sunny)
+Boundary(wonderland, $note=like Oxford) {
+  Person(Alice, $note=fizz)
+  Conversation(weather, $note=buzz)
+  Person(Hatter)
+  activity(1, Alice, talks about the, weather, with, Hatter, $note=sunny)
+}
 ```
 
-In when adding a note on an activity,
+When adding a note on an activity,
 the note will be added to the object of that activity.
 
 Furthermore, the first symbol of the note text controls the orientation of it.
-If its one of `^`, `<`, `v` or `>` the note will be placed
-above, left, below or right of its element of reference.
-Otherwise, it will be placed right of its element.
+If its one of `^`, `>`, `v` or `<` the note will be placed
+above, right, below or left of its element of reference.
+Otherwise, it will be placed right of its element by default.
 
-Notes to boundaries can't be added via the mechanism above.
-So please use the basic PlantUML mechanism.
+Notes may also be placed via the basic PlantUML mechanism.
 
 ```puml
 Boundary(wonderland) {
     Person(Alice)
+    Document(bottle)
 }
-note right of wonderland : Drink me
+note bottom of Alice : main character
+note top of bottle : drink me
+note right of wonderland : visit me
 ```
 
 ### Auto-Incrementing Steps
