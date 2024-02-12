@@ -21,31 +21,4 @@ activity(2, person, reads, thing4, $note=^ above)
 activity(3, person, reads, thing5, $note=> right)
 activity(4, person, reads, thing2, $note=v below)
 activity(5, person, reads, thing3, $note=< left)
-
-Boundary(office) {
-    Group(people)
-    Call(conference)
-    activity(6, (people), attend, (conference))
-}
-
-note top of office : above?
-note right of office : right
-note bottom of office : below?
-note left of office : left
-
-Boundary(one, $note= default) {
-    Person(Jake)
-}
-Boundary(two, $note=^ above) {
-    Person(Simon)
-}
-Boundary(three, $note=> right) {
-    Person(Sloane)
-}
-Boundary(four, $note=v below) {
-    Person(Marry)
-}
-Boundary(five, $note=< left) {
-    Person(Ashley)
-}
 @enduml
