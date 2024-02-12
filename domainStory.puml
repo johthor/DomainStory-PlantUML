@@ -212,9 +212,13 @@ left to right direction
 
 ' Boundaries
 ' ##################################
-!unquoted procedure Boundary($name, $label = "")
+!unquoted procedure Boundary($name, $label = "", $note = "")
     !if $label == ""
         !$label = $name
+    !endif
+    !if $note != ""
+        rectangle $name
+        $addBoundaryNote($name, $note)
     !endif
     rectangle "==$label" <<Boundary>> as $name
 !endprocedure
@@ -277,6 +281,23 @@ left to right direction
             note right of $target : %substr($note, 1)
         !else
             note right of $target : $note
+        !endif
+    !endif
+!endprocedure
+
+!procedure $addBoundaryNote($boundary, $note)
+    !if $note != ""
+        !$noteDir = %substr($note, 0, 1)
+        !if $noteDir == "v"
+            note top of $boundary : %substr($note, 1)
+        !elseif $noteDir == "<"
+            note left of $boundary : %substr($note, 1)
+        !elseif $noteDir == "^"
+            note bottom of $boundary : %substr($note, 1)
+        !elseif $noteDir == ">"
+            note right of $boundary : %substr($note, 1)
+        !else
+            note right of $boundary : $note
         !endif
     !endif
 !endprocedure

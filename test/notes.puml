@@ -1,20 +1,51 @@
 @startuml
 !include ../domainStory.puml
 
+Person(pete)
+
+note top of pete : above
+note right of pete : right
+note bottom of pete : below
+note left of pete : left
+
+Email(confirmation, $note= default)
+System(boarding, $note=^ above)
+Document(list, $note=> right)
+Folder(documents, $note=v below)
+Call(question, $note=< left)
+
 Person(person)
 
-note left of person : foo
-
-activity(1, person, reads, thing2, $note=v down)
-activity(2, person, reads, thing3, $note=< left)
-activity(3, person, reads, thing4, $note=^ up)
-activity(4, person, reads, thing5, $note=> right)
-activity(5, person, reads, thing1, $note=  default)
+activity(1, person, reads, thing1, $note=  default)
+activity(2, person, reads, thing4, $note=^ above)
+activity(3, person, reads, thing5, $note=> right)
+activity(4, person, reads, thing2, $note=v below)
+activity(5, person, reads, thing3, $note=< left)
 
 Boundary(office) {
-    Group(people, $note=^ nice)
-    Call(conference, $note=boring)
+    Group(people)
+    Call(conference)
+    activity(6, (people), attend, (conference))
 }
 
-note right of office : foo
+note top of office : above?
+note right of office : right
+note bottom of office : below?
+note left of office : left
+
+Boundary(one, $note= default) {
+    Person(Jake)
+}
+Boundary(two, $note=^ above) {
+    Person(Simon)
+}
+Boundary(three, $note=> right) {
+    Person(Sloane)
+}
+Boundary(four, $note=v below) {
+    Person(Marry)
+}
+Boundary(five, $note=< left) {
+    Person(Ashley)
+}
 @enduml
