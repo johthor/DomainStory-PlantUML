@@ -1,6 +1,8 @@
 ' Default Styling
 ' ##################################
 
+!$storyLayout ?= "leftToRight"
+
 !$textColor ?= "#0b0c10"
 
 !$actorStyle ?= "default"
@@ -63,10 +65,14 @@ skinparam note {
 ' Layout
 ' ##################################
 
-left to right direction
-
 ' in journeys with multiple stories the default top to down direction
 ' usually gives better results
+
+!if $storyLayout == "leftToRight"
+    left to right direction
+!else
+    top to bottom direction
+!endif
 
 ' Actors
 ' ##################################
@@ -289,11 +295,19 @@ left to right direction
     !if $note != ""
         !$noteDir = %substr($note, 0, 1)
         !if $noteDir == "v"
-            note top of $boundary : %substr($note, 1)
+            !if $storyLayout == "leftToRight"
+                note top of $boundary : %substr($note, 1)
+            !else
+                note bottom of $boundary : %substr($note, 1)
+            !endif
         !elseif $noteDir == "<"
             note left of $boundary : %substr($note, 1)
         !elseif $noteDir == "^"
-            note bottom of $boundary : %substr($note, 1)
+            !if $storyLayout == "leftToRight"
+                note bottom of $boundary : %substr($note, 1)
+            !else
+                note top of $boundary : %substr($note, 1)
+            !endif
         !elseif $noteDir == ">"
             note right of $boundary : %substr($note, 1)
         !else

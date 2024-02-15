@@ -1,5 +1,6 @@
 @startuml
 
+!$storyLayout = topToBottom
 !$textColor = Navy
 !$actorColor = RoyalBlue
 !$objectColor = RoyalBlue
