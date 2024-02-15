@@ -1,6 +1,8 @@
 ' Default Styling
 ' ##################################
 
+!$storyLayout ?= "leftToRight"
+
 !$textColor ?= "#0b0c10"
 
 !$actorStyle ?= "default"
@@ -63,10 +65,14 @@ skinparam note {
 ' Layout
 ' ##################################
 
-left to right direction
-
 ' in journeys with multiple stories the default top to down direction
 ' usually gives better results
+
+!if $storyLayout == "leftToRight"
+    left to right direction
+!else
+    top to bottom direction
+!endif
 
 ' Actors
 ' ##################################
@@ -212,9 +218,13 @@ left to right direction
 
 ' Boundaries
 ' ##################################
-!unquoted procedure Boundary($name, $label = "")
+!unquoted procedure Boundary($name, $label = "", $note = "")
     !if $label == ""
         !$label = $name
+    !endif
+    !if $note != ""
+        rectangle $name
+        $addBoundaryNote($name, $note)
     !endif
     rectangle "==$label" <<Boundary>> as $name
 !endprocedure
@@ -277,6 +287,31 @@ left to right direction
             note right of $target : %substr($note, 1)
         !else
             note right of $target : $note
+        !endif
+    !endif
+!endprocedure
+
+!procedure $addBoundaryNote($boundary, $note)
+    !if $note != ""
+        !$noteDir = %substr($note, 0, 1)
+        !if $noteDir == "v"
+            !if $storyLayout == "leftToRight"
+                note top of $boundary : %substr($note, 1)
+            !else
+                note bottom of $boundary : %substr($note, 1)
+            !endif
+        !elseif $noteDir == "<"
+            note left of $boundary : %substr($note, 1)
+        !elseif $noteDir == "^"
+            !if $storyLayout == "leftToRight"
+                note bottom of $boundary : %substr($note, 1)
+            !else
+                note top of $boundary : %substr($note, 1)
+            !endif
+        !elseif $noteDir == ">"
+            note right of $boundary : %substr($note, 1)
+        !else
+            note right of $boundary : $note
         !endif
     !endif
 !endprocedure

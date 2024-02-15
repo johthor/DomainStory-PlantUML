@@ -112,7 +112,7 @@ For single story diagrams a landscape orientation is preferred
 and is therefore the default orientation.
 If you combine multiple stories into a domain journey,
 a portrait orientation usually gives better results.
-The orientation can be switched via `top to bottom direction` and `left to right direction` at the top of your file.
+The orientation can be switched via `!$storyLayout = "[leftToRight|topToBottom]"` at the top of your file.
 
 > :information_source: Wrangling diagram elements to an exact position
 > or layout is not what PlantUML is for.
@@ -169,27 +169,32 @@ Bob ---[hidden]-> Alice
 All elements support adding notes via the keyword argument `$note`.
 
 ```puml
-Person(Alice, $note=fizz)
-Conversation(weather, $note=buzz)
-activity(1, Alice, talks about the, weather, with, Bob, $note=sunny)
+Boundary(wonderland, $note=like Oxford) {
+  Person(Alice, $note=fizz)
+  Conversation(weather, $note=buzz)
+  Person(Hatter)
+  activity(1, Alice, talks about the, weather, with, Hatter, $note=sunny)
+}
 ```
 
-In when adding a note on an activity,
+When adding a note on an activity,
 the note will be added to the object of that activity.
 
 Furthermore, the first symbol of the note text controls the orientation of it.
-If its one of `^`, `<`, `v` or `>` the note will be placed
-above, left, below or right of its element of reference.
-Otherwise, it will be placed right of its element.
+If its one of `^`, `>`, `v` or `<` the note will be placed
+above, right, below or left of its element of reference.
+Otherwise, it will be placed right of its element by default.
 
-Notes to boundaries can't be added via the mechanism above.
-So please use the basic PlantUML mechanism.
+Notes may also be placed via the basic PlantUML mechanism.
 
 ```puml
 Boundary(wonderland) {
     Person(Alice)
+    Document(bottle)
 }
-note right of wonderland : Drink me
+note bottom of Alice : main character
+note top of bottle : drink me
+note right of wonderland : visit me
 ```
 
 ### Auto-Incrementing Steps
@@ -219,22 +224,23 @@ activity(_, Bob, is embarassed about, talking) ' auto-increment, will create ste
 
 The following style definitions are used by default.
 
-| Property         | Default Value | Description                                         |
-|------------------|---------------|-----------------------------------------------------|
-| `$textColor`     | `#0b0c10`     | Color of all text                                   |
-| `$actorStyle`    | `default`     | Use outlines instead of filled icons for actors     |
-| `$actorScale`    | `1`           | Size of all actors                                  |
-| `$actorColor`    | `#1f2833`     | Color of all actors                                 |
-| `$objectStyle`   | `default`     | Use outlines instead of filled icons for work items |
-| `$objectScale`   | `0.8`         | Size of all work items                              |
-| `$objectColor`   | `#1f2833`     | Color of all work items                             |
-| `$boundaryColor` | `#1f2833`     | Color of boundary borders                           |
-| `$activityColor` | `#c5c6c7`     | Color of the activity arrows                        |
-| `$stepColor`     | `#66fcf1`     | Background color for step numbers                   |
-| `$stepFontSize`  | `16`          | Font size for step numbers                          |
-| `$stepFontColor` | `$textColor`  | Font color for step numbers, same as `$textColor`   |
-| `$noteColor`     | `#c5c6c7`     | Background color for notes                          |
-| `$noteBorder`    | `#1f2833`     | Border color for notes                              |
+| Property         | Default Value   | Description                                         |
+|------------------|-----------------|-----------------------------------------------------|
+| `$storyLayout`   | `leftToRight`   | Basic direction of the activity arrows              |
+| `$textColor`     | `#0b0c10`       | Color of all text                                   |
+| `$actorStyle`    | `default`       | Use outlines instead of filled icons for actors     |
+| `$actorScale`    | `1`             | Size of all actors                                  |
+| `$actorColor`    | `#1f2833`       | Color of all actors                                 |
+| `$objectStyle`   | `default`       | Use outlines instead of filled icons for work items |
+| `$objectScale`   | `0.8`           | Size of all work items                              |
+| `$objectColor`   | `#1f2833`       | Color of all work items                             |
+| `$boundaryColor` | `#1f2833`       | Color of boundary borders                           |
+| `$activityColor` | `#c5c6c7`       | Color of the activity arrows                        |
+| `$stepColor`     | `#66fcf1`       | Background color for step numbers                   |
+| `$stepFontSize`  | `16`            | Font size for step numbers                          |
+| `$stepFontColor` | `$textColor`    | Font color for step numbers, same as `$textColor`   |
+| `$noteColor`     | `#c5c6c7`       | Background color for notes                          |
+| `$noteBorder`    | `#1f2833`       | Border color for notes                              |
 
 To use your own styling you need to define the relevant styling properties before including the library.
 The following example would combine green actor icons with red text.
