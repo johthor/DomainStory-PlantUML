@@ -213,14 +213,14 @@ If the integer is prefixed with an equal sign `=`,
 the step counter will also be set to that value and auto-increment will continue from there.
 
 ```puml
-activity(_, Bob, talks about the, weather) ' auto-increment, will create step 1
-activity(_, Bob, talks about the, weather) ' auto-increment, will create step 2
-activity(|, Bob, talks about the, weather) ' no increment, will create step 2
+activity(_, Bob, talks about the, weather) /' auto-increment, will create step 1 '/
+activity(_, Bob, talks about the, weather) /' auto-increment, will create step 2 '/
+activity(|, Bob, talks about the, weather) /' no increment, will create step 2 '/
 activity(!, Bob, also talks about the, weather) /' will not create step, nor auto-increment, and will not display the step '/
-activity(42, Alice, asks about all the, talking, Bob) ' will create step 42
-activity(|, Bob, talks about the, weather) ' no increment, will create step 2
-activity(=10, Alice, asks about all the, talking, Bob) ' will create step 10
-activity(_, Bob, is embarassed about, talking) ' auto-increment, will create step 11
+activity(42, Alice, asks about all the, talking, Bob) /' will create step 42 '/
+activity(|, Bob, talks about the, weather) /' no increment, will create step 2 '/
+activity(=10, Alice, asks about all the, talking, Bob) /' will create step 10 '/
+activity(_, Bob, is embarassed about, talking) /' auto-increment, will create step 11 '/
 ```
 
 ### Styling
