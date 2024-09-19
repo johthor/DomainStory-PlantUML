@@ -205,6 +205,8 @@ If instead you pass a vertical bar `|`,
 the current step is declared as parallel to the last step,
 and the step counter won't be incremented.
 
+If you pass an exclamation mark `!`, the step spec will not be shown. 
+
 When you pass an integer value as step spec,
 the step label will be set to that value.
 If the integer is prefixed with an equal sign `=`,
@@ -214,6 +216,7 @@ the step counter will also be set to that value and auto-increment will continue
 activity(_, Bob, talks about the, weather) ' auto-increment, will create step 1
 activity(_, Bob, talks about the, weather) ' auto-increment, will create step 2
 activity(|, Bob, talks about the, weather) ' no increment, will create step 2
+activity(!, Bob, also talks about the, weather) /' will not create step, nor auto-increment, and will not display the step '/
 activity(42, Alice, asks about all the, talking, Bob) ' will create step 42
 activity(|, Bob, talks about the, weather) ' no increment, will create step 2
 activity(=10, Alice, asks about all the, talking, Bob) ' will create step 10
