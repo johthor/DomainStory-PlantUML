@@ -1,0 +1,18 @@
+@startuml
+
+!theme sunlust
+
+!$storyLayout = 'top-to-bottom'
+!$stepColor = darkgrey
+!$stepFontColor = yellow
+
+!include ../domainStory.puml
+
+Boundary(Party) {
+    Person(Alice)
+    Conversation(weather)
+    Person(Bob)
+}
+
+activity(1, Alice, talks about the, weather, with, Bob)
+@enduml

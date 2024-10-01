@@ -3,64 +3,88 @@
 
 !$storyLayout ?= "left-to-right"
 
-!$textColor ?= "#0b0c10"
-
 !$actorStyle ?= "default"
 !$actorScale ?= 1
-!$actorColor ?= "#1f2833"
 
 !$objectStyle ?= "default"
 !$objectScale ?= 0.8
-!$objectColor ?= "#1f2833"
-
-!$boundaryColor ?= "#1f2833"
-
-!$activityColor ?= "#c5c6c7"
-
-!$stepColor ?= "#66fcf1"
-!$stepFontSize ?= 16
-!$stepFontColor ?= $textColor
-
-!$noteColor ?= "#c5c6c7"
-!$noteBorder ?= "#1f2833"
 
 hide stereotypes
-skinparam Shadowing false
 skinparam DefaultTextAlignment center
-skinparam Padding 5
 
-' agent nodes are used for the actors
-skinparam agent {
-    FontColor $textColor
-    BackgroundColor none
-    BorderColor none
-}
+!ifdef $THEME
+    !$textColor ?= ""
+    !$actorColor ?= ""
+    !$objectColor ?= ""
+    !$boundaryColor ?= ""
+    !$activityColor ?= ""
 
-' card nodes are used for the work objects
-skinparam card {
-    FontColor $textColor
-    BackgroundColor none
-    BorderColor none
-}
+    !$stepColor ?= ""
+    !$stepFontColor ?= $textColor
+    !$stepFontSize ?= ""
 
-skinparam rectangle<<boundary>> {
-    FontColor $textColor
-    BackgroundColor none
-    BorderColor $boundaryColor
-    BorderStyle dashed
-    RoundCorner 15
-}
+    !$noteColor ?= ""
+    !$noteBorder ?= ""
+!else
+    !$textColor ?= "#0b0c10"
+    !$actorColor ?= "#1f2833"
+    !$objectColor ?= "#1f2833"
+    !$boundaryColor ?= "#1f2833"
+    !$activityColor ?= "#c5c6c7"
 
-skinparam Arrow {
-    FontColor $textColor
-    Color $activityColor
-}
+    !$stepColor ?= "#66fcf1"
+    !$stepFontColor ?= $textColor
+    !$stepFontSize ?= 16
 
-skinparam note {
-    FontColor $textColor
-    BackgroundColor $noteColor
-    BorderColor $noteBorder
-}
+    !$noteColor ?= "#c5c6c7"
+    !$noteBorder ?= "#1f2833"
+
+    skinparam Shadowing false
+    skinparam Padding 5
+
+    ' agent nodes are used for the actors
+    skinparam agent {
+        BackgroundColor none
+        BorderColor none
+    }
+
+    ' card nodes are used for the work objects
+    skinparam card {
+        BackgroundColor none
+        BorderColor none
+    }
+
+    skinparam rectangle<<boundary>> {
+        BackgroundColor none
+        BorderStyle dashed
+        RoundCorner 15
+    }
+!endif
+
+!if $textColor != ""
+    skinparam agentFontColor $textColor
+    skinparam cardFontColor $textColor
+    skinparam rectangleFontColor<<boundary>> $textColor
+    skinparam arrowFontColor $textColor
+    skinparam noteFontColor $textColor
+!endif
+
+!if $boundaryColor != ""
+    skinparam rectangleBorderColor<<boundary>> $boundaryColor
+!endif
+
+
+!if $activityColor != ""
+    skinparam arrowColor $activityColor
+!endif
+
+!if $noteColor != ""
+    skinparam noteBackgroundColor $noteColor
+!endif
+
+!if $noteBorder != ""
+    skinparam noteBorderColor $noteBorder
+!endif
 
 ' Layout
 ' ##################################
@@ -74,8 +98,15 @@ skinparam note {
     top to bottom direction
 !endif
 
+' Mutable state
+' ##################################
+
+!global $stepCounter = 0
+!global $objectCounter = 0
+
 ' Actors
 ' ##################################
+
 !unquoted procedure Actor($kind, $sprite, $name, $label = "", $color = "", $scale = "", $note = "")
     !if $label == ""
         !$label = $name
@@ -86,7 +117,12 @@ skinparam note {
     !if $scale == ""
         !$scale = $actorScale
     !endif
-    agent "<color:$color><$sprite{scale=$scale}></color>\r $label" as $name <<$kind>>
+
+    !if $color == ""
+        agent "<$sprite{scale=$scale}>\r $label" as $name <<$kind>>
+    !else
+        agent "<color:$color><$sprite{scale=$scale}></color>\r $label" as $name <<$kind>>
+    !endif
 
     $addNote($name, $note)
 !endprocedure
@@ -126,6 +162,7 @@ skinparam note {
 
 ' Work objects
 ' ##################################
+
 !unquoted procedure Object($kind, $sprite, $name, $label = "", $color = "", $scale = "", $note = "")
     !if $label == ""
         !$label = $name
@@ -136,7 +173,12 @@ skinparam note {
     !if $scale == ""
         !$scale = $objectScale
     !endif
-    card "<color:$color><$sprite{scale=$scale}></color>\r $label" as $name <<$kind>>
+
+    !if $color == ""
+        card "<$sprite{scale=$scale}>\r $label" as $name <<$kind>>
+    !else
+        card "<color:$color><$sprite{scale=$scale}></color>\r $label" as $name <<$kind>>
+    !endif
 
     $addNote($name, $note)
 !endprocedure
@@ -218,6 +260,7 @@ skinparam note {
 
 ' Boundaries
 ' ##################################
+
 !unquoted procedure Boundary($name, $label = "", $note = "")
     !if $label == ""
         !$label = $name
@@ -231,9 +274,6 @@ skinparam note {
 
 ' Activities
 ' ##################################
-
-!global $stepCounter = 0
-!global $objectCounter = 0
 
 !unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $color = "", $scale = "", $note = "")
     ' activity direction
@@ -356,7 +396,7 @@ skinparam note {
     !$objectName = $object
     !$objectSeparator = %strpos($object, ":")
     !if $objectSeparator > -1
-        !$objectCounter = %intval($objectCounter) + 1
+        !$objectCounter = $objectCounter + 1
         !$objectKind = %substr($object, 0, $objectSeparator)
         !$objectLabel = %substr($object, $objectSeparator + 1)
         !$objectName = $objectKind + $objectCounter
@@ -373,7 +413,7 @@ skinparam note {
     !endif
 !endfunction
 
-!function $computeStep($step)
+!function $computeStepNumber($step)
     !if $step == "_"
         !$stepCounter = $stepCounter + 1
         !return $stepCounter
@@ -391,7 +431,7 @@ skinparam note {
 
 !function $stepLabel($step)
     !$result = ""
-    !$stepNum = $computeStep($step)
+    !$stepNum = $computeStepNumber($step)
 
     !if $stepNum != ""
         !$result = "(" + $stepNum + ")"
