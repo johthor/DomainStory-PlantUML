@@ -587,6 +587,10 @@ $extendStyleDeclarations("Object", "Call", "phone")
 ' Activities
 ' ##################################
 
+!global $stepCounter = 0
+!global $objectCounter = 0
+!global $lastObjectName = ""
+
 !unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "", $targetTag="", $targetNote = "", $targetShape = "", $targetScale = "", $targetColor = "", $targetBackground = "")
     ' Decide on the activity direction
     !if $objectArr == ""
@@ -607,6 +611,7 @@ $extendStyleDeclarations("Object", "Call", "phone")
 
     ' Handle first connection between subject and object
     !$object = $ensureElementExists($object, $tag, $note, $shape, $scale, $color, $background)
+    !$lastObjectName = $object
 
     $createConnection($subject, $object, $objectArr, $predicate, $computeStepLabel($step))
 
