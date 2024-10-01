@@ -222,7 +222,10 @@ activity(_, Bob, is embarassed about, talking) ' auto-increment, will create ste
 
 ### Styling
 
-The following style definitions are used by default.
+The library is compatible with PlantUML themes like `sunlust` or `sketchy` and others.
+Choose the theme before including the library.
+
+If no theme is used, the following style definitions are used by default.
 
 | Property         | Default Value   | Description                                         |
 |------------------|-----------------|-----------------------------------------------------|
@@ -247,6 +250,8 @@ The following example would combine green actor icons with red text.
 
 ```puml
 @startuml
+' !theme <theme name> /' optional '/
+
 !$textColor = "red"
 !$actorColor = "green"
 
@@ -255,6 +260,8 @@ The following example would combine green actor icons with red text.
 Person(Alice)
 @enduml
 ```
+
+> :information_source: You might want to set a matching `$stepColor` when using themes.
 
 ### Extensions
 
