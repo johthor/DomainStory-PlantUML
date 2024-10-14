@@ -1,4 +1,6 @@
 @startuml
+!$storyLayout = leftToRight
+
 !include ../domainStory.puml
 
 Boundary(office) {
@@ -7,9 +9,9 @@ Boundary(office) {
     activity(6, (people), attend, (conference))
 }
 
-note top of office : above?
+note top of office : below?
 note right of office : right
-note bottom of office : below?
+note bottom of office : above?
 note left of office : left
 
 Boundary(one, $note= default) {
