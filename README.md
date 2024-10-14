@@ -199,11 +199,18 @@ note right of wonderland : visit me
 
 ### Auto-Incrementing Steps
 
-When describing activities the current step is automatically incremented,
-if you pass an underscore `_` as step spec.
-If instead you pass a vertical bar `|`,
-the current step is declared as parallel to the last step,
-and the step counter won't be incremented.
+The activities will be numbered by default and may keep track of the current step number automatically.
+Therefore, when describing activities,
+the current step label supports multiple special value specifications to control the behavior.
+
+| Step Value                 | Description                                                                                                               | Auto Increment |
+|----------------------------|---------------------------------------------------------------------------------------------------------------------------|----------------|
+| `_` _underscore_           | sequential step                                                                                                           | yes            |
+| `\|` _bar_                 | parallel step                                                                                                             | no             |
+| `.` _full stop_ / _period_ | hidden step counter                                                                                                       | no             |
+| ` ` _space_ or '' _none_   | hidden step counter                                                                                                       | no             |
+| `n` _any integer_          | step label will be `(n)`                                                                                                  | no             |
+| `=n` _equal sign_ prefix   | step label will be `(n)`<br/>and step counter will be set to that integer<br/>and auto-increment will continue from there | no             |
 
 If you pass an exclamation mark `!`, the step spec will not be shown. 
 
@@ -213,14 +220,18 @@ If the integer is prefixed with an equal sign `=`,
 the step counter will also be set to that value and auto-increment will continue from there.
 
 ```puml
-activity(_, Bob, talks about the, weather) /' auto-increment, will create step 1 '/
-activity(_, Bob, talks about the, weather) /' auto-increment, will create step 2 '/
-activity(|, Bob, talks about the, weather) /' no increment, will create step 2 '/
-activity(!, Bob, also talks about the, weather) /' will not create step, nor auto-increment, and will not display the step '/
-activity(42, Alice, asks about all the, talking, Bob) /' will create step 42 '/
-activity(|, Bob, talks about the, weather) /' no increment, will create step 2 '/
-activity(=10, Alice, asks about all the, talking, Bob) /' will create step 10 '/
-activity(_, Bob, is embarassed about, talking) /' auto-increment, will create step 11 '/
+activity(_, Bob, talks about the, weather1) /' auto-increment will create step 1 '/
+activity(_, Bob, talks about the, weather2) /' auto-increment will create step 2 '/
+activity(|, Alice, talks about the, weather2) /' no increment will create step 2 '/
+' will not create step, nor auto-increment, and will not display the step label
+activity(.<, Bob, also talks about the, weather3)
+activity(42, Alice, asks about all the, talking1, again, Bob) /' will create step 42 '/
+activity(|, Bob, talks about the, weather4) /' no increment will still create step 2 '/
+' will create step 10 and set the step counter to 10
+activity(=10, Alice, talks about, talking2, Bob)
+activity(_<, Bob, is embarrassed about, talking3) /' auto-increment will create step 11 '/
+' will not create step, nor auto-increment, and will not display the step label
+activity( , Alice, writes, mail, to, Bob)
 ```
 
 ### Styling

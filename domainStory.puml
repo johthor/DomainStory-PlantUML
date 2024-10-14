@@ -324,7 +324,7 @@ skinparam note {
 !function $ensureObjectExists($object, $color = "", $scale = "")
     !$objectName = $object
     !$objectSeparator = %strpos($object, ":")
-    !if $objectSeparator > 0
+    !if $objectSeparator > -1
         !$objectCounter = %intval($objectCounter) + 1
         !$objectKind = %substr($object, 0, $objectSeparator)
         !$objectLabel = %substr($object, $objectSeparator + 1)
@@ -348,6 +348,8 @@ skinparam note {
         !return $stepCounter
     !elseif $step == "|"
         !return $stepCounter
+    !elseif $step == "."
+        !return ""
     !elseif %substr($step, 0, 1) == "="
         !$stepCounter = %intval(%substr($step, 1))
         !return $stepCounter
@@ -357,10 +359,10 @@ skinparam note {
 !endfunction
 
 !function $stepLabel($step)
-   !$result = ""
+    !$result = ""
+    !$stepNum = $computeStep($step)
 
-   !if $step != "!"
-        !$stepNum = $computeStep($step)
+    !if $stepNum != ""
         !$result = "(" + $stepNum + ")"
         !if ($stepColor != "")
             !$result = "<back:" + $stepColor + ">" + $result + "</back>"

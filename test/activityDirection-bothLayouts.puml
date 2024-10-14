@@ -1,0 +1,34 @@
+@startuml
+!include ../domainStory.puml
+
+Person(customer)
+Conversation(topic1)
+Person(cashier1)
+Conversation(topic2)
+Person(cashier2)
+Conversation(topic3)
+Person(cashier3)
+Conversation(topic4)
+Person(cashier4)
+
+activity(_, customer, talks about, topic1, with, cashier1, -->)
+activity(_, customer, talks about, topic2, cashier2, _, <-)
+activity(_, customer, talks about, topic3, with, cashier3, <--)
+activity(_, customer, talks about, topic4, cashier4, _, ->)
+
+
+Person(superior)
+Document(document1)
+Person(subordinate1)
+Document(document2)
+Person(subordinate2)
+Document(document3)
+Person(subordinate3)
+Document(document4)
+Person(subordinate4)
+
+activity(_, superior, talks about, document1, with, subordinate1, -->, ->)
+activity(_, superior, talks about, document2, with, subordinate2, <-, -->)
+activity(_, superior, talks about, document3, with, subordinate3, <--, <-)
+activity(_, superior, talks about, document4, with, subordinate4, <--, ->)
+@enduml

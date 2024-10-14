@@ -1,0 +1,22 @@
+@startuml
+!$storyLayout = 'top-to-bottom'
+!include ../domainStory.puml
+
+Person(colleague1)
+Conversation(default, default movie)
+Person(colleague2)
+Conversation(down, down movie)
+Person(colleague3)
+Conversation(left, left movie)
+Person(colleague4)
+Conversation(up, up movie)
+Person(colleague5)
+Conversation(right, right movie)
+Person(colleague6)
+
+activity(_, colleague1, talks about, default, with, colleague2)
+activity(|v, colleague1, talks about, down, with, colleague3)
+activity(.<, colleague1, talks about, left, with, colleague4)
+activity(=42^, colleague1, talks about, up, with, colleague5)
+activity(_>, colleague1, talks about, right, with, colleague6)
+@enduml
