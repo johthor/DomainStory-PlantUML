@@ -357,16 +357,21 @@ skinparam note {
 !endfunction
 
 !function $stepLabel($step)
-    !$stepNum = $computeStep($step)
-    !$result = "(" + $stepNum + ")"
-    !if ($stepColor != "")
-        !$result = "<back:" + $stepColor + ">" + $result + "</back>"
+   !$result = ""
+
+   !if $step != "!"
+        !$stepNum = $computeStep($step)
+        !$result = "(" + $stepNum + ")"
+        !if ($stepColor != "")
+            !$result = "<back:" + $stepColor + ">" + $result + "</back>"
+        !endif
+        !if ($stepFontColor != "")
+            !$result = "<color:" + $stepFontColor + ">" + $result + "</color>"
+        !endif
+        !if ($stepFontSize != "")
+            !$result = "<size:" + $stepFontSize + ">" + $result + "</size>"
+        !endif
     !endif
-    !if ($stepFontColor != "")
-        !$result = "<color:" + $stepFontColor + ">" + $result + "</color>"
-    !endif
-    !if ($stepFontSize != "")
-        !$result = "<size:" + $stepFontSize + ">" + $result + "</size>"
-    !endif
+
     !return $result
 !endfunction
