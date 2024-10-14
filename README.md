@@ -79,7 +79,7 @@ activity(1, Alice, talks about the, weather, with, Bob)
 More information can be found here:
 
 * [Domain Storytelling](http://www.domainstorytelling.org)
-* [REAL WORLD PlantUML - Sample Gallery](https://real-world-plantuml.com/)
+* [REAL WORLD PlantUML—Sample Gallery](https://real-world-plantuml.com/)
 
 ### Dynamic Creation of Work Objects
 
@@ -108,7 +108,7 @@ Boundary(System) {
 
 ### Story Layout
 
-For single story diagrams a landscape orientation is preferred
+For single story diagrams, a landscape orientation is preferred
 and is therefore the default orientation.
 If you combine multiple stories into a domain journey,
 a portrait orientation usually gives better results.
@@ -132,10 +132,10 @@ The following activity will be oriented backwards against the normal story flow.
 activity(1<, Alice, talks about the, weather, with, Bob)
 ```
 
-If this is not enough it also provides two optional parameters,
+If this is not enough, it also provides two optional parameters,
 which allow you to specify the arrow orientation in full.
 Some possible arrow specifications are `-->`, `->`, `<-`, `<--`, and `-up->`.
-For more details
+For more details, 
 see [The Hitchhiker's Guide to PlantUML](https://crashedmind.github.io/PlantUMLHitchhikersGuide/layout/layout.html#arrows-for-layout)
 .
 
@@ -266,7 +266,7 @@ The following style definitions are used by default.
 | `$noteColor`     | `#c5c6c7`       | Background color for notes                          |
 | `$noteBorder`    | `#1f2833`       | Border color for notes                              |
 
-To use your own styling you need to define the relevant styling properties before including the library.
+To use your own styling, you need to define the relevant styling properties before including the library.
 The following example would combine green actor icons with red text.
 
 ```puml
