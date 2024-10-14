@@ -1,5 +1,5 @@
 @startuml
-!$storyLayout = topToDown
+!$storyLayout = 'top-to-bottom'
 
 !include ../domainStory.puml
 

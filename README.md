@@ -112,7 +112,7 @@ For single story diagrams a landscape orientation is preferred
 and is therefore the default orientation.
 If you combine multiple stories into a domain journey,
 a portrait orientation usually gives better results.
-The orientation can be switched via `!$storyLayout = "[leftToRight|topToBottom]"` at the top of your file.
+The orientation can be switched via `!$storyLayout = "[left-to-right|top-to-bottom]"` at the top of your file.
 
 > :information_source: Wrangling diagram elements to an exact position
 > or layout is not what PlantUML is for.
@@ -183,7 +183,7 @@ the note will be added to the object of that activity.
 Furthermore, the first symbol of the note text controls the orientation of it.
 If its one of `^`, `>`, `v` or `<` the note will be placed
 above, right, below or left of its element of reference.
-Otherwise, it will be placed right of its element by default.
+Otherwise, it will be placed in the normal story direction of its element.
 
 Notes may also be placed via the basic PlantUML mechanism.
 
@@ -212,12 +212,22 @@ the current step label supports multiple special value specifications to control
 | `n` _any integer_          | step label will be `(n)`                                                                                                  | no             |
 | `=n` _equal sign_ prefix   | step label will be `(n)`<br/>and step counter will be set to that integer<br/>and auto-increment will continue from there | no             |
 
-If you pass an exclamation mark `!`, the step spec will not be shown. 
+In addition to the step specifications described above,
+the step value may also specify the direction of the activity where `X` is one of the specifications above.
 
-When you pass an integer value as step spec,
-the step label will be set to that value.
-If the integer is prefixed with an equal sign `=`,
-the step counter will also be set to that value and auto-increment will continue from there.
+| Step Value                     | Description                                | Auto Increment |
+|--------------------------------|--------------------------------------------|----------------|
+| `X>` _greate-than sign_ suffix | direction of activity will be to the right | depends on X   |
+| `X<` _less-than sign_ suffix   | direction of activity will be to the left  | depends on X   |
+| `Xv` _vee_ suffix              | direction of activity will be downwards    | depends on X   |
+| `X^` _caret_ suffix            | direction of activity will be upwards      | depends on X   |
+
+See the following example for more details or check the tests.
+
+* [step labels and auto increment](test/autoStepCounter.puml)
+* [activity directions for left-to-right layout](test/activityDirection-leftToRight.puml)
+* [activity directions for top-to-bottom layout](test/activityDirection-topToBottom.puml)
+* [activity directions for both layouts](test/activityDirection-bothLayouts.puml)
 
 ```puml
 activity(_, Bob, talks about the, weather1) /' auto-increment will create step 1 '/
@@ -240,7 +250,7 @@ The following style definitions are used by default.
 
 | Property         | Default Value   | Description                                         |
 |------------------|-----------------|-----------------------------------------------------|
-| `$storyLayout`   | `leftToRight`   | Basic direction of the activity arrows              |
+| `$storyLayout`   | `left-to-right` | Basic direction of the activity arrows              |
 | `$textColor`     | `#0b0c10`       | Color of all text                                   |
 | `$actorStyle`    | `default`       | Use outlines instead of filled icons for actors     |
 | `$actorScale`    | `1`             | Size of all actors                                  |
