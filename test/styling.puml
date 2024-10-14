@@ -8,11 +8,22 @@
 
 !include ../domainStory.puml
 
-Boundary(Party) {
-    Person(Alice)
-    Conversation(weather)
-    Person(Bob)
+Person(Alice)
+
+Boundary(Home) {
+    Email(spam)
 }
 
-activity(1, Alice, talks about the, weather, with, Bob)
+Person(Bob, $scale=1.7)
+Boundary(Party, $backgroundColor=orange) {
+    Conversation(weather, $color=brown)
+}
+
+Boundary(Office, $backgroundColor=#eee) {
+    Email(proposal, $color=#f30, $scale = 2.3)
+}
+
+activity(_^, Alice, reads the, spam)
+activity(_, Alice, talks about the, weather, with, Bob)
+activity(_<, Bob, writes a, proposal, to, Alice)
 @enduml

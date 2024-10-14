@@ -261,7 +261,7 @@ skinparam DefaultTextAlignment center
 ' Boundaries
 ' ##################################
 
-!unquoted procedure Boundary($name, $label = "", $note = "")
+!unquoted procedure Boundary($name, $label = "", $backgroundColor = "", $note = "")
     !if $label == ""
         !$label = $name
     !endif
@@ -269,7 +269,17 @@ skinparam DefaultTextAlignment center
         rectangle $name
         $addBoundaryNote($name, $note)
     !endif
-    rectangle "==$label" <<Boundary>> as $name
+    !if $backgroundColor != ""
+
+        !$hexColor = %strpos($backgroundColor, "#")
+        !if $hexColor > -1
+            rectangle "==$label" <<Boundary>> as $name $backgroundColor
+        !else
+            rectangle "==$label" <<Boundary>> as $name #$backgroundColor
+        !endif
+    !else
+        rectangle "==$label" <<Boundary>> as $name
+    !endif
 !endprocedure
 
 ' Activities
