@@ -1,6 +1,8 @@
 @startuml
-!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
+!include <domainstory/Domainstory>
 '!include ../domainStory.puml
+'!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
+
 Boundary(actors) {
     Person(person, Person Label)
     Group(group, Group Label)

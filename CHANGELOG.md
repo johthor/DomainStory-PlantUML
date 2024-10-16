@@ -12,13 +12,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Create this changelog ([@johthor][gh-johthor])
 - Introduce explicit story layout definition ([#3](https://github.com/johthor/DomainStory-PlantUML/pull/3)) ([@johthor][gh-johthor])
-- Allow notes to be applied to boundaries too ([#3](https://github.com/johthor/DomainStory-PlantUML/pull/3)) ([@johthor][gh-johthor])
+- Allow notes to be applied to boundaries too ([#3](https://github.com/johthor/DomainStory-PlantUML/pull/3)) ([@kirchsth](https://github.com/kirchsth) and [@johthor][gh-johthor])
 - Introduce new ways to specify the direction of activities ([@johthor][gh-johthor])
 
 ### Changed
 
 - Allow step numbers to be hidden ([#7](https://github.com/johthor/DomainStory-PlantUML/pull/7)) ([@Potherca](https://github.com/Potherca) and [@stephenwithav](https://github.com/stephenwithav))
 - Allow dynamic creation for activity targets too ([@stephenwithav](https://github.com/stephenwithav))
+- Extract advanced features into an extra README section ([@johthor][gh-johthor])
 
 
 ## Charlie [0.3] - 2022-04-18

@@ -10,4 +10,9 @@ run::convertAssets() {
   done
 }
 
+# Extract Table of Contents from Readme
+run::extractTOC() {
+  grep -e ^\## README.md | grep -v 'Table of Contents'
+}
+
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && "run::$@"
