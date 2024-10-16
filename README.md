@@ -56,7 +56,7 @@ activity(step, subject, predicate, object, [post], [target], [objectArr], [targe
 In addition to these,
 it is also possible to define system boundaries via`Boundary(name, [label])`.
 
-![pictographic language](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/samples/pictographicLanguage.puml)
+![pictographic language](assets/pictographicLanguage.svg)
 
 Now let's create our first domain story:
 
@@ -74,7 +74,7 @@ activity(1, Alice, talks about the, weather, with, Bob)
 @enduml
 ```
 
-![basic sample](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/samples/basic.puml)
+![basic sample](assets/basic.svg)
 
 More information can be found here:
 
@@ -285,7 +285,7 @@ Person(Alice)
 If the default actors and work objects are not enough to express your specific needs,
 see the [extensions sample](samples/extensions.puml) for a way to add new actors and objects.
 
-![extensions sample](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/samples/extensions.puml)
+![extensions sample](assets/extensions.svg)
 
 ## Advanced Samples
 
@@ -293,7 +293,7 @@ see the [extensions sample](samples/extensions.puml) for a way to add new actors
 
 The following example is taken from the [Domain Storytelling](http://www.domainstorytelling.org) website.
 
-![cinema sample](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/samples/cinema.puml)
+![cinema sample](assets/cinema.svg)
 
 Source: [cinema.puml](samples/cinema.puml)
 
@@ -303,7 +303,7 @@ The following example is taken from _Collaborative Modelling -- Wie die
 Kommunikation mit den Fachexperten gelingt_ JavaSPEKTRUM 2/2020.
 
 ![airport bus
-sample](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/samples/airportBus.puml)
+sample](assets/airportBus.svg)
 
 Source: [airportBus.puml](samples/airportBus.puml)
 
