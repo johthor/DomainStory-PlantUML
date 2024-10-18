@@ -1,63 +1,65 @@
 ' Default Styling
 ' ##################################
 
-!$storyLayout ?= "left-to-right"
-!if $storyLayout == "landscape"
-    !$storyLayout = "left-to-right"
-!endif
+!global $storyLayout ?= "left-to-right"
 
-!$actorStyle ?= "default"
-!$actorScale ?= 1
+!global $actorStyle ?= "default"
+!global $actorScale ?= 1
+!global $actorShape ?= "agent"
 
-!$objectStyle ?= "default"
-!$objectScale ?= 0.8
+!global $objectStyle ?= "default"
+!global $objectScale ?= 0.8
+!global $objectShape ?= "card"
+
+!global $boundaryShape ?= "rectangle"
 
 hide stereotypes
 skinparam DefaultTextAlignment center
 
 !ifdef $THEME
-    !$textColor ?= ""
-    !$actorColor ?= ""
-    !$objectColor ?= ""
-    !$boundaryColor ?= ""
-    !$activityColor ?= ""
+    !global $textColor ?= ""
+    !global $actorColor ?= ""
+    !global $objectColor ?= ""
+    !global $boundaryColor ?= ""
+    !global $activityColor ?= ""
 
-    !$stepColor ?= ""
-    !$stepFontColor ?= $textColor
-    !$stepFontSize ?= ""
+    !global $stepColor ?= ""
+    !global $stepFontColor ?= $textColor
+    !global $stepFontSize ?= ""
 
-    !$noteColor ?= ""
-    !$noteBorder ?= ""
+    !global $noteColor ?= ""
+    !global $noteBorder ?= ""
 !else
-    !$textColor ?= "#0b0c10"
-    !$actorColor ?= "#1f2833"
-    !$objectColor ?= "#1f2833"
-    !$boundaryColor ?= "#1f2833"
-    !$activityColor ?= "#c5c6c7"
+    !global $textColor ?= "#0b0c10"
+    !global $actorColor ?= "#1f2833"
+    !global $objectColor ?= "#1f2833"
+    !global $boundaryColor ?= "#1f2833"
+    !global $activityColor ?= "#c5c6c7"
 
-    !$stepColor ?= "#66fcf1"
-    !$stepFontColor ?= $textColor
-    !$stepFontSize ?= 16
+    !global $stepColor ?= "#66fcf1"
+    !global $stepFontColor ?= $textColor
+    !global $stepFontSize ?= 16
 
-    !$noteColor ?= "#c5c6c7"
-    !$noteBorder ?= "#1f2833"
+    !global $noteColor ?= "#c5c6c7"
+    !global $noteBorder ?= "#1f2833"
 
     skinparam Shadowing false
     skinparam Padding 5
 
-    ' agent nodes are used for the actors
-    skinparam agent {
+    ' define default style for actor elements
+    skinparam $actorShape {
         BackgroundColor none
         BorderColor none
     }
 
-    ' card nodes are used for the work objects
-    skinparam card {
+    ' define default style for work object elements
+    skinparam $objectShape {
         BackgroundColor none
         BorderColor none
     }
 
-    skinparam rectangle<<boundary>> {
+    ' define default style for boundary containers
+    skinparam $boundaryShape {
         BackgroundColor none
         BorderStyle dashed
         RoundCorner 15
@@ -65,17 +67,16 @@ skinparam DefaultTextAlignment center
 !endif
 
 !if $textColor != ""
-    skinparam agentFontColor $textColor
-    skinparam cardFontColor $textColor
-    skinparam rectangleFontColor<<boundary>> $textColor
+    skinparam $actorShape##FontColor $textColor
+    skinparam $objectShape##FontColor $textColor
+    skinparam $boundaryShape##FontColor $textColor
     skinparam arrowFontColor $textColor
     skinparam noteFontColor $textColor
 !endif
 
 !if $boundaryColor != ""
-    skinparam rectangleBorderColor<<boundary>> $boundaryColor
+    skinparam $boundaryShape##BorderColor $boundaryColor
 !endif
-
 
 !if $activityColor != ""
     skinparam arrowColor $activityColor
@@ -95,7 +96,8 @@ skinparam DefaultTextAlignment center
 ' in journeys with multiple stories the default top-to-bottom direction
 ' usually gives better results
 
-!if $storyLayout == "left-to-right"
+!if $storyLayout == "left-to-right" || $storyLayout == "landscape"
+    !global $storyLayout = "left-to-right"
     left to right direction
 !else
     top to bottom direction
@@ -110,21 +112,27 @@ skinparam DefaultTextAlignment center
 ' Actors
 ' ##################################
 
-!unquoted procedure Actor($kind, $sprite, $name, $label = "", $color = "", $scale = "", $note = "")
+!unquoted procedure Actor($kind, $sprite, $name, $label = "", $color = "", $scale = "", $shape = "", $note = "")
     !if $label == ""
         !$label = $name
     !endif
+
+    ' keyword parameters below
     !if $color == ""
         !$color = $actorColor
     !endif
     !if $scale == ""
         !$scale = $actorScale
     !endif
+    !if $shape == ""
+        !$shape = $actorShape
+    !endif
 
+    ' output below
     !if $color == ""
-        agent "<$sprite{scale=$scale}>\r $label" as $name <<$kind>>
+        $shape "<$sprite{scale=$scale}>\r $label" as $name <<$kind>>
     !else
-        agent "<color:$color><$sprite{scale=$scale}></color>\r $label" as $name <<$kind>>
+        $shape "<color:$color><$sprite{scale=$scale}></color>\r $label" as $name <<$kind>>
     !endif
 
     $addNote($name, $note)
@@ -140,8 +148,8 @@ skinparam DefaultTextAlignment center
     !endif
 !endif
 
-!unquoted procedure Person($name, $label = "", $color = "", $scale = "", $note = "")
-    Actor("Person", "$personSprite", $name, $label, $color, $scale, $note)
+!unquoted procedure Person($name, $label = "", $color = "", $scale = "", $shape = "", $note = "")
+    Actor("Person", "$personSprite", $name, $label, $color, $scale, $shape, $note)
 !endprocedure
 
 !if %not(%variable_exists("$groupSprite"))
@@ -154,33 +162,37 @@ skinparam DefaultTextAlignment center
     !endif
 !endif
 
-!unquoted procedure Group($name, $label = "", $color = "", $scale = "", $note = "")
-    Actor("Group", "$groupSprite", $name, $label, $color, $scale, $note)
+!unquoted procedure Group($name, $label = "", $color = "", $scale = "", $shape = "", $note = "")
+    Actor("Group", "$groupSprite", $name, $label, $color, $scale, $shape, $note)
 !endprocedure
 
 !include <material/laptop>
-!unquoted procedure System($name, $label = "", $color = "", $scale = "", $note = "")
-    Actor("System", "$ma_laptop", $name, $label, $color, $scale, $note)
+!unquoted procedure System($name, $label = "", $color = "", $scale = "", $shape = "", $note = "")
+    Actor("System", "$ma_laptop", $name, $label, $color, $scale, $shape, $note)
 !endprocedure
 
 ' Work objects
 ' ##################################
 
-!unquoted procedure Object($kind, $sprite, $name, $label = "", $color = "", $scale = "", $note = "")
+!unquoted procedure Object($kind, $sprite, $name, $label = "", $color = "", $scale = "", $shape = "", $note = "")
     !if $label == ""
         !$label = $name
     !endif
+
     !if $color == ""
         !$color = $objectColor
     !endif
     !if $scale == ""
         !$scale = $objectScale
     !endif
+    !if $shape == ""
+        !$shape = $objectShape
+    !endif
 
     !if $color == ""
-        card "<$sprite{scale=$scale}>\r $label" as $name <<$kind>>
+        $shape "<$sprite{scale=$scale}>\r $label" as $name <<$kind>>
     !else
-        card "<color:$color><$sprite{scale=$scale}></color>\r $label" as $name <<$kind>>
+        $shape "<color:$color><$sprite{scale=$scale}></color>\r $label" as $name <<$kind>>
     !endif
 
     $addNote($name, $note)
@@ -196,8 +208,8 @@ skinparam DefaultTextAlignment center
     !endif
 !endif
 
-!unquoted procedure Document($name, $label = "", $color = "", $scale = "", $note = "")
-    Object("Document", "$documentSprite", $name, $label, $color, $scale, $note)
+!unquoted procedure Document($name, $label = "", $color = "", $scale = "", $shape = "", $note = "")
+    Object("Document", "$documentSprite", $name, $label, $color, $scale, $shape, $note)
 !endprocedure
 
 !if %not(%variable_exists("$folderSprite"))
@@ -210,13 +222,13 @@ skinparam DefaultTextAlignment center
     !endif
 !endif
 
-!unquoted procedure Folder($name, $label = "", $color = "", $scale = "", $note = "")
-    Object("Folder", "$folderSprite", $name, $label, $color, $scale, $note)
+!unquoted procedure Folder($name, $label = "", $color = "", $scale = "", $shape = "", $note = "")
+    Object("Folder", "$folderSprite", $name, $label, $color, $scale, $shape, $note)
 !endprocedure
 
 !include <material/phone>
-!unquoted procedure Call($name, $label = "", $color = "", $scale = "", $note = "")
-    Object("Call", "$ma_phone", $name, $label, $color, $scale, $note)
+!unquoted procedure Call($name, $label = "", $color = "", $scale = "", $shape = "", $note = "")
+    Object("Call", "$ma_phone", $name, $label, $color, $scale, $shape, $note)
 !endprocedure
 
 !if %not(%variable_exists("$emailSprite"))
@@ -229,8 +241,8 @@ skinparam DefaultTextAlignment center
     !endif
 !endif
 
-!unquoted procedure Email($name, $label = "", $color = "", $scale = "", $note = "")
-    Object("Email", "$emailSprite", $name, $label, $color, $scale, $note)
+!unquoted procedure Email($name, $label = "", $color = "", $scale = "", $shape = "", $note = "")
+    Object("Email", "$emailSprite", $name, $label, $color, $scale, $shape, $note)
 !endprocedure
 
 !if %not(%variable_exists("$conversationSprite"))
@@ -243,8 +255,8 @@ skinparam DefaultTextAlignment center
     !endif
 !endif
 
-!unquoted procedure Conversation($name, $label = "", $color = "", $scale = "", $note = "")
-    Object("Conversation", "$conversationSprite", $name, $label, $color, $scale, $note)
+!unquoted procedure Conversation($name, $label = "", $color = "", $scale = "", $shape = "", $note = "")
+    Object("Conversation", "$conversationSprite", $name, $label, $color, $scale, $shape, $note)
 !endprocedure
 
 !if %not(%variable_exists("$infoSprite"))
@@ -257,38 +269,44 @@ skinparam DefaultTextAlignment center
     !endif
 !endif
 
-!unquoted procedure Info($name, $label = "", $color = "", $scale = "", $note = "")
-    Object("Info", "$infoSprite", $name, $label, $color, $scale, $note)
+!unquoted procedure Info($name, $label = "", $color = "", $scale = "", $shape = "", $note = "")
+    Object("Info", "$infoSprite", $name, $label, $color, $scale, $shape, $note)
 !endprocedure
 
 ' Boundaries
 ' ##################################
 
-!unquoted procedure Boundary($name, $label = "", $backgroundColor = "", $note = "")
+!unquoted procedure Boundary($name, $label = "", $backgroundColor = "", $shape = "", $note = "")
     !if $label == ""
         !$label = $name
     !endif
+
+    ' keyword parameters below
+    !if $shape == ""
+        !$shape = $boundaryShape
+    !endif
     !if $note != ""
-        rectangle $name
+        $shape $name
         $addBoundaryNote($name, $note)
     !endif
-    !if $backgroundColor != ""
 
+    ' output below
+    !if $backgroundColor != ""
         !$hexColor = %strpos($backgroundColor, "#")
         !if $hexColor > -1
-            rectangle "==$label" <<Boundary>> as $name $backgroundColor
+            $shape "==$label" <<Boundary>> as $name $backgroundColor
         !else
-            rectangle "==$label" <<Boundary>> as $name #$backgroundColor
+            $shape "==$label" <<Boundary>> as $name #$backgroundColor
         !endif
     !else
-        rectangle "==$label" <<Boundary>> as $name
+        $shape "==$label" <<Boundary>> as $name
     !endif
 !endprocedure
 
 ' Activities
 ' ##################################
 
-!unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $color = "", $scale = "", $note = "")
+!unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $color = "", $scale = "", $shape = "", $note = "")
     ' activity direction
     !if $objectArr == "" && $targetArr == ""
         !$vPosition = %strpos($step, "v")

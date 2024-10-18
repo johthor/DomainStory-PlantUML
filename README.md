@@ -53,27 +53,27 @@ and reference it locally with
 After you have included `domainStory.puml` you can use the predefined macro
 definitions for the domain story actors:
 
-* `Person($name[, $label][, $color][, $scale][, $note])`
-* `Group($name[, $label][, $color][, $scale][, $note])`
-* `System($name[, $label][, $color][, $scale][, $note])`
+* `Person($name[, $label][, $color][, $scale][, $shape][, $note])`
+* `Group($name[, $label][, $color][, $scale][, $shape][, $note])`
+* `System($name[, $label][, $color][, $scale][, $shape][, $note])`
 
 As well as the domain story work items:
 
-* `Document($name[, $label][, $color][, $scale][, $note])`
-* `Folder($name[, $label][, $color][, $scale][, $note])`
-* `Call($name[, $label][, $color][, $scale][, $note])`
-* `Email($name[, $label][, $color][, $scale][, $note])`
-* `Conversation($name[, $label][, $color][, $scale][, $note])`
-* `Info($name[, $label][, $color][, $scale][, $note])`
+* `Document($name[, $label][, $color][, $scale][, $shape][, $note])`
+* `Folder($name[, $label][, $color][, $scale][, $shape][, $note])`
+* `Call($name[, $label][, $color][, $scale][, $shape][, $note])`
+* `Email($name[, $label][, $color][, $scale][, $shape][, $note])`
+* `Conversation($name[, $label][, $color][, $scale][, $shape][, $note])`
+* `Info($name[, $label][, $color][, $scale][, $shape][, $note])`
 
 Activities between actors and involving work items are described via the `activity` macro:
 
 ```puml
-activity($step, $subject, $predicate, $object[, $post][, $target][, $objectArr][, $targetArr][, $color][, $scale][, $note])
+activity($step, $subject, $predicate, $object[, $post][, $target][, $objectArr][, $targetArr][, $color][, $scale][, $shape][, $note])
 ```
 
 In addition to these,
-it is also possible to define boundaries via `Boundary($name[, $label][, $backgroundColor][, $note])`.
+it is also possible to define boundaries via `Boundary($name[, $label][, $backgroundColor][, $shape][, $note])`.
 
 Optional parameters are shown above in square brackets.
 
@@ -264,12 +264,15 @@ Make sure that your values are compatible with the chosen theme.
 | `$storyLayout`   | `left-to-right` | Basic direction of the activity arrows              |
 | `$textColor`     | `#0b0c10`       | Color of all text                                   |
 | `$actorStyle`    | `default`       | Use outlines instead of filled icons for actors     |
-| `$actorScale`    | `1`             | Size of all actor icons                             |
-| `$actorColor`    | `#1f2833`       | Color of all actors                                 |
+| `$actorScale`    | `1`             | Size of actor icons                                 |
+| `$actorColor`    | `#1f2833`       | Color of actors icons                               |
+| `$actorShape`    | `agent`         | Shape of actor elements                             |
 | `$objectStyle`   | `default`       | Use outlines instead of filled icons for work items |
-| `$objectScale`   | `0.8`           | Size of all work items                              |
-| `$objectColor`   | `#1f2833`       | Color of all work item icons                        |
+| `$objectScale`   | `0.8`           | Size of work item icons                             |
+| `$objectColor`   | `#1f2833`       | Color of work item icons                            |
+| `$objectShape`   | `card`          | Shape of work item elements                         |
 | `$boundaryColor` | `#1f2833`       | Color of boundary borders                           |
+| `$boundaryShape` | `#1f2833`       | Shape of boundary containers                        |
 | `$activityColor` | `#c5c6c7`       | Color of the activity arrows                        |
 | `$stepColor`     | `#66fcf1`       | Background color for step numbers                   |
 | `$stepFontSize`  | `16`            | Font size for step numbers                          |
@@ -295,7 +298,8 @@ Person(Alice)
 
 > :information_source: You might want to set a matching `$stepColor` and `$stepFontColor` when using themes.
 
-**Method 4: Individually Styled Elements** Every element allows some control over its appearance via the `$color` and the
+**Method 4: Individually Styled Elements** Every element allows some control over its appearance via the `$color` and
+the
 `$scale` parameters.
 The following example code shows a "Little Red Riding Hood."
 
@@ -413,7 +417,16 @@ See the test cases again for more details
 
 In addition to the styling methods described in [Basic styling](#basic-styling) there are more advanced methods.
 
-**Method 5: Configuring the Element's Shapes**
+**Method 5: Configuring the Element's Shapes** By default, the library will use the
+following [PlantUML shapes](https://plantuml.com/en/deployment-diagram) to represent actors, work objects and
+boundaries.
+
+* actors will use the shape `agent`
+* work objects will use the shape `card`
+* and bound will use the shape `rectangle`
+
+But these shapes may be reconfigured via the global styling declarations `$actorShape`,
+`$objectShape` and `$boundaryShape`.
 
 **Method 6: Styling via Skinparam or Style**
 

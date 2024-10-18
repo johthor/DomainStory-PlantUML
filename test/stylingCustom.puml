@@ -5,12 +5,13 @@
 !$actorColor = RoyalBlue
 !$objectColor = RoyalBlue
 !$stepColor = PowderBlue
+!$boundaryShape = package
 
 !include ../domainStory.puml
 
 Person(Alice)
 
-Boundary(Home) {
+Boundary(Home, $shape=frame) {
     Email(spam)
 }
 
