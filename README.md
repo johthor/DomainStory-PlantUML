@@ -69,7 +69,9 @@ As well as the domain story work items:
 Activities between actors and involving work items are described via the `activity` macro:
 
 ```puml
-activity($step, $subject, $predicate, $object[, $post][, $target][, $objectArr][, $targetArr][, $color][, $scale][, $shape][, $note])
+activity($step, $subject, $predicate, $object[, $post][, $target][, $objectArr][, $targetArr]
+    [, $color][, $scale][, $shape][, $note]
+    [, $targetColor][, $targetScale][, $targetShape][, $targetNote])
 ```
 
 In addition to these,

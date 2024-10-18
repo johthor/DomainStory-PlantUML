@@ -286,9 +286,10 @@ skinparam DefaultTextAlignment center
 ' Activities
 ' ##################################
 
-!unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $color = $objectColor, $scale = $objectScale, $shape = $objectShape, $note = "")
+!unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $color = $objectColor, $scale = $objectScale, $shape = $objectShape, $note = "", $targetColor = $objectColor, $targetScale = $objectScale, $targetShape = $objectShape, $targetNote = "")
+
     ' activity direction
-    !if $objectArr == "" && $targetArr == ""
+    !if $objectArr == ""
         !$vPosition = %strpos($step, "v")
         !$ltPosition = %strpos($step, "<")
         !$caretPosition = %strpos($step, "^")
@@ -341,7 +342,7 @@ skinparam DefaultTextAlignment center
     ' Handle possible second arrow between object and target
 
     ' ensure the target exists / create one dynamically
-    !$target = $ensureElementExists($target, $color, $scale, $shape)
+    !$target = $ensureElementExists($target, $targetColor, $targetScale, $targetShape)
 
     !if $post != "" && $post != "_"
         !if $target != "" && $target != "_"
@@ -352,6 +353,7 @@ skinparam DefaultTextAlignment center
     !endif
 
     $addNote($object, $note)
+    $addNote($target, $targetNote)
 !endprocedure
 
 ' Helper
