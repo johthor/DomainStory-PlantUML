@@ -2,6 +2,9 @@
 ' ##################################
 
 !$storyLayout ?= "left-to-right"
+!if $storyLayout == "landscape"
+    !$storyLayout = "left-to-right"
+!endif
 
 !$actorStyle ?= "default"
 !$actorScale ?= 1

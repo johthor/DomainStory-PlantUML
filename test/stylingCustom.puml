@@ -1,6 +1,6 @@
 @startuml
 
-!$storyLayout = 'top-to-bottom'
+!$storyLayout = 'landscape'
 !$textColor = Navy
 !$actorColor = RoyalBlue
 !$objectColor = RoyalBlue
@@ -23,7 +23,7 @@ Boundary(Office, $backgroundColor=#eee) {
     Email(proposal, $color=#f30, $scale = 2.3)
 }
 
-activity(_^, Alice, reads the, spam)
+activity(_, Alice, reads the, spam, _, _, ->)
 activity(_, Alice, talks about the, weather, with, Bob)
 activity(_<, Bob, writes a, proposal, to, Alice)
 @enduml
