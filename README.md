@@ -426,7 +426,7 @@ boundaries.
 * and bound will use the shape `rectangle`
 
 But these shapes may be reconfigured via the global styling declarations `$actorShape`,
-`$objectShape` and `$boundaryShape`.
+`$objectShape` and `$boundaryShape` and the `$shape` parameters on every element.
 
 **Method 6: Styling via Skinparam or Style**
 

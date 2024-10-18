@@ -22,4 +22,6 @@ activity(4, person, reads, thing2, $note=v below)
 activity(5, person, reads, thing3, $note=< left)
 activity(2, person, reads, thing4, $note=^ above)
 activity(3, person, reads, thing5, $note=> right)
+activity(6, person, reads, Document:Book, $note=> right)
+
 @enduml
