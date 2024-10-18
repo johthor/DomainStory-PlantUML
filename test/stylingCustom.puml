@@ -1,0 +1,30 @@
+@startuml
+
+!$storyLayout = 'landscape'
+!$textColor = Navy
+!$actorColor = RoyalBlue
+!$objectColor = RoyalBlue
+!$stepColor = PowderBlue
+!$boundaryShape = package
+
+!include ../domainStory.puml
+
+Person(Alice)
+
+Boundary(Home, $shape=frame) {
+    Email(spam)
+}
+
+Person(Bob, $scale=1.7)
+Boundary(Party, $backgroundColor=orange) {
+    Conversation(weather, $color=brown)
+}
+
+Boundary(Office, $backgroundColor=#eee) {
+    Email(proposal, $color=#f30, $scale = 2.3)
+}
+
+activity(_, Alice, reads the, spam, _, _, ->)
+activity(_, Alice, talks about the, weather, with, Bob)
+activity(_<, Bob, writes a, proposal, to, Alice)
+@enduml

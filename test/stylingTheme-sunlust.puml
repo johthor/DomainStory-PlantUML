@@ -1,10 +1,10 @@
 @startuml
 
+!theme sunlust
+
 !$storyLayout = 'top-to-bottom'
-!$textColor = Navy
-!$actorColor = RoyalBlue
-!$objectColor = RoyalBlue
-!$stepColor = PowderBlue
+!$stepColor = darkgrey
+!$stepFontColor = yellow
 
 !include ../domainStory.puml
 
