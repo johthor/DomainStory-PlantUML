@@ -256,15 +256,11 @@ skinparam DefaultTextAlignment center
 ' Boundaries
 ' ##################################
 
-!unquoted procedure Boundary($name, $label = "", $backgroundColor = "", $shape = "", $note = "")
+!unquoted procedure Boundary($name, $label = "", $backgroundColor = "", $shape = $boundaryShape, $note = "")
     !if $label == ""
         !$label = $name
     !endif
 
-    ' keyword parameters below
-    !if $shape == ""
-        !$shape = $boundaryShape
-    !endif
     !if $note != ""
         $shape $name
         $addBoundaryNote($name, $note)
@@ -272,14 +268,14 @@ skinparam DefaultTextAlignment center
 
     ' output below
     !if $backgroundColor != ""
-        !$hexColor = %strpos($backgroundColor, "#")
-        !if $hexColor > -1
-            $shape "==$label" <<Boundary>> as $name $backgroundColor
+        !$hexColor = %substr($backgroundColor, 0, 1)
+        !if $hexColor == "#"
+            $shape "==$label" as $name $backgroundColor
         !else
-            $shape "==$label" <<Boundary>> as $name #$backgroundColor
+            $shape "==$label" as $name #$backgroundColor
         !endif
     !else
-        $shape "==$label" <<Boundary>> as $name
+        $shape "==$label" as $name
     !endif
 !endprocedure
 
@@ -330,15 +326,16 @@ skinparam DefaultTextAlignment center
 
 !procedure $addNote($reference, $note)
     !if $note != ""
-        !$noteDir = %substr($note, 0, 1)
-        !if $noteDir == "v"
-            note bottom of $reference : %substr($note, 1)
-        !elseif $noteDir == "<"
-            note left of $reference : %substr($note, 1)
-        !elseif $noteDir == "^"
-            note top of $reference : %substr($note, 1)
-        !elseif $noteDir == ">"
-            note right of $reference : %substr($note, 1)
+        !$notePosition = %substr($note, 0, 1)
+        !$noteText = %substr($note, 1)
+        !if $notePosition == "^"
+            note top of $reference : $noteText
+        !elseif $notePosition == ">"
+            note right of $reference : $noteText
+        !elseif $notePosition == "v"
+            note bottom of $reference : $noteText
+        !elseif $notePosition == "<"
+            note left of $reference : $noteText
         !else
             !if $storyLayout == "left-to-right"
                 note right of $reference : $note
@@ -351,25 +348,30 @@ skinparam DefaultTextAlignment center
 
 !procedure $addBoundaryNote($reference, $note)
     !if $note != ""
-        !$noteDir = %substr($note, 0, 1)
-        !if $noteDir == "v"
+        !$notePosition = %substr($note, 0, 1)
+        !$noteText = %substr($note, 1)
+        !if $notePosition == "^"
             !if $storyLayout == "left-to-right"
-                note top of $reference : %substr($note, 1)
+                note bottom of $reference : $noteText
             !else
-                note bottom of $reference : %substr($note, 1)
+                note top of $reference : $noteText
             !endif
-        !elseif $noteDir == "<"
-            note left of $reference : %substr($note, 1)
-        !elseif $noteDir == "^"
+        !elseif $notePosition == ">"
+            note right of $reference : $noteText
+        !elseif $notePosition == "v"
             !if $storyLayout == "left-to-right"
-                note bottom of $reference : %substr($note, 1)
+                note top of $reference : $noteText
             !else
-                note top of $reference : %substr($note, 1)
+                note bottom of $reference : $noteText
             !endif
-        !elseif $noteDir == ">"
-            note right of $reference : %substr($note, 1)
+        !elseif $notePosition == "<"
+            note left of $reference : $noteText
         !else
-            note right of $reference : $note
+            !if $storyLayout == "left-to-right"
+                note right of $reference : $note
+            !else
+                note bottom of $reference : $note
+            !endif
         !endif
     !endif
 !endprocedure

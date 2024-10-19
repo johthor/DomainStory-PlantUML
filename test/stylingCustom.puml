@@ -16,11 +16,11 @@ Boundary(Home, $shape=frame) {
 }
 
 Person(Bob, $scale=1.7)
-Boundary(Party, $backgroundColor=orange) {
+Boundary(Party, $backgroundColor=orange/red) {
     Conversation(weather, $color=brown)
 }
 
-Boundary(Office, $backgroundColor=#eee) {
+Boundary(Office, $backgroundColor=#aee) {
     Email(proposal, $color=#f30, $scale = 2.3)
 }
 
