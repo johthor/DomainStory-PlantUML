@@ -126,7 +126,7 @@ With that in mind `Person(Bob, $scale=42)` is a totally legal way of describing 
 #### Positioning Indication
 
 Some elements may be positioned in relation to another reference element via a positioning indicator.
-Here the following symbols are used on multiple occasions.
+Here the following symbols are used on multiple occasions as prefixes.
 
 * `^` _caret_ symbol: the new element will be positioned above its reference
 * `>` _greater-than_ symbol: the new element will be positioned to the right of its reference
@@ -160,13 +160,13 @@ there are some possibilities to improve it.
 Group elements together via `together { elements... }`.
 
 The `activity` macro provides another feature for better layout control.
-Where the step value can be combined with a [positioning indicator](#positioning-indication)
+Where the step value can be combined with a [positioning indicator](#positioning-indication) as a prefix
 (`^`, `>`, `v`, `<`).
 
 The following activity will be directed to the left of Alice.
 
 ```puml
-activity(1<, Alice, talks about the, weather, with, Bob)
+activity(<1, Alice, talks about the, weather, with, Bob)
 ```
 
 More details and a second activity direction feature will be discussed
@@ -363,10 +363,10 @@ the step value may also specify the direction of the activity where `X` is one o
 
 | Step Value                     | Description                                | Auto Increment |
 |--------------------------------|--------------------------------------------|----------------|
-| `X>` _greate-than sign_ suffix | direction of activity will be to the right | depends on X   |
-| `X<` _less-than sign_ suffix   | direction of activity will be to the left  | depends on X   |
-| `Xv` _vee_ suffix              | direction of activity will be downwards    | depends on X   |
-| `X^` _caret_ suffix            | direction of activity will be upwards      | depends on X   |
+| `>X` _greate-than sign_ prefix | direction of activity will be to the right | depends on X   |
+| `<X` _less-than sign_ prefix   | direction of activity will be to the left  | depends on X   |
+| `vX` _vee_ prefix              | direction of activity will be downwards    | depends on X   |
+| `^X` _caret_ prefix            | direction of activity will be upwards      | depends on X   |
 
 See the test cases for more details
 

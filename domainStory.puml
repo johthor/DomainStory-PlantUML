@@ -287,72 +287,41 @@ skinparam DefaultTextAlignment center
 ' ##################################
 
 !unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $color = $objectColor, $scale = $objectScale, $shape = $objectShape, $note = "", $targetColor = $objectColor, $targetScale = $objectScale, $targetShape = $objectShape, $targetNote = "")
-
-    ' activity direction
+    ' Decide on the activity direction
     !if $objectArr == ""
-        !$vPosition = %strpos($step, "v")
-        !$ltPosition = %strpos($step, "<")
-        !$caretPosition = %strpos($step, "^")
-        !$gtPosition = %strpos($step, ">")
-        !if $gtPosition > -1
-            !$step = %substr($step, 0, $gtPosition)
-            !if $storyLayout == "left-to-right"
-                !$objectArr = "-->"
-            !else
-                !$objectArr = "->"
-            !endif
-        !elseif $ltPosition > -1
-            !$step = %substr($step, 0, $ltPosition)
-            !if $storyLayout == "left-to-right"
-                !$objectArr = "<--"
-            !else
-                !$objectArr = "<-"
-            !endif
-        !elseif $vPosition > -1
-            !$step = %substr($step, 0, $vPosition)
-            !if $storyLayout == "left-to-right"
-                !$objectArr = "->"
-            !else
-                !$objectArr = "-->"
-            !endif
-        !elseif $caretPosition > -1
-            !$step = %substr($step, 0, $caretPosition)
-            !if $storyLayout == "left-to-right"
-                !$objectArr = "<-"
-            !else
-                !$objectArr = "<--"
-            !endif
+        !$objectArr = $computeArrowDirection($step)
+
+        !if $objectArr != $step
+            ' Delete position indicator from $step
+            !$step = %substr($step, 1)
+        !else
+            ' No position indicator was found => follow default story flow
+            !$objectArr = "-->"
         !endif
-    !endif
-
-    !if $objectArr == ""
-        !$objectArr = "-->"
     !endif
 
     !if $targetArr == ""
         !$targetArr = $objectArr
     !endif
 
-    ' ensure the object exists / create one dynamically
+    ' Handle first connection between subject and object
     !$object = $ensureElementExists($object, $color, $scale, $shape)
 
-    ' create connecting arrows
-    $arrow($subject, $object, $objectArr) : $stepLabel($step) $predicate
+    $createConnection($subject, $object, $objectArr) : $stepLabel($step) $predicate
 
-    ' Handle possible second arrow between object and target
+    $addNote($object, $note)
 
-    ' ensure the target exists / create one dynamically
+    ' Handle possible second connection between object and target
     !$target = $ensureElementExists($target, $targetColor, $targetScale, $targetShape)
 
     !if $post != "" && $post != "_"
         !if $target != "" && $target != "_"
-            $arrow($object, $target, $targetArr) : $post
+            $createConnection($object, $target, $targetArr) : $post
         !else
-            $arrow($object, $post, $targetArr)
+            $createConnection($object, $post, $targetArr)
         !endif
     !endif
 
-    $addNote($object, $note)
     $addNote($target, $targetNote)
 !endprocedure
 
@@ -405,6 +374,38 @@ skinparam DefaultTextAlignment center
     !endif
 !endprocedure
 
+!function $computeArrowDirection($step)
+    !$activityDirection = %substr($step, 0, 1)
+    !if $activityDirection == "^"
+        !if $storyLayout == "left-to-right"
+            !return "<-"
+        !else
+            !return "<--"
+        !endif
+    !elseif $activityDirection == ">"
+        !if $storyLayout == "left-to-right"
+            !return "-->"
+        !else
+            !return "->"
+        !endif
+    !elseif $activityDirection == "<"
+        !if $storyLayout == "left-to-right"
+            !return "<--"
+        !else
+            !return "<-"
+        !endif
+    !elseif  $activityDirection == "v"
+        !if $storyLayout == "left-to-right"
+            !return "->"
+        !else
+            !return "-->"
+        !endif
+    !else
+        ' Signal no change
+        !return $step
+    !endif
+!endfunction
+
 !function $ensureElementExists($object, $color = $objectColor, $scale = $objectScale, $shape = $objectShape)
     !$objectName = $object
     !$objectSeparator = %strpos($object, ":")
@@ -419,7 +420,7 @@ skinparam DefaultTextAlignment center
     !return $objectName
 !endfunction
 
-!function $arrow($from, $to, $spec)
+!function $createConnection($from, $to, $spec)
     !if %substr($spec, 0, 1) == "<"
         !return $to + " " + $spec + " " + $from
     !else
