@@ -29,4 +29,7 @@ Boundary(four, $note=v below) {
 Boundary(five, $note=< left) {
     Person(Ashley)
 }
+Boundary(six, $note=! inverse) {
+    Person(Sam)
+}
 @enduml

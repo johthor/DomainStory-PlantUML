@@ -10,18 +10,20 @@ note bottom of pete : below
 note left of pete : left
 
 Email(confirmation, $note= default)
-Folder(documents, $note=v below)
-Call(question, $note=< left)
 System(boarding, $note=^ above)
 Document(list, $note=> right)
+Folder(documents, $note=v below)
+Call(question, $note=< left)
+Conversation(argument, $note=! inverse)
 
 Person(person)
 
 activity(1, person, reads, thing1, $note=  default)
 activity(4, person, reads, thing2, $note=v below)
 activity(5, person, reads, thing3, $note=< left)
-activity(2, person, reads, thing4, $note=^ above)
+activity(2, person, reads, thing4, $note=^ abov)
 activity(3, person, reads, thing5, $note=> right)
+activity(2, person, reads, thing6, $note=! inverse)
 activity(6, person, reads, Document:Book, $note=> right)
 
 @enduml

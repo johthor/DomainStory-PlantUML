@@ -336,6 +336,12 @@ skinparam DefaultTextAlignment center
             note bottom of $reference : $noteText
         !elseif $notePosition == "<"
             note left of $reference : $noteText
+        !elseif $notePosition == "!"
+            !if $storyLayout == "left-to-right"
+                note left of $reference : $noteText
+            !else
+                note top of $reference : $noteText
+            !endif
         !else
             !if $storyLayout == "left-to-right"
                 note right of $reference : $note
@@ -366,6 +372,12 @@ skinparam DefaultTextAlignment center
             !endif
         !elseif $notePosition == "<"
             note left of $reference : $noteText
+        !elseif $notePosition == "!"
+            !if $storyLayout == "left-to-right"
+                note left of $reference : $noteText
+            !else
+                note top of $reference : $noteText
+            !endif
         !else
             !if $storyLayout == "left-to-right"
                 note right of $reference : $note
@@ -402,6 +414,8 @@ skinparam DefaultTextAlignment center
         !else
             !return "-->"
         !endif
+    !elseif  $activityDirection == "!"
+        !return "<--"
     !else
         ' Signal no change
         !return $step

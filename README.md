@@ -128,10 +128,12 @@ With that in mind `Person(Bob, $scale=42)` is a totally legal way of describing 
 Some elements may be positioned in relation to another reference element via a positioning indicator.
 Here the following symbols are used on multiple occasions as prefixes.
 
-* `^` _caret_ symbol: the new element will be positioned above its reference
-* `>` _greater-than_ symbol: the new element will be positioned to the right of its reference
-* `v` _vee_ symbol: the new element will be positioned below its reference
-* `<` _less-than_ symbol: the new element will be positioned to the left of its reference
+* _no indicator symbol_: the new element will be positioned inline with the default flow direction
+* `^` _caret symbol_: the new element will be positioned above its reference
+* `>` _greater-than symbol_: the new element will be positioned to the right of its reference
+* `v` _vee symbol_: the new element will be positioned below its reference
+* `<` _less-than symbol_: the new element will be positioned to the left of its reference
+* `!` _exclamation mark symbol_: the new element will be positioned against the default flow direction
 
 The positioning indicator will take the normal story flow defined via `$storyLayout` into account.
 
@@ -309,6 +311,9 @@ The following example code shows a "Little Red Riding Hood."
 Person(hood, Riding Hood, $color=red, $scale=0.5)
 ```
 
+The `activity` macro also provides `$color`, `$scale` and `$shape` parameters to control the appearance of the newly created `$object` work object.
+While `$targetColor`, `$targetScale` and `$targetShape` control the appearance of the newly created `$target` work object.
+
 See the following test cases for more details
 
 * [Using theme `sketchy`](test/stylingTheme-sketchy.puml)
@@ -361,12 +366,13 @@ the `activity` macro supports even more layout tricks.
 In addition to the step counter specifications described above,
 the step value may also specify the direction of the activity where `X` is one of the specifications above.
 
-| Step Value                     | Description                                | Auto Increment |
-|--------------------------------|--------------------------------------------|----------------|
-| `>X` _greate-than sign_ prefix | direction of activity will be to the right | depends on X   |
-| `<X` _less-than sign_ prefix   | direction of activity will be to the left  | depends on X   |
-| `vX` _vee_ prefix              | direction of activity will be downwards    | depends on X   |
-| `^X` _caret_ prefix            | direction of activity will be upwards      | depends on X   |
+| Step Value                     | Description                                                      | Auto Increment |
+|--------------------------------|------------------------------------------------------------------|----------------|
+| `>X` _greate-than sign_ prefix | direction of activity will be to the right                       | depends on X   |
+| `<X` _less-than sign_ prefix   | direction of activity will be to the left                        | depends on X   |
+| `vX` _vee_ prefix              | direction of activity will be downwards                          | depends on X   |
+| `^X` _caret_ prefix            | direction of activity will be upwards                            | depends on X   |
+| `!X` _exclamation mark_ prefix | direction of activity will be against the default flow direction | depends on X   |
 
 See the test cases for more details
 
