@@ -107,7 +107,7 @@ skinparam DefaultTextAlignment center
 ' ##################################
 
 !global $stepCounter = 0
-!global $objectCounter = 0
+!global $workObjectCounter = 0
 
 ' Actors
 ' ##################################
@@ -124,7 +124,7 @@ skinparam DefaultTextAlignment center
         $shape "<color:$color><$sprite{scale=$scale}></color>\r $label" as $name <<$kind>>
     !endif
 
-    $addNote($name, $note)
+    $createElementNote($name, $note)
 !endprocedure
 
 !if %not(%variable_exists("$personSprite"))
@@ -175,7 +175,7 @@ skinparam DefaultTextAlignment center
         $shape "<color:$color><$sprite{scale=$scale}></color>\r $label" as $name <<$kind>>
     !endif
 
-    $addNote($name, $note)
+    $createElementNote($name, $note)
 !endprocedure
 
 !if %not(%variable_exists("$documentSprite"))
@@ -263,7 +263,7 @@ skinparam DefaultTextAlignment center
 
     !if $note
         $shape $name
-        $addBoundaryNote($name, $note)
+        $createBoundaryNote($name, $note)
     !endif
 
     ' output below
@@ -303,31 +303,32 @@ skinparam DefaultTextAlignment center
     ' Handle first connection between subject and object
     !$object = $ensureElementExists($object, $color, $scale, $shape)
 
-    $createConnection($subject, $object, $objectArr) : $stepLabel($step) $predicate
+    $createConnection($subject, $object, $objectArr, $predicate, $computeStepLabel($step))
 
-    $addNote($object, $note)
+    $createElementNote($object, $note)
 
     ' Handle possible second connection between object and target
     !$target = $ensureElementExists($target, $targetColor, $targetScale, $targetShape)
 
     !if $post && $post != "_"
         !if $target && $target != "_"
-            $createConnection($object, $target, $targetArr) : $post
+            $createConnection($object, $target, $targetArr, $post)
         !else
             $createConnection($object, $post, $targetArr)
         !endif
     !endif
 
-    $addNote($target, $targetNote)
+    $createElementNote($target, $targetNote)
 !endprocedure
 
-' Helper
+' Helper procedures
 ' ##################################
 
-!procedure $addNote($reference, $note)
-    !if $note != ""
+!procedure $createElementNote($reference, $note)
+    !if $note
         !$notePosition = %substr($note, 0, 1)
         !$noteText = %substr($note, 1)
+
         !if $notePosition == "^"
             note top of $reference : $noteText
         !elseif $notePosition == ">"
@@ -352,10 +353,11 @@ skinparam DefaultTextAlignment center
     !endif
 !endprocedure
 
-!procedure $addBoundaryNote($reference, $note)
-    !if $note != ""
+!procedure $createBoundaryNote($reference, $note)
+    !if $note
         !$notePosition = %substr($note, 0, 1)
         !$noteText = %substr($note, 1)
+
         !if $notePosition == "^"
             !if $storyLayout == "left-to-right"
                 note bottom of $reference : $noteText
@@ -387,6 +389,44 @@ skinparam DefaultTextAlignment center
         !endif
     !endif
 !endprocedure
+
+' Be aware this function might produce side effects
+!function $ensureElementExists($element, $color = $objectColor, $scale = $objectScale, $shape = $objectShape)
+    !$separatorPosition = %strpos($element, ":")
+
+    !if $separatorPosition > -1
+        !$workObjectCounter = $workObjectCounter + 1
+
+        !$elementKind = %substr($element, 0, $separatorPosition)
+        !$elementLabel = %substr($element, $separatorPosition + 1)
+        !$elementName = $elementKind + $workObjectCounter
+
+        '! Actor($kind, $sprite, $name, $label, $color, $scale, $shape, $note)
+        %invoke_procedure($elementKind, $elementName, $elementLabel, $color, $scale, $shape)
+        !return $elementName
+    !else
+        !return $element
+    !endif
+!endfunction
+
+!procedure $createConnection($from, $to, $spec = "-->", $label = "", $stepCounter = "")
+    !if %substr($spec, 0, 1) == "<"
+        !if $label
+            $to $spec $from : $stepCounter $label
+        !else
+            $to $spec $from
+        !endif
+    !else
+        !if $label
+            $from $spec $to : $stepCounter $label
+        !else
+            $from $spec $to
+        !endif
+    !endif
+!endprocedure
+
+' Helper functions
+' ##################################
 
 !function $computeArrowDirection($step)
     !$activityDirection = %substr($step, 0, 1)
@@ -417,55 +457,16 @@ skinparam DefaultTextAlignment center
     !elseif  $activityDirection == "!"
         !return "<--"
     !else
-        ' Signal no change
+        ' Signal no direction found
         !return %false()
     !endif
 !endfunction
 
-!function $ensureElementExists($object, $color = $objectColor, $scale = $objectScale, $shape = $objectShape)
-    !$objectName = $object
-    !$objectSeparator = %strpos($object, ":")
-    !if $objectSeparator > -1
-        !$objectCounter = $objectCounter + 1
-        !$objectKind = %substr($object, 0, $objectSeparator)
-        !$objectLabel = %substr($object, $objectSeparator + 1)
-        !$objectName = $objectKind + $objectCounter
-        '! Actor($kind, $sprite, $name, $label, $color, $scale, $shape, $note)
-        %invoke_procedure($objectKind, $objectName, $objectLabel, $color, $scale, $shape)
-    !endif
-    !return $objectName
-!endfunction
+!function $computeStepLabel($step)
+    !$stepNumber = $computeStepNumber($step)
 
-!function $createConnection($from, $to, $spec)
-    !if %substr($spec, 0, 1) == "<"
-        !return $to + " " + $spec + " " + $from
-    !else
-        !return $from + " " + $spec + " " + $to
-    !endif
-!endfunction
-
-!function $computeStepNumber($step)
-    !if $step == "_"
-        !$stepCounter = $stepCounter + 1
-        !return $stepCounter
-    !elseif $step == "|"
-        !return $stepCounter
-    !elseif $step == "."
-        !return ""
-    !elseif %substr($step, 0, 1) == "="
-        !$stepCounter = %intval(%substr($step, 1))
-        !return $stepCounter
-    !else
-        !return $step
-    !endif
-!endfunction
-
-!function $stepLabel($step)
-    !$result = ""
-    !$stepNum = $computeStepNumber($step)
-
-    !if $stepNum
-        !$result = "(" + $stepNum + ")"
+    !if $stepNumber
+        !$result = "(" + $stepNumber + ")"
         !if $stepColor
             !$result = "<back:" + $stepColor + ">" + $result + "</back>"
         !endif
@@ -475,7 +476,25 @@ skinparam DefaultTextAlignment center
         !if $stepFontSize
             !$result = "<size:" + $stepFontSize + ">" + $result + "</size>"
         !endif
+        !return $result
+    !else
+        !return ""
     !endif
+!endfunction
 
-    !return $result
+!function $computeStepNumber($step)
+    !if $step == "_"
+        !$stepCounter = $stepCounter + 1
+        !return $stepCounter
+    !elseif $step == "|"
+        !return $stepCounter
+    !elseif %substr($step, 0, 1) == "="
+        !$stepCounter = %intval(%substr($step, 1))
+        !return $stepCounter
+    !elseif $step == "."
+        ' Signal unnumbered step
+        !return %false()
+    !else
+        !return $step
+    !endif
 !endfunction
