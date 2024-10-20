@@ -255,34 +255,38 @@ The appearance of a domain story may be influenced via any of the following meth
 `sunlust` or `sketchy` and others.
 Choose the theme before including the library.
 
-**Method 2: Default Appearance** If no theme is used, a fallback design is used which is heavily inspired
-by [Egon.io](https://egon.io/).
-
-**Method 3: Custom Style definitions** The appearance of most of the elements may be customized via the following global
+**Method 2: Global Style declarations**
+If no theme is used, a fallback design is used which is heavily inspired by [Egon.io](https://egon.io/).
+The appearance of most of the elements may be customized via the following global
 style declarations.
-These will also work if a theme is used.
+These will still work if a theme is used.
 Make sure that your values are compatible with the chosen theme.
 
-| Property         | Default Value   | Description                                         |
-|------------------|-----------------|-----------------------------------------------------|
-| `$storyLayout`   | `left-to-right` | Basic direction of the activity arrows              |
-| `$textColor`     | `#0b0c10`       | Color of all text                                   |
-| `$actorStyle`    | `default`       | Use outlines instead of filled icons for actors     |
-| `$actorScale`    | `1`             | Size of actor icons                                 |
-| `$actorColor`    | `#1f2833`       | Color of actors icons                               |
-| `$actorShape`    | `agent`         | Shape of actor elements                             |
-| `$objectStyle`   | `default`       | Use outlines instead of filled icons for work items |
-| `$objectScale`   | `0.8`           | Size of work item icons                             |
-| `$objectColor`   | `#1f2833`       | Color of work item icons                            |
-| `$objectShape`   | `card`          | Shape of work item elements                         |
-| `$boundaryColor` | `#1f2833`       | Color of boundary borders                           |
-| `$boundaryShape` | `#1f2833`       | Shape of boundary containers                        |
-| `$activityColor` | `#c5c6c7`       | Color of the activity arrows                        |
-| `$stepColor`     | `#66fcf1`       | Background color for step numbers                   |
-| `$stepFontSize`  | `16`            | Font size for step numbers                          |
-| `$stepFontColor` | `$textColor`    | Font color for step numbers, same as `$textColor`   |
-| `$noteColor`     | `#c5c6c7`       | Background color for notes                          |
-| `$noteBorder`    | `#1f2833`       | Border color for notes                              |
+| Property              | Default Value   | Description                                         |
+|-----------------------|-----------------|-----------------------------------------------------|
+| `$storyLayout`        | `left-to-right` | Basic direction of the activity arrows              |
+| `$textColor`          | `#0b0c10`       | Color of all text                                   |
+| _Actor Styling_       |
+| `$actorStyle`         | `default`       | Use outlines instead of filled icons for actors     |
+| `$actorScale`         | `1`             | Size of actor icons                                 |
+| `$actorColor`         | `#1f2833`       | Color of actors icons                               |
+| `$actorShape`         | `agent`         | Shape of actor elements                             |
+| _Work Object Styling_ |
+| `$objectStyle`        | `default`       | Use outlines instead of filled icons for work items |
+| `$objectScale`        | `0.8`           | Size of work item icons                             |
+| `$objectColor`        | `#1f2833`       | Color of work item icons                            |
+| `$objectShape`        | `card`          | Shape of work item elements                         |
+| _Boundary Styling_    |
+| `$boundaryColor`      | `#1f2833`       | Color of boundary borders                           |
+| `$boundaryShape`      | `#1f2833`       | Shape of boundary containers                        |
+| _Note Styling_        |
+| `$noteColor`          | `#c5c6c7`       | Background color for notes                          |
+| `$noteBorder`         | `#1f2833`       | Border color for notes                              |
+| _Activity Styling_    |
+| `$activityColor`      | `#c5c6c7`       | Color of the activity arrows                        |
+| `$stepColor`          | `#66fcf1`       | Background color for step numbers                   |
+| `$stepFontSize`       | `16`            | Font size for step numbers                          |
+| `$stepFontColor`      | `$textColor`    | Font color for step numbers, same as `$textColor`   |
 
 To use your own styling, you need to define the relevant styling properties before including the library.
 The following example would combine green actor icons with red text.
@@ -302,23 +306,24 @@ Person(Alice)
 
 > :information_source: You might want to set a matching `$stepColor` and `$stepFontColor` when using themes.
 
-**Method 4: Individually Styled Elements** Every element allows some control over its appearance via the `$color` and
-the
-`$scale` parameters.
-The following example code shows a "Little Red Riding Hood."
+**Method 3: Changing the Element's Shapes and Icons** By default, the library will use the
+following [PlantUML shapes](https://plantuml.com/en/deployment-diagram) to represent actors, work objects and
+boundaries.
 
-```puml
-Person(hood, Riding Hood, $color=red, $scale=0.5)
-```
+* actors will use the shape `agent`
+* work objects will use the shape `card`
+* and boundaries will use the shape `rectangle`
 
-The `activity` macro also provides `$color`, `$scale` and `$shape` parameters to control the appearance of the newly created `$object` work object.
-While `$targetColor`, `$targetScale` and `$targetShape` control the appearance of the newly created `$target` work object.
+But these shapes may be reconfigured via the global styling declarations `$actorShape`,
+`$objectShape` and `$boundaryShape`.
+
+
 
 See the following test cases for more details
 
 * [Using theme `sketchy`](test/stylingTheme-sketchy.puml)
 * [Using theme `sunlust`](test/stylingTheme-sunlust.puml)
-* [Custom style definitions and individually styled elements](test/stylingCustom.puml)
+* [Global style declarations](test/stylingCustom.puml)
 
 ### Extensions
 
@@ -425,18 +430,21 @@ See the test cases again for more details
 
 In addition to the styling methods described in [Basic styling](#basic-styling) there are more advanced methods.
 
-**Method 5: Configuring the Element's Shapes** By default, the library will use the
-following [PlantUML shapes](https://plantuml.com/en/deployment-diagram) to represent actors, work objects and
-boundaries.
+**Method 6: Styling via Skinparam**
 
-* actors will use the shape `agent`
-* work objects will use the shape `card`
-* and bound will use the shape `rectangle`
+**Method 4: Individually Styled Elements** Every element allows some control over its appearance via the `$color` and
+the
+`$scale` parameters.
+The following example code shows a "Little Red Riding Hood."
 
-But these shapes may be reconfigured via the global styling declarations `$actorShape`,
-`$objectShape` and `$boundaryShape` and the `$shape` parameters on every element.
+```puml
+Person(hood, Riding Hood, $color=red, $scale=0.5)
+```
 
-**Method 6: Styling via Skinparam or Style**
+The `activity` macro also provides `$color`, `$scale` and `$shape` parameters to control the appearance of the newly
+created `$object` work object.
+While `$targetColor`, `$targetScale` and `$targetShape` control the appearance of the newly created `$target` work
+object.
 
 ## Advanced Samples
 
