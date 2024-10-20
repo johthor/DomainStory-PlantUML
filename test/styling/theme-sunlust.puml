@@ -1,5 +1,4 @@
 @startuml
-
 !theme sunlust
 
 !$storyLayout = 'top-to-bottom'

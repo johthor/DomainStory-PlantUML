@@ -267,26 +267,26 @@ Make sure that your values are compatible with the chosen theme.
 | `$storyLayout`        | `left-to-right` | Basic direction of the activity arrows              |
 | `$textColor`          | `#0b0c10`       | Color of all text                                   |
 | _Actor Styling_       |
+| `$actorShape`         | `agent`         | Shape of actor elements                             |
 | `$actorStyle`         | `default`       | Use outlines instead of filled icons for actors     |
 | `$actorScale`         | `1`             | Size of actor icons                                 |
 | `$actorColor`         | `#1f2833`       | Color of actors icons                               |
-| `$actorShape`         | `agent`         | Shape of actor elements                             |
 | _Work Object Styling_ |
+| `$objectShape`        | `card`          | Shape of work item elements                         |
 | `$objectStyle`        | `default`       | Use outlines instead of filled icons for work items |
 | `$objectScale`        | `0.8`           | Size of work item icons                             |
 | `$objectColor`        | `#1f2833`       | Color of work item icons                            |
-| `$objectShape`        | `card`          | Shape of work item elements                         |
 | _Boundary Styling_    |
-| `$boundaryColor`      | `#1f2833`       | Color of boundary borders                           |
 | `$boundaryShape`      | `#1f2833`       | Shape of boundary containers                        |
-| _Note Styling_        |
-| `$noteColor`          | `#c5c6c7`       | Background color for notes                          |
-| `$noteBorder`         | `#1f2833`       | Border color for notes                              |
+| `$boundaryColor`      | `#1f2833`       | Color of boundary borders                           |
 | _Activity Styling_    |
 | `$activityColor`      | `#c5c6c7`       | Color of the activity arrows                        |
 | `$stepColor`          | `#66fcf1`       | Background color for step numbers                   |
 | `$stepFontSize`       | `16`            | Font size for step numbers                          |
 | `$stepFontColor`      | `$textColor`    | Font color for step numbers, same as `$textColor`   |
+| _Note Styling_        |
+| `$noteColor`          | `#c5c6c7`       | Background color for notes                          |
+| `$noteBorder`         | `#1f2833`       | Border color for notes                              |
 
 To use your own styling, you need to define the relevant styling properties before including the library.
 The following example would combine green actor icons with red text.
@@ -317,13 +317,37 @@ boundaries.
 But these shapes may be reconfigured via the global styling declarations `$actorShape`,
 `$objectShape` and `$boundaryShape`.
 
+By default, icons from the [PlantUML Standard Library - Google Material Icons](https://plantuml.com/en/stdlib#df026e38d6a98559) will be used to represent actors and work objects.
+The shape and icons used by specific actors and work objects may also be reconfigured via the following properties.
 
+| Property              | Default Value                  | Description                                     |
+|-----------------------|--------------------------------|-------------------------------------------------|
+| _Actor Styling_       |
+| `$personIcon`         | `$ma_account_outline`          | Icon used by actors of type person              |
+| `$personShape`        | `$actorShape`                  | Shape used by actors of type person             |
+| `$groupIcon`          | `$ma_account_multiple_outline` | Icon used by actors of type group               |
+| `$groupShape`         | `$actorShape`                  | Shape used by acpe group                        |
+| `$systemIcon`         | `$ma_laptop`                   | Icon used by actors of type system              |
+| `$systemShape`        | `$actorShape`                  | Shape used by acpe system                       |
+| _Work Object Styling_ |
+| `$documentIcon`       | `$ma_file_document`            | Icon used by work objects of type document      |
+| `$documentShape`      | `$objectShape`                 | Shape used by work objects of type document     |
+| `$folderIcon`         | `$ma_folder_outline`           | Icon used by work objects of type folder        |
+| `$folderShape`        | `$objectShape`                 | Shape used by work objects of type folder       |
+| `$callIcon`           | `$ma_phone`                    | Icon used by work objects of type call          |
+| `$callShape`          | `$objectShape`                 | Shape used by work objects of type call         |
+| `$emailIcon`          | `$ma_at`                       | Icon used by work objects of type email         |
+| `$emailShape`         | `$objectShape`                 | Shape used by work objects of type email        |
+| `$conversationIcon`   | `$ma_message_outline`          | Icon used by work objects of type conversation  |
+| `$conversationShape`  | `$objectShape`                 | Shape used by work objects of type conversation |
+| `$infoIcon`           | `$ma_information_outline`      | Icon used by work objects of type info          |
+| `$infoShape`          | `$objectShape`                 | Shape used by work objects of type info         |
 
 See the following test cases for more details
 
 * [Using theme `sketchy`](test/styling/theme-sketchy.puml)
 * [Using theme `sunlust`](test/styling/theme-sunlust.puml)
-* [Global style declarations](test/styling/customStyles.puml)
+* [Global style declarations](test/styling/customColors.puml)
 
 ### Extensions
 

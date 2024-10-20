@@ -1,5 +1,6 @@
 @startuml
 !$storyLayout = 'left-to-right'
+
 !include ../../domainStory.puml
 
 Person(colleague1)

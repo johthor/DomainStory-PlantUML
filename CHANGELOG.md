@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Breaking:** Switch activity direction indicator from suffix to prefix ([@johthor][gh-johthor])
 - Allow step numbers to be hidden ([#7](https://github.com/johthor/DomainStory-PlantUML/pull/7)) ([@Potherca](https://github.com/Potherca) and [@stephenwithav](https://github.com/stephenwithav))
 - Allow dynamic creation for activity targets too ([@stephenwithav](https://github.com/stephenwithav))
 - Extract advanced features into an extra README section ([@johthor][gh-johthor])

@@ -1,5 +1,6 @@
 @startuml
 !$storyLayout = 'top-to-bottom'
+
 !include ../../domainStory.puml
 
 Person(colleague1)

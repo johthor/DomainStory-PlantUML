@@ -1,5 +1,4 @@
 @startuml
-
 !theme sketchy
 
 !$storyLayout = 'top-to-bottom'

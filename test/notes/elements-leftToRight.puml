@@ -1,5 +1,6 @@
 @startuml
 !$storyLayout = 'left-to-right'
+
 !include ../../domainStory.puml
 
 Person(pete)
@@ -18,11 +19,15 @@ Conversation(argument, $note=! inverse)
 
 Person(person)
 
+Info(thing1)
+Info(thing2)
+Info(thing3)
+
 activity(1, person, reads, thing1, $note= default)
 activity(3, person, reads, thing2, $note=> right)
 activity(4, person, reads, thing3, $note=v below)
-activity(5, person, reads, thing4, $note=< left)
-activity(2, person, reads, thing5, $note=^ above)
-activity(2, person, reads, thing6, $note=! inverse)
+activity(5, person, reads, Info: thing4, $note=< left)
+activity(2, person, reads, Info: thing5, $note=^ above)
+activity(2, person, reads, Info: thing6, $note=! inverse)
 activity(6, person, reads, Document:Book, $note=> right)
 @enduml
