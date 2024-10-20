@@ -66,7 +66,7 @@ skinparam DefaultTextAlignment center
     }
 !endif
 
-!if $textColor != ""
+!if $textColor
     skinparam $actorShape##FontColor $textColor
     skinparam $objectShape##FontColor $textColor
     skinparam $boundaryShape##FontColor $textColor
@@ -74,19 +74,19 @@ skinparam DefaultTextAlignment center
     skinparam noteFontColor $textColor
 !endif
 
-!if $boundaryColor != ""
+!if $boundaryColor
     skinparam $boundaryShape##BorderColor $boundaryColor
 !endif
 
-!if $activityColor != ""
+!if $activityColor
     skinparam arrowColor $activityColor
 !endif
 
-!if $noteColor != ""
+!if $noteColor
     skinparam noteBackgroundColor $noteColor
 !endif
 
-!if $noteBorder != ""
+!if $noteBorder
     skinparam noteBorderColor $noteBorder
 !endif
 
@@ -261,13 +261,13 @@ skinparam DefaultTextAlignment center
         !$label = $name
     !endif
 
-    !if $note != ""
+    !if $note
         $shape $name
         $addBoundaryNote($name, $note)
     !endif
 
     ' output below
-    !if $backgroundColor != ""
+    !if $backgroundColor
         !$hexColor = %substr($backgroundColor, 0, 1)
         !if $hexColor == "#"
             $shape "==$label" as $name $backgroundColor
@@ -287,7 +287,7 @@ skinparam DefaultTextAlignment center
     !if $objectArr == ""
         !$objectArr = $computeArrowDirection($step)
 
-        !if $objectArr != $step
+        !if $objectArr
             ' Delete position indicator from $step
             !$step = %substr($step, 1)
         !else
@@ -310,8 +310,8 @@ skinparam DefaultTextAlignment center
     ' Handle possible second connection between object and target
     !$target = $ensureElementExists($target, $targetColor, $targetScale, $targetShape)
 
-    !if $post != "" && $post != "_"
-        !if $target != "" && $target != "_"
+    !if $post && $post != "_"
+        !if $target && $target != "_"
             $createConnection($object, $target, $targetArr) : $post
         !else
             $createConnection($object, $post, $targetArr)
@@ -418,7 +418,7 @@ skinparam DefaultTextAlignment center
         !return "<--"
     !else
         ' Signal no change
-        !return $step
+        !return %false()
     !endif
 !endfunction
 
@@ -464,15 +464,15 @@ skinparam DefaultTextAlignment center
     !$result = ""
     !$stepNum = $computeStepNumber($step)
 
-    !if $stepNum != ""
+    !if $stepNum
         !$result = "(" + $stepNum + ")"
-        !if ($stepColor != "")
+        !if $stepColor
             !$result = "<back:" + $stepColor + ">" + $result + "</back>"
         !endif
-        !if ($stepFontColor != "")
+        !if $stepFontColor
             !$result = "<color:" + $stepFontColor + ">" + $result + "</color>"
         !endif
-        !if ($stepFontSize != "")
+        !if $stepFontSize
             !$result = "<size:" + $stepFontSize + ">" + $result + "</size>"
         !endif
     !endif
