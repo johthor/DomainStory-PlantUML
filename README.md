@@ -189,7 +189,7 @@ the current step label supports multiple special value specifications to control
 | `n` _any integer_          | step label will be `(n)`                                                                                                | no             |
 | `=n` _equal sign_ prefix   | step label will be `(n)`<br/>and step counter will be set to that integer<br/>_auto-increment will continue from there_ | no             |
 
-See the following test case for more details [step labels and auto increment](test/activityStepCounter.puml)
+See the following test case for more details [step labels and auto increment](test/activities/stepCounter.puml)
 
 ```puml
 activity(_, Bob, talks about the, weather1) /' auto-increment will create step 1 '/
@@ -240,10 +240,10 @@ note right of wonderland : visit me
 
 See the following test cases for more details
 
-* [Notes on actors and work objects left-to-right orientation](test/notesOnElements-leftToRight.puml)
-* [Notes on actors and work objects top-to-bottom orientation](test/notesOnElements-topToBottom.puml)
-* [Notes on boundaries left-to-right orientation](test/notesOnBoundaries-leftToRight.puml)
-* [Notes on boundaries top-to-bottom orientation](test/notesOnBoundaries-topToBottom.puml)
+* [Notes on actors and work objects left-to-right orientation](test/notes/elements-leftToRight.puml)
+* [Notes on actors and work objects top-to-bottom orientation](test/notes/elements-topToBottom.puml)
+* [Notes on boundaries left-to-right orientation](test/notes/boundaries-leftToRight.puml)
+* [Notes on boundaries top-to-bottom orientation](test/notes/boundaries-topToBottom.puml)
 
 ### Basic Styling
 
@@ -321,9 +321,9 @@ But these shapes may be reconfigured via the global styling declarations `$actor
 
 See the following test cases for more details
 
-* [Using theme `sketchy`](test/stylingTheme-sketchy.puml)
-* [Using theme `sunlust`](test/stylingTheme-sunlust.puml)
-* [Global style declarations](test/stylingCustom.puml)
+* [Using theme `sketchy`](test/styling/theme-sketchy.puml)
+* [Using theme `sunlust`](test/styling/theme-sunlust.puml)
+* [Global style declarations](test/styling/customStyles.puml)
 
 ### Extensions
 
@@ -361,7 +361,7 @@ Boundary(System) {
 > :warning: **If you want your dynamically created objects to be placed inside a boundary.**
 > You need to declare the activity inside said boundary.
 
-See the test case for [dynamic object creation](test/activityObjectCreation.puml) for more details.
+See the test case for [dynamic object creation](test/activities/objectCreation.puml) for more details.
 
 ### Advanced Story Layout
 
@@ -381,9 +381,9 @@ the step value may also specify the direction of the activity where `X` is one o
 
 See the test cases for more details
 
-* [activity directions for left-to-right layout](test/activityDirection-leftToRight.puml)
-* [activity directions for top-to-bottom layout](test/activityDirection-topToBottom.puml)
-* [activity directions for both layouts](test/activityDirection-bothLayouts.puml)
+* [activity directions for left-to-right layout](test/activities/direction-leftToRight.puml)
+* [activity directions for top-to-bottom layout](test/activities/direction-topToBottom.puml)
+* [activity directions for both layouts](test/activities/direction-bothLayouts.puml)
 
 Furthermore, the `activity` macro also provides two optional parameters,
 which allow you to specify the arrow orientation in full details.
@@ -422,9 +422,9 @@ Bob ---[hidden]-> Alice
 
 See the test cases again for more details
 
-* [activity directions for left-to-right layout](test/activityDirection-leftToRight.puml)
-* [activity directions for top-to-bottom layout](test/activityDirection-topToBottom.puml)
-* [activity directions for both layouts](test/activityDirection-bothLayouts.puml)
+* [activity directions for left-to-right layout](test/activities/direction-leftToRight.puml)
+* [activity directions for top-to-bottom layout](test/activities/direction-topToBottom.puml)
+* [activity directions for both layouts](test/activities/direction-bothLayouts.puml)
 
 ### Advanced Styling
 

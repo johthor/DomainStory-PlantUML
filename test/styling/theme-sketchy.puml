@@ -1,12 +1,12 @@
 @startuml
 
-!theme sunlust
+!theme sketchy
 
 !$storyLayout = 'top-to-bottom'
-!$stepColor = darkgrey
-!$stepFontColor = yellow
+!$stepColor = darkorange
+!$stepFontColor = black
 
-!include ../domainStory.puml
+!include ../../domainStory.puml
 
 Boundary(Party) {
     Person(Alice)

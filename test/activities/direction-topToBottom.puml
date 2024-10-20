@@ -1,6 +1,6 @@
 @startuml
 !$storyLayout = 'top-to-bottom'
-!include ../domainStory.puml
+!include ../../domainStory.puml
 
 Person(colleague1)
 Conversation(default, default movie)

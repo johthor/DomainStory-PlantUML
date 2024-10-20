@@ -7,7 +7,7 @@
 !$stepColor = PowderBlue
 !$boundaryShape = package
 
-!include ../domainStory.puml
+!include ../../domainStory.puml
 
 Person(Alice)
 

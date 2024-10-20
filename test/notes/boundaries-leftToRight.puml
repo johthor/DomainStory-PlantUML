@@ -1,7 +1,7 @@
 @startuml
 !$storyLayout = 'left-to-right'
 
-!include ../domainStory.puml
+!include ../../domainStory.puml
 
 Boundary(office) {
     Group(people)

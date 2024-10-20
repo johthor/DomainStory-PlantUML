@@ -1,7 +1,7 @@
 @startuml
 !$storyLayout = 'top-to-bottom'
 
-!include ../domainStory.puml
+!include ../../domainStory.puml
 
 Boundary(office) {
     Group(people)
