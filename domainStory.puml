@@ -1,9 +1,6 @@
 ' Story Layout
 ' ##################################
 
-' in journeys with multiple stories the default top-to-bottom direction
-' usually gives better results
-
 !global $storyLayout ?= "left-to-right"
 
 !if $storyLayout == "left-to-right" || $storyLayout == "landscape"
@@ -19,13 +16,13 @@
 hide stereotypes
 skinparam DefaultTextAlignment center
 
-!ifdef $THEME
-    !global $textColor ?= ""
-!else
+!ifndef $THEME
     !global $textColor ?= "#0b0c10"
 
     skinparam Shadowing false
     skinparam Padding 5
+!else
+    !global $textColor ?= ""
 !endif
 
 ' Style helper
@@ -42,20 +39,23 @@ skinparam DefaultTextAlignment center
 !global $actorStyle ?= "default"
 !global $actorScale ?= 1
 
-!ifdef $THEME
-    !global $actorColor ?= ""
+!ifndef $THEME
+    ' define default style for actor elements
+    !global $actorFontColor ?= $textColor
+    !global $actorIconColor ?= "#1f2833"
+    !global $actorBackgroundColor ?= "none"
+    !global $actorBorderColor ?= "none"
 !else
-    !global $actorColor ?= "#1f2833"
+    !global $actorIconColor ?= ""
+    !global $actorFontColor ?= ""
+    !global $actorBackgroundColor ?= ""
+    !global $actorBorderColor ?= ""
 !endif
 
 skinparam $actorShape {
-    $setProperty(FontColor, $textColor)
-
-    ' define default style for actor elements
-    !ifndef $THEME
-        BackgroundColor none
-        BorderColor none
-    !endif
+    $setProperty(FontColor, $actorFontColor)
+    $setProperty(BackgroundColor, $actorBackgroundColor )
+    $setProperty(BorderColor, $actorBorderColor )
 }
 
 ' Work Object Styles
@@ -65,10 +65,10 @@ skinparam $actorShape {
 !global $objectStyle ?= "default"
 !global $objectScale ?= 0.8
 
-!ifdef $THEME
-    !global $objectColor ?= ""
-!else
+!ifndef $THEME
     !global $objectColor ?= "#1f2833"
+!else
+    !global $objectColor ?= ""
 !endif
 
 skinparam $objectShape {
@@ -86,10 +86,10 @@ skinparam $objectShape {
 
 !global $boundaryShape ?= "rectangle"
 
-!ifdef $THEME
-    !global $boundaryColor ?= ""
-!else
+!ifndef $THEME
     !global $boundaryColor ?= "#1f2833"
+!else
+    !global $boundaryColor ?= ""
 !endif
 
 skinparam $boundaryShape {
@@ -107,16 +107,16 @@ skinparam $boundaryShape {
 ' Activity Styles
 ' ==================================
 
-!ifdef $THEME
-    !global $activityColor ?= ""
-    !global $stepColor ?= ""
-    !global $stepFontColor ?= $textColor
-    !global $stepFontSize ?= ""
-!else
+!ifndef $THEME
     !global $activityColor ?= "#c5c6c7"
     !global $stepColor ?= "#66fcf1"
     !global $stepFontColor ?= $textColor
     !global $stepFontSize ?= 16
+!else
+    !global $activityColor ?= ""
+    !global $stepColor ?= ""
+    !global $stepFontColor ?= $textColor
+    !global $stepFontSize ?= ""
 !endif
 
 skinparam arrow {
@@ -127,12 +127,12 @@ skinparam arrow {
 ' Note Styles
 ' ==================================
 
-!ifdef $THEME
-    !global $noteColor ?= ""
-    !global $noteBorder ?= ""
-!else
+!ifndef $THEME
     !global $noteColor ?= "#c5c6c7"
     !global $noteBorder ?= "#1f2833"
+!else
+    !global $noteColor ?= ""
+    !global $noteBorder ?= ""
 !endif
 
 skinparam note {
@@ -150,16 +150,16 @@ skinparam note {
 ' Actors
 ' ##################################
 
-!unquoted procedure Actor($kind, $icon, $name, $label = $name, $note = "", $color = $actorColor, $scale = $actorScale, $shape = $actorShape)
+!unquoted procedure Actor($kind, $icon, $name, $label = $name, $note = "", $color = $actorIconColor, $scale = $actorScale, $shape = $actorShape)
     !if $label == ""
         !$label = $name
     !endif
 
     ' output below
-    !if $color == ""
-        $shape "<$icon{scale=$scale}>\r $label" as $name <<$kind>>
+    !if $color
+        $shape "<$icon{scale=$scale,color=$color}>\r $label" as $name <<$kind>>
     !else
-        $shape "<color:$color><$icon{scale=$scale}></color>\r $label" as $name <<$kind>>
+        $shape "<$icon{scale=$scale}>\r $label" as $name <<$kind>>
     !endif
 
     $createElementNote($name, $note)
@@ -168,6 +168,7 @@ skinparam note {
 ' Person Actor
 ' ==================================
 
+!global $personColor ?= $actorShape
 !global $personShape ?= $actorShape
 
 !if %not(%variable_exists("$personIcon"))
@@ -180,7 +181,7 @@ skinparam note {
     !endif
 !endif
 
-!unquoted procedure Person($name, $label = "", $note = "", $color = $actorColor, $scale = $actorScale, $shape = $personShape)
+!unquoted procedure Person($name, $label = "", $note = "", $color = $actorIconColor, $scale = $actorScale, $shape = $personShape)
     Actor("Person", "$personIcon", $name, $label, $note, $color, $scale, $shape)
 !endprocedure
 
@@ -199,7 +200,7 @@ skinparam note {
     !endif
 !endif
 
-!unquoted procedure Group($name, $label = "", $note = "", $color = $actorColor, $scale = $actorScale, $shape = $groupShape)
+!unquoted procedure Group($name, $label = "", $note = "", $color = $actorIconColor, $scale = $actorScale, $shape = $groupShape)
     Actor("Group", "$groupIcon", $name, $label, $note, $color, $scale, $shape)
 !endprocedure
 
@@ -213,7 +214,7 @@ skinparam note {
     !global $systemIcon = "$ma_laptop"
 !endif
 
-!unquoted procedure System($name, $label = "", $note = "", $color = $actorColor, $scale = $actorScale, $shape = $systemShape)
+!unquoted procedure System($name, $label = "", $note = "", $color = $actorIconColor, $scale = $actorScale, $shape = $systemShape)
     Actor("System", "$systemIcon", $name, $label, $note, $color, $scale, $shape)
 !endprocedure
 
@@ -226,10 +227,10 @@ skinparam note {
     !endif
 
     ' output below
-    !if $color == ""
-        $shape "<$icon{scale=$scale}>\r $label" as $name <<$kind>>
+    !if $color
+        $shape "<$icon{scale=$scale,color=$color}>\r $label" as $name <<$kind>>
     !else
-        $shape "<color:$color><$icon{scale=$scale}></color>\r $label" as $name <<$kind>>
+        $shape "<$icon{scale=$scale}>\r $label" as $name <<$kind>>
     !endif
 
     $createElementNote($name, $note)
@@ -424,7 +425,7 @@ skinparam note {
             note bottom of $reference : $noteText
         !elseif $notePosition == "<"
             note left of $reference : $noteText
-        !elseif $notePosition == "!"
+        !elseif $notePosition == "~"
             !if $storyLayout == "left-to-right"
                 note left of $reference : $noteText
             !else
@@ -461,7 +462,7 @@ skinparam note {
             !endif
         !elseif $notePosition == "<"
             note left of $reference : $noteText
-        !elseif $notePosition == "!"
+        !elseif $notePosition == "~"
             !if $storyLayout == "left-to-right"
                 note left of $reference : $noteText
             !else
@@ -491,7 +492,7 @@ skinparam note {
         !$elementLabel = %substr($element, $separatorPosition + 1)
         !$elementName = $elementKind + $workObjectCounter
 
-        '! Actor($kind, $icon, $name, $label, $note, $color, $scale, $shape)
+        'Element($kind, $icon, $name, $label, $note, $color, $scale, $shape)
         %invoke_procedure($elementKind, $elementName, $elementLabel, $note, $color, $scale, $shape)
 
         !return $elementName
@@ -547,7 +548,7 @@ skinparam note {
         !else
             !return "-->"
         !endif
-    !elseif  $activityDirection == "!"
+    !elseif  $activityDirection == "~"
         !return "<--"
     !else
         ' Signal no direction found
