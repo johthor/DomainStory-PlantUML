@@ -12,7 +12,14 @@ run::convertAssets() {
 
 # Extract Table of Contents from Readme
 run::extractTOC() {
-  grep -e ^\## README.md | grep -v 'Table of Contents'
+  grep -e '^##' README.md
 }
 
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "run::$@"
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]
+then
+  cmd="$1"
+  shift
+
+  echo "Running task run::$cmd"
+  "run::$cmd" "$@"
+fi
