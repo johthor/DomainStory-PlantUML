@@ -5,18 +5,18 @@
 
 ' Actors
 !include <material/store>
-!unquoted procedure Merchant($name, $label = "", $note = "", $color = $actorColor, $scale = $actorScale, $shape = $actorShape)
-    Actor("Merchant", "$ma_store", $name, $label, $note, $color, $scale, $shape)
+!unquoted procedure Merchant($name, $label = "", $note = "", $shape = $ActorShape, $scale = $ActorIconScale, $color = $ActorIconColor, $background = $ActorBackgroundColor)
+    Actor("Merchant", "$ma_store", $name, $label, $note, $shape, $scale, $color, $background)
 !endprocedure
 
 !include <material/crown>
-!unquoted procedure Customer($name, $label = "", $note = "", $color = $actorColor, $scale = $actorScale, $shape = $actorShape)
-    Actor("Customer", "$ma_crown", $name, $label, $note, $color, $scale, $shape)
+!unquoted procedure Customer($name, $label = "", $note = "", $shape = $ActorShape, $scale = $ActorIconScale, $color = $ActorIconColor, $background = $ActorBackgroundColor)
+    Actor("Customer", "$ma_crown", $name, $label, $note, $shape, $scale, $color, $background)
 !endprocedure
 
 !include <material/settings_box>
-!unquoted procedure Process($name, $label = "", $note = "", $color = $actorColor, $scale = $actorScale, $shape = $actorShape)
-    Actor("Process", "$ma_settings_box", $name, $label, $note, $color, $scale, $shape)
+!unquoted procedure Process($name, $label = "", $note = "", $shape = $ActorShape, $scale = $ActorIconScale, $color = $ActorIconColor, $background = $ActorBackgroundColor)
+    Actor("Process", "$ma_settings_box", $name, $label, $note, $shape, $scale, $color, $background)
 !endprocedure
 
 Boundary(actors) {

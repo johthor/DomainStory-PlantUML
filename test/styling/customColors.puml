@@ -1,26 +1,40 @@
 @startuml
-!$storyLayout = 'landscape'
+!$DefaultFontColor = Navy
+!$DefaultBackgroundColor = "#EEA"
+!$DefaultBorderColor = green
+!$DefaultBorderThickness = 3
 
-!$textColor = Navy
-!$actorColor = RoyalBlue
-!$objectColor = RoyalBlue
-!$stepColor = PowderBlue
+!$ActorIconColor = LightBlue
+!$ActorFontColor = Orange
+!$ActorFontStyle = bold
+!$ActorBackgroundColor = "#777"
+!$ActorBorderColor = yellow
+!$ActorBorderThickness = 3
+
+!$BoundaryFontColor = limegreen
+
+!$EmailIconColor = grey
+
+!$StepFontColor = PowderBlue
+!$StepBackgroundColor = Darkgrey
 
 !include ../../domainStory.puml
 
 Person(Alice)
 
+System(FOo)
+
 Boundary(Home) {
     Email(spam)
 }
 
-Person(Bob, $scale=1.7)
-Boundary(Party, $backgroundColor=yellow/red) {
+Person(Bob, $color=white)
+Boundary(Party, $background=yellow/red) {
     Conversation(weather, $color=brown)
 }
 
-Boundary(Office, $backgroundColor=#aee) {
-    Email(proposal, $color=#f30, $scale = 2.3)
+Boundary(Office, $background=#aee) {
+    Email(proposal, $scale=3, $color=#f03000)
 }
 
 activity(_, Alice, reads the, spam, _, _, ->)

@@ -133,7 +133,7 @@ Here the following symbols are used on multiple occasions as prefixes.
 * `>` _greater-than symbol_: the new element will be positioned to the right of its reference
 * `v` _vee symbol_: the new element will be positioned below its reference
 * `<` _less-than symbol_: the new element will be positioned to the left of its reference
-* `!` _exclamation mark symbol_: the new element will be positioned against the default flow direction
+* `~` _tilde symbol_: the new element will be positioned against the default flow direction
 
 The positioning indicator will take the normal story flow defined via `$storyLayout` into account.
 
@@ -143,15 +143,16 @@ Some of the features that will be used right away.
 
 ### Basic Story Layout
 
-For single story diagrams, a landscape orientation e.g. `left-to-right` is preferred
-and is therefore the default orientation.
-If you combine multiple stories into a domain journey,
-a portrait orientation usually gives better results.
-The orientation can be configured at the top of your file via
+The basic orientation of your story may be configured at the top of your file via
 
 ```
 !$storyLayout = "landscape | left-to-right | top-to-bottom | portrait"
 ```
+
+For single story diagrams, a landscape orientation e.g. `left-to-right` is preferred
+and is therefore the default orientation.
+If you combine multiple stories into a domain journey,
+a portrait orientation might produce better results.
 
 > :information_source: Wrangling diagram elements to an exact position
 > or layout is not what PlantUML is for.
@@ -163,7 +164,7 @@ Group elements together via `together { elements... }`.
 
 The `activity` macro provides another feature for better layout control.
 Where the step value can be combined with a [positioning indicator](#positioning-indication) as a prefix
-(`^`, `>`, `v`, `<`).
+(`^`, `>`, `v`, `<`, `~`).
 
 The following activity will be directed to the left of Alice.
 
@@ -196,12 +197,12 @@ activity(_, Bob, talks about the, weather1) /' auto-increment will create step 1
 activity(_, Bob, talks about the, weather2) /' auto-increment will create step 2 '/
 activity(|, Alice, talks about the, weather2) /' no increment will create step 2 '/
 ' will not create step, nor auto-increment, and will not display the step label
-activity(.<, Bob, also talks about the, weather3)
+activity(<., Bob, also talks about the, weather3)
 activity(42, Alice, asks about all the, talking1, again, Bob) /' will create step 42 '/
 activity(|, Bob, talks about the, weather4) /' no increment will still create step 2 '/
 ' will create step 10 and set the step counter to 10
 activity(=10, Alice, talks about, talking2, Bob)
-activity(_<, Bob, is embarrassed about, talking3) /' auto-increment will create step 11 '/
+activity(<_, Bob, is embarrassed about, talking3) /' auto-increment will create step 11 '/
 ' will not create step, nor auto-increment, and will not display the step label
 activity( , Alice, writes, mail, to, Bob)
 ```
@@ -223,7 +224,7 @@ When adding a note on an activity,
 the note will be added to the object of that activity.
 
 Furthermore, the first symbol of the note text may act as a [positioning indicator](#positioning-indication)
-where `^`, `>`, `v` or `<` controls the direction in which it is placed from its element of reference.
+where `^`, `>`, `v`, `<` or `~` controls the direction in which it is placed from its element of reference.
 Otherwise, it will be placed in the default direction from its element.
 
 Notes may also be placed via the basic PlantUML mechanism.
@@ -267,15 +268,15 @@ Make sure that your values are compatible with the chosen theme.
 | `$storyLayout`        | `left-to-right` | Basic direction of the activity arrows              |
 | `$textColor`          | `#0b0c10`       | Color of all text                                   |
 | _Actor Styling_       |
-| `$actorShape`         | `agent`         | Shape of actor elements                             |
 | `$actorStyle`         | `default`       | Use outlines instead of filled icons for actors     |
+| `$actorShape`         | `agent`         | Shape of actor elements                             |
+| `$actorIconColor`         | `#1f2833`       | Color of actors icons                               |
 | `$actorScale`         | `1`             | Size of actor icons                                 |
-| `$actorColor`         | `#1f2833`       | Color of actors icons                               |
 | _Work Object Styling_ |
-| `$objectShape`        | `card`          | Shape of work item elements                         |
 | `$objectStyle`        | `default`       | Use outlines instead of filled icons for work items |
-| `$objectScale`        | `0.8`           | Size of work item icons                             |
+| `$objectShape`        | `card`          | Shape of work item elements                         |
 | `$objectColor`        | `#1f2833`       | Color of work item icons                            |
+| `$objectScale`        | `0.8`           | Size of work item icons                             |
 | _Boundary Styling_    |
 | `$boundaryShape`      | `#1f2833`       | Shape of boundary containers                        |
 | `$boundaryColor`      | `#1f2833`       | Color of boundary borders                           |
@@ -296,7 +297,7 @@ The following example would combine green actor icons with red text.
 ' !theme <theme name> /' optional '/
 
 !$textColor = "red"
-!$actorColor = "green"
+!$actorIconColor = "green"
 
 !include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 
@@ -401,13 +402,13 @@ the step value may also specify the direction of the activity where `X` is one o
 | `<X` _less-than sign_ prefix   | direction of activity will be to the left                        | depends on X   |
 | `vX` _vee_ prefix              | direction of activity will be downwards                          | depends on X   |
 | `^X` _caret_ prefix            | direction of activity will be upwards                            | depends on X   |
-| `!X` _exclamation mark_ prefix | direction of activity will be against the default flow direction | depends on X   |
+| `~X` _tilde_ prefix            | direction of activity will be against the default flow direction | depends on X   |
 
 See the test cases for more details
 
 * [activity directions for left-to-right layout](test/activities/direction-leftToRight.puml)
 * [activity directions for top-to-bottom layout](test/activities/direction-topToBottom.puml)
-* [activity directions for both layouts](test/activities/direction-bothLayouts.puml)
+* [activity directions for both layouts](test/activities/direction-optionalParameters.puml)
 
 Furthermore, the `activity` macro also provides two optional parameters,
 which allow you to specify the arrow orientation in full details.
@@ -448,7 +449,7 @@ See the test cases again for more details
 
 * [activity directions for left-to-right layout](test/activities/direction-leftToRight.puml)
 * [activity directions for top-to-bottom layout](test/activities/direction-topToBottom.puml)
-* [activity directions for both layouts](test/activities/direction-bothLayouts.puml)
+* [activity directions for both layouts](test/activities/direction-optionalParameters.puml)
 
 ### Advanced Styling
 

@@ -4,8 +4,9 @@
 '!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 
 !include <material/bus>
-!unquoted procedure Bus($name, $label = "", $color = "", $scale = "")
-    Object("Bus", "$ma_bus", $name, $label, $color, $scale)
+
+!unquoted procedure Bus($name, $label = "", $note = "", $shape = $ObjectShape, $scale = $ObjectIconScale, $color = $ObjectIconColor, $background = $ObjectBackgroundColor)
+    Object("Bus", "$ma_bus", $name, $label, $note, $shape, $scale, $color, $background)
 !endprocedure
 
 Person(agent, gate agent)

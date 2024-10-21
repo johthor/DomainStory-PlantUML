@@ -1,145 +1,233 @@
+!global $LOG_LEVEL = debug
+
+' Debugging Utilities
+' ##################################
+
+!procedure $debug($message)
+    !if $LOG_LEVEL == "debug"
+        !log [DEBUG] $message
+    !endif
+!endprocedure
+
 ' Story Layout
 ' ##################################
 
-' in journeys with multiple stories the default top-to-bottom direction
-' usually gives better results
+!global $StoryLayout ?= "left-to-right"
 
-!global $storyLayout ?= "left-to-right"
-
-!if $storyLayout == "left-to-right" || $storyLayout == "landscape"
-    !global $storyLayout = "left-to-right"
+!if $StoryLayout == "left-to-right" || $StoryLayout == "landscape"
+    !global $StoryLayout = "left-to-right"
     left to right direction
 !else
     top to bottom direction
 !endif
 
+' Style Utilities
+' ##################################
+
+!function $setStyleProperty($property, $context, $value, $tag = "", $themeable = %true())
+    !$variableName = "$" + $context + $tag + $property
+    !if %variable_exists($variableName)
+        !return %get_variable_value($variableName)
+    !else
+        !if $themeable
+            !ifdef $THEME
+                !$value = ""
+            !endif
+        !endif
+
+        !if $value
+            $debug("declaring " + $variableName + " with value [" + $value + "]")
+            %set_variable_value($variableName, $value)
+            !return $value
+        !else
+            $debug("declaring " + $variableName + " with empty value")
+            %set_variable_value($variableName, "")
+            !return ""
+        !endif
+    !endif
+!endfunction
+
+!procedure $activateStyleProperty($property, $context, $value = "", $kind = "", $tag = "")
+    !if $kind
+        !if $tag
+            !$stereotype = "<<" + $kind + $tag + ">>"
+        !else
+            !$stereotype = "<<" + $kind + ">>"
+        !endif
+    !else
+        !$stereotype = ""
+    !endif
+
+    !$shape = %get_variable_value("$" + $context + "Shape")
+
+    !if $value
+        !if $shape
+            skinparam $shape##$property##$stereotype $value
+        !else
+            skinparam $context##$property##$stereotype $value
+        !endif
+    !endif
+!endprocedure
+
+!procedure $declareStyleProperty($property, $context, $value = "", $kind = "", $tag = "", $skinParam = %true(), $themeable = %true())
+    !if $kind
+        !$propertyValue = $setStyleProperty($property, $kind, $value, $tag, $themeable)
+    !else
+        !$propertyValue = $setStyleProperty($property, $context, $value, $tag, $themeable)
+    !endif
+    !if $skinParam
+        $activateStyleProperty($property, $context, $propertyValue, $kind, $tag)
+    !endif
+!endprocedure
+
+!procedure $extendStyleProperty($property, $context, $kind, $skinParam = %true(), $themeable = %true())
+    !$contextValue = %get_variable_value("$" + $context + $property)
+    $declareStyleProperty($property, $context, $contextValue, $kind, "", $skinParam, $themeable)
+!endprocedure
+
+!procedure $extendStyleDeclarations($context, $kind, $icon)
+    $extendStyleProperty(Shape, $context, $kind, $skinParam = %false(), $themeable = %false())
+    $extendStyleProperty(IconScale, $context, $kind, $skinParam = %false(), $themeable = %false())
+    $extendStyleProperty(IconColor, $context, $kind, $skinParam = %false())
+
+    !if %not(%variable_exists("$" + $kind + "IconName"))
+        !include <material/$icon>
+        %set_variable_value("$" + $kind + "IconName", "$ma_" + $icon)
+    !endif
+
+    $extendStyleProperty(FontColor, $context, $kind)
+    $extendStyleProperty(FontName, $context, $kind)
+    $extendStyleProperty(FontSize, $context, $kind)
+    $extendStyleProperty(FontStyle, $context, $kind)
+    $extendStyleProperty(TextAlignment, $context, $kind)
+
+    $extendStyleProperty(BackgroundColor, $context, $kind)
+    $extendStyleProperty(BorderStyle, $context, $kind)
+    $extendStyleProperty(BorderColor, $context, $kind)
+    $extendStyleProperty(BorderThickness, $context, $kind)
+    $extendStyleProperty(RoundCorner, $context, $kind)
+    $extendStyleProperty(Shadowing, $context, $kind)
+!endprocedure
+
 ' Global Style declarations
 ' ##################################
 
+$declareStyleProperty(FontColor, Default, "#0b0c10")
+$declareStyleProperty(FontName, Default)
+$declareStyleProperty(FontSize, Default)
+$declareStyleProperty(FontStyle, Default)
+$declareStyleProperty(TextAlignment, Default, center)
+
+$declareStyleProperty(BackgroundColor, Default, "none")
+$declareStyleProperty(BorderStyle, Default, "none")
+$declareStyleProperty(BorderColor, Default, "none")
+$declareStyleProperty(BorderThickness, Default, 0)
+$declareStyleProperty(RoundCorner, Default, 0)
+$declareStyleProperty(Shadowing, Default, false, $skinParam = %false())
+
 hide stereotypes
-skinparam DefaultTextAlignment center
-
-!ifdef $THEME
-    !global $textColor ?= ""
-!else
-    !global $textColor ?= "#0b0c10"
-
-    skinparam Shadowing false
-    skinparam Padding 5
+!ifndef $THEME
+    skinparam Shadowing $DefaultShadowing
 !endif
-
-' Style helper
-!procedure $setProperty($property, $value)
-    !if $value
-        $property $value
-    !endif
-!endprocedure
 
 ' Actor Styles
 ' ==================================
 
-!global $actorShape ?= "agent"
-!global $actorStyle ?= "default"
-!global $actorScale ?= 1
+$declareStyleProperty(Shape, Actor, Agent, $skinParam = %false(), $themeable = %false())
 
-!ifdef $THEME
-    !global $actorColor ?= ""
-!else
-    !global $actorColor ?= "#1f2833"
-!endif
+$declareStyleProperty(IconStyle, Actor, "default", $skinParam = %false(), $themeable = %false())
+$declareStyleProperty(IconScale, Actor, 1, $skinParam = %false(), $themeable = %false())
+$declareStyleProperty(IconColor, Actor, "#1f2833", $skinParam = %false())
 
-skinparam $actorShape {
-    $setProperty(FontColor, $textColor)
+$declareStyleProperty(FontColor, Actor, $DefaultFontColor)
+$declareStyleProperty(FontName, Actor, $DefaultFontName)
+$declareStyleProperty(FontSize, Actor, $DefaultFontSize)
+$declareStyleProperty(FontStyle, Actor, $DefaultFontStyle)
+$declareStyleProperty(TextAlignment, Actor, $DefaultTextAlignment)
 
-    ' define default style for actor elements
-    !ifndef $THEME
-        BackgroundColor none
-        BorderColor none
-    !endif
-}
+$declareStyleProperty(BackgroundColor, Actor, $DefaultBackgroundColor)
+$declareStyleProperty(BorderStyle, Actor, $DefaultBorderStyle)
+$declareStyleProperty(BorderColor, Actor, $DefaultBorderColor)
+$declareStyleProperty(BorderThickness, Actor, $DefaultBorderThickness)
+$declareStyleProperty(RoundCorner, Actor, $DefaultRoundCorner)
+$declareStyleProperty(Shadowing, Actor, $DefaultShadowing)
 
 ' Work Object Styles
 ' ==================================
 
-!global $objectShape ?= "card"
-!global $objectStyle ?= "default"
-!global $objectScale ?= 0.8
+$declareStyleProperty(Shape, Object, Card, $skinParam = %false(), $themeable = %false())
 
-!ifdef $THEME
-    !global $objectColor ?= ""
-!else
-    !global $objectColor ?= "#1f2833"
-!endif
+$declareStyleProperty(IconStyle, Object, "default", $skinParam = %false(), $themeable = %false())
+$declareStyleProperty(IconScale, Object, 0.8, $skinParam = %false(), $themeable = %false())
+$declareStyleProperty(IconColor, Object, "#1f2833", $skinParam = %false())
 
-skinparam $objectShape {
-    $setProperty(FontColor, $textColor)
+$declareStyleProperty(FontColor, Object, $DefaultFontColor)
+$declareStyleProperty(FontName, Object, $DefaultFontName)
+$declareStyleProperty(FontSize, Object, $DefaultFontSize)
+$declareStyleProperty(FontStyle, Object, $DefaultFontStyle)
+$declareStyleProperty(TextAlignment, Object, $DefaultTextAlignment)
 
-    ' define default style for work object elements
-    !ifndef $THEME
-        BackgroundColor none
-        BorderColor none
-    !endif
-}
+$declareStyleProperty(BackgroundColor, Object, $DefaultBackgroundColor)
+$declareStyleProperty(BorderStyle, Object, $DefaultBorderStyle)
+$declareStyleProperty(BorderColor, Object, $DefaultBorderColor)
+$declareStyleProperty(BorderThickness, Object, $DefaultBorderThickness)
+$declareStyleProperty(RoundCorner, Object, $DefaultRoundCorner)
+$declareStyleProperty(Shadowing, Object, $DefaultShadowing)
 
 ' Boundary Styles
 ' ==================================
 
-!global $boundaryShape ?= "rectangle"
+$declareStyleProperty(Shape, Boundary, Rectangle, $skinParam = %false(), $themeable = %false())
 
-!ifdef $THEME
-    !global $boundaryColor ?= ""
-!else
-    !global $boundaryColor ?= "#1f2833"
-!endif
+$declareStyleProperty(FontColor, Boundary, $DefaultFontColor)
+$declareStyleProperty(FontName, Boundary, $DefaultFontName)
+$declareStyleProperty(FontSize, Boundary, $DefaultFontSize)
+$declareStyleProperty(FontStyle, Boundary, $DefaultFontStyle)
+$declareStyleProperty(TextAlignment, Boundary, $DefaultTextAlignment)
 
-skinparam $boundaryShape {
-    $setProperty(FontColor, $textColor)
-    $setProperty(BorderColor, $boundaryColor)
-
-    ' define default style for boundary containers
-    !ifndef $THEME
-        BackgroundColor none
-        BorderStyle dashed
-        RoundCorner 15
-    !endif
-}
-
-' Activity Styles
-' ==================================
-
-!ifdef $THEME
-    !global $activityColor ?= ""
-    !global $stepColor ?= ""
-    !global $stepFontColor ?= $textColor
-    !global $stepFontSize ?= ""
-!else
-    !global $activityColor ?= "#c5c6c7"
-    !global $stepColor ?= "#66fcf1"
-    !global $stepFontColor ?= $textColor
-    !global $stepFontSize ?= 16
-!endif
-
-skinparam arrow {
-    $setProperty(Color, $activityColor)
-    $setProperty(FontColor, $textColor)
-}
+$declareStyleProperty(BackgroundColor, Boundary, $DefaultBackgroundColor)
+$declareStyleProperty(BorderStyle, Boundary, "dashed")
+$declareStyleProperty(BorderColor, Boundary, "#1f2833")
+$declareStyleProperty(BorderThickness, Boundary, $DefaultBorderThickness)
+$declareStyleProperty(RoundCorner, Boundary, 15)
+$declareStyleProperty(Shadowing, Boundary, $DefaultShadowing)
 
 ' Note Styles
 ' ==================================
 
-!ifdef $THEME
-    !global $noteColor ?= ""
-    !global $noteBorder ?= ""
-!else
-    !global $noteColor ?= "#c5c6c7"
-    !global $noteBorder ?= "#1f2833"
-!endif
+$declareStyleProperty(FontColor, Note, $DefaultFontColor)
+$declareStyleProperty(FontName, Note, $DefaultFontName)
+$declareStyleProperty(FontSize, Note, $DefaultFontSize)
+$declareStyleProperty(FontStyle, Note, $DefaultFontStyle)
+$declareStyleProperty(TextAlignment, Note, left)
 
-skinparam note {
-    $setProperty(FontColor, $textColor)
-    $setProperty(BackgroundColor, $noteColor)
-    $setProperty(BorderColor, $noteBorder)
-}
+$declareStyleProperty(BackgroundColor, Note, "#c5c6c7")
+$declareStyleProperty(BorderStyle, Note, $DefaultBorderStyle)
+$declareStyleProperty(BorderColor, Note, "#1f2833")
+$declareStyleProperty(BorderThickness, Note, $DefaultBorderThickness)
+$declareStyleProperty(RoundCorner, Note, $DefaultRoundCorner)
+$declareStyleProperty(Shadowing, Note, $DefaultShadowing)
+
+' Activity Styles
+' ==================================
+
+$declareStyleProperty(Shape, Activity, Arrow, $skinParam = %false(), $themeable = %false())
+
+$declareStyleProperty(FontColor, Activity, $DefaultFontColor)
+$declareStyleProperty(FontName, Activity, $DefaultFontName)
+$declareStyleProperty(FontSize, Activity, $DefaultFontSize)
+$declareStyleProperty(FontStyle, Activity, $DefaultFontStyle)
+$declareStyleProperty(MessageAlignment, Activity, left)
+
+$declareStyleProperty(Color, Activity, "#c5c6c7")
+
+' Step Label Styles
+' ----------------------------------
+
+$declareStyleProperty(FontColor, Step, $DefaultFontColor, $skinParam = %false())
+$declareStyleProperty(FontSize, Step, 16, $skinParam = %false())
+
+$declareStyleProperty(BackgroundColor, Step, "#66fcf1", $skinParam = %false())
 
 ' Mutable state
 ' ##################################
@@ -150,16 +238,18 @@ skinparam note {
 ' Actors
 ' ##################################
 
-!unquoted procedure Actor($kind, $icon, $name, $label = $name, $note = "", $color = $actorColor, $scale = $actorScale, $shape = $actorShape)
+!unquoted procedure Actor($kind, $iconName, $name, $label = "", $note = "", $shape = $ActorShape, $scale = $ActorIconScale, $color = $ActorIconColor, $background = "")
+    $debug($kind + " : " + $iconName + " : " + $name + " : " + $label + " : " + $note + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
+
     !if $label == ""
         !$label = $name
     !endif
 
     ' output below
-    !if $color == ""
-        $shape "<$icon{scale=$scale}>\r $label" as $name <<$kind>>
+    !if $color
+        $shape "<$iconName{scale=$scale,color=$color}>\r $label" as $name <<$kind>>
     !else
-        $shape "<color:$color><$icon{scale=$scale}></color>\r $label" as $name <<$kind>>
+        $shape "<$iconName{scale=$scale}>\r $label" as $name <<$kind>>
     !endif
 
     $createElementNote($name, $note)
@@ -168,68 +258,87 @@ skinparam note {
 ' Person Actor
 ' ==================================
 
-!global $personShape ?= $actorShape
+!global $PersonIconStyle ?= "default"
 
-!if %not(%variable_exists("$personIcon"))
-    !if $actorStyle == "default"
-        !include <material/account_outline>
-        !global $personIcon = "$ma_account_outline"
-    !else
-        !include <material/account>
-        !global $personIcon = "$ma_account"
-    !endif
+!if $PersonIconStyle == "default"
+    $extendStyleDeclarations("Actor", "Person", "account_outline")
+!else
+    $extendStyleDeclarations("Actor", "Person", "account")
 !endif
 
-!unquoted procedure Person($name, $label = "", $note = "", $color = $actorColor, $scale = $actorScale, $shape = $personShape)
-    Actor("Person", "$personIcon", $name, $label, $note, $color, $scale, $shape)
+!unquoted procedure Person($name, $label = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $shape == ""
+        !$shape = $PersonShape
+    !endif
+    !if $scale == ""
+        !$scale = $PersonIconScale
+    !endif
+    !if $color == ""
+        !$color = $PersonIconColor
+    !endif
+
+    Actor("Person", $PersonIconName, $name, $label, $note, $shape, $scale, $color, $background)
 !endprocedure
 
 ' Group Actor
 ' ==================================
 
-!global $groupShape ?= $actorShape
+!global $GroupIconStyle ?= "default"
 
-!if %not(%variable_exists("$groupIcon"))
-    !if $actorStyle == "default"
-        !include <material/account_multiple_outline>
-        !global $groupIcon = "$ma_account_multiple_outline"
-    !else
-        !include <material/account_multiple>
-        !global $groupIcon = "$ma_account_multiple"
-    !endif
+!if $GroupIconStyle == "default"
+    $extendStyleDeclarations("Actor", "Group", "account_multiple_outline")
+!else
+    $extendStyleDeclarations("Actor", "Group", "account_multiple")
 !endif
 
-!unquoted procedure Group($name, $label = "", $note = "", $color = $actorColor, $scale = $actorScale, $shape = $groupShape)
-    Actor("Group", "$groupIcon", $name, $label, $note, $color, $scale, $shape)
+!unquoted procedure Group($name, $label = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $shape == ""
+        !$shape = $PersonShape
+    !endif
+    !if $scale == ""
+        !$scale = $PersonIconScale
+    !endif
+    !if $color == ""
+        !$color = $PersonIconColor
+    !endif
+
+    Actor("Group", $GroupIconName, $name, $label, $note, $shape, $scale, $color, $background)
 !endprocedure
 
 ' System Actor
 ' ==================================
 
-!global $systemShape ?= $actorShape
+$extendStyleDeclarations("Actor", "System", "laptop")
 
-!if %not(%variable_exists("$systemIcon"))
-    !include <material/laptop>
-    !global $systemIcon = "$ma_laptop"
-!endif
+!unquoted procedure System($name, $label = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $shape == ""
+        !$shape = $PersonShape
+    !endif
+    !if $scale == ""
+        !$scale = $PersonIconScale
+    !endif
+    !if $color == ""
+        !$color = $PersonIconColor
+    !endif
 
-!unquoted procedure System($name, $label = "", $note = "", $color = $actorColor, $scale = $actorScale, $shape = $systemShape)
-    Actor("System", "$systemIcon", $name, $label, $note, $color, $scale, $shape)
+    Actor("System", $SystemIconName, $name, $label, $note, $shape, $scale, $color, $background)
 !endprocedure
 
-' Work objects
+' Work Objects
 ' ##################################
 
-!unquoted procedure Object($kind, $icon, $name, $label = "", $note = "", $color = $objectColor, $scale = $objectScale, $shape = $objectShape)
+!unquoted procedure Object($kind, $iconName, $name, $label = "", $note = "", $shape = $ObjectShape, $scale = $ObjectScale, $color = $ObjectColor, $background = "")
+    $debug($kind + " : " + $iconName + " : " + $name + " : " + $label + " : " + $note + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
+
     !if $label == ""
         !$label = $name
     !endif
 
     ' output below
-    !if $color == ""
-        $shape "<$icon{scale=$scale}>\r $label" as $name <<$kind>>
+    !if $color
+        $shape "<$iconName{scale=$scale,color=$color}>\r $label" as $name <<$kind>>
     !else
-        $shape "<color:$color><$icon{scale=$scale}></color>\r $label" as $name <<$kind>>
+        $shape "<$iconName{scale=$scale}>\r $label" as $name <<$kind>>
     !endif
 
     $createElementNote($name, $note)
@@ -238,116 +347,151 @@ skinparam note {
 ' Document Work Object
 ' ==================================
 
-!global $documentShape ?= $objectShape
+!global $DocumentIconStyle ?= "default"
 
-!if %not(%variable_exists("$documentIcon"))
-    !if $objectStyle == "default"
-        !include <material/file_document>
-        !global $documentIcon = "$ma_file_document"
-    !else
-        !include <material/document>
-        !global $documentIcon = "$ma_document"
-    !endif
+!if $DocumentIconStyle == "default"
+    $extendStyleDeclarations("Object", "Document", "file_document")
+!else
+    $extendStyleDeclarations("Object", "Document", "document")
 !endif
 
-!unquoted procedure Document($name, $label = "", $note = "", $color = $objectColor, $scale = $objectScale, $shape = $documentShape)
-    Object("Document", "$documentIcon", $name, $label, $note, $color, $scale, $shape)
+!unquoted procedure Document($name, $label = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $shape == ""
+        !$shape = $DocumentShape
+    !endif
+    !if $scale == ""
+        !$scale = $DocumentIconScale
+    !endif
+    !if $color == ""
+        !$color = $FolderIconColor
+    !endif
+
+    Object("Document", $DocumentIconName, $name, $label, $note, $shape, $scale, $color, $background)
 !endprocedure
 
 ' Folder Work Object
 ' ==================================
 
-!global $folderShape ?= $objectShape
+!global $FolderIconStyle ?= "default"
 
-!if %not(%variable_exists("$folderIcon"))
-    !if $objectStyle == "default"
-        !include <material/folder_outline>
-        !global $folderIcon = "$ma_folder_outline"
-    !else
-        !include <material/folder>
-        !global $folderIcon = "$ma_folder"
-    !endif
+!if $FolderIconStyle == "default"
+    $extendStyleDeclarations("Object", "Folder", "folder_outline")
+!else
+    $extendStyleDeclarations("Object", "Folder", "folder")
 !endif
 
-!unquoted procedure Folder($name, $label = "", $note = "", $color = $objectColor, $scale = $objectScale, $shape = $folderShape)
-    Object("Folder", "$folderIcon", $name, $label, $note, $color, $scale, $shape)
+!unquoted procedure Folder($name, $label = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $shape == ""
+        !$shape = $FolderShape
+    !endif
+    !if $scale == ""
+        !$scale = $FolderIconScale
+    !endif
+    !if $color == ""
+        !$color = $FolderIconColor
+    !endif
+
+    Object("Folder", $FolderIconName, $name, $label, $note, $shape, $scale, $color, $background)
 !endprocedure
 
 ' Call Work Object
 ' ==================================
 
-!global $callShape ?= $objectShape
+$extendStyleDeclarations("Object", "Call", "phone")
 
-!if %not(%variable_exists("$callIcon"))
-    !include <material/phone>
-    !global $callIcon = "$ma_phone"
-!endif
+!unquoted procedure Call($name, $label = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $shape == ""
+        !$shape = $CallShape
+    !endif
+    !if $scale == ""
+        !$scale = $CallIconScale
+    !endif
+    !if $color == ""
+        !$color = $CallIconColor
+    !endif
 
-!unquoted procedure Call($name, $label = "", $note = "", $color = $objectColor, $scale = $objectScale, $shape = $callShape)
-    Object("Call", "$callIcon", $name, $label, $note, $color, $scale, $shape)
+    Object("Call", $CallIconName, $name, $label, $note, $shape, $scale, $color, $background)
 !endprocedure
 
 ' Email Work Object
 ' ==================================
 
-!global $emailShape ?= $objectShape
+!global $EmailIconStyle ?= "default"
 
-!if %not(%variable_exists("$emailIcon"))
-    !if $objectStyle == "default"
-        !include <material/at>
-        !global $emailIcon = "$ma_at"
-    !else
-        !include <material/email>
-        !global $emailIcon = "$ma_email"
-    !endif
+!if $EmailIconStyle == "default"
+    $extendStyleDeclarations("Object", "Email", "at")
+!else
+    $extendStyleDeclarations("Object", "Email", "email")
 !endif
 
-!unquoted procedure Email($name, $label = "", $note = "", $color = $objectColor, $scale = $objectScale, $shape = $emailShape)
-    Object("Email", "$emailIcon", $name, $label, $note, $color, $scale, $shape)
+!unquoted procedure Email($name, $label = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $shape == ""
+        !$shape = $EmailShape
+    !endif
+    !if $scale == ""
+        !$scale = $EmailIconScale
+    !endif
+    !if $color == ""
+        !$color = $EmailIconColor
+    !endif
+
+    Object("Email", $EmailIconName, $name, $label, $note, $shape, $scale, $color, $background)
 !endprocedure
 
 ' Conversation Work Object
 ' ==================================
 
-!global $conversationShape ?= $objectShape
+!global $ConversationIconStyle ?= "default"
 
-!if %not(%variable_exists("$conversationIcon"))
-    !if $objectStyle == "default"
-        !include <material/message_outline>
-        !global $conversationIcon = "$ma_message_outline"
-    !else
-        !include <material/message>
-        !global $conversationIcon = "$ma_message"
-    !endif
+!if $ConversationIconStyle == "default"
+    $extendStyleDeclarations("Object", "Conversation", "message_outline")
+!else
+    $extendStyleDeclarations("Object", "Conversation", "message")
 !endif
 
-!unquoted procedure Conversation($name, $label = "", $note = "", $color = $objectColor, $scale = $objectScale, $shape = $conversationShape)
-    Object("Conversation", "$conversationIcon", $name, $label, $note, $color, $scale, $shape)
+!unquoted procedure Conversation($name, $label = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $shape == ""
+        !$shape = $ConversationShape
+    !endif
+    !if $scale == ""
+        !$scale = $ConversationIconScale
+    !endif
+    !if $color == ""
+        !$color = $ConversationIconColor
+    !endif
+
+    Object("Conversation", $ConversationIconName, $name, $label, $note, $shape, $scale, $color, $background)
 !endprocedure
 
 ' Info Work Object
 ' ==================================
 
-!global $infoShape ?= $objectShape
+!global $InfoIconStyle ?= "default"
 
-!if %not(%variable_exists("$infoIcon"))
-    !if $objectStyle == "default"
-        !include <material/information_outline>
-        !global $infoIcon = "$ma_information_outline"
-    !else
-        !include <material/information>
-        !global $infoIcon = "$ma_information"
-    !endif
+!if $InfoIconStyle == "default"
+    $extendStyleDeclarations("Object", "Info", "information_outline")
+!else
+    $extendStyleDeclarations("Object", "Info", "information")
 !endif
 
-!unquoted procedure Info($name, $label = "", $note = "", $color = $objectColor, $scale = $objectScale, $shape = $infoShape)
-    Object("Info", "$infoIcon", $name, $label, $note, $color, $scale, $shape)
+!unquoted procedure Info($name, $label = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $shape == ""
+        !$shape = $InfoShape
+    !endif
+    !if $scale == ""
+        !$scale = $InfoIconScale
+    !endif
+    !if $color == ""
+        !$color = $InfoIconColor
+    !endif
+
+    Object("Info", $InfoIconName, $name, $label, $note, $shape, $scale, $color, $background)
 !endprocedure
 
 ' Boundaries
 ' ##################################
 
-!unquoted procedure Boundary($name, $label = "", $backgroundColor = "", $shape = $boundaryShape, $note = "")
+!unquoted procedure Boundary($name, $label = "", $note = "", $shape = $BoundaryShape, $background = "")
     !if $label == ""
         !$label = $name
     !endif
@@ -358,12 +502,12 @@ skinparam note {
     !endif
 
     ' output below
-    !if $backgroundColor
-        !$hexColor = %substr($backgroundColor, 0, 1)
+    !if $background
+        !$hexColor = %substr($background, 0, 1)
         !if $hexColor == "#"
-            $shape "==$label" as $name $backgroundColor
+            $shape "==$label" as $name $background
         !else
-            $shape "==$label" as $name #$backgroundColor
+            $shape "==$label" as $name #$background
         !endif
     !else
         $shape "==$label" as $name
@@ -373,7 +517,7 @@ skinparam note {
 ' Activities
 ' ##################################
 
-!unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $note = "", $targetNote = "", $color = $objectColor, $scale = $objectScale, $shape = $objectShape, $targetColor = $objectColor, $targetScale = $objectScale, $targetShape = $objectShape)
+!unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $note = "", $targetNote = "", $shape = "", $scale = "", $color = "", $background = "", $targetShape = "", $targetScale = "", $targetColor = "", $targetBackground = "")
     ' Decide on the activity direction
     !if $objectArr == ""
         !$objectArr = $computeArrowDirection($step)
@@ -382,7 +526,7 @@ skinparam note {
             ' Delete position indicator from $step
             !$step = %substr($step, 1)
         !else
-            ' No position indicator was found => follow default story flow
+            ' No position indicator was found => follow Default story flow
             !$objectArr = "-->"
         !endif
     !endif
@@ -392,12 +536,12 @@ skinparam note {
     !endif
 
     ' Handle first connection between subject and object
-    !$object = $ensureElementExists($object, $note, $color, $scale, $shape)
+    !$object = $ensureElementExists($object, $note, $shape, $scale, $color, $background)
 
     $createConnection($subject, $object, $objectArr, $predicate, $computeStepLabel($step))
 
     ' Handle possible second connection between object and target
-    !$target = $ensureElementExists($target, $targetNote, $targetColor, $targetScale, $targetShape)
+    !$target = $ensureElementExists($target, $targetNote, $targetShape, $targetScale, $targetColor, $targetBackground)
 
     !if $post && $post != "_"
         !if $target && $target != "_"
@@ -424,14 +568,14 @@ skinparam note {
             note bottom of $reference : $noteText
         !elseif $notePosition == "<"
             note left of $reference : $noteText
-        !elseif $notePosition == "!"
-            !if $storyLayout == "left-to-right"
+        !elseif $notePosition == "~"
+            !if $StoryLayout == "left-to-right"
                 note left of $reference : $noteText
             !else
                 note top of $reference : $noteText
             !endif
         !else
-            !if $storyLayout == "left-to-right"
+            !if $StoryLayout == "left-to-right"
                 note right of $reference : $note
             !else
                 note bottom of $reference : $note
@@ -446,7 +590,7 @@ skinparam note {
         !$noteText = %substr($note, 1)
 
         !if $notePosition == "^"
-            !if $storyLayout == "left-to-right"
+            !if $StoryLayout == "left-to-right"
                 note bottom of $reference : $noteText
             !else
                 note top of $reference : $noteText
@@ -454,21 +598,21 @@ skinparam note {
         !elseif $notePosition == ">"
             note right of $reference : $noteText
         !elseif $notePosition == "v"
-            !if $storyLayout == "left-to-right"
+            !if $StoryLayout == "left-to-right"
                 note top of $reference : $noteText
             !else
                 note bottom of $reference : $noteText
             !endif
         !elseif $notePosition == "<"
             note left of $reference : $noteText
-        !elseif $notePosition == "!"
-            !if $storyLayout == "left-to-right"
+        !elseif $notePosition == "~"
+            !if $StoryLayout == "left-to-right"
                 note left of $reference : $noteText
             !else
                 note top of $reference : $noteText
             !endif
         !else
-            !if $storyLayout == "left-to-right"
+            !if $StoryLayout == "left-to-right"
                 note right of $reference : $note
             !else
                 note bottom of $reference : $note
@@ -481,7 +625,7 @@ skinparam note {
 ' ##################################
 
 ' Be aware this function might produce side effects
-!function $ensureElementExists($element, $note, $color, $scale, $shape)
+!function $ensureElementExists($element, $note, $shape, $scale, $color, $background)
     !$separatorPosition = %strpos($element, ":")
 
     !if $separatorPosition > -1
@@ -491,8 +635,8 @@ skinparam note {
         !$elementLabel = %substr($element, $separatorPosition + 1)
         !$elementName = $elementKind + $workObjectCounter
 
-        '! Actor($kind, $icon, $name, $label, $note, $color, $scale, $shape)
-        %invoke_procedure($elementKind, $elementName, $elementLabel, $note, $color, $scale, $shape)
+        'Element($kind, $name, $label, $note, $shape, $scale, $color, $background)
+        %invoke_procedure($elementKind, $elementName, $elementLabel, $note, $shape, $scale, $color, $background)
 
         !return $elementName
     !else
@@ -502,18 +646,18 @@ skinparam note {
     !endif
 !endfunction
 
-!procedure $createConnection($from, $to, $spec = "-->", $label = "", $stepCounter = "")
-    !if %substr($spec, 0, 1) == "<"
+!procedure $createConnection($from, $to, $arrow = "-->", $label = "", $stepCounter = "")
+    !if %substr($arrow, 0, 1) == "<"
         !if $label
-            $to $spec $from : $stepCounter $label
+            $to $arrow $from : $stepCounter $label
         !else
-            $to $spec $from
+            $to $arrow $from
         !endif
     !else
         !if $label
-            $from $spec $to : $stepCounter $label
+            $from $arrow $to : $stepCounter $label
         !else
-            $from $spec $to
+            $from $arrow $to
         !endif
     !endif
 !endprocedure
@@ -524,30 +668,30 @@ skinparam note {
 !function $computeArrowDirection($step)
     !$activityDirection = %substr($step, 0, 1)
     !if $activityDirection == "^"
-        !if $storyLayout == "left-to-right"
+        !if $StoryLayout == "left-to-right"
             !return "<-"
         !else
             !return "<--"
         !endif
     !elseif $activityDirection == ">"
-        !if $storyLayout == "left-to-right"
+        !if $StoryLayout == "left-to-right"
             !return "-->"
         !else
             !return "->"
         !endif
     !elseif $activityDirection == "<"
-        !if $storyLayout == "left-to-right"
+        !if $StoryLayout == "left-to-right"
             !return "<--"
         !else
             !return "<-"
         !endif
     !elseif  $activityDirection == "v"
-        !if $storyLayout == "left-to-right"
+        !if $StoryLayout == "left-to-right"
             !return "->"
         !else
             !return "-->"
         !endif
-    !elseif  $activityDirection == "!"
+    !elseif  $activityDirection == "~"
         !return "<--"
     !else
         ' Signal no direction found
@@ -560,14 +704,14 @@ skinparam note {
 
     !if $stepNumber
         !$result = "(" + $stepNumber + ")"
-        !if $stepColor
-            !$result = "<back:" + $stepColor + ">" + $result + "</back>"
+        !if $StepFontColor
+            !$result = "<color:" + $StepFontColor + ">" + $result + "</color>"
         !endif
-        !if $stepFontColor
-            !$result = "<color:" + $stepFontColor + ">" + $result + "</color>"
+        !if $StepFontSize
+            !$result = "<size:" + $StepFontSize + ">" + $result + "</size>"
         !endif
-        !if $stepFontSize
-            !$result = "<size:" + $stepFontSize + ">" + $result + "</size>"
+        !if $StepBackgroundColor
+            !$result = "<back:" + $StepBackgroundColor + ">" + $result + "</back>"
         !endif
         !return $result
     !else

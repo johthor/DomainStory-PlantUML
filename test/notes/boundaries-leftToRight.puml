@@ -6,7 +6,7 @@
 Boundary(office) {
     Group(people)
     Call(conference)
-    activity(6, (people), attend, (conference))
+    activity(1, (people), attend, (conference))
 }
 
 note top of office : below?
@@ -29,7 +29,7 @@ Boundary(four, $note=v below) {
 Boundary(five, $note=< left) {
     Person(Ashley)
 }
-Boundary(six, $note=! inverse) {
+Boundary(six, $note=~ inverse) {
     Person(Sam)
 }
 @enduml
