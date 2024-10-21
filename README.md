@@ -267,15 +267,15 @@ Make sure that your values are compatible with the chosen theme.
 | `$storyLayout`        | `left-to-right` | Basic direction of the activity arrows              |
 | `$textColor`          | `#0b0c10`       | Color of all text                                   |
 | _Actor Styling_       |
-| `$actorShape`         | `agent`         | Shape of actor elements                             |
 | `$actorStyle`         | `default`       | Use outlines instead of filled icons for actors     |
-| `$actorScale`         | `1`             | Size of actor icons                                 |
+| `$actorShape`         | `agent`         | Shape of actor elements                             |
 | `$actorColor`         | `#1f2833`       | Color of actors icons                               |
+| `$actorScale`         | `1`             | Size of actor icons                                 |
 | _Work Object Styling_ |
-| `$objectShape`        | `card`          | Shape of work item elements                         |
 | `$objectStyle`        | `default`       | Use outlines instead of filled icons for work items |
-| `$objectScale`        | `0.8`           | Size of work item icons                             |
+| `$objectShape`        | `card`          | Shape of work item elements                         |
 | `$objectColor`        | `#1f2833`       | Color of work item icons                            |
+| `$objectScale`        | `0.8`           | Size of work item icons                             |
 | _Boundary Styling_    |
 | `$boundaryShape`      | `#1f2833`       | Shape of boundary containers                        |
 | `$boundaryColor`      | `#1f2833`       | Color of boundary borders                           |

@@ -156,10 +156,10 @@ skinparam note {
     !endif
 
     ' output below
-    !if $color == ""
-        $shape "<$icon{scale=$scale}>\r $label" as $name <<$kind>>
+    !if $color
+        $shape "<$icon{scale=$scale,color=$color}>\r $label" as $name <<$kind>>
     !else
-        $shape "<color:$color><$icon{scale=$scale}></color>\r $label" as $name <<$kind>>
+        $shape "<$icon{scale=$scale}>\r $label" as $name <<$kind>>
     !endif
 
     $createElementNote($name, $note)
@@ -168,6 +168,7 @@ skinparam note {
 ' Person Actor
 ' ==================================
 
+!global $personColor ?= $actorShape
 !global $personShape ?= $actorShape
 
 !if %not(%variable_exists("$personIcon"))
@@ -226,10 +227,10 @@ skinparam note {
     !endif
 
     ' output below
-    !if $color == ""
-        $shape "<$icon{scale=$scale}>\r $label" as $name <<$kind>>
+    !if $color
+        $shape "<$icon{scale=$scale,color=$color}>\r $label" as $name <<$kind>>
     !else
-        $shape "<color:$color><$icon{scale=$scale}></color>\r $label" as $name <<$kind>>
+        $shape "<$icon{scale=$scale}>\r $label" as $name <<$kind>>
     !endif
 
     $createElementNote($name, $note)

@@ -6,6 +6,7 @@
 !$objectColor = RoyalBlue
 !$stepColor = PowderBlue
 
+!$emailIcon = "&phone"
 !include ../../domainStory.puml
 
 Person(Alice)
@@ -14,13 +15,13 @@ Boundary(Home) {
     Email(spam)
 }
 
-Person(Bob, $scale=1.7)
+Person(Bob)
 Boundary(Party, $backgroundColor=yellow/red) {
     Conversation(weather, $color=brown)
 }
 
 Boundary(Office, $backgroundColor=#aee) {
-    Email(proposal, $color=#f30, $scale = 2.3)
+    Email(proposal, $scale=7, $color=#f03000)
 }
 
 activity(_, Alice, reads the, spam, _, _, ->)
