@@ -1,7 +1,7 @@
 @startuml
 !$storyLayout = 'left-to-right'
 
-!include ../domainStory.puml
+!include ../../domainStory.puml
 
 Boundary(office) {
     Group(people)
@@ -28,5 +28,8 @@ Boundary(four, $note=v below) {
 }
 Boundary(five, $note=< left) {
     Person(Ashley)
+}
+Boundary(six, $note=! inverse) {
+    Person(Sam)
 }
 @enduml

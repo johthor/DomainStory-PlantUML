@@ -4,26 +4,28 @@ DomainStory-PlantUML uses [PlantUML](http://en.plantuml.com/) to describe and
 document a domain story which was developed in a
 [Domain Storytelling](http://www.domainstorytelling.org) workshop.
 
-## Table of Contents
+***Table of Contents***
 
 * [Getting Started](#getting-started)
-  * [Basic Story Layout](#basic-story-layout)
-  * [Adding Notes or Annotations](#adding-notes-or-annotations)
-  * [Auto-Incrementing Steps](#auto-incrementing-steps)
-  * [Basic Styling](#basic-styling)
-  * [Extensions](#extensions)
+    * [Basic Concepts](#basic-concepts)
+* [Basic Features](#basic-features)
+    * [Basic Story Layout](#basic-story-layout)
+    * [Auto-Incrementing Steps](#auto-incrementing-steps)
+    * [Adding Notes or Annotations](#adding-notes-or-annotations)
+    * [Basic Styling](#basic-styling)
+    * [Extensions](#extensions)
 * [Advanced Features](#advanced-features)
-  * [Dynamic Creation of Work Objects](#dynamic-creation-of-work-objects)
-  * [Advanced Story Layout](#advanced-story-layout)
+    * [Dynamic Creation of Work Objects](#dynamic-creation-of-work-objects)
+    * [Advanced Story Layout](#advanced-story-layout)
 * [Advanced Samples](#advanced-samples)
-  * [Cinema](#cinema)
-  * [Airport Bus](#airport-bus)
+    * [Cinema](#cinema)
+    * [Airport Bus](#airport-bus)
 * [License](#license)
 * [Acknowledgements](#acknowledgements)
 
 ## Getting Started
 
-At the top of your domain story PlantUML `.puml` file,
+At the top of your domain story `.puml` file,
 you need to include the `domainStory.puml` file found in the root of this repository.
 
 The library is now part of the [PlantUML Standard Library](https://plantuml.com/en/stdlib)
@@ -51,27 +53,31 @@ and reference it locally with
 After you have included `domainStory.puml` you can use the predefined macro
 definitions for the domain story actors:
 
-* `Person(name, [label], [color], [scale], [note])`
-* `Group(name, [label], [color], [scale], [note])`
-* `System(name, [label], [color], [scale], [note])`
+* `Person($name[, $label][, $color][, $scale][, $shape][, $note])`
+* `Group($name[, $label][, $color][, $scale][, $shape][, $note])`
+* `System($name[, $label][, $color][, $scale][, $shape][, $note])`
 
 As well as the domain story work items:
 
-* `Document(name, [label], [color], [scale], [note])`
-* `Folder(name, [label], [color], [scale], [note])`
-* `Call(name, [label], [color], [scale], [note])`
-* `Email(name, [label], [color], [scale], [note])`
-* `Conversation(name, [label], [color], [scale], [note])`
-* `Info(name, [label], [color], [scale], [note])`
+* `Document($name[, $label][, $color][, $scale][, $shape][, $note])`
+* `Folder($name[, $label][, $color][, $scale][, $shape][, $note])`
+* `Call($name[, $label][, $color][, $scale][, $shape][, $note])`
+* `Email($name[, $label][, $color][, $scale][, $shape][, $note])`
+* `Conversation($name[, $label][, $color][, $scale][, $shape][, $note])`
+* `Info($name[, $label][, $color][, $scale][, $shape][, $note])`
 
 Activities between actors and involving work items are described via the `activity` macro:
 
 ```puml
-activity(step, subject, predicate, object, [post], [target], [objectArr], [targetArr], [color], [scale], [note])
+activity($step, $subject, $predicate, $object[, $post][, $target][, $objectArr][, $targetArr]
+    [, $color][, $scale][, $shape][, $note]
+    [, $targetColor][, $targetScale][, $targetShape][, $targetNote])
 ```
 
 In addition to these,
-it is also possible to define boundaries via`Boundary(name, [label], [backgroundColor], [note])`.
+it is also possible to define boundaries via `Boundary($name[, $label][, $backgroundColor][, $shape][, $note])`.
+
+Optional parameters are shown above in square brackets.
 
 ![pictographic language](assets/pictographicLanguage.svg)
 
@@ -98,14 +104,55 @@ More information can be found here:
 * [Domain Storytelling](http://www.domainstorytelling.org)
 * [REAL WORLD PlantUML—Sample Gallery](https://real-world-plantuml.com/)
 
+### Basic Concepts
+
+Some concepts or constructs will be used throughout the library.
+
+#### Name and Label Parameters
+
+Almost all the parameters declared above are optional and may be omitted for a simplified story description.
+But all of them may be specified via named parameters so that some parameters are skipped.
+In general, the parameters at the beginning of the parameter list are to be used as positional parameters,
+while parameters at the end of the parameter list are more likely to be used as keyword parameters.
+Keyword parameters may even be skipped as they always have sensible default handling.
+
+Every actor, work object and boundary accepts the parameters `$name` and `$label`
+where only `$name` is mandatory while `$label` is optional.
+If no label was given, the name will be reused as a label.
+All elements may later be referenced by their names.
+
+With that in mind `Person(Bob, $scale=42)` is a totally legal way of describing a giant person named and labeled Bob.
+
+#### Positioning Indication
+
+Some elements may be positioned in relation to another reference element via a positioning indicator.
+Here the following symbols are used on multiple occasions as prefixes.
+
+* _no indicator symbol_: the new element will be positioned inline with the default flow direction
+* `^` _caret symbol_: the new element will be positioned above its reference
+* `>` _greater-than symbol_: the new element will be positioned to the right of its reference
+* `v` _vee symbol_: the new element will be positioned below its reference
+* `<` _less-than symbol_: the new element will be positioned to the left of its reference
+* `~` _tilde symbol_: the new element will be positioned against the default flow direction
+
+The positioning indicator will take the normal story flow defined via `$storyLayout` into account.
+
+## Basic Features
+
+Some of the features that will be used right away.
 
 ### Basic Story Layout
 
-For single story diagrams, a landscape orientation is preferred
+The basic orientation of your story may be configured at the top of your file via
+
+```
+!$storyLayout = "landscape | left-to-right | top-to-bottom | portrait"
+```
+
+For single story diagrams, a landscape orientation e.g. `left-to-right` is preferred
 and is therefore the default orientation.
 If you combine multiple stories into a domain journey,
-a portrait orientation usually gives better results.
-The orientation can be switched via `!$storyLayout = "[left-to-right|top-to-bottom]"` at the top of your file.
+a portrait orientation might produce better results.
 
 > :information_source: Wrangling diagram elements to an exact position
 > or layout is not what PlantUML is for.
@@ -113,25 +160,52 @@ The orientation can be switched via `!$storyLayout = "[left-to-right|top-to-bott
 If the default layout does not please your inner artist,
 there are some possibilities to improve it.
 
-Group elements via `together { elements... }`.
-Those elements will be grouped together.
+Group elements together via `together { elements... }`.
 
-The `activity` macro provides two features for better layout control.
+The `activity` macro provides another feature for better layout control.
+Where the step value can be combined with a [positioning indicator](#positioning-indication) as a prefix
+(`^`, `>`, `v`, `<`, `~`).
 
-Firs the step value can be combined with a direction indicator suffix
-
-* `^` for UP
-* `>` for RIGHT
-* `v` for DOWN
-* `<` LEFT
- 
 The following activity will be directed to the left of Alice.
 
 ```puml
-activity(1<, Alice, talks about the, weather, with, Bob)
+activity(<1, Alice, talks about the, weather, with, Bob)
 ```
 
-More details and the second activity direction feature will be discussed in [Advanced Story Layout](#advanced-story-layout).
+More details and a second activity direction feature will be discussed
+in [Advanced Story Layout](#advanced-story-layout).
+
+### Auto-Incrementing Steps
+
+The activities will be numbered by default and may keep track of the current step number automatically.
+Therefore, when describing activities,
+the current step label supports multiple special value specifications to control the behavior.
+
+| Step Value                 | Description                                                                                                             | Auto Increment |
+|----------------------------|-------------------------------------------------------------------------------------------------------------------------|----------------|
+| `_` _underscore_           | sequential step                                                                                                         | yes            |
+| `\|` _bar_                 | parallel step                                                                                                           | no             |
+| `.` _full stop_ / _period_ | hidden step counter                                                                                                     | no             |
+| ` ` _space_ or '' _empty_  | hidden step counter                                                                                                     | no             |
+| `n` _any integer_          | step label will be `(n)`                                                                                                | no             |
+| `=n` _equal sign_ prefix   | step label will be `(n)`<br/>and step counter will be set to that integer<br/>_auto-increment will continue from there_ | no             |
+
+See the following test case for more details [step labels and auto increment](test/activities/stepCounter.puml)
+
+```puml
+activity(_, Bob, talks about the, weather1) /' auto-increment will create step 1 '/
+activity(_, Bob, talks about the, weather2) /' auto-increment will create step 2 '/
+activity(|, Alice, talks about the, weather2) /' no increment will create step 2 '/
+' will not create step, nor auto-increment, and will not display the step label
+activity(<., Bob, also talks about the, weather3)
+activity(42, Alice, asks about all the, talking1, again, Bob) /' will create step 42 '/
+activity(|, Bob, talks about the, weather4) /' no increment will still create step 2 '/
+' will create step 10 and set the step counter to 10
+activity(=10, Alice, talks about, talking2, Bob)
+activity(<_, Bob, is embarrassed about, talking3) /' auto-increment will create step 11 '/
+' will not create step, nor auto-increment, and will not display the step label
+activity( , Alice, writes, mail, to, Bob)
+```
 
 ### Adding Notes or Annotations
 
@@ -149,10 +223,9 @@ Boundary(wonderland, $note=like Oxford) {
 When adding a note on an activity,
 the note will be added to the object of that activity.
 
-Furthermore, the first symbol of the note text controls the orientation of it.
-If its one of `^`, `>`, `v` or `<` the note will be placed
-above, right, below or left of its element of reference.
-Otherwise, it will be placed in the normal story direction of its element.
+Furthermore, the first symbol of the note text may act as a [positioning indicator](#positioning-indication)
+where `^`, `>`, `v`, `<` or `~` controls the direction in which it is placed from its element of reference.
+Otherwise, it will be placed in the default direction from its element.
 
 Notes may also be placed via the basic PlantUML mechanism.
 
@@ -166,73 +239,116 @@ note top of bottle : drink me
 note right of wonderland : visit me
 ```
 
-### Auto-Incrementing Steps
+See the following test cases for more details
 
-The activities will be numbered by default and may keep track of the current step number automatically.
-Therefore, when describing activities,
-the current step label supports multiple special value specifications to control the behavior.
-
-| Step Value                 | Description                                                                                                               | Auto Increment |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------|----------------|
-| `_` _underscore_           | sequential step                                                                                                           | yes            |
-| `\|` _bar_                 | parallel step                                                                                                             | no             |
-| `.` _full stop_ / _period_ | hidden step counter                                                                                                       | no             |
-| ` ` _space_ or '' _none_   | hidden step counter                                                                                                       | no             |
-| `n` _any integer_          | step label will be `(n)`                                                                                                  | no             |
-| `=n` _equal sign_ prefix   | step label will be `(n)`<br/>and step counter will be set to that integer<br/>and auto-increment will continue from there | no             |
-
-See the following example for more details [step labels and auto increment](test/autoStepCounter.puml)
-
-```puml
-activity(_, Bob, talks about the, weather1) /' auto-increment will create step 1 '/
-activity(_, Bob, talks about the, weather2) /' auto-increment will create step 2 '/
-activity(|, Alice, talks about the, weather2) /' no increment will create step 2 '/
-' will not create step, nor auto-increment, and will not display the step label
-activity(.<, Bob, also talks about the, weather3)
-activity(42, Alice, asks about all the, talking1, again, Bob) /' will create step 42 '/
-activity(|, Bob, talks about the, weather4) /' no increment will still create step 2 '/
-' will create step 10 and set the step counter to 10
-activity(=10, Alice, talks about, talking2, Bob)
-activity(_<, Bob, is embarrassed about, talking3) /' auto-increment will create step 11 '/
-' will not create step, nor auto-increment, and will not display the step label
-activity( , Alice, writes, mail, to, Bob)
-```
+* [Notes on actors and work objects left-to-right orientation](test/notes/elements-leftToRight.puml)
+* [Notes on actors and work objects top-to-bottom orientation](test/notes/elements-topToBottom.puml)
+* [Notes on boundaries left-to-right orientation](test/notes/boundaries-leftToRight.puml)
+* [Notes on boundaries top-to-bottom orientation](test/notes/boundaries-topToBottom.puml)
 
 ### Basic Styling
 
-The following style definitions are used by default.
+The appearance of a domain story may be influenced via any of the following methods.
 
-| Property         | Default Value   | Description                                         |
-|------------------|-----------------|-----------------------------------------------------|
-| `$storyLayout`   | `left-to-right` | Basic direction of the activity arrows              |
-| `$textColor`     | `#0b0c10`       | Color of all text                                   |
-| `$actorStyle`    | `default`       | Use outlines instead of filled icons for actors     |
-| `$actorScale`    | `1`             | Size of all actors                                  |
-| `$actorColor`    | `#1f2833`       | Color of all actors                                 |
-| `$objectStyle`   | `default`       | Use outlines instead of filled icons for work items |
-| `$objectScale`   | `0.8`           | Size of all work items                              |
-| `$objectColor`   | `#1f2833`       | Color of all work items                             |
-| `$boundaryColor` | `#1f2833`       | Color of boundary borders                           |
-| `$activityColor` | `#c5c6c7`       | Color of the activity arrows                        |
-| `$stepColor`     | `#66fcf1`       | Background color for step numbers                   |
-| `$stepFontSize`  | `16`            | Font size for step numbers                          |
-| `$stepFontColor` | `$textColor`    | Font color for step numbers, same as `$textColor`   |
-| `$noteColor`     | `#c5c6c7`       | Background color for notes                          |
-| `$noteBorder`    | `#1f2833`       | Border color for notes                              |
+> :information_source: You may also mix and match all the approaches to get the look you desire.
+
+**Method 1: PlantUML Themes** The library is compatible with [PlantUML themes](https://plantuml.com/en/theme) like
+`sunlust` or `sketchy` and others.
+Choose the theme before including the library.
+
+**Method 2: Global Style declarations**
+If no theme is used, a fallback design is used which is heavily inspired by [Egon.io](https://egon.io/).
+The appearance of most of the elements may be customized via the following global
+style declarations.
+These will still work if a theme is used.
+Make sure that your values are compatible with the chosen theme.
+
+| Property              | Default Value   | Description                                         |
+|-----------------------|-----------------|-----------------------------------------------------|
+| `$storyLayout`        | `left-to-right` | Basic direction of the activity arrows              |
+| `$textColor`          | `#0b0c10`       | Color of all text                                   |
+| _Actor Styling_       |
+| `$actorStyle`         | `default`       | Use outlines instead of filled icons for actors     |
+| `$actorShape`         | `agent`         | Shape of actor elements                             |
+| `$actorIconColor`         | `#1f2833`       | Color of actors icons                               |
+| `$actorScale`         | `1`             | Size of actor icons                                 |
+| _Work Object Styling_ |
+| `$objectStyle`        | `default`       | Use outlines instead of filled icons for work items |
+| `$objectShape`        | `card`          | Shape of work item elements                         |
+| `$objectColor`        | `#1f2833`       | Color of work item icons                            |
+| `$objectScale`        | `0.8`           | Size of work item icons                             |
+| _Boundary Styling_    |
+| `$boundaryShape`      | `#1f2833`       | Shape of boundary containers                        |
+| `$boundaryColor`      | `#1f2833`       | Color of boundary borders                           |
+| _Activity Styling_    |
+| `$activityColor`      | `#c5c6c7`       | Color of the activity arrows                        |
+| `$stepColor`          | `#66fcf1`       | Background color for step numbers                   |
+| `$stepFontSize`       | `16`            | Font size for step numbers                          |
+| `$stepFontColor`      | `$textColor`    | Font color for step numbers, same as `$textColor`   |
+| _Note Styling_        |
+| `$noteColor`          | `#c5c6c7`       | Background color for notes                          |
+| `$noteBorder`         | `#1f2833`       | Border color for notes                              |
 
 To use your own styling, you need to define the relevant styling properties before including the library.
 The following example would combine green actor icons with red text.
 
 ```puml
 @startuml
+' !theme <theme name> /' optional '/
+
 !$textColor = "red"
-!$actorColor = "green"
+!$actorIconColor = "green"
 
 !include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 
 Person(Alice)
 @enduml
 ```
+
+> :information_source: You might want to set a matching `$stepColor` and `$stepFontColor` when using themes.
+
+**Method 3: Changing the Element's Shapes and Icons** By default, the library will use the
+following [PlantUML shapes](https://plantuml.com/en/deployment-diagram) to represent actors, work objects and
+boundaries.
+
+* actors will use the shape `agent`
+* work objects will use the shape `card`
+* and boundaries will use the shape `rectangle`
+
+But these shapes may be reconfigured via the global styling declarations `$actorShape`,
+`$objectShape` and `$boundaryShape`.
+
+By default, icons from the [PlantUML Standard Library - Google Material Icons](https://plantuml.com/en/stdlib#df026e38d6a98559) will be used to represent actors and work objects.
+The shape and icons used by specific actors and work objects may also be reconfigured via the following properties.
+
+| Property              | Default Value                  | Description                                     |
+|-----------------------|--------------------------------|-------------------------------------------------|
+| _Actor Styling_       |
+| `$personIcon`         | `$ma_account_outline`          | Icon used by actors of type person              |
+| `$personShape`        | `$actorShape`                  | Shape used by actors of type person             |
+| `$groupIcon`          | `$ma_account_multiple_outline` | Icon used by actors of type group               |
+| `$groupShape`         | `$actorShape`                  | Shape used by acpe group                        |
+| `$systemIcon`         | `$ma_laptop`                   | Icon used by actors of type system              |
+| `$systemShape`        | `$actorShape`                  | Shape used by acpe system                       |
+| _Work Object Styling_ |
+| `$documentIcon`       | `$ma_file_document`            | Icon used by work objects of type document      |
+| `$documentShape`      | `$objectShape`                 | Shape used by work objects of type document     |
+| `$folderIcon`         | `$ma_folder_outline`           | Icon used by work objects of type folder        |
+| `$folderShape`        | `$objectShape`                 | Shape used by work objects of type folder       |
+| `$callIcon`           | `$ma_phone`                    | Icon used by work objects of type call          |
+| `$callShape`          | `$objectShape`                 | Shape used by work objects of type call         |
+| `$emailIcon`          | `$ma_at`                       | Icon used by work objects of type email         |
+| `$emailShape`         | `$objectShape`                 | Shape used by work objects of type email        |
+| `$conversationIcon`   | `$ma_message_outline`          | Icon used by work objects of type conversation  |
+| `$conversationShape`  | `$objectShape`                 | Shape used by work objects of type conversation |
+| `$infoIcon`           | `$ma_information_outline`      | Icon used by work objects of type info          |
+| `$infoShape`          | `$objectShape`                 | Shape used by work objects of type info         |
+
+See the following test cases for more details
+
+* [Using theme `sketchy`](test/styling/theme-sketchy.puml)
+* [Using theme `sunlust`](test/styling/theme-sunlust.puml)
+* [Global style declarations](test/styling/customColors.puml)
 
 ### Extensions
 
@@ -270,37 +386,39 @@ Boundary(System) {
 > :warning: **If you want your dynamically created objects to be placed inside a boundary.**
 > You need to declare the activity inside said boundary.
 
+See the test case for [dynamic object creation](test/activities/objectCreation.puml) for more details.
+
 ### Advanced Story Layout
 
 If the aforementioned lay-outing techniques described in [Basic Story Layout](#basic-story-layout) are not enough,
-the `activity` macro supports more layout tricks.
+the `activity` macro supports even more layout tricks.
 
 In addition to the step counter specifications described above,
 the step value may also specify the direction of the activity where `X` is one of the specifications above.
 
-| Step Value                     | Description                                | Auto Increment |
-|--------------------------------|--------------------------------------------|----------------|
-| `X>` _greate-than sign_ suffix | direction of activity will be to the right | depends on X   |
-| `X<` _less-than sign_ suffix   | direction of activity will be to the left  | depends on X   |
-| `Xv` _vee_ suffix              | direction of activity will be downwards    | depends on X   |
-| `X^` _caret_ suffix            | direction of activity will be upwards      | depends on X   |
+| Step Value                     | Description                                                      | Auto Increment |
+|--------------------------------|------------------------------------------------------------------|----------------|
+| `>X` _greate-than sign_ prefix | direction of activity will be to the right                       | depends on X   |
+| `<X` _less-than sign_ prefix   | direction of activity will be to the left                        | depends on X   |
+| `vX` _vee_ prefix              | direction of activity will be downwards                          | depends on X   |
+| `^X` _caret_ prefix            | direction of activity will be upwards                            | depends on X   |
+| `~X` _tilde_ prefix            | direction of activity will be against the default flow direction | depends on X   |
 
-See the tests for more details.
+See the test cases for more details
 
-* [activity directions for left-to-right layout](test/activityDirection-leftToRight.puml)
-* [activity directions for top-to-bottom layout](test/activityDirection-topToBottom.puml)
-* [activity directions for both layouts](test/activityDirection-bothLayouts.puml)
+* [activity directions for left-to-right layout](test/activities/direction-leftToRight.puml)
+* [activity directions for top-to-bottom layout](test/activities/direction-topToBottom.puml)
+* [activity directions for both layouts](test/activities/direction-bothLayouts.puml)
 
 Furthermore, the `activity` macro also provides two optional parameters,
 which allow you to specify the arrow orientation in full details.
 
 * `$objectArr` will define the arrow direction between the subject and the object
-* and `$targetArr` will define the arrow direciton between the object and the target.
+* and `$targetArr` will define the arrow direction between the object and the target.
 
 Some possible arrow specifications are `-->`, `->`, `<-`, `<--`, and `-up->`.
 For more details,
-see [The Hitchhiker's Guide to PlantUML](https://crashedmind.github.io/PlantUMLHitchhikersGuide/layout/layout.html#arrows-for-layout)
-.
+see [The Hitchhiker's Guide to PlantUML](https://crashedmind.github.io/PlantUMLHitchhikersGuide/layout/layout.html#arrows-for-layout).
 
 ```puml
 activity(1, Alice, talks about the, weather, with, Bob, -->, ->)
@@ -327,7 +445,35 @@ Remember that every element of your story may be referenced by its name later.
 Bob ---[hidden]-> Alice
 ```
 
+See the test cases again for more details
+
+* [activity directions for left-to-right layout](test/activities/direction-leftToRight.puml)
+* [activity directions for top-to-bottom layout](test/activities/direction-topToBottom.puml)
+* [activity directions for both layouts](test/activities/direction-bothLayouts.puml)
+
+### Advanced Styling
+
+In addition to the styling methods described in [Basic styling](#basic-styling) there are more advanced methods.
+
+**Method 6: Styling via Skinparam**
+
+**Method 4: Individually Styled Elements** Every element allows some control over its appearance via the `$color` and
+the
+`$scale` parameters.
+The following example code shows a "Little Red Riding Hood."
+
+```puml
+Person(hood, Riding Hood, $color=red, $scale=0.5)
+```
+
+The `activity` macro also provides `$color`, `$scale` and `$shape` parameters to control the appearance of the newly
+created `$object` work object.
+While `$targetColor`, `$targetScale` and `$targetShape` control the appearance of the newly created `$target` work
+object.
+
 ## Advanced Samples
+
+Some example domain stories collected from different sources.
 
 ### Cinema
 
