@@ -265,7 +265,7 @@ The appearance of a domain story may be influenced via any of the following meth
 
 #### Method 1: PlantUML Themes
 The library is compatible with [PlantUML themes](https://plantuml.com/en/theme) like
-`sunlust` or `sketchy` and others.
+`sunlust` (light) `crt-amber` (dark) or `sketchy` (mixed) and others.
 Choose the theme before including the library.
 
 #### Method 2: Global Style declarations

@@ -1,5 +1,3 @@
-'!global $LOG_LEVEL ?= debug
-
 ' Debugging Utilities
 ' ##################################
 

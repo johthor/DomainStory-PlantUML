@@ -1,0 +1,15 @@
+@startuml
+!theme crt-amber
+
+!$StoryLayout = 'top-to-bottom'
+
+!include ../../domainStory.puml
+
+Boundary(Party) {
+    Person(Alice)
+    Conversation(weather)
+    Person(Bob)
+}
+
+activity(1, Alice, talks about the, weather, with, Bob)
+@enduml
