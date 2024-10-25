@@ -14,7 +14,7 @@ Conversation(talking3, talking)
 Email(mail, an exasperated e-mail)
 
 activity(_, Bob, talks about the, weather1) /' auto-increment will create step 1 '/
-activity(_, Bob, talks about the, weather2) /' auto-increment will create step 2 '/
+activity(+, Bob, talks about the, weather2) /' auto-increment will create step 2 '/
 activity(|, Alice, talks about the, weather2) /' no increment will create step 2 '/
 ' will not create step, nor auto-increment, and will not display the step label
 activity(<., Bob, also talks about the, weather3)

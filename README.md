@@ -53,29 +53,35 @@ and reference it locally with
 After you have included `domainStory.puml` you can use the predefined macro
 definitions for the domain story actors:
 
-* `Person($name[, $label][, $color][, $scale][, $shape][, $note])`
-* `Group($name[, $label][, $color][, $scale][, $shape][, $note])`
-* `System($name[, $label][, $color][, $scale][, $shape][, $note])`
+* `Person($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
+* `Group($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
+* `System($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
 
 As well as the domain story work items:
 
-* `Document($name[, $label][, $color][, $scale][, $shape][, $note])`
-* `Folder($name[, $label][, $color][, $scale][, $shape][, $note])`
-* `Call($name[, $label][, $color][, $scale][, $shape][, $note])`
-* `Email($name[, $label][, $color][, $scale][, $shape][, $note])`
-* `Conversation($name[, $label][, $color][, $scale][, $shape][, $note])`
-* `Info($name[, $label][, $color][, $scale][, $shape][, $note])`
+* `Document($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
+* `Folder($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
+* `Call($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
+* `Email($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
+* `Conversation($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
+* `Info($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
 
 Activities between actors and involving work items are described via the `activity` macro:
 
 ```puml
 activity($step, $subject, $predicate, $object[, $post][, $target][, $objectArr][, $targetArr]
-    [, $color][, $scale][, $shape][, $note]
-    [, $targetColor][, $targetScale][, $targetShape][, $targetNote])
+    [, $note][, $targetNote]
+    [, $shape][, $scale][, $color][, $background]
+    [, $targetShape][, $targetScale][, $targetColor][, $targetBackground])
 ```
 
 In addition to these,
-it is also possible to define boundaries via `Boundary($name[, $label][, $backgroundColor][, $shape][, $note])`.
+it is also possible to define boundaries via
+```puml
+Boundary($name[, $label][, $note][, $shape][, $background]) {
+    ' Boundary Contents
+}
+```
 
 Optional parameters are shown above in square brackets.
 
@@ -116,6 +122,9 @@ In general, the parameters at the beginning of the parameter list are to be used
 while parameters at the end of the parameter list are more likely to be used as keyword parameters.
 Keyword parameters may even be skipped as they always have sensible default handling.
 
+There is an EBNF diagram that describes the [macro syntax](assets/macroSyntax.svg) in more details.
+Keyword parameters are displayed as _dashed terminals_.
+
 Every actor, work object and boundary accepts the parameters `$name` and `$label`
 where only `$name` is mandatory while `$label` is optional.
 If no label was given, the name will be reused as a label.
@@ -135,7 +144,7 @@ Here the following symbols are used on multiple occasions as prefixes.
 * `<` _less-than symbol_: the new element will be positioned to the left of its reference
 * `~` _tilde symbol_: the new element will be positioned against the default flow direction
 
-The positioning indicator will take the normal story flow defined via `$storyLayout` into account.
+The positioning indicator will take the normal story flow defined via `$StoryLayout` into account.
 
 ## Basic Features
 
@@ -146,7 +155,7 @@ Some of the features that will be used right away.
 The basic orientation of your story may be configured at the top of your file via
 
 ```
-!$storyLayout = "landscape | left-to-right | top-to-bottom | portrait"
+!$StoryLayout = "landscape | left-to-right | top-to-bottom | portrait"
 ```
 
 For single story diagrams, a landscape orientation e.g. `left-to-right` is preferred
@@ -184,6 +193,7 @@ the current step label supports multiple special value specifications to control
 | Step Value                 | Description                                                                                                             | Auto Increment |
 |----------------------------|-------------------------------------------------------------------------------------------------------------------------|----------------|
 | `_` _underscore_           | sequential step                                                                                                         | yes            |
+| `+` _plus_                 | sequential step                                                                                                         | yes            |
 | `\|` _bar_                 | parallel step                                                                                                           | no             |
 | `.` _full stop_ / _period_ | hidden step counter                                                                                                     | no             |
 | ` ` _space_ or '' _empty_  | hidden step counter                                                                                                     | no             |
@@ -194,7 +204,7 @@ See the following test case for more details [step labels and auto increment](te
 
 ```puml
 activity(_, Bob, talks about the, weather1) /' auto-increment will create step 1 '/
-activity(_, Bob, talks about the, weather2) /' auto-increment will create step 2 '/
+activity(+, Bob, talks about the, weather2) /' auto-increment will create step 2 '/
 activity(|, Alice, talks about the, weather2) /' no increment will create step 2 '/
 ' will not create step, nor auto-increment, and will not display the step label
 activity(<., Bob, also talks about the, weather3)
@@ -222,6 +232,7 @@ Boundary(wonderland, $note=like Oxford) {
 
 When adding a note on an activity,
 the note will be added to the object of that activity.
+With `$targetNote` the note will be placed on the activity's target instead.
 
 Furthermore, the first symbol of the note text may act as a [positioning indicator](#positioning-indication)
 where `^`, `>`, `v`, `<` or `~` controls the direction in which it is placed from its element of reference.
@@ -252,42 +263,54 @@ The appearance of a domain story may be influenced via any of the following meth
 
 > :information_source: You may also mix and match all the approaches to get the look you desire.
 
-**Method 1: PlantUML Themes** The library is compatible with [PlantUML themes](https://plantuml.com/en/theme) like
+#### Method 1: PlantUML Themes
+The library is compatible with [PlantUML themes](https://plantuml.com/en/theme) like
 `sunlust` or `sketchy` and others.
 Choose the theme before including the library.
 
-**Method 2: Global Style declarations**
+#### Method 2: Global Style declarations
 If no theme is used, a fallback design is used which is heavily inspired by [Egon.io](https://egon.io/).
 The appearance of most of the elements may be customized via the following global
 style declarations.
 These will still work if a theme is used.
 Make sure that your values are compatible with the chosen theme.
 
-| Property              | Default Value   | Description                                         |
-|-----------------------|-----------------|-----------------------------------------------------|
-| `$storyLayout`        | `left-to-right` | Basic direction of the activity arrows              |
-| `$textColor`          | `#0b0c10`       | Color of all text                                   |
-| _Actor Styling_       |
-| `$actorStyle`         | `default`       | Use outlines instead of filled icons for actors     |
-| `$actorShape`         | `agent`         | Shape of actor elements                             |
-| `$actorIconColor`         | `#1f2833`       | Color of actors icons                               |
-| `$actorScale`         | `1`             | Size of actor icons                                 |
-| _Work Object Styling_ |
-| `$objectStyle`        | `default`       | Use outlines instead of filled icons for work items |
-| `$objectShape`        | `card`          | Shape of work item elements                         |
-| `$objectColor`        | `#1f2833`       | Color of work item icons                            |
-| `$objectScale`        | `0.8`           | Size of work item icons                             |
-| _Boundary Styling_    |
-| `$boundaryShape`      | `#1f2833`       | Shape of boundary containers                        |
-| `$boundaryColor`      | `#1f2833`       | Color of boundary borders                           |
-| _Activity Styling_    |
-| `$activityColor`      | `#c5c6c7`       | Color of the activity arrows                        |
-| `$stepColor`          | `#66fcf1`       | Background color for step numbers                   |
-| `$stepFontSize`       | `16`            | Font size for step numbers                          |
-| `$stepFontColor`      | `$textColor`    | Font color for step numbers, same as `$textColor`   |
-| _Note Styling_        |
-| `$noteColor`          | `#c5c6c7`       | Background color for notes                          |
-| `$noteBorder`         | `#1f2833`       | Border color for notes                              |
+| Property                    | Default Value | Description                                         |
+|-----------------------------|---------------|-----------------------------------------------------|
+| `$DefaultFontColor`         | `#0b0c10`     | Color of all text                                   |
+| `$DefaultTextAlignment`     | `center`      | Alignment of most text                              |
+| `$DefaultBackgroundColor`   | `none`        | Background color for most elements                  |
+| `$DefaultBorderStyle`       | `none`        | Border style for most elements                      |
+| `$DefaultBorderColor`       | `none`        | Border color for most elements                      |
+| `$DefaultBorderThickness`   | `1`           | Border style for most elements                      |
+| `$DefaultRoundCorner`       | `0`           | Roundness of element corners                        |
+| `$DefaultShadowing`         | `false`       | Should elements throw shadows                       |
+| _Actor Styling_             |
+| `$ActorShape`               | `Agent`       | Shape of actor elements                             |
+| `$ActorIconStyle`           | `default`     | Use outlines instead of filled icons for actors     |
+| `$ActorIconScale`           | `1`           | Size of actor icons                                 |
+| `$ActorIconColor`           | `#1f2833`     | Color of actors icons                               |
+| _Work Object Styling_       |
+| `$ObjectShape`              | `Card`        | Shape of work item elements                         |
+| `$ObjectIconStyle`          | `default`     | Use outlines instead of filled icons for work items |
+| `$ObjectIconColor`          | `#1f2833`     | Color of work item icons                            |
+| `$ObjectIconScale`          | `0.8`         | Size of work item icons                             |
+| _Boundary Styling_          |
+| `$BoundaryShape`            | `Rectangle`   | Shape of boundary containers                        |
+| `$BoundaryBorderStyle`      | `dashed`      | Style of boundary borders                           |
+| `$BoundaryBorderColor`      | `#1f2833`     | Color of boundary borders                           |
+| `$BoundaryBorderThickness`  | `2`           | Thickness of boundary borders                       |
+| `$BoundaryRoundedCorner`    | `15`          | Roundness of boundary corners                       |
+| _Note Styling_              |
+| `$NoteTextAlignment`        | `left`        | Alignment of note texts                             |
+| `$NoteBackgroundColor`      | `#c5c6c7`     | Background color for notes                          |
+| `$NoteBorderColor`          | `#1f2833`     | Border color for notes                              |
+| _Activity Styling_          |
+| `$ActivityShape`            | `Arrow`       | The element used to style activities                |
+| `$ActivityMessageAlignment` | `left`        | Where the activity text should start                |
+| `$ActivityColor`            | `#c5c6c7`     | Color of the activity arrows                        |
+| `$StepFontSize`             | `16`          | Font size for step numbers                          |
+| `$StepBackgroundColor`      | `#66fcf1`     | Background color for step numbers                   |
 
 To use your own styling, you need to define the relevant styling properties before including the library.
 The following example would combine green actor icons with red text.
@@ -296,8 +319,8 @@ The following example would combine green actor icons with red text.
 @startuml
 ' !theme <theme name> /' optional '/
 
-!$textColor = "red"
-!$actorIconColor = "green"
+!$DefaultFontColor = "red"
+!$ActorIconColor = "green"
 
 !include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 
@@ -305,44 +328,45 @@ Person(Alice)
 @enduml
 ```
 
-> :information_source: You might want to set a matching `$stepColor` and `$stepFontColor` when using themes.
+> :information_source: You might want to set a matching `$StepBackgroundColor` and `$StepFontColor` when using themes.
 
-**Method 3: Changing the Element's Shapes and Icons** By default, the library will use the
-following [PlantUML shapes](https://plantuml.com/en/deployment-diagram) to represent actors, work objects and
-boundaries.
+#### Method 3: Changing the Element's Shapes and Icons
+By default, the library will use the
+following [PlantUML shapes](https://plantuml.com/en/deployment-diagram) to represent actors,
+work objects, and boundaries.
 
-* actors will use the shape `agent`
-* work objects will use the shape `card`
-* and boundaries will use the shape `rectangle`
+* actors will use the shape `Agent`
+* work objects will use the shape `Card`
+* and boundaries will use the shape `Rectangle`
 
-But these shapes may be reconfigured via the global styling declarations `$actorShape`,
-`$objectShape` and `$boundaryShape`.
+But these shapes may be reconfigured via the global styling declarations `$ActorShape`,
+`$ObjectShape` and `$BoundaryShape`.
 
 By default, icons from the [PlantUML Standard Library - Google Material Icons](https://plantuml.com/en/stdlib#df026e38d6a98559) will be used to represent actors and work objects.
 The shape and icons used by specific actors and work objects may also be reconfigured via the following properties.
 
-| Property              | Default Value                  | Description                                     |
-|-----------------------|--------------------------------|-------------------------------------------------|
-| _Actor Styling_       |
-| `$personIcon`         | `$ma_account_outline`          | Icon used by actors of type person              |
-| `$personShape`        | `$actorShape`                  | Shape used by actors of type person             |
-| `$groupIcon`          | `$ma_account_multiple_outline` | Icon used by actors of type group               |
-| `$groupShape`         | `$actorShape`                  | Shape used by acpe group                        |
-| `$systemIcon`         | `$ma_laptop`                   | Icon used by actors of type system              |
-| `$systemShape`        | `$actorShape`                  | Shape used by acpe system                       |
-| _Work Object Styling_ |
-| `$documentIcon`       | `$ma_file_document`            | Icon used by work objects of type document      |
-| `$documentShape`      | `$objectShape`                 | Shape used by work objects of type document     |
-| `$folderIcon`         | `$ma_folder_outline`           | Icon used by work objects of type folder        |
-| `$folderShape`        | `$objectShape`                 | Shape used by work objects of type folder       |
-| `$callIcon`           | `$ma_phone`                    | Icon used by work objects of type call          |
-| `$callShape`          | `$objectShape`                 | Shape used by work objects of type call         |
-| `$emailIcon`          | `$ma_at`                       | Icon used by work objects of type email         |
-| `$emailShape`         | `$objectShape`                 | Shape used by work objects of type email        |
-| `$conversationIcon`   | `$ma_message_outline`          | Icon used by work objects of type conversation  |
-| `$conversationShape`  | `$objectShape`                 | Shape used by work objects of type conversation |
-| `$infoIcon`           | `$ma_information_outline`      | Icon used by work objects of type info          |
-| `$infoShape`          | `$objectShape`                 | Shape used by work objects of type info         |
+| Property                | Default Value             | Description                                     |
+|-------------------------|---------------------------|-------------------------------------------------|
+| _Actor Styling_         |
+| `$PersonShape`          | `$ActorShape`             | Shape used by actors of type person             |
+| `$PersonIconName`       | `$ma_account_outline`     | Icon used by actors of type person              |
+| `$GroupShape`           | `$ActorShape`             | Shape used by acpe group                        |
+| `$GroupIconName`        | `$ma_account_outline`     | Icon used by actors of type group               |
+| `$SystemShape`          | `$ActorShape`             | Shape used by acpe system                       |
+| `$SystemIconName`       | `$ma_account_outline`     | Icon used by actors of type system              |
+| _Work Object Styling_   |
+| `$DocumentShape`        | `$ObjectShape`            | Shape used by work objects of type document     |
+| `$DocumentIconName`     | `$ma_account_outline`     | Icon used by work objects of type document      |
+| `$FolderShape`          | `$ObjectShape`            | Shape used by work objects of type folder       |
+| `$FolderIconName`       | `$ma_account_outline`     | Icon used by work objects of type folder        |
+| `$CallShape`            | `$ObjectShape`            | Shape used by work objects of type call         |
+| `$CallIconName`         | `$ma_phone`               | Icon used by work objects of type call          |
+| `$EmailShape`           | `$ObjectShape`            | Shape used by work objects of type email        |
+| `$EmailIconName`        | `$ma_at`                  | Icon used by work objects of type email         |
+| `$ConversationShape`    | `$ObjectShape`            | Shape used by work objects of type conversation |
+| `$ConversationIconName` | `$message_outline`        | Icon used by work objects of type conversation  |
+| `$InfoShape`            | `$ObjectShape`            | Shape used by work objects of type info         |
+| `$InfoIconName`         | `$ma_information_outline` | Icon used by work objects of type info          |
 
 See the following test cases for more details
 
@@ -368,8 +392,9 @@ they can also be defined on the fly when they are used.
 Prefix the work object with the kind of object you want to create
 followed by a colon e.g. `Conversation:`.
 
-Additionally, you can specify the color and scale of the created work object
-via the keyword arguments `$color` and `$scale`
+Additionally, you can specify the shape, icon scale, icon color,
+and background color of the created work object via the keyword arguments 
+`$shape`, `$scale`, `$color` and `$background`.
 
 ```puml
 @startuml
@@ -396,13 +421,13 @@ the `activity` macro supports even more layout tricks.
 In addition to the step counter specifications described above,
 the step value may also specify the direction of the activity where `X` is one of the specifications above.
 
-| Step Value                     | Description                                                      | Auto Increment |
-|--------------------------------|------------------------------------------------------------------|----------------|
-| `>X` _greate-than sign_ prefix | direction of activity will be to the right                       | depends on X   |
-| `<X` _less-than sign_ prefix   | direction of activity will be to the left                        | depends on X   |
-| `vX` _vee_ prefix              | direction of activity will be downwards                          | depends on X   |
-| `^X` _caret_ prefix            | direction of activity will be upwards                            | depends on X   |
-| `~X` _tilde_ prefix            | direction of activity will be against the default flow direction | depends on X   |
+| Step Value                      | Description                                                      | Step Label   |
+|---------------------------------|------------------------------------------------------------------|--------------|
+| `>X` _greater-than sign_ prefix | direction of activity will be to the right                       | depends on X |
+| `<X` _less-than sign_ prefix    | direction of activity will be to the left                        | depends on X |
+| `vX` _vee_ prefix               | direction of activity will be downwards                          | depends on X |
+| `^X` _caret_ prefix             | direction of activity will be upwards                            | depends on X |
+| `~X` _tilde_ prefix             | direction of activity will be against the default flow direction | depends on X |
 
 See the test cases for more details
 
@@ -453,22 +478,38 @@ See the test cases again for more details
 
 ### Advanced Styling
 
-In addition to the styling methods described in [Basic styling](#basic-styling) there are more advanced methods.
+In addition to the styling methods described in [Basic styling,](#basic-styling) there are more advanced methods.
 
-**Method 6: Styling via Skinparam**
+#### Method 4: Styling via Element-Specific Style Declarations
 
-**Method 4: Individually Styled Elements** Every element allows some control over its appearance via the `$color` and
-the
-`$scale` parameters.
+In addition to the style declarations,
+already mentioned in [Method 2](#method-2-global-style-declarations) and [Method 3](#method-3-changing-the-elements-shapes-and-icons)
+every actor and work object declares its own style declarations as an extension of the already known declarations `$ActorXYZ` or `$ObjectXYZ`.
+
+Therefore, the background of all "person actors" may be controlled via `$PersonBackgroundColor`
+and the icon scale of all "document work object" may be changed via `$DocumentIconScale`
+
+The following diagram shows the hierarchy of style declarations.
+
+![Style declarations](assets/styleProperties.svg)
+
+#### Method 5: Individually Styled Elements
+
+Every element allows some control over its individual appearance via the `$shape`,
+`$scale`, `$color` and `$background` parameters.
 The following example code shows a "Little Red Riding Hood."
 
 ```puml
 Person(hood, Riding Hood, $color=red, $scale=0.5)
 ```
 
-The `activity` macro also provides `$color`, `$scale` and `$shape` parameters to control the appearance of the newly
+The boundary macro accepts the parameters `$shape` and `$background` to control its appearance directly.
+
+The `activity` macro also provides `$shape`, `$scale`, `$color`
+and `$background` parameters to control the appearance of the newly
 created `$object` work object.
-While `$targetColor`, `$targetScale` and `$targetShape` control the appearance of the newly created `$target` work
+While `$targetShape`, `$targetScale`, `$targetColor`,
+and `$targetBackground` control the appearance of the newly created `$target` work
 object.
 
 ## Advanced Samples

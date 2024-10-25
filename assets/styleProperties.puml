@@ -1,0 +1,35 @@
+@startmindmap
+top to bottom direction
+
+title Style declarations
+
+* Default
+** Actor
+*** Person
+'**** Person (tagged)
+*** Group
+'**** Group (tagged)
+*** System
+'**** System (tagged)
+'*** any actor (tagged)
+** Object
+*** Document
+'**** Document (tagged)
+*** Folder
+'**** Folder (tagged)
+*** Call
+'**** Call (tagged)
+*** Email
+'**** Email (tagged)
+*** Conversation
+'**** Conversation (tagged)
+*** Info
+'**** Info (tagged)
+'*** any work object (tagged)
+** Note
+** Boundary
+'*** Boundary (tagged)
+** Activity
+'*** Activity (tagged)
+** Step
+@endmindmap

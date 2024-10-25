@@ -1,0 +1,16 @@
+@startebnf
+title DomainStory-PlantUML Syntax
+
+domainStory = { actorCreation | workObjectCreation | boundaries | activities }-;
+
+actorCreation = ("Person" | "Group" | "System"), "(", elementParameters, ")";
+
+workObjectCreation= ("Document" | "Folder" | "Call" | "Email" | "Conversation" | "Info"), "(", elementParameters, ")";
+
+elementParameters = "$name",[ "$label", ["$note"] ], { ?$note? | ?$shape? | ?$scale? | ?$color? | ?$background? };
+
+boundaries = "Boundary", "(", "$name", [ "$label", ["$note"] ], { ?$note? | ?$shape? | ?$background? },")";
+
+activities = "activity", "(", "$step", "$subject", "$predicate", "$object", [ "$post", ["$target", [ "$objectArr", ["$targetArr"] ] ] ], activityDetails,")";
+activityDetails = { ?$note? | ?$targetNote? | ?$shape? | ?$scale? | ?$color? | ?$background? | ?$targetShape? | ?$targetScale? | ?$targetColor? | ?$targetBackground? };
+@endebnf

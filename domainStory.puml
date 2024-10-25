@@ -1,4 +1,4 @@
-!global $LOG_LEVEL = debug
+'!global $LOG_LEVEL ?= debug
 
 ' Debugging Utilities
 ' ##################################
@@ -121,7 +121,7 @@ $declareStyleProperty(TextAlignment, Default, center)
 $declareStyleProperty(BackgroundColor, Default, "none")
 $declareStyleProperty(BorderStyle, Default, "none")
 $declareStyleProperty(BorderColor, Default, "none")
-$declareStyleProperty(BorderThickness, Default, 0)
+$declareStyleProperty(BorderThickness, Default, 1)
 $declareStyleProperty(RoundCorner, Default, 0)
 $declareStyleProperty(Shadowing, Default, false, $skinParam = %false())
 
@@ -188,7 +188,7 @@ $declareStyleProperty(TextAlignment, Boundary, $DefaultTextAlignment)
 $declareStyleProperty(BackgroundColor, Boundary, $DefaultBackgroundColor)
 $declareStyleProperty(BorderStyle, Boundary, "dashed")
 $declareStyleProperty(BorderColor, Boundary, "#1f2833")
-$declareStyleProperty(BorderThickness, Boundary, $DefaultBorderThickness)
+$declareStyleProperty(BorderThickness, Boundary, 2)
 $declareStyleProperty(RoundCorner, Boundary, 15)
 $declareStyleProperty(Shadowing, Boundary, $DefaultShadowing)
 
@@ -720,7 +720,7 @@ $extendStyleDeclarations("Object", "Call", "phone")
 !endfunction
 
 !function $computeStepNumber($step)
-    !if $step == "_"
+    !if $step == "_" || $step == "+"
         !$stepCounter = $stepCounter + 1
         !return $stepCounter
     !elseif $step == "|"
