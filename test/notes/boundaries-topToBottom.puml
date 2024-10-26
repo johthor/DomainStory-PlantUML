@@ -1,12 +1,12 @@
 @startuml
-!$storyLayout = 'top-to-bottom'
+!$StoryLayout = 'top-to-bottom'
 
 !include ../../domainStory.puml
 
 Boundary(office) {
     Group(people)
     Call(conference)
-    activity(6, (people), attend, (conference))
+    activity(6, people, attend, conference)
 }
 
 note bottom of office : below?

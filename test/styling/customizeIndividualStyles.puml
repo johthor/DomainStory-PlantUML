@@ -1,0 +1,23 @@
+@startuml
+!include ../../domainStory.puml
+
+Person(Alice, $color=green)
+
+Boundary(Home) {
+    Email(spam)
+}
+
+Person(Bob, $color=blue)
+
+Boundary(Party, $background=yellow/red) {
+    Conversation(weather, $color=lightgreen)
+}
+
+Boundary(Office, $background=#aee) {
+    Email(proposal, $scale=3, $color=#f03000)
+}
+
+activity(_, Alice, reads the, spam, _, _, ->)
+activity(_, Alice, talks about the, weather, with, Bob)
+activity(<_, Bob, writes a, proposal, to, Alice)
+@enduml

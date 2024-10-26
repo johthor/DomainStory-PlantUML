@@ -330,6 +330,12 @@ Person(Alice)
 
 > :information_source: You might want to set a matching `$StepBackgroundColor` and `$StepFontColor` when using themes.
 
+See the following test cases for more details
+
+* [Using theme `sketchy`](test/styling/theme-sketchy.puml)
+* [Using theme `sunlust`](test/styling/theme-sunlust.puml)
+* [Global style declarations](test/styling/customizeGlobalStyles.puml)
+
 #### Method 3: Changing the Element's Shapes and Icons
 By default, the library will use the
 following [PlantUML shapes](https://plantuml.com/en/deployment-diagram) to represent actors,
@@ -368,16 +374,12 @@ The shape and icons used by specific actors and work objects may also be reconfi
 | `$InfoShape`            | `$ObjectShape`            | Shape used by work objects of type info         |
 | `$InfoIconName`         | `$ma_information_outline` | Icon used by work objects of type info          |
 
-See the following test cases for more details
-
-* [Using theme `sketchy`](test/styling/theme-sketchy.puml)
-* [Using theme `sunlust`](test/styling/theme-sunlust.puml)
-* [Global style declarations](test/styling/customColors.puml)
+See the test case [element style declarations](test/styling/customizeElementStyles.puml) for more details.
 
 ### Extensions
 
 If the default actors and work objects are not enough to express your specific needs,
-see the [extensions sample](samples/extensions.puml) for a way to add new actors and objects.
+see the [extension sample](samples/extensions.puml) for a way to add new actors and objects.
 
 ![extensions sample](assets/extensions.svg)
 
@@ -480,7 +482,7 @@ See the test cases again for more details
 
 In addition to the styling methods described in [Basic styling,](#basic-styling) there are more advanced methods.
 
-#### Method 4: Styling via Element-Specific Style Declarations
+#### Method 4: Element-Specific Style Declarations
 
 In addition to the style declarations,
 already mentioned in [Method 2](#method-2-global-style-declarations) and [Method 3](#method-3-changing-the-elements-shapes-and-icons)
@@ -491,9 +493,39 @@ and the icon scale of all "document work object" may be changed via `$DocumentIc
 
 The following diagram shows the hierarchy of style declarations.
 
-![Style declarations](assets/styleProperties.svg)
+![Style declaration hierarchy](assets/stylePropertyHierarchy.svg)
 
-#### Method 5: Individually Styled Elements
+See the test case [element style declarations](test/styling/customizeElementStyles.puml) for more details.
+
+#### Method 5: Tag-Specific Style Declarations
+
+The level of styling is controlled via the `$tag` parameters on most elements.
+To use tagged style customization, you first need to configure the new style declarations via
+
+```plantuml
+customizeStyleProperty($value, $property, $context,  [$kind], [$tag], [$skinParam])
+```
+
+* `$value` is the desired new value
+* `$property` is the name of the style property to be customized
+* `$context` is one of (`Default`, `Actor`, `Object`, `Note`, `Boundary`, `Activity`, `Step`)
+* `$kind` is the kind of actor or work object to be customized, it might also be `""` to style all `$context` elements tagged with `$tag`
+* `$tag` is the tag name you want to customize
+* `$skinParam` is `TRUE` by default and controls if the property is a PlantUML skin paramter too
+
+After that, the newly defined tag may be used to customize the appearance of matching elements via the `$tag` parameter.
+
+```plantuml
+Person(Alice, $tag="FairyTale")
+```
+
+The following diagram shows how the names of all supported style declarations are constructed.
+
+![Style declaration names](assets/stylePropertyNames.svg)
+
+See the test case [tag style declarations](test/styling/customizeTagStyles.puml) for more details.
+
+#### Method 6: Individually Styled Elements
 
 Every element allows some control over its individual appearance via the `$shape`,
 `$scale`, `$color` and `$background` parameters.
@@ -511,6 +543,8 @@ created `$object` work object.
 While `$targetShape`, `$targetScale`, `$targetColor`,
 and `$targetBackground` control the appearance of the newly created `$target` work
 object.
+
+See the test case [individual style customization](test/styling/customizeIndividualStyles.puml) for more details.
 
 ## Advanced Samples
 

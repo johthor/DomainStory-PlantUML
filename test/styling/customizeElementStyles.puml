@@ -1,0 +1,59 @@
+@startuml
+!$PersonBackgroundColor = red
+
+!$SystemShape=action
+!$SystemBackground=lightgrey
+
+!$GroupFontSize=30
+
+!$ConversationIconStyle = "filled"
+
+!$DocumentIconStyle=something
+!$DocumentIconColor=blue
+
+!$EmailIconScale = '1.5'
+!$EmailIconColor = grey
+!$EmailBackgroundColor = "orange"
+!$EmailBorderStyle = "solid"
+!$EmailBorderColor = "red"
+
+!$CallIconName = "&phone"
+!$CallIconScale = "6"
+!$CallIconColor = grey
+
+!$InfoFontStyle=italic
+!$InfoFontSize=20
+
+!$FolderShape=database
+
+!include ../../domainStory.puml
+
+Email(confirmation)
+Info(news)
+Document(list)
+Folder(documents)
+Call(question)
+Conversation(argument)
+
+Person(Alice)
+Group(Employees)
+System(Boarding)
+
+Boundary(Home) {
+    Email(spam)
+}
+
+Person(Bob)
+
+Boundary(Party) {
+    Conversation(weather)
+}
+
+Boundary(Office) {
+    Email(proposal)
+}
+
+activity(+, Alice, reads the, spam, _, _, ->)
+activity(+, Alice, talks about the, weather, with, Bob)
+activity(<+, Bob, writes a, proposal, to, Alice)
+@enduml

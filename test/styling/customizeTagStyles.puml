@@ -1,0 +1,36 @@
+@startuml
+!theme blueprint
+
+!$DefaultTextAlignment=center
+
+!include ../../domainStory.puml
+
+customizeStyleProperty("LimeGreen", BackgroundColor, Actor, Person, friendly)
+customizeStyleProperty("yellow|red", BackgroundColor, Boundary, "", fun)
+customizeStyleProperty("red", IconColor, Object, Email, important, $skinParam=%false())
+
+customizeStyleProperty(database, Shape, Object, "", stored, $skinParam=%false())
+customizeStyleProperty(italic, FontStyle, Actor, "", windy)
+
+
+Person(Alice, $tag=windy)
+
+Boundary(Home) {
+    Email(spam, $tag=stored)
+}
+
+Person(Bob, $tag=friendly)
+
+Boundary(Party, $tag=fun) {
+    Conversation(weather)
+}
+
+Boundary(Office) {
+    Email(proposal, $tag=important)
+}
+
+activity(+, Alice, reads the, spam, _, _, ->)
+activity(+, Alice, talks about the, weather, with, Bob)
+activity(<+, Bob, writes a, proposal, to, Alice)
+
+@enduml

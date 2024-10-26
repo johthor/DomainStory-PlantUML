@@ -5,8 +5,8 @@
 
 !include <material/bus>
 
-!unquoted procedure Bus($name, $label = "", $note = "", $shape = $ObjectShape, $scale = $ObjectIconScale, $color = $ObjectIconColor, $background = $ObjectBackgroundColor)
-    Object("Bus", "$ma_bus", $name, $label, $note, $shape, $scale, $color, $background)
+!unquoted procedure Bus($name, $label = "", $tag = "", $note = "", $shape = $ObjectShape, $scale = $ObjectIconScale, $color = $ObjectIconColor, $background = "")
+    Object("Bus", "$ma_bus", $name, $label, $tag, $note, $shape, $scale, $color, $background)
 !endprocedure
 
 Person(agent, gate agent)

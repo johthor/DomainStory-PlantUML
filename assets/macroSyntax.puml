@@ -1,16 +1,19 @@
 @startebnf
 title DomainStory-PlantUML Syntax
 
-domainStory = { actorCreation | workObjectCreation | boundaries | activities }-;
+domainStory = { actors | workObjects | boundaries | activities }-;
 
-actorCreation = ("Person" | "Group" | "System"), "(", elementParameters, ")";
+actors = ( ("Person" | "Group" | "System"), "(", elementParameters, ")" ) |\
+( "Actor", "(", "$kind", "$iconName", elementParameters, ")" );
 
-workObjectCreation= ("Document" | "Folder" | "Call" | "Email" | "Conversation" | "Info"), "(", elementParameters, ")";
+workObjects = ( ("Document" | "Folder" | "Call" | "Email" | "Conversation" | "Info"), "(", elementParameters, ")" ) |\
+( "Object", "(", "$kind", "$iconName", elementParameters, ")" );
 
-elementParameters = "$name",[ "$label", ["$note"] ], { ?$note? | ?$shape? | ?$scale? | ?$color? | ?$background? };
+elementParameters = "$name",[ "$label", ["$tag", ["$note"] ] ], { ?$tag? | ?$note? | ?$shape? | ?$scale? | ?$color? | ?$background? };
 
-boundaries = "Boundary", "(", "$name", [ "$label", ["$note"] ], { ?$note? | ?$shape? | ?$background? },")";
+boundaries = "Boundary", "(", "$name", [ "$label", ["$tag", ["$note"] ] ], { ?$tag? | ?$note? | ?$shape? | ?$background? },")";
 
-activities = "activity", "(", "$step", "$subject", "$predicate", "$object", [ "$post", ["$target", [ "$objectArr", ["$targetArr"] ] ] ], activityDetails,")";
-activityDetails = { ?$note? | ?$targetNote? | ?$shape? | ?$scale? | ?$color? | ?$background? | ?$targetShape? | ?$targetScale? | ?$targetColor? | ?$targetBackground? };
+activities = "activity", "(", "$step", "$subject", "$predicate", "$object", [ "$post", ["$target", [ "$objectArr", ["$targetArr"] ] ] ], activityParameters,")";
+activityParameters = { ?$tag? | ?$note? | ?$shape? | ?$scale? | ?$color? | ?$background? |\
+?$targetTag? | ?$targetNote? | ?$targetShape? | ?$targetScale? | ?$targetColor? | ?$targetBackground? };
 @endebnf

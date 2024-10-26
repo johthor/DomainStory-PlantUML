@@ -3,10 +3,10 @@
 
 PROJECT_ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 
-# Convert all samples into assets
+# Convert all samples and assets
 run::convertAssets() {
-  for a in assets/*.puml; do
-    echo Converting "$a"
+  set -e
+  for a in assets/*.puml; do echo Converting "$a"
     plantuml -Tsvg -o "$PROJECT_ROOT"/assets "$a"
   done
 
