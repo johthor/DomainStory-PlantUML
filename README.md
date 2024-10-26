@@ -263,10 +263,16 @@ The appearance of a domain story may be influenced via any of the following meth
 
 > :information_source: You may also mix and match all the approaches to get the look you desire.
 
-#### Method 1: PlantUML Themes
+#### Method 1: PlantUML Themes and Dark Mode
 The library is compatible with [PlantUML themes](https://plantuml.com/en/theme) like
 `sunlust` (light) `crt-amber` (dark) or `sketchy` (mixed) and others.
 Choose the theme before including the library.
+
+If you want to use PlantUML's dark mode, please also specify the mode via the `-D` commandline option e.g.
+
+```shell
+plantuml -darkmode -DPUML_MODE=dark [options] [file/dir]
+```
 
 #### Method 2: Global Style declarations
 If no theme is used, a fallback design is used which is heavily inspired by [Egon.io](https://egon.io/).

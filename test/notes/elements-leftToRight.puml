@@ -21,6 +21,8 @@ Person(Alice, $note= default)
 Group(Employees, $note=~ inverse)
 System(Boarding, $note=^ above)
 
+Person(person)
+
 Info(thing1)
 Info(thing2)
 Info(thing3)

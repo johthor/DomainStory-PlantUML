@@ -2,7 +2,7 @@
 ' ##################################
 
 !procedure $debug($message)
-    !if $LOG_LEVEL == "debug"
+    !if LOG_LEVEL == "debug"
         !log [DEBUG] $message
     !endif
 !endprocedure
@@ -21,6 +21,16 @@
 
 ' Style Utilities
 ' ##################################
+
+!function $adjustForDarkMode($color)
+    !if $PUML_MODE == "light"
+        !$result = $color
+    !else
+        !$result = %reverse_color($color)
+    !endif
+    $debug($PUML_MODE + " mode with input color " + $color + " and output color " + $result)
+    !return $result
+!endfunction
 
 !function $computeStereotype($kind, $tag, $combinations = %true())
     !if $kind
@@ -154,7 +164,16 @@
 ' Global Style declarations
 ' ##################################
 
-$declareStyleProperty(FontColor, Default, "#0b0c10", $themeable = %true())
+' Use `-darkmode -DPUML_MODE=dark` to set a preprocessing variable
+!if %not(%variable_exists("$PUML_MODE"))
+    !ifdef PUML_MODE
+        !$PUML_MODE = PUML_MODE
+    !else
+        !$PUML_MODE = "light"
+    !endif
+!endif
+
+$declareStyleProperty(FontColor, Default, $adjustForDarkMode("#0B0C10"), $themeable = %true())
 $declareStyleProperty(FontName, Default, $themeable = %true())
 $declareStyleProperty(FontSize, Default, $themeable = %true())
 $declareStyleProperty(FontStyle, Default, $themeable = %true())
@@ -179,7 +198,7 @@ $declareStyleProperty(Shape, Actor, Agent, $themeable = %false(), $skinParam = %
 
 $declareStyleProperty(IconStyle, Actor, "outline", $themeable = %false(), $skinParam = %false())
 $declareStyleProperty(IconScale, Actor, 1, $themeable = %false(), $skinParam = %false())
-$declareStyleProperty(IconColor, Actor, "#1f2833", $themeable = %true(), $skinParam = %false())
+$declareStyleProperty(IconColor, Actor, $adjustForDarkMode("#1f2833"), $themeable = %true(), $skinParam = %false())
 
 $declareStyleProperty(FontColor, Actor, $DefaultFontColor, $themeable = %true())
 $declareStyleProperty(FontName, Actor, $DefaultFontName, $themeable = %true())
@@ -201,7 +220,7 @@ $declareStyleProperty(Shape, Object, Card, $themeable = %false(), $skinParam = %
 
 $declareStyleProperty(IconStyle, Object, "outline", $themeable = %false(), $skinParam = %false())
 $declareStyleProperty(IconScale, Object, 0.8, $themeable = %false(), $skinParam = %false())
-$declareStyleProperty(IconColor, Object, "#1f2833", $themeable = %true(), $skinParam = %false())
+$declareStyleProperty(IconColor, Object, $adjustForDarkMode("#1f2833"), $themeable = %true(), $skinParam = %false())
 
 $declareStyleProperty(FontColor, Object, $DefaultFontColor, $themeable = %true())
 $declareStyleProperty(FontName, Object, $DefaultFontName, $themeable = %true())
@@ -229,7 +248,7 @@ $declareStyleProperty(TextAlignment, Boundary, $DefaultTextAlignment, $themeable
 
 $declareStyleProperty(BackgroundColor, Boundary, $DefaultBackgroundColor, $themeable = %true())
 $declareStyleProperty(BorderStyle, Boundary, "dashed", $themeable = %true())
-$declareStyleProperty(BorderColor, Boundary, "#1f2833", $themeable = %true())
+$declareStyleProperty(BorderColor, Boundary, $adjustForDarkMode("#1f2833"), $themeable = %true())
 $declareStyleProperty(BorderThickness, Boundary, 2, $themeable = %true())
 $declareStyleProperty(RoundCorner, Boundary, 15, $themeable = %true())
 $declareStyleProperty(Shadowing, Boundary, $DefaultShadowing, $themeable = %true())
@@ -243,9 +262,9 @@ $declareStyleProperty(FontSize, Note, $DefaultFontSize, $themeable = %true())
 $declareStyleProperty(FontStyle, Note, $DefaultFontStyle, $themeable = %true())
 $declareStyleProperty(TextAlignment, Note, left, $themeable = %true())
 
-$declareStyleProperty(BackgroundColor, Note, "#c5c6c7", $themeable = %true())
+$declareStyleProperty(BackgroundColor, Note, $adjustForDarkMode("#c5c6c7"), $themeable = %true())
 $declareStyleProperty(BorderStyle, Note, $DefaultBorderStyle, $themeable = %true())
-$declareStyleProperty(BorderColor, Note, "#1f2833", $themeable = %true())
+$declareStyleProperty(BorderColor, Note, $adjustForDarkMode("#1f2833"), $themeable = %true())
 $declareStyleProperty(BorderThickness, Note, $DefaultBorderThickness, $themeable = %true())
 $declareStyleProperty(RoundCorner, Note, $DefaultRoundCorner, $themeable = %true())
 $declareStyleProperty(Shadowing, Note, $DefaultShadowing, $themeable = %true())
@@ -261,7 +280,7 @@ $declareStyleProperty(FontSize, Activity, $DefaultFontSize, $themeable = %true()
 $declareStyleProperty(FontStyle, Activity, $DefaultFontStyle, $themeable = %true())
 $declareStyleProperty(MessageAlignment, Activity, left, $themeable = %true())
 
-$declareStyleProperty(Color, Activity, "#c5c6c7", $themeable = %true())
+$declareStyleProperty(Color, Activity, $adjustForDarkMode("#c5c6c7"), $themeable = %true())
 
 ' Step Label Styles
 ' ----------------------------------
@@ -269,7 +288,7 @@ $declareStyleProperty(Color, Activity, "#c5c6c7", $themeable = %true())
 $declareStyleProperty(FontColor, Step, $DefaultFontColor, $themeable = %true(), $skinParam = %false())
 $declareStyleProperty(FontSize, Step, 16, $themeable = %true(), $skinParam = %false())
 
-$declareStyleProperty(BackgroundColor, Step, "#66fcf1", $themeable = %true(), $skinParam = %false())
+$declareStyleProperty(BackgroundColor, Step, $adjustForDarkMode("#66fcf1"), $themeable = %true(), $skinParam = %false())
 
 ' Mutable state
 ' ##################################

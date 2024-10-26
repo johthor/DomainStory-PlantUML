@@ -12,7 +12,6 @@ customizeStyleProperty("red", IconColor, Object, Email, important, $skinParam=%f
 customizeStyleProperty(database, Shape, Object, "", stored, $skinParam=%false())
 customizeStyleProperty(italic, FontStyle, Actor, "", windy)
 
-
 Person(Alice, $tag=windy)
 
 Boundary(Home) {

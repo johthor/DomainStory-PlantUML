@@ -21,6 +21,15 @@ run::extractTOC() {
   grep -e '^##' README.md
 }
 
+run::processFileDark() {
+  directory=$(dirname "$1")
+  fileName=$(basename "$1" .puml)
+  fileBase="$directory/$fileName"
+
+  plantuml -Tsvg -darkmode -DPUML_MODE=dark -DLOG_LEVEL=debug "$1"
+  mv "$fileBase.svg" scrapbook/darkmode/
+}
+
 run::preprocessFile() {
   directory=$(dirname "$1")
   fileName=$(basename "$1" .puml)
