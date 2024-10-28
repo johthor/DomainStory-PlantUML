@@ -280,7 +280,7 @@ $declareStyleProperty(FontSize, Activity, $DefaultFontSize, $themeable = %true()
 $declareStyleProperty(FontStyle, Activity, $DefaultFontStyle, $themeable = %true())
 $declareStyleProperty(MessageAlignment, Activity, left, $themeable = %true())
 
-$declareStyleProperty(Color, Activity, $adjustForDarkMode("#c5c6c7"), $themeable = %true())
+$declareStyleProperty(Color, Activity, "#c5c6c7", $themeable = %true())
 
 ' Step Label Styles
 ' ----------------------------------
