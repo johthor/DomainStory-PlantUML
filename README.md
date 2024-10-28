@@ -525,7 +525,10 @@ See the test case [element style declarations](test/styling/customizeElementStyl
 
 #### Method 5: Tag-Specific Style Declarations
 
-The level of styling is controlled via the `$tag` parameters on most elements.
+Tag-based style declarations form another layer of styling on top of the element-specific style declarations
+and follow the same inheritance hierarchy but for tagged style declarations.
+
+This level of styling is controlled via the `$tag` parameters on most elements.
 To use tagged style customization, you first need to configure the new style declarations via
 
 ```plantuml
