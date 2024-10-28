@@ -268,11 +268,35 @@ The library is compatible with [PlantUML themes](https://plantuml.com/en/theme) 
 `sunlust` (light) `crt-amber` (dark) or `sketchy` (mixed) and others.
 Choose the theme before including the library.
 
+```puml
+@startuml
+!theme sketchy
+
+!include <domainstory/Domainstory>
+
+' domain story description
+@enduml
+```
+
+This will result in the following appearance.
+
+![theme sketchy sample](docs/assets/theme-sketchy.svg)
+
 If you want to use PlantUML's dark mode, please also specify the mode via the `-D` commandline option e.g.
 
 ```shell
 plantuml -darkmode -DPUML_MODE=dark [options] [file/dir]
 ```
+
+Which will be rendered as below.
+
+![basic sample in dark mode](docs/assets/basic_DARK_MODE.svg)
+
+See the following test cases for more details.
+
+* [Using theme `sunlust`](test/styling/theme-sunlust.puml)
+* [Using theme `sketchy`](test/styling/theme-sketchy.puml)
+* [Using theme `crt-amber`](test/styling/theme-crt-amber.puml)
 
 #### Method 2: Global Style declarations
 If no theme is used, a fallback design is used which is heavily inspired by [Egon.io](https://egon.io/).
@@ -308,15 +332,15 @@ Make sure that your values are compatible with the chosen theme.
 | `$BoundaryBorderThickness`  | `2`           | Thickness of boundary borders                   |
 | `$BoundaryRoundedCorner`    | `15`          | Roundness of boundary corners                   |
 | _Note Styling_              |
-| `$NoteTextAlignment`        | `left`        | Alignment of note texts                             |
-| `$NoteBackgroundColor`      | `#c5c6c7`     | Background color for notes                          |
-| `$NoteBorderColor`          | `#1f2833`     | Border color for notes                              |
+| `$NoteTextAlignment`        | `left`        | Alignment of note texts                         |
+| `$NoteBackgroundColor`      | `#c5c6c7`     | Background color for notes                      |
+| `$NoteBorderColor`          | `#1f2833`     | Border color for notes                          |
 | _Activity Styling_          |
-| `$ActivityShape`            | `Arrow`       | The element used to style activities                |
-| `$ActivityMessageAlignment` | `left`        | Where the activity text should start                |
-| `$ActivityColor`            | `#c5c6c7`     | Color of the activity arrows                        |
-| `$StepFontSize`             | `16`          | Font size for step numbers                          |
-| `$StepBackgroundColor`      | `#66fcf1`     | Background color for step numbers                   |
+| `$ActivityShape`            | `Arrow`       | The element used to style activities            |
+| `$ActivityMessageAlignment` | `left`        | Where the activity text should start            |
+| `$ActivityColor`            | `#c5c6c7`     | Color of the activity arrows                    |
+| `$StepFontSize`             | `16`          | Font size for step numbers                      |
+| `$StepBackgroundColor`      | `#66fcf1`     | Background color for step numbers               |
 
 To use your own styling, you need to define the relevant styling properties before including the library.
 The following example would combine green actor icons with red text.
@@ -336,11 +360,7 @@ Person(Alice)
 
 > :information_source: You might want to set a matching `$StepBackgroundColor` and `$StepFontColor` when using themes.
 
-See the following test cases for more details
-
-* [Using theme `sketchy`](test/styling/theme-sketchy.puml)
-* [Using theme `sunlust`](test/styling/theme-sunlust.puml)
-* [Global style declarations](test/styling/customizeGlobalStyles.puml)
+See the test case [Global style declarations](test/styling/customizeGlobalStyles.puml) for more details.
 
 #### Method 3: Changing the Element's Shapes and Icons
 By default, the library will use the

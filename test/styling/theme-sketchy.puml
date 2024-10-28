@@ -1,10 +1,6 @@
 @startuml
 !theme sketchy
 
-!$StoryLayout = 'top-to-bottom'
-!$StepFontColor = black
-!$StepBackgroundColor = darkorange
-
 !include ../../domainStory.puml
 
 Boundary(Party) {

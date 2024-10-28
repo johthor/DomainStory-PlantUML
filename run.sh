@@ -28,6 +28,8 @@ run::convertAssets() {
   for sample in samples/*.puml; do
     puml::convert "$sample" docs/assets
   done
+
+  puml::convert test/styling/theme-sketchy.puml docs/assets
 }
 
 # Extract Table of Contents from Readme
