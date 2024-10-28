@@ -85,7 +85,7 @@ Boundary($name[, $label][, $note][, $shape][, $background]) {
 
 Optional parameters are shown above in square brackets.
 
-![pictographic language](assets/pictographicLanguage.svg)
+![pictographic language](docs/assets/pictographicLanguage.svg)
 
 Now let's create our first domain story:
 
@@ -103,7 +103,7 @@ activity(1, Alice, talks about the, weather, with, Bob)
 @enduml
 ```
 
-![basic sample](assets/basic.svg)
+![basic sample](docs/assets/basic.svg)
 
 More information can be found here:
 
@@ -122,7 +122,7 @@ In general, the parameters at the beginning of the parameter list are to be used
 while parameters at the end of the parameter list are more likely to be used as keyword parameters.
 Keyword parameters may even be skipped as they always have sensible default handling.
 
-There is an EBNF diagram that describes the [macro syntax](assets/macroSyntax.svg) in more details.
+There is an EBNF diagram that describes the [macro syntax](docs/assets/macroSyntax.svg) in more details.
 Keyword parameters are displayed as _dashed terminals_.
 
 Every actor, work object and boundary accepts the parameters `$name` and `$label`
@@ -281,32 +281,32 @@ style declarations.
 These will still work if a theme is used.
 Make sure that your values are compatible with the chosen theme.
 
-| Property                    | Default Value | Description                                         |
-|-----------------------------|---------------|-----------------------------------------------------|
-| `$DefaultFontColor`         | `#0b0c10`     | Color of all text                                   |
-| `$DefaultTextAlignment`     | `center`      | Alignment of most text                              |
-| `$DefaultBackgroundColor`   | `none`        | Background color for most elements                  |
-| `$DefaultBorderStyle`       | `none`        | Border style for most elements                      |
-| `$DefaultBorderColor`       | `none`        | Border color for most elements                      |
-| `$DefaultBorderThickness`   | `1`           | Border style for most elements                      |
-| `$DefaultRoundCorner`       | `0`           | Roundness of element corners                        |
-| `$DefaultShadowing`         | `false`       | Should elements throw shadows                       |
+| Property                    | Default Value | Description                                     |
+|-----------------------------|---------------|-------------------------------------------------|
+| `$DefaultFontColor`         | `#0b0c10`     | Color of all text                               |
+| `$DefaultTextAlignment`     | `center`      | Alignment of most text                          |
+| `$DefaultBackgroundColor`   | `none`        | Background color for most elements              |
+| `$DefaultBorderStyle`       | `none`        | Border style for most elements                  |
+| `$DefaultBorderColor`       | `none`        | Border color for most elements                  |
+| `$DefaultBorderThickness`   | `1`           | Border style for most elements                  |
+| `$DefaultRoundCorner`       | `0`           | Roundness of element corners                    |
+| `$DefaultShadowing`         | `false`       | Should elements throw shadows                   |
 | _Actor Styling_             |
-| `$ActorShape`               | `Agent`       | Shape of actor elements                             |
-| `$ActorIconStyle`           | `default`     | Use outlines instead of filled icons for actors     |
-| `$ActorIconScale`           | `1`           | Size of actor icons                                 |
-| `$ActorIconColor`           | `#1f2833`     | Color of actors icons                               |
+| `$ActorShape`               | `Agent`       | Shape of actor elements                         |
+| `$ActorIconStyle`           | `outline`     | Use outlines instead of filled icons for actors |
+| `$ActorIconScale`           | `1`           | Size of actor icons                             |
+| `$ActorIconColor`           | `#1f2833`     | Color of actors icons                           |
 | _Work Object Styling_       |
-| `$ObjectShape`              | `Card`        | Shape of work item elements                         |
-| `$ObjectIconStyle`          | `default`     | Use outlines instead of filled icons for work items |
-| `$ObjectIconColor`          | `#1f2833`     | Color of work item icons                            |
-| `$ObjectIconScale`          | `0.8`         | Size of work item icons                             |
+| `$ObjectShape`              | `Card`        | Shape of work item elements                     |
+| `$ObjectIconStyle`          | `outline`     | outlines instead of filled icons for work items |
+| `$ObjectIconColor`          | `#1f2833`     | Color of work item icons                        |
+| `$ObjectIconScale`          | `0.8`         | Size of work item icons                         |
 | _Boundary Styling_          |
-| `$BoundaryShape`            | `Rectangle`   | Shape of boundary containers                        |
-| `$BoundaryBorderStyle`      | `dashed`      | Style of boundary borders                           |
-| `$BoundaryBorderColor`      | `#1f2833`     | Color of boundary borders                           |
-| `$BoundaryBorderThickness`  | `2`           | Thickness of boundary borders                       |
-| `$BoundaryRoundedCorner`    | `15`          | Roundness of boundary corners                       |
+| `$BoundaryShape`            | `Rectangle`   | Shape of boundary containers                    |
+| `$BoundaryBorderStyle`      | `dashed`      | Style of boundary borders                       |
+| `$BoundaryBorderColor`      | `#1f2833`     | Color of boundary borders                       |
+| `$BoundaryBorderThickness`  | `2`           | Thickness of boundary borders                   |
+| `$BoundaryRoundedCorner`    | `15`          | Roundness of boundary corners                   |
 | _Note Styling_              |
 | `$NoteTextAlignment`        | `left`        | Alignment of note texts                             |
 | `$NoteBackgroundColor`      | `#c5c6c7`     | Background color for notes                          |
@@ -328,7 +328,7 @@ The following example would combine green actor icons with red text.
 !$DefaultFontColor = "red"
 !$ActorIconColor = "green"
 
-!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
+!include <domainstory/Domainstory>
 
 Person(Alice)
 @enduml
@@ -387,7 +387,7 @@ See the test case [element style declarations](test/styling/customizeElementStyl
 If the default actors and work objects are not enough to express your specific needs,
 see the [extension sample](samples/extensions.puml) for a way to add new actors and objects.
 
-![extensions sample](assets/extensions.svg)
+![extensions sample](docs/assets/extensions.svg)
 
 ## Advanced Features
 
@@ -499,7 +499,7 @@ and the icon scale of all "document work object" may be changed via `$DocumentIc
 
 The following diagram shows the hierarchy of style declarations.
 
-![Style declaration hierarchy](assets/stylePropertyHierarchy.svg)
+![Style declaration hierarchy](docs/assets/stylePropertyHierarchy.svg)
 
 See the test case [element style declarations](test/styling/customizeElementStyles.puml) for more details.
 
@@ -527,7 +527,7 @@ Person(Alice, $tag="FairyTale")
 
 The following diagram shows how the names of all supported style declarations are constructed.
 
-![Style declaration names](assets/stylePropertyNames.svg)
+![Style declaration names](docs/assets/stylePropertyNames.svg)
 
 See the test case [tag style declarations](test/styling/customizeTagStyles.puml) for more details.
 
@@ -560,7 +560,7 @@ Some example domain stories collected from different sources.
 
 The following example is taken from the [Domain Storytelling](http://www.domainstorytelling.org) website.
 
-![cinema sample](assets/cinema.svg)
+![cinema sample](docs/assets/cinema.svg)
 
 Source: [cinema.puml](samples/cinema.puml)
 
@@ -570,7 +570,7 @@ The following example is taken from _Collaborative Modelling -- Wie die
 Kommunikation mit den Fachexperten gelingt_ JavaSPEKTRUM 2/2020.
 
 ![airport bus
-sample](assets/airportBus.svg)
+sample](docs/assets/airportBus.svg)
 
 Source: [airportBus.puml](samples/airportBus.puml)
 

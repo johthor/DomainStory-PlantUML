@@ -3,16 +3,30 @@
 
 PROJECT_ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 
+strContains() { case $1 in *$2* ) return 0;; *) return 1;; esac ;}
+
+puml::convert() {
+  fileName="$1"
+  outputDir="$2"
+
+  if strContains "$fileName" "DARK_MODE"; then
+    echo "Converting $fileName in dark mode to directory $outputDir"
+    plantuml -Tsvg -o "$PROJECT_ROOT/$outputDir" -darkmode -DPUML_MODE=dark "$fileName"
+  else
+    echo "Converting $fileName in light mode to directory $outputDir"
+    plantuml -Tsvg -o "$PROJECT_ROOT/$outputDir" "$fileName"
+  fi
+}
+
 # Convert all samples and assets
 run::convertAssets() {
   set -e
-  for a in assets/*.puml; do echo Converting "$a"
-    plantuml -Tsvg -o "$PROJECT_ROOT"/assets "$a"
+  for asset in docs/puml/*.puml; do
+    puml::convert "$asset" docs/assets
   done
 
-  for s in samples/*.puml; do
-    echo Converting "$s"
-    plantuml -Tsvg -o "$PROJECT_ROOT"/assets "$s"
+  for sample in samples/*.puml; do
+    puml::convert "$sample" docs/assets
   done
 }
 
