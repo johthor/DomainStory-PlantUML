@@ -3,17 +3,26 @@ title DomainStory-PlantUML Syntax
 
 domainStory = { actors | workObjects | boundaries | activities }-;
 
-actors = ( ("Person" | "Group" | "System"), "(", elementParameters, ")" ) |\
-( "Actor", "(", "$kind", "$iconName", elementParameters, ")" );
+actors = ( ("Person" | "Group" | "System"), "(", elementParameters, ")" )
+    | ( "Actor", "(", "$kind", "$iconName", elementParameters, ")" );
 
-workObjects = ( ("Document" | "Folder" | "Call" | "Email" | "Conversation" | "Info"), "(", elementParameters, ")" ) |\
-( "Object", "(", "$kind", "$iconName", elementParameters, ")" );
+workObjects = ( ("Document" | "Folder" | "Call" | "Email" | "Conversation" | "Info"), "(", elementParameters, ")" )
+    | ( "Object", "(", "$kind", "$iconName", elementParameters, ")" );
 
-elementParameters = "$name",[ "$label", ["$tag", ["$note"] ] ], { ?$tag? | ?$note? | ?$shape? | ?$scale? | ?$color? | ?$background? };
+elementParameters = "$name",[ "$label", ["$tag", ["$note"] ] ], elementKeywordParameters;
 
-boundaries = "Boundary", "(", "$name", [ "$label", ["$tag", ["$note"] ] ], { ?$tag? | ?$note? | ?$shape? | ?$background? },")";
+elementKeywordParameters = [ "<= 6" * ( ?$tag? | ?$note? | ?$shape? | ?$scale? | ?$color? | ?$background? ) ];
+(* each keyword parameter should only be set at most once *)
 
-activities = "activity", "(", "$step", "$subject", "$predicate", "$object", [ "$post", ["$target", [ "$objectArr", ["$targetArr"] ] ] ], activityParameters,")";
-activityParameters = { ?$tag? | ?$note? | ?$shape? | ?$scale? | ?$color? | ?$background? |\
-?$targetTag? | ?$targetNote? | ?$targetShape? | ?$targetScale? | ?$targetColor? | ?$targetBackground? };
+boundaries = "Boundary", "(", "$name", [ "$label", ["$tag", ["$note"] ] ], boundaryKeywordParameters, ")";
+
+boundaryKeywordParameters = [ "<= 4" * ( ?$tag? | ?$note? | ?$shape? | ?$background? ) ];
+(* each keyword parameter should only be set at most once *)
+
+activities = "activity", "(", "$step", "$subject", "$predicate", "$object",\
+    [ "$post", ["$target", [ "$objectArr", ["$targetArr"] ] ] ], activityKeywordParameters,")";
+
+activityKeywordParameters = [ "<= 14" * ( ?$objectArr? |?$tag? | ?$note? | ?$shape? | ?$scale? | ?$color? | ?$background?
+    | ?$targetArr? | ?$targetTag? | ?$targetNote? | ?$targetShape? | ?$targetScale? | ?$targetColor? | ?$targetBackground? ) ];
+(* each keyword parameter should only be set at most once *)
 @endebnf
