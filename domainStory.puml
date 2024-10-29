@@ -1,4 +1,4 @@
-' DomainStory-PlantUML, version 0.3
+' DomainStory-PlantUML, version 0.3.1
 ' https://github.com/johthor/DomainStory-PlantUML
 
 ' Version
@@ -6,7 +6,7 @@
 !function DomainStoryVersion()
     ' This is method is directly copied from C4-PlantUML and only slightly adjusted
     ' 2 spaces are used as a unique marker, that the release script makes the correct version update
-    !global $DomainStoryVersion  =  "0.3"
+    !global $DomainStoryVersion  =  "0.3.1"
     !return $DomainStoryVersion
 !end function
 

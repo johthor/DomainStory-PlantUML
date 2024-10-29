@@ -5,8 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-
 ## [Unreleased] - t.b.d.
+
+
+## Charlie's Quality [0.3.1] - 2024-10-29
+
+Some quality of life improvements.
 
 ### Added
 
@@ -63,7 +67,8 @@ Complete rework of all macros inspired by the work of ([@dirx](https://github.co
 - Add initial macro definitions ([@johthor][gh-johthor])
 - Add initial README including multiple samples ([@johthor][gh-johthor])
 
-[Unreleased]: https://github.com/johthor/DomainStory-PlantUML/compare/v0.3...HEAD
+[Unreleased]: https://github.com/johthor/DomainStory-PlantUML/compare/v0.3.1...HEAD
+[0.3.1]: https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.3.1
 [0.3]: https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.3
 [0.2]: https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.2
 [0.1]: https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.1
