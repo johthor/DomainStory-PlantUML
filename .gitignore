@@ -1,1 +1,5 @@
+*.bak
+
 samples/*.png
+
+scrapbook
