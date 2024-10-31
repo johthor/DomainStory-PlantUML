@@ -1,6 +1,7 @@
 #!/bin/bash
 # This script is intended to be run through run.sh (https://run.jotaen.net)
 
+PUML_OPTIONS='-Tsvg'
 DS_PUML_URL='https://github.com/johthor/DomainStory-PlantUML'
 
 PROJECT_ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
@@ -13,10 +14,10 @@ puml::convert() {
 
   if strContains "$fileName" "DARK_MODE"; then
     echo "Converting $fileName in dark mode to directory $outputDir"
-    plantuml -Tsvg -o "$PROJECT_ROOT/$outputDir" -darkmode -DPUML_MODE=dark "$fileName"
+    plantuml "$PUML_OPTIONS" -o "$PROJECT_ROOT/$outputDir" -darkmode -DPUML_MODE=dark "$fileName"
   else
     echo "Converting $fileName in light mode to directory $outputDir"
-    plantuml -Tsvg -o "$PROJECT_ROOT/$outputDir" "$fileName"
+    plantuml "$PUML_OPTIONS" -o "$PROJECT_ROOT/$outputDir" "$fileName"
   fi
 }
 
