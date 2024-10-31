@@ -1,2 +1,5 @@
 samples/*.png
-/test/scrapbook.puml
+scrapbook
+
+# Build related
+*.bak
