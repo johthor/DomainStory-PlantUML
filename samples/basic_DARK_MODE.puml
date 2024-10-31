@@ -1,5 +1,5 @@
 @startuml
-'!include <domainstory/Domainstory>
+'!include <DomainStory/domainStory>
 !include ../domainStory.puml
 '!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 

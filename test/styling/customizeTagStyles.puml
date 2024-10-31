@@ -1,7 +1,7 @@
 @startuml
 !theme blueprint
 
-!$DefaultTextAlignment=center
+!$Element_TextAlignment = center
 
 !include ../../domainStory.puml
 
@@ -9,12 +9,15 @@ customizeStyleProperty("LimeGreen", BackgroundColor, Actor, Person, friendly)
 customizeStyleProperty("yellow|red", BackgroundColor, Boundary, "", fun)
 customizeStyleProperty("red", IconColor, Object, Email, important, $skinParam=%false())
 
-customizeStyleProperty(database, Shape, Object, "", stored, $skinParam=%false())
+customizeStyleProperty(Database, Shape, Object, "", stored, $skinParam=%false())
 customizeStyleProperty(italic, FontStyle, Actor, "", windy)
+
+customizeStyleProperty(Package, Shape, Boundary, "", stored, $skinParam=%false())
+customizeStyleProperty(orange, BackgroundColor, Boundary, "", stored)
 
 Person(Alice, $tag=windy)
 
-Boundary(Home) {
+Boundary(Home, $tag=stored) {
     Email(spam, $tag=stored)
 }
 

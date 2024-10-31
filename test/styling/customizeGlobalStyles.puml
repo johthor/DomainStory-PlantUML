@@ -1,30 +1,30 @@
 @startuml
-!$DefaultFontColor = Navy
-!$DefaultBackgroundColor = "#eea"
-!$DefaultBorderColor = green
-!$DefaultBorderThickness = 3
+!$Element_FontColor = Navy
+!$Element_BackgroundColor = "#eea"
+!$Element_BorderColor = green
+!$Element_BorderThickness = 3
 
-!$ActorIconColor = LightBlue
-!$ActorFontColor = Orange
-!$ActorFontStyle = bold
-!$ActorBackgroundColor = "#777"
-!$ActorBorderColor = yellow
-!$ActorBorderThickness = 5
+!$Actor_IconColor = LightBlue
+!$Actor_FontColor = Orange
+!$Actor_FontStyle = bold
+!$Actor_BackgroundColor = "#777"
+!$Actor_BorderColor = yellow
+!$Actor_BorderThickness = 5
 
-!$ObjectIconStyle = full
-!$ObjectFontStyle = italic
-!$ObjectFontSize = 18
+!$Object_IconStyle = full
+!$Object_FontStyle = italic
+!$Object_FontSize = 18
 
-!$NoteBackgroundColor="#5A0"
+!$Note_BackgroundColor = "#5A0"
 
-!$BoundaryFontColor = limegreen
-!$BoundaryBorderStyle = dotted
-!$BoundaryBorderThickness = 5
+!$Boundary_FontColor = limegreen
+!$Boundary_BorderStyle = dotted
+!$Boundary_BorderThickness = 5
 
-!$ActivityColor = IndianRed
+!$Activity_Color = IndianRed
 
-!$StepFontColor = PowderBlue
-!$StepBackgroundColor = black
+!$Step_FontColor = PowderBlue
+!$Step_BackgroundColor = black
 
 !include ../../domainStory.puml
 

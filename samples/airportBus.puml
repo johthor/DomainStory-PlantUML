@@ -1,11 +1,11 @@
 @startuml
-'!include <domainstory/Domainstory>
+'!include <DomainStory/domainStory>
 !include ../domainStory.puml
 '!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 
 !include <material/bus>
 
-!unquoted procedure Bus($name, $label = "", $tag = "", $note = "", $shape = $ObjectShape, $scale = $ObjectIconScale, $color = $ObjectIconColor, $background = "")
+!unquoted procedure Bus($name, $label = "", $tag = "", $note = "", $shape = $Object_Shape, $scale = $Object_IconScale, $color = $Object_IconColor, $background = "")
     Object("Bus", "$ma_bus", $name, $label, $tag, $note, $shape, $scale, $color, $background)
 !endprocedure
 

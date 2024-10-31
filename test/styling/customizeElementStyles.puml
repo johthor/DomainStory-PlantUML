@@ -1,30 +1,30 @@
 @startuml
-!$PersonBackgroundColor = red
+!$Person_BackgroundColor = red
 
-!$SystemShape=action
-!$SystemBackground=lightgrey
+!$System_Shape = action
+!$System_Background = lightgrey
 
-!$GroupFontSize=30
+!$Group_FontSize = 30
 
-!$ConversationIconStyle = "filled"
+!$Conversation_IconStyle = "filled"
 
-!$DocumentIconStyle=something
-!$DocumentIconColor=blue
+!$Document_IconStyle = something
+!$Document_IconColor = blue
 
-!$EmailIconScale = '1.5'
-!$EmailIconColor = grey
-!$EmailBackgroundColor = "orange"
-!$EmailBorderStyle = "solid"
-!$EmailBorderColor = "red"
+!$Email_IconScale = '1.5'
+!$Email_IconColor = grey
+!$Email_BackgroundColor = "orange"
+!$Email_BorderStyle = "solid"
+!$Email_BorderColor = "red"
 
-!$CallIconName = "&phone"
-!$CallIconScale = "6"
-!$CallIconColor = grey
+!$Call_IconName = "&phone"
+!$Call_IconScale = "6"
+!$Call_IconColor = grey
 
-!$InfoFontStyle=italic
-!$InfoFontSize=20
+!$Info_FontStyle = italic
+!$Info_FontSize = 20
 
-!$FolderShape=database
+!$Folder_Shape = database
 
 !include ../../domainStory.puml
 

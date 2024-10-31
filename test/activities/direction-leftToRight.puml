@@ -1,5 +1,5 @@
 @startuml
-!$StoryLayout = 'left-to-right'
+!$Story_Layout = 'left-to-right'
 
 !include ../../domainStory.puml
 

@@ -1,9 +1,9 @@
 @startuml
 !theme sunlust
 
-!$StoryLayout = 'top-to-bottom'
-!$StepFontColor = yellow
-!$StepBackgroundColor = darkgrey
+!$Story_Layout = 'top-to-bottom'
+!$Step_FontColor = yellow
+!$Step_BackgroundColor = darkgrey
 
 !include ../../domainStory.puml
 

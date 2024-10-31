@@ -1,12 +1,12 @@
 @startebnf
 styleProperties =
-"Default", defaultProperties |\
-actors, [?TAG_NAME?], elementProperties |\
-workObjects, [?TAG_NAME?], elementProperties |\
-"Boundary", [?TAG_NAME?], boundaryProperties |\
-"Note", defaultProperties |\
-"Activity", activityProperties |\
-"Step", stepProperties;
+"Element", "_", [ ?TAG_NAME?, "_" ], defaultProperties |\
+actors, "_", [ ?TAG_NAME?, "_" ], elementProperties |\
+workObjects, "_", [ ?TAG_NAME?, "_" ], elementProperties |\
+"Boundary", "_", [ ?TAG_NAME?, "_" ], boundaryProperties |\
+"Note", "_", defaultProperties |\
+"Activity", "_", activityProperties |\
+"Step", "_", stepProperties;
 
 actors = "Actor" | "Person" | "Group" | "System";
 workObjects = "Object" | "Document" | "Folder" | "Call" | "Email" | "Conversation" | "Info";

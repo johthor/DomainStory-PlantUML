@@ -3,6 +3,7 @@
 
 PUML_OPTIONS='-Tsvg'
 DS_PUML_URL='https://github.com/johthor/DomainStory-PlantUML'
+LOG_LEVEL=$LOG_LEVEL
 
 PROJECT_ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 
@@ -54,7 +55,7 @@ run::preprocessFile() {
   fileName=$(basename "$1" .puml)
   fileBase="$directory/$fileName"
 
-  plantuml -preproc "$1"
+  plantuml -DLOG_LEVEL="$LOG_LEVEL" -preproc "$1"
   sed -e 's/^[ ]*//' "$fileBase.preproc" > scrapbook/preprocessed/"$fileName.preproc.puml"
   rm "$fileBase.preproc"
 }
