@@ -1,5 +1,5 @@
 @startuml
-!include ../domainStory.puml
+!include ../../domainStory.puml
 
 Person(person)
 
@@ -8,10 +8,10 @@ activity(2, person, opens, Folder:a folder)
 activity(3, person, makes, Call:a call)
 activity(4, person, writes, Email:an email)
 
-Group(people, nice people, green)
+Group(people, nice people, $color = green)
 activity(5, people, has, Conversation:a conversation, $scale = 2)
 activity(6, people, ask for, Info:an information, $color = red)
 
 Person(writer)
-activity(_, writer, writes, Document: books, containing, Info: stories, $color=blue)
+activity(_, writer, writes, Document: books, containing, Info: stories, $color=blue, $targetColor=green, $targetScale=2)
 @enduml

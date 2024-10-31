@@ -1,0 +1,21 @@
+@startebnf
+styleProperties =
+"Element", "_", [ ?TAG_NAME?, "_" ], defaultProperties |\
+actors, "_", [ ?TAG_NAME?, "_" ], elementProperties |\
+workObjects, "_", [ ?TAG_NAME?, "_" ], elementProperties |\
+"Boundary", "_", [ ?TAG_NAME?, "_" ], boundaryProperties |\
+"Note", "_", defaultProperties |\
+"Activity", "_", activityProperties |\
+"Step", "_", stepProperties;
+
+actors = "Actor" | "Person" | "Group" | "System";
+workObjects = "Object" | "Document" | "Folder" | "Call" | "Email" | "Conversation" | "Info";
+
+defaultProperties = "FontColor" | "FontName" | "FontSize" | "FontStyle" | "TextAlignment" | "BackgroundColor" | "BorderStyle" | "BorderColor" | "BorderThickness" | "RoundCorner" | "Shadowing";
+elementProperties = "Shape" | "IconStyle" | "IconScale" | "IconColor" | defaultProperties;
+boundaryProperties = "Shape" | defaultProperties;
+
+activityProperties = "Shape" | "FontColor" | "FontName" | "FontSize" | "FontStyle" | "MessageAlignment" | "Color";
+stepProperties = "FontColor" | "FontSize" | "BackgroundColor";
+
+@endyaml

@@ -1,20 +1,20 @@
 @startuml
-!include <domainstory/Domainstory>
-'!include ../domainStory.puml
+'!include <DomainStory/domainStory>
+!include ../domainStory.puml
 '!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 
 Person(customer)
 
 Boundary(counter, cash counter) {
     Person(cashier)
-    System(ticketSystem, ticket system, )
+    System(ticketSystem, ticket system)
 
     activity(_, customer, asks for, Conversation: reservation, cashier)
     activity(_, cashier, finds available seats in, Document: screen plan, with, ticketSystem)
-    activity(_<, cashier, recommends, Conversation: available seats, to, customer)
+    activity(<_, cashier, recommends, Conversation: available seats, to, customer)
     activity(_, customer, confirms, Conversation: offered seats, cashier)
     activity(_, cashier, marks seats as reserved in, Document: screen plan, with, ticketSystem)
-    activity(_<, ticketSystem, generates, Info: reservation number, for, cashier)
-    activity(_<, cashier, tells, Conversation: reservation number, to, customer)
+    activity(<_, ticketSystem, generates, Info: reservation number, for, cashier)
+    activity(<_, cashier, tells, Conversation: reservation number, to, customer)
 }
 @enduml

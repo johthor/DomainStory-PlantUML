@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - t.b.d.
 
+### Added
+
+- Add support for PlantUML themes and darkmode ([#9](https://github.com/johthor/DomainStory-PlantUML/pull/9)), ([@johthor][gh-johthor])
+- Add style tags to actors, objects and boundaries ([#9](https://github.com/johthor/DomainStory-PlantUML/pull/9)), ([@johthor][gh-johthor])
+
+### Changed
+
+- **Breaking:** Rewrite the styling declaration concept ([#9](https://github.com/johthor/DomainStory-PlantUML/pull/9)), ([@johthor][gh-johthor])
+- **Breaking:** Switch activity direction indicator from suffix to prefix ([@johthor][gh-johthor])
+
 
 ## Charlie's Quality [0.3.1] - 2024-10-29
 

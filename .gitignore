@@ -1,5 +1,5 @@
-*.bak
-
 samples/*.png
-
 scrapbook
+
+# Build related
+*.bak

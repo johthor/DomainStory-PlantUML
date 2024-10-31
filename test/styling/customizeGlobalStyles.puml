@@ -1,0 +1,60 @@
+@startuml
+!$Element_FontColor = Navy
+!$Element_BackgroundColor = "#eea"
+!$Element_BorderColor = green
+!$Element_BorderThickness = 3
+
+!$Actor_IconColor = LightBlue
+!$Actor_FontColor = Orange
+!$Actor_FontStyle = bold
+!$Actor_BackgroundColor = "#777"
+!$Actor_BorderColor = yellow
+!$Actor_BorderThickness = 5
+
+!$Object_IconStyle = full
+!$Object_FontStyle = italic
+!$Object_FontSize = 18
+
+!$Note_BackgroundColor = "#5A0"
+
+!$Boundary_FontColor = limegreen
+!$Boundary_BorderStyle = dotted
+!$Boundary_BorderThickness = 5
+
+!$Activity_Color = IndianRed
+
+!$Step_FontColor = PowderBlue
+!$Step_BackgroundColor = black
+
+!include ../../domainStory.puml
+
+
+Email(confirmation)
+Info(news)
+Document(list)
+Folder(documents)
+Call(question)
+Conversation(argument)
+
+Person(Alice)
+Group(Employees)
+System(Boarding)
+
+Person(Bob, $note=something funny)
+
+Boundary(Home) {
+    Email(spam)
+}
+
+Boundary(Party) {
+    Conversation(weather)
+}
+
+Boundary(Office) {
+    Email(proposal)
+}
+
+activity(+, Alice, reads the, spam, _, _, ->)
+activity(+, Alice, talks about the, weather, with, Bob)
+activity(<+, Bob, writes a, proposal, to, Alice)
+@enduml

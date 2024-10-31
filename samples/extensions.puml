@@ -1,22 +1,25 @@
 @startuml
-!include <domainstory/Domainstory>
-'!include ../domainStory.puml
+'!include <DomainStory/domainStory>
+!include ../domainStory.puml
 '!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 
 ' Actors
 !include <material/store>
-!unquoted procedure Merchant($name, $label = "", $color = "", $scale = "", $note = "")
-    Actor("Merchant", "$ma_store", $name, $label, $color, $scale, $note)
+
+!unquoted procedure Merchant($name, $label = "", $tag = "", $note = "", $shape = $Actor_Shape, $scale = $Actor_IconScale, $color = $Actor_IconColor, $background = "")
+    Actor("Merchant", "$ma_store", $name, $label, $tag, $note, $shape, $scale, $color, $background)
 !endprocedure
 
 !include <material/crown>
-!unquoted procedure Customer($name, $label = "", $color = "", $scale = "", $note = "")
-    Actor("Customer", "$ma_crown", $name, $label, $color, $scale, $note)
+
+!unquoted procedure Customer($name, $label = "", $tag = "", $note = "", $shape = $Actor_Shape, $scale = $Actor_IconScale, $color = $Actor_IconColor, $background = "")
+    Actor("Customer", "$ma_crown", $name, $label, $tag, $note, $shape, $scale, $color, $background)
 !endprocedure
 
 !include <material/settings_box>
-!unquoted procedure Process($name, $label = "", $color = "", $scale = "", $note = "")
-    Actor("Process", "$ma_settings_box", $name, $label, $color, $scale, $note)
+
+!unquoted procedure Process($name, $label = "", $tag = "", $note = "", $shape = $Actor_Shape, $scale = $Actor_IconScale, $color = $Actor_IconColor, $background = "")
+    Actor("Process", "$ma_settings_box", $name, $label, $tag, $note, $shape, $scale, $color, $background)
 !endprocedure
 
 Boundary(actors) {

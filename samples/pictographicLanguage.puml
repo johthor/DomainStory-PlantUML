@@ -1,6 +1,6 @@
 @startuml
-!include <domainstory/Domainstory>
-'!include ../domainStory.puml
+'!include <DomainStory/domainStory>
+!include ../domainStory.puml
 '!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 
 Boundary(actors) {

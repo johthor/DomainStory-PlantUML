@@ -1,0 +1,23 @@
+@startmindmap
+top to bottom direction
+
+title Style declarations
+
+* Style Declarations
+** Element
+*** Actor
+**** Person
+**** Group
+**** System
+*** Object
+**** Document
+**** Folder
+**** Call
+**** Email
+**** Conversation
+**** Info
+*** Note
+*** Boundary
+** Activity
+** Step
+@endmindmap
