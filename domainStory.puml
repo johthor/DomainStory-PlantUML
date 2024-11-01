@@ -425,9 +425,15 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
     $extendStyleDeclarations("Actor", "Person", "account")
 !endif
 
-!unquoted procedure Person($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+!unquoted function Person($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
     Actor("Person", $Person_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+
+    !if $activityContext == "open"
+        !return $name
+    !else
+        !return ""
+    !endif
+!endfunction
 
 ' Group Actor
 ' ==================================
@@ -561,9 +567,15 @@ $extendStyleDeclarations("Object", "Call", "phone")
     $extendStyleDeclarations("Object", "Info", "information")
 !endif
 
-!unquoted procedure Info($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+!unquoted function Info($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
     Object("Info", $Info_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+
+    !if $activityContext == "open"
+        !return $name
+    !else
+        !return ""
+    !endif
+!endfunction
 
 ' Boundaries
 ' ##################################
@@ -726,9 +738,9 @@ $extendStyleDeclarations("Object", "Call", "phone")
         !if $label
             !if $stepLabel
                 !if $Step_LabelPosition == "combined"
-                    $to $arrow $from : $label $stepLabel
+                    $to $arrow $from <<backwards>> : $label $stepLabel
                 !else
-                    $to $arrow "$stepLabel" $from : $label
+                    $to $arrow "$stepLabel" $from <<backwards>> : $label
                 !endif
             !else
                 $to $arrow $from : $label
@@ -740,9 +752,9 @@ $extendStyleDeclarations("Object", "Call", "phone")
         !if $label
             !if $stepLabel
                 !if $Step_LabelPosition == "combined"
-                    $from $arrow $to : $stepLabel $label
+                    $from $arrow $to <<forwards>> : $stepLabel $label
                 !else
-                    $from "$stepLabel" $arrow $to : $label
+                    $from "$stepLabel" $arrow $to <<forwards>> : $label
                 !endif
             !else
                 $from $arrow $to : $label
