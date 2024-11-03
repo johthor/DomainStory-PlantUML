@@ -411,6 +411,10 @@ The shape and icons used by specific actors and work objects may also be reconfi
 
 See the test case [element style declarations](test/styling/customizeElementStyles.puml) for more details.
 
+While most `IconStyle` properties only distinguish between filled icons and icons with outlines,
+the `$Person_IconStyle` property supports also the following styles 
+`stickman`, `stickmanAlt`, `hollow` as well as `awesome`.
+
 ### Extensions
 
 If the default actors and work objects are not enough to express your specific needs,

@@ -7,20 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - t.b.d.
 
-### Added
-
-- Add support for PlantUML themes and darkmode ([#9](https://github.com/johthor/DomainStory-PlantUML/pull/9)), ([@johthor][gh-johthor])
-- Add style tags to actors, objects and boundaries ([#9](https://github.com/johthor/DomainStory-PlantUML/pull/9)), ([@johthor][gh-johthor])
-
 ### Changed
 
 - **Breaking:** Rewrite the styling declaration concept ([#9](https://github.com/johthor/DomainStory-PlantUML/pull/9)), ([@johthor][gh-johthor])
 - **Breaking:** Switch activity direction indicator from suffix to prefix ([@johthor][gh-johthor])
 
+### Added
+
+- Add support for PlantUML themes and darkmode ([#9](https://github.com/johthor/DomainStory-PlantUML/pull/9)), ([@johthor][gh-johthor])
+- Add style tags to actors, objects and boundaries ([#9](https://github.com/johthor/DomainStory-PlantUML/pull/9)), ([@johthor][gh-johthor])
+- Add new icon styles for person actors ([#4](https://github.com/johthor/DomainStory-PlantUML/issues/4)), ([@johthor][gh-johthor])
+
 
 ## Charlie's Quality [0.3.1] - 2024-10-29
 
 Some quality of life improvements.
+
+### Changed
+
+- Allow step numbers to be hidden ([#7](https://github.com/johthor/DomainStory-PlantUML/pull/7)) ([@Potherca](https://github.com/Potherca) and [@stephenwithav](https://github.com/stephenwithav))
+- Allow dynamic creation for activity targets too ([@stephenwithav](https://github.com/stephenwithav))
+- Extract advanced features into an extra README section ([@johthor][gh-johthor])
 
 ### Added
 
@@ -28,12 +35,6 @@ Some quality of life improvements.
 - Introduce explicit story layout definition ([#3](https://github.com/johthor/DomainStory-PlantUML/pull/3)) ([@johthor][gh-johthor])
 - Allow notes to be applied to boundaries too ([#3](https://github.com/johthor/DomainStory-PlantUML/pull/3)) ([@kirchsth](https://github.com/kirchsth) and [@johthor][gh-johthor])
 - Introduce new ways to specify the direction of activities ([@johthor][gh-johthor])
-
-### Changed
-
-- Allow step numbers to be hidden ([#7](https://github.com/johthor/DomainStory-PlantUML/pull/7)) ([@Potherca](https://github.com/Potherca) and [@stephenwithav](https://github.com/stephenwithav))
-- Allow dynamic creation for activity targets too ([@stephenwithav](https://github.com/stephenwithav))
-- Extract advanced features into an extra README section ([@johthor][gh-johthor])
 
 
 ## Charlie [0.3] - 2022-04-18
@@ -49,6 +50,12 @@ Enable styling declarations.
 
 Complete rework of all macros inspired by the work of ([@dirx](https://github.com/dirx))
 
+### Changed
+
+- Switch `!definelong` and `!define` to `!procedure` and `!function` preprocessor directives ([@johthor][gh-johthor])
+- Improve control of the activity layout ([@johthor][gh-johthor])
+- Rewrite portions of the README ([@johthor][gh-johthor])
+
 ### Added
 
 - Add dynamic creation of work objects ([@johthor][gh-johthor])
@@ -57,11 +64,6 @@ Complete rework of all macros inspired by the work of ([@dirx](https://github.co
 - Allow step numbers to auto increment ([@johthor][gh-johthor])
 - Extend README with descriptions of new or extended features ([@johthor][gh-johthor])
 
-### Changed
-
-- Switch `!definelong` and `!define` to `!procedure` and `!function` preprocessor directives ([@johthor][gh-johthor])
-- Improve control of the activity layout ([@johthor][gh-johthor])
-- Rewrite portions of the README ([@johthor][gh-johthor])
 
 ### Fixed
 

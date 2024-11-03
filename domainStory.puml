@@ -193,9 +193,13 @@
     $extendStyleProperty(IconColor, $element, $kind, $themeable = %true(), $skinParam = %false())
 
     !$variableName = $decideVariableName($kind, "", "IconName")
-    !if %not(%variable_exists($variableName))
-        !include <material/$icon>
-        %set_variable_value($variableName, "$ma_" + $icon)
+    !if $icon
+        !if %not(%variable_exists($variableName))
+            !include <material/$icon>
+            %set_variable_value($variableName, "$ma_" + $icon)
+        !endif
+    !else
+        %set_variable_value($variableName, "")
     !endif
 
     $extendStyleProperty(FontColor, $element, $kind, $themeable = %true())
@@ -378,10 +382,14 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
     !endif
 
     ' output below
-    !if $color
-        $shape "<$iconName{scale=$scale,color=$color}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
+    !if $iconName
+        !if $color
+            $shape "<$iconName{scale=$scale,color=$color}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
+        !else
+            $shape "<$iconName{scale=$scale}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
+        !endif
     !else
-        $shape "<$iconName{scale=$scale}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
+        $shape $label as $name $computeStereotypes($kind, $tag) $computeColorName($background)
     !endif
 
     $createElementNote($name, $note)
@@ -392,7 +400,23 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
 
 !global $Person_IconStyle ?= $Actor_IconStyle
 
-!if $Person_IconStyle == "outline"
+!if $Person_IconStyle == "stickman"
+    !$Person_Shape ?= "Actor"
+    $extendStyleDeclarations("Actor", "Person", "")
+    skinparam ActorStyle stickman
+!elseif $Person_IconStyle == "stickmanAlt"
+    !$Person_Shape ?= "Actor/"
+    $extendStyleDeclarations("Actor", "Person", "")
+    skinparam ActorStyle stickman
+!elseif $Person_IconStyle == "hollow"
+    !$Person_Shape ?= "Actor"
+    $extendStyleDeclarations("Actor", "Person", "")
+    skinparam ActorStyle hollow
+!elseif $Person_IconStyle == "awesome"
+    !$Person_Shape ?= "Actor"
+    $extendStyleDeclarations("Actor", "Person", "")
+    skinparam ActorStyle awesome
+!elseif $Person_IconStyle == "outline"
     $extendStyleDeclarations("Actor", "Person", "account_outline")
 !else
     $extendStyleDeclarations("Actor", "Person", "account")
@@ -441,10 +465,14 @@ $extendStyleDeclarations("Actor", "System", "laptop")
     !endif
 
     ' output below
-    !if $color
-        $shape "<$iconName{scale=$scale,color=$color}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
+    !if $iconName
+        !if $color
+            $shape "<$iconName{scale=$scale,color=$color}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
+        !else
+            $shape "<$iconName{scale=$scale}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
+        !endif
     !else
-        $shape "<$iconName{scale=$scale}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
+        $shape $label as $name $computeStereotypes($kind, $tag) $computeColorName($background)
     !endif
 
     $createElementNote($name, $note)
