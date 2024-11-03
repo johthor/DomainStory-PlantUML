@@ -1,7 +1,6 @@
 # Domain Storytelling with PlantUML
 
-DomainStory-PlantUML uses [PlantUML](http://en.plantuml.com/) to describe and
-document a domain story which was developed in a
+Use [PlantUML](http://en.plantuml.com/) to describe and document a domain story which was developed in a
 [Domain Storytelling](http://www.domainstorytelling.org) workshop.
 
 <details>
@@ -156,7 +155,7 @@ Here the following symbols are used on multiple occasions as prefixes.
 * `<` _less-than symbol_: the new element will be positioned to the left of its reference
 * `~` _tilde symbol_: the new element will be positioned against the default flow direction
 
-The positioning indicator will take the normal story flow defined via `$StoryLayout` into account.
+The positioning indicator will take the normal story flow defined via `$Story_Layout` into account.
 
 ## Basic Features
 
@@ -389,28 +388,26 @@ But these shapes may be reconfigured via the global styling declarations `$Actor
 By default, icons from the [PlantUML Standard Library - Google Material Icons](https://plantuml.com/en/stdlib#df026e38d6a98559) will be used to represent actors and work objects.
 The shape and icons used by specific actors and work objects may also be reconfigured via the following properties.
 
-| Property                | Default Value             | Description                                     |
-|-------------------------|---------------------------|-------------------------------------------------|
-| _Actor Styling_         |
-| `$PersonShape`          | `$Actor_Shape`             | Shape used by actors of type person             |
-| `$PersonIconName`       | `$ma_account_outline`     | Icon used by actors of type person              |
-| `$GroupShape`           | `$Actor_Shape`             | Shape used by acpe group                        |
-| `$GroupIconName`        | `$ma_account_outline`     | Icon used by actors of type group               |
-| `$SystemShape`          | `$Actor_Shape`             | Shape used by acpe system                       |
-| `$SystemIconName`       | `$ma_account_outline`     | Icon used by actors of type system              |
-| _Work Object Styling_   |
-| `$DocumentShape`        | `$Object_Shape`            | Shape used by work objects of type document     |
-| `$DocumentIconName`     | `$ma_account_outline`     | Icon used by work objects of type document      |
-| `$FolderShape`          | `$Object_Shape`            | Shape used by work objects of type folder       |
-| `$FolderIconName`       | `$ma_account_outline`     | Icon used by work objects of type folder        |
-| `$CallShape`            | `$Object_Shape`            | Shape used by work objects of type call         |
-| `$CallIconName`         | `$ma_phone`               | Icon used by work objects of type call          |
-| `$EmailShape`           | `$Object_Shape`            | Shape used by work objects of type email        |
-| `$EmailIconName`        | `$ma_at`                  | Icon used by work objects of type email         |
-| `$ConversationShape`    | `$Object_Shape`            | Shape used by work objects of type conversation |
-| `$ConversationIconName` | `$message_outline`        | Icon used by work objects of type conversation  |
-| `$InfoShape`            | `$Object_Shape`            | Shape used by work objects of type info         |
-| `$InfoIconName`         | `$ma_information_outline` | Icon used by work objects of type info          |
+| Property                  | Default Value   | Description                                          |
+|---------------------------|-----------------|------------------------------------------------------|
+| _Actor Styling_           |
+| `$Person_Shape`           | `$Actor_Shape`  | Shape used by actors of type person                  |
+| `$Person_IconStyle`       | `outline`       | Icon style used by actors of type person             |
+| `$Group_Shape`            | `$Actor_Shape`  | Shape used by actors of type group                   |
+| `$Group_IconStyle`        | `outline`       | Icon style used by actors of type group              |
+| `$System_Shape`           | `$Actor_Shape`  | Shape used by actors of type system                  |
+| _Work Object Styling_     |
+| `$Document_Shape`         | `$Object_Shape` | Shape used by work objects of type document          |
+| `$Document_IconStyle`     | `outline`       | Icon style used by work objects of type document     |
+| `$Folder_Shape`           | `$Object_Shape` | Shape used by work objects of type folder            |
+| `$Folder_IconStyle`       | `outline`       | Icon style used by work objects of type folder       |
+| `$Call_Shape`             | `$Object_Shape` | Shape used by work objects of type call              |
+| `$Email_Shape`            | `$Object_Shape` | Shape used by work objects of type email             |
+| `$Email_IconStyle`        | `outline`       | Icon style used by work objects of type email        |
+| `$Conversation_Shape`     | `$Object_Shape` | Shape used by work objects of type conversation      |
+| `$Conversation_IconStyle` | `outline`       | Icon style used by work objects of type conversation |
+| `$Info_Shape`             | `$Object_Shape` | Shape used by work objects of type info              |
+| `$Info_IconStyle`         | `outline`       | Icon style used by work objects of type info         |
 
 See the test case [element style declarations](test/styling/customizeElementStyles.puml) for more details.
 
@@ -526,8 +523,8 @@ In addition to the style declarations,
 already mentioned in [Method 2](#method-2-global-style-declarations) and [Method 3](#method-3-changing-the-elements-shapes-and-icons)
 every actor and work object declares its own style declarations as an extension of the already known declarations `$Actor_XYZ` or `$Object_XYZ`.
 
-Therefore, the background of all "person actors" may be controlled via `$PersonBackgroundColor`
-and the icon scale of all "document work object" may be changed via `$DocumentIconScale`
+Therefore, the background of all "person actors" may be controlled via `$Person_BackgroundColor`
+and the icon scale of all "document work object" may be changed via `$Document_IconScale`
 
 The following diagram shows the hierarchy of style declarations.
 
