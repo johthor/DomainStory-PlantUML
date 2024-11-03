@@ -1,5 +1,12 @@
-' DomainStory-PlantUML, version 0.3.1
-' https://github.com/johthor/DomainStory-PlantUML
+'' DomainStory-PlantUML
+''
+'' Use PlantUML to describe and document a domain story which was developed in a
+'' Domain Storytelling workshop.
+''
+'' Author: Johannes Thorn
+'' Version: 2.2.0
+'' Source: https://github.com/johthor/DomainStory-PlantUML
+''
 
 ' Version
 ' ##################################

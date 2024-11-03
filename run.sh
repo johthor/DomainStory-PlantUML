@@ -70,7 +70,7 @@ run::bakeRelease() {
   echo "Next Release $versionName with version $version will be baked into $domainStoryDir"
 
   # Update DomainStoryVersion
-  sed -i .bak -E "s/' DomainStory-PlantUML, version .+/' DomainStory-PlantUML, version $version/" "$PROJECT_ROOT/domainStory.puml"
+  sed -i .bak -E "s/'' Version: .+/'' Version: $version/" "$PROJECT_ROOT/domainStory.puml"
   sed -i .bak -E "s/\!global \\\$DomainStoryVersion  =  \".+\"/\!global \\\$DomainStoryVersion  =  \"$version\"/" "$PROJECT_ROOT/domainStory.puml"
 
   # Update Changelog
