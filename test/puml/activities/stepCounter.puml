@@ -1,5 +1,5 @@
 @startuml
-!include ../../src/domainStoryComposite.puml
+!include ../../../src/domainStoryComposite.puml
 
 Person(Bob)
 Person(Alice)

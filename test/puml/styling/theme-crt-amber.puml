@@ -1,11 +1,9 @@
 @startuml
-!theme sunlust
+!theme crt-amber
 
 !$Story_Layout = 'top-to-bottom'
-!$Step_FontColor = yellow
-!$Step_BackgroundColor = darkgrey
 
-!include ../../src/domainStoryComposite.puml
+!include ../../../src/domainStoryComposite.puml
 
 Boundary(Party) {
     Person(Alice)
