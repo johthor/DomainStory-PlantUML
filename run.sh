@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # This script is intended to be run through run.sh (https://run.jotaen.net)
 
 PUML_OPTIONS='-Tsvg'
@@ -62,12 +62,25 @@ run::convertAssets() {
     puml::convert "$sample" docs/assets
   done
 
-  puml::convert test/styling/theme-sketchy.puml docs/assets
+  puml::convert test/puml/styling/theme-sketchy.puml docs/assets
 }
 
-# Extract Table of Contents from Readme
-run::extractTOC() {
-  grep -e '^##' README.md
+# Convert all test diagrams
+run::convertTests() {
+
+}
+
+run::compare() {
+  magick composite bag_frame1.gif bag_frame1.jpg \
+              -compose difference  difference_jpeg.gif
+}
+
+# Run tests in ./test
+run::test() {
+  set -e
+
+  cd test
+  make
 }
 
 # Bake the next release version
