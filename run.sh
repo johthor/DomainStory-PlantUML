@@ -65,7 +65,7 @@ run::bakeRelease() {
   version="$1"
   versionName="${2:-'Next Version'}"
   pathToStdLib="${3:-"$PROJECT_ROOT/../plantuml-stdlib"}"
-  domainStoryDir="$pathToStdLib/DomainStory"
+  domainStoryDir="$pathToStdLib/stdlib/DomainStory"
 
   echo "Next Release $versionName with version $version will be baked into $domainStoryDir"
 
@@ -79,14 +79,10 @@ run::bakeRelease() {
 \[Unreleased\]: https:\/\/github.com\/johthor\/DomainStory-PlantUML\/compare\/v$version\.\.\.HEAD\n\
 \[$version\]: https:\/\/github.com\/johthor\/DomainStory-PlantUML\/releases\/tag\/v$version/" "$PROJECT_ROOT/CHANGELOG.md"
 
+  # Update StdLib README file
+  sed -i .bak -E "s/version: .+/version: $version/" "$domainStoryDir/README.md"
 
-  # Update INFO file
-  {
-    echo "VERSION=$version"
-    echo "SOURCE=$DS_PUML_URL"
-  } > "$domainStoryDir/INFO"
-
-  # Copy over relevant PUML files
+  # Copy over relevant PUML files into StdLib
   cp "$PROJECT_ROOT/domainStory.puml" "$domainStoryDir"
 }
 
