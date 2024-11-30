@@ -353,7 +353,7 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
 ' Mutable state
 ' ##################################
 
-!global $stepCounter = 0
+!global $stepCounter = 1
 !global $workObjectCounter = 0
 
 ' Customize Style Declarations
@@ -843,8 +843,9 @@ $extendStyleDeclarations("Object", "Call", "phone")
 
 !function $computeStepNumber($step)
     !if $step == "_" || $step == "+"
+        !$result = $stepCounter
         !$stepCounter = $stepCounter + 1
-        !return $stepCounter
+        !return $result
     !elseif $step == "|"
         !return $stepCounter
     !elseif %substr($step, 0, 1) == "="
