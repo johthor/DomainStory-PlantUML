@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - t.b.d.
 
+
+## Delta [0.4.0] - 2024-11-30
+
+The library now supports the build-in PlantUML themes
+and won't set any colors if a theme declaration is discovered.
+This leads to a complete rewrite of the styling declarations
+and extending the concept for multi-level declarations.
+
 ### Changed
 
 - **Breaking:** Rewrite the styling declaration concept ([#9](https://github.com/johthor/DomainStory-PlantUML/pull/9)), ([@johthor][gh-johthor])
@@ -14,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add support for PlantUML themes and darkmode ([#9](https://github.com/johthor/DomainStory-PlantUML/pull/9)), ([@johthor][gh-johthor])
+- Add support for PlantUML themes and dark-mode ([#9](https://github.com/johthor/DomainStory-PlantUML/pull/9)), ([@johthor][gh-johthor])
 - Add style tags to actors, objects and boundaries ([#9](https://github.com/johthor/DomainStory-PlantUML/pull/9)), ([@johthor][gh-johthor])
 - Add new icon styles for person actors ([#4](https://github.com/johthor/DomainStory-PlantUML/issues/4)), ([@johthor][gh-johthor])
 
@@ -79,7 +87,8 @@ Complete rework of all macros inspired by the work of ([@dirx](https://github.co
 - Add initial macro definitions ([@johthor][gh-johthor])
 - Add initial README including multiple samples ([@johthor][gh-johthor])
 
-[Unreleased]: https://github.com/johthor/DomainStory-PlantUML/compare/v0.3.1...HEAD
+[Unreleased]: https://github.com/johthor/DomainStory-PlantUML/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.4.0
 [0.3.1]: https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.3.1
 [0.3]: https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.3
 [0.2]: https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.2
