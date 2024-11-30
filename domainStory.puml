@@ -342,6 +342,9 @@ $declareStyleProperty("", Color, Activity, modeAdjustedColor("#c5c6c7", "#c5c6c7
 ' Step Label Styles
 ' ----------------------------------
 
+$declareStyleProperty("", LabelPosition, Step, combined, $themeable = %false(), $skinParam = %false())
+$declareStyleProperty("", LabelFraming, Step, round, $themeable = %false(), $skinParam = %false())
+$declareStyleProperty("", FontStyle, Step, plain, $themeable = %false(), $skinParam = %false())
 $declareStyleProperty("", FontColor, Step, modeAdjustedColor("#0B0C10"), $themeable = %true(), $skinParam = %false())
 $declareStyleProperty("", FontSize, Step, 16, $themeable = %true(), $skinParam = %false())
 
@@ -713,16 +716,32 @@ $extendStyleDeclarations("Object", "Call", "phone")
     !endif
 !endfunction
 
-!procedure $createConnection($from, $to, $arrow = "-->", $label = "", $stepCounter = "")
+!procedure $createConnection($from, $to, $arrow = "-->", $label = "", $stepLabel = "")
     !if %substr($arrow, 0, 1) == "<"
         !if $label
-            $to $arrow $from : $stepCounter $label
+            !if $stepLabel
+                !if $Step_LabelPosition == "combined"
+                    $to $arrow $from : $label $stepLabel
+                !else
+                    $to $arrow "$stepLabel" $from : $label
+                !endif
+            !else
+                $to $arrow $from : $label
+            !endif
         !else
             $to $arrow $from
         !endif
     !else
         !if $label
-            $from $arrow $to : $stepCounter $label
+            !if $stepLabel
+                !if $Step_LabelPosition == "combined"
+                    $from $arrow $to : $stepLabel $label
+                !else
+                    $from "$stepLabel" $arrow $to : $label
+                !endif
+            !else
+                $from $arrow $to : $label
+            !endif
         !else
             $from $arrow $to
         !endif
@@ -783,7 +802,30 @@ $extendStyleDeclarations("Object", "Call", "phone")
     !$stepNumber = $computeStepNumber($step)
 
     !if $stepNumber
-        !$result = "(" + $stepNumber + ")"
+        !if $Step_LabelFraming == "round"
+            !$result = "(" + $stepNumber + ")"
+        !elseif $Step_LabelFraming == "square"
+            !$result = "[" + $stepNumber + "]"
+        !elseif $Step_LabelFraming == "curly"
+            !$result = "{" + $stepNumber + "}"
+        !elseif $Step_LabelFraming == "pointy"
+            !$result = "〈" + $stepNumber + "〉"
+        !else
+            !$result = $stepNumber
+        !endif
+
+        !if $Step_FontStyle == "bold"
+            !$result = "**" + $result + "**"
+        !elseif $Step_FontStyle == "italic"
+            !$result = "//" + $result + "//"
+        !elseif $Step_FontStyle == "monospace"
+            !$result = '""' + $result + '""'
+        !elseif $Step_FontStyle == "underline"
+            !$result = "__" + $result + "__"
+        !elseif $Step_FontStyle == "wave"
+            !$result = "~~" + $result + "~~"
+        !endif
+
         !if $Step_FontColor
             !$result = "<color:" + $Step_FontColor + ">" + $result + "</color>"
         !endif

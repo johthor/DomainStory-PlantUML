@@ -316,42 +316,45 @@ style declarations.
 These will still work if a theme is used.
 Make sure that your values are compatible with the chosen theme.
 
-| Property                    | Default Value | Description                                     |
-|-----------------------------|---------------|-------------------------------------------------|
-| `$Element_FontColor`         | `#0b0c10`     | Color of all text                               |
-| `$Element_TextAlignment`     | `center`      | Alignment of most text                          |
-| `$Element_BackgroundColor`   | `none`        | Background color for most elements              |
-| `$Element_BorderStyle`       | `none`        | Border style for most elements                  |
-| `$Element_BorderColor`       | `none`        | Border color for most elements                  |
-| `$Element_BorderThickness`   | `1`           | Border style for most elements                  |
-| `$Element_RoundCorner`       | `0`           | Roundness of element corners                    |
-| `$Element_Shadowing`         | `false`       | Should elements throw shadows                   |
-| _Actor Styling_             |
-| `$Actor_Shape`               | `Agent`       | Shape of actor elements                         |
-| `$Actor_IconStyle`           | `outline`     | Use outlines instead of filled icons for actors |
-| `$Actor_IconScale`           | `1`           | Size of actor icons                             |
-| `$Actor_IconColor`           | `#1f2833`     | Color of actors icons                           |
-| _Work Object Styling_       |
-| `$Object_Shape`              | `Card`        | Shape of work item elements                     |
-| `$Object_IconStyle`          | `outline`     | outlines instead of filled icons for work items |
-| `$Object_IconColor`          | `#1f2833`     | Color of work item icons                        |
-| `$Object_IconScale`          | `0.8`         | Size of work item icons                         |
-| _Boundary Styling_          |
-| `$Boundary_Shape`            | `Rectangle`   | Shape of boundary containers                    |
-| `$Boundary_BorderStyle`      | `dashed`      | Style of boundary borders                       |
-| `$Boundary_BorderColor`      | `#1f2833`     | Color of boundary borders                       |
-| `$Boundary_BorderThickness`  | `2`           | Thickness of boundary borders                   |
-| `$Boundary_RoundedCorner`    | `15`          | Roundness of boundary corners                   |
-| _Note Styling_              |
-| `$Note_TextAlignment`        | `left`        | Alignment of note texts                         |
-| `$Note_BackgroundColor`      | `#c5c6c7`     | Background color for notes                      |
-| `$Note_BorderColor`          | `#1f2833`     | Border color for notes                          |
-| _Activity Styling_          |
-| `$Activity_Shape`            | `Arrow`       | The element used to style activities            |
-| `$Activity_MessageAlignment` | `left`        | Where the activity text should start            |
-| `$Activity_Color`            | `#c5c6c7`     | Color of the activity arrows                    |
-| `$Step_FontSize`             | `16`          | Font size for step numbers                      |
-| `$Step_BackgroundColor`      | `#66fcf1`     | Background color for step numbers               |
+| Property                     | Default Value | Description                                                            |
+|------------------------------|---------------|------------------------------------------------------------------------|
+| `$Element_FontColor`         | `#0b0c10`     | Color of all text                                                      |
+| `$Element_TextAlignment`     | `center`      | Alignment of most text                                                 |
+| `$Element_BackgroundColor`   | `none`        | Background color for most elements                                     |
+| `$Element_BorderStyle`       | `none`        | Border style for most elements                                         |
+| `$Element_BorderColor`       | `none`        | Border color for most elements                                         |
+| `$Element_BorderThickness`   | `1`           | Border style for most elements                                         |
+| `$Element_RoundCorner`       | `0`           | Roundness of element corners                                           |
+| `$Element_Shadowing`         | `false`       | Should elements throw shadows                                          |
+| _Actor Styling_              |
+| `$Actor_Shape`               | `Agent`       | Shape of actor elements                                                |
+| `$Actor_IconStyle`           | `outline`     | Use outlines instead of filled icons for actors                        |
+| `$Actor_IconScale`           | `1`           | Size of actor icons                                                    |
+| `$Actor_IconColor`           | `#1f2833`     | Color of actors icons                                                  |
+| _Work Object Styling_        |
+| `$Object_Shape`              | `Card`        | Shape of work item elements                                            |
+| `$Object_IconStyle`          | `outline`     | outlines instead of filled icons for work items                        |
+| `$Object_IconColor`          | `#1f2833`     | Color of work item icons                                               |
+| `$Object_IconScale`          | `0.8`         | Size of work item icons                                                |
+| _Boundary Styling_           |
+| `$Boundary_Shape`            | `Rectangle`   | Shape of boundary containers                                           |
+| `$Boundary_BorderStyle`      | `dashed`      | Style of boundary borders                                              |
+| `$Boundary_BorderColor`      | `#1f2833`     | Color of boundary borders                                              |
+| `$Boundary_BorderThickness`  | `2`           | Thickness of boundary borders                                          |
+| `$Boundary_RoundedCorner`    | `15`          | Roundness of boundary corners                                          |
+| _Note Styling_               |
+| `$Note_TextAlignment`        | `left`        | Alignment of note texts                                                |
+| `$Note_BackgroundColor`      | `#c5c6c7`     | Background color for notes                                             |
+| `$Note_BorderColor`          | `#1f2833`     | Border color for notes                                                 |
+| _Activity Styling_           |
+| `$Activity_Shape`            | `Arrow`       | The element used to style activities                                   |
+| `$Activity_MessageAlignment` | `left`        | Where the activity text should start                                   |
+| `$Activity_Color`            | `#c5c6c7`     | Color of the activity arrows                                           |
+| `$Step_LabelPosition`        | `combined`    | Where the step number should be positioned.                            |
+| `$Step_LabelFraming`         | `round`       | Should the step number be put in round / square brackets or left bare. |
+| `$Step_FontStyle`            | `plain`       | Font style for step numbers                                            |
+| `$Step_FontSize`             | `16`          | Font size for step numbers                                             |
+| `$Step_BackgroundColor`      | `#66fcf1`     | Background color for step numbers                                      |
 
 To use your own styling, you need to define the relevant styling properties before including the library.
 The following example would combine green actor icons with red text.
