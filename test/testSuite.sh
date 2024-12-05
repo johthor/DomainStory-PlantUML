@@ -7,8 +7,7 @@ LIB_DIR='lib'
 SHARNESS_DIR='sharness'
 AGGREGATE="$LIB_DIR/$SHARNESS_DIR/tools/aggregate-results.sh"
 
-DIAGRAM_FORMAT='svg'
-
+DIAGRAM_FORMAT='png'
 
 test::all() {
   test::aggregate "$@"
@@ -20,6 +19,13 @@ test::clean() {
   # Clean binaries below.
   # For example:
   # -rm -rf bin/ipfs
+  rm diagrams/**/*.actual.*
+  rm diagrams/**/*.COMPARISON.*
+  rm diagrams/**/*.COMPOSITE.*
+  rm diagrams/**/*.COMPOSITE_NORM.*
+  rm diagrams/**/*.FLICKER.*
+  rm preprocessed/**/*.actual.*
+  rm preprocessed/**/*.DIFF.*
 }
 
 test::clean-test-results() {
@@ -35,7 +41,7 @@ test::run-tests() {
   test::generate-all "$@"
   echo "*** ${FUNCNAME[0]} ***"
   for testFile in $TEST_FILES ; do
-    $testFile
+    DIAGRAM_FORMAT=$DIAGRAM_FORMAT $testFile
   done
 }
 
@@ -78,6 +84,8 @@ test::check-sharness() {
 }
 
 test::check-deps() {
+  which diff >/dev/null || (echo "Please install a diff tool!" && false)
+
   which plantuml >/dev/null || (echo "Please install PlantUML!" && false)
 
   which magick >/dev/null || (echo "Please install ImageMagick!" && false)

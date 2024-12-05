@@ -65,11 +65,6 @@ run::convertAssets() {
   puml::convert test/puml/styling/theme-sketchy.puml docs/assets
 }
 
-# Convert all test diagrams
-run::convertTests() {
-
-}
-
 run::compare() {
   magick composite bag_frame1.gif bag_frame1.jpg \
               -compose difference  difference_jpeg.gif
@@ -78,9 +73,19 @@ run::compare() {
 # Run tests in ./test
 run::test() {
   set -e
+  chmod +x test/testSuite.sh
 
   cd test
-  make
+  ./testSuite.sh
+}
+
+# Clean tests in ./test
+run::test-clean() {
+  set -e
+  chmod +x test/testSuite.sh
+
+  cd test
+  ./testSuite.sh clean
 }
 
 # Bake the next release version
