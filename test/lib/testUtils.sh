@@ -58,10 +58,18 @@ computeStats() {
 computeDiff() {
   subject="$1"
   fileSuffix="$2"
-  magick compare -metric MAE \
+
+  regex_pattern="^[^e]+e-.. \([^e]+e-..\)"
+  stat=$(magick compare -metric MAE \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_EXPECTATION$fileSuffix" \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_ACTUAL$fileSuffix" \
-    null: 2>&1
+    null: 2>&1)
+
+  if [[ "$stat" =~ $regex_pattern ]]; then
+    echo '0 (0)'
+  else
+    echo "$stat"
+  fi
 }
 
 compareImages() {
