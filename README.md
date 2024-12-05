@@ -17,6 +17,7 @@ Use [PlantUML](http://en.plantuml.com/) to describe and document a domain story 
 * [Advanced Features](#advanced-features)
     * [Dynamic Creation of Work Objects](#dynamic-creation-of-work-objects)
     * [Advanced Story Layout](#advanced-story-layout)
+    * [Advanced Styling](#advanced-styling)
 * [Advanced Samples](#advanced-samples)
     * [Cinema](#cinema)
     * [Airport Bus](#airport-bus)
