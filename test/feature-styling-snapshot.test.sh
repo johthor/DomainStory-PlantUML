@@ -14,13 +14,14 @@ for diagram in "$SHARNESS_TEST_DIRECTORY"/puml/styling/*.puml ; do
   testSubject="$subPath/$fileNameWithoutExt"
 
   test_expect_success "diagram $testSubject.puml renders correctly" "
-    ensureSnapshotExists diagrams/$testSubject .svg &&
-    compareImages diagrams/$testSubject .svg
+    ensureSnapshotExists diagrams/$testSubject .$DIAGRAM_FORMAT &&
+    compareImages diagrams/$testSubject .$DIAGRAM_FORMAT
   "
 
   test_expect_success "preprocessed $testSubject.puml matches snapshot" "
     ensureSnapshotExists preprocessed/$testSubject .preproc &&
-    diff preprocessed/$testSubject.expected.preproc preprocessed/$testSubject.actual.preproc > preprocessed/$testSubject.DIFF.preproc "
+    comparePreProcessed preprocessed/$testSubject .preproc
+  "
 done
 
 test_done

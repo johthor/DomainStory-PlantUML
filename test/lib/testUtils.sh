@@ -15,20 +15,32 @@ ensureSnapshotExists() {
 computeComparison() {
   subject="$1"
   fileSuffix="$2"
-  magick compare -metric AE -fuzz 10% \
+  magick compare -metric AE -fuzz 5% \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_EXPECTATION$fileSuffix" \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_ACTUAL$fileSuffix" \
-    "$SHARNESS_TEST_DIRECTORY/$subject".COMPARISON.png
+    -highlight-color Magenta \
+    magick "$SHARNESS_TEST_DIRECTORY/$subject".COMPARISON.png
 }
 
 computeComposite() {
-  subject="$1"
   subject="$1"
   fileSuffix="$2"
   magick composite \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_EXPECTATION$fileSuffix" \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_ACTUAL$fileSuffix" \
     -compose difference "$SHARNESS_TEST_DIRECTORY/$subject".COMPOSITE.png
+
+  magick "$SHARNESS_TEST_DIRECTORY/$subject".COMPOSITE.png \
+    -auto-level  "$SHARNESS_TEST_DIRECTORY/$subject".COMPOSITE_NORM.png
+}
+
+computeFlicker() {
+  subject="$1"
+  fileSuffix="$2"
+  magick -delay 100 \
+    "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_EXPECTATION$fileSuffix" \
+    "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_ACTUAL$fileSuffix" \
+    -loop 0 "$SHARNESS_TEST_DIRECTORY/$subject".FLICKER.gif
 }
 
 computeStats() {
@@ -59,9 +71,25 @@ compareImages() {
   if [ "$(computeDiff "$subject" "$fileSuffix")" != '0 (0)' ]; then
     computeComparison "$subject" "$fileSuffix"
     computeComposite "$subject" "$fileSuffix"
+    computeFlicker "$subject" "$fileSuffix"
     computeStats "$subject" "$fileSuffix"
 
     echo "compare the files for $subject" 1>&2
+    test 1 != 1
+  fi
+}
+
+comparePreProcessed() {
+  subject="$1"
+  fileSuffix="$2"
+
+
+
+  if ! diff "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_EXPECTATION$fileSuffix" \
+      "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_ACTUAL$fileSuffix"; then
+    diff "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_EXPECTATION$fileSuffix" \
+      "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_ACTUAL$fileSuffix" \
+      > "$SHARNESS_TEST_DIRECTORY/$subject".DIFF.txt
     test 1 != 1
   fi
 }
