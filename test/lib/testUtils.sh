@@ -15,6 +15,7 @@ ensureSnapshotExists() {
 computeComparison() {
   subject="$1"
   fileSuffix="$2"
+
   magick compare -metric AE -fuzz 5% \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_EXPECTATION$fileSuffix" \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_ACTUAL$fileSuffix" \
@@ -25,6 +26,7 @@ computeComparison() {
 computeComposite() {
   subject="$1"
   fileSuffix="$2"
+
   magick composite \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_EXPECTATION$fileSuffix" \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_ACTUAL$fileSuffix" \
@@ -37,6 +39,7 @@ computeComposite() {
 computeFlicker() {
   subject="$1"
   fileSuffix="$2"
+
   magick -delay 100 \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_EXPECTATION$fileSuffix" \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_ACTUAL$fileSuffix" \
@@ -45,8 +48,8 @@ computeFlicker() {
 
 computeStats() {
   subject="$1"
-  subject="$1"
   fileSuffix="$2"
+
   magick \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_EXPECTATION$fileSuffix" \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_ACTUAL$fileSuffix" \
@@ -90,8 +93,6 @@ compareImages() {
 comparePreProcessed() {
   subject="$1"
   fileSuffix="$2"
-
-
 
   if ! diff "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_EXPECTATION$fileSuffix" \
       "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_ACTUAL$fileSuffix"; then

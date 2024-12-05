@@ -19,18 +19,19 @@ test::clean() {
   # Clean binaries below.
   # For example:
   # -rm -rf bin/ipfs
-  rm diagrams/**/*.actual.*
-  rm diagrams/**/*.COMPARISON.*
-  rm diagrams/**/*.COMPOSITE.*
-  rm diagrams/**/*.COMPOSITE_NORM.*
-  rm diagrams/**/*.FLICKER.*
-  rm preprocessed/**/*.actual.*
-  rm preprocessed/**/*.DIFF.*
+  rm -f diagrams/**/*.actual.*
+  rm -f diagrams/**/*.COMPARISON.*
+  rm -f diagrams/**/*.COMPOSITE.*
+  rm -f diagrams/**/*.COMPOSITE_NORM.*
+  rm -f diagrams/**/*.FLICKER.*
+  rm -f preprocessed/**/*.actual.*
+  rm -f preprocessed/**/*.DIFF.*
 }
 
 test::clean-test-results() {
   echo "*** ${FUNCNAME[0]} ***"
   rm -rf test-results
+  rm -rf trash\ directory*
 }
 
 test::run-tests() {
