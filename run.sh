@@ -3,7 +3,7 @@
 
 PUML_OPTIONS='-Tsvg'
 DS_PUML_URL='https://github.com/johthor/DomainStory-PlantUML'
-LOG_LEVEL=$LOG_LEVEL
+LOG_LEVEL="${LOG_LEVEL:-info}"
 
 PROJECT_ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 
@@ -70,25 +70,6 @@ run::extractTOC() {
   grep -e '^##' README.md
 }
 
-run::processFileDark() {
-  directory=$(dirname "$1")
-  fileName=$(basename "$1" .puml)
-  fileBase="$directory/$fileName"
-
-  plantuml -Tsvg -darkmode -DPUML_MODE=dark -DLOG_LEVEL=debug "$1"
-  mv "$fileBase.svg" scrapbook/darkmode/
-}
-
-run::preprocessFile() {
-  directory=$(dirname "$1")
-  fileName=$(basename "$1" .puml)
-  fileBase="$directory/$fileName"
-
-  plantuml -DLOG_LEVEL="$LOG_LEVEL" -preproc "$1"
-  sed -e 's/^[ ]*//' "$fileBase.preproc" > scrapbook/preprocessed/"$fileName.preproc.puml"
-  rm "$fileBase.preproc"
-}
-
 # Bake the next release version
 run::bakeRelease() {
   version="$1"
@@ -114,6 +95,27 @@ run::bakeRelease() {
   # Copy over relevant PUML files into StdLib
   cp "$PROJECT_ROOT/domainStory.puml" "$domainStoryDir"
 }
+
+
+run::processFileDark() {
+  directory=$(dirname "$1")
+  fileName=$(basename "$1" .puml)
+  fileBase="$directory/$fileName"
+
+  plantuml -Tsvg -darkmode -DPUML_MODE=dark -DLOG_LEVEL=debug "$1"
+  mv "$fileBase.svg" scrapbook/darkmode/
+}
+
+run::preprocessFile() {
+  directory=$(dirname "$1")
+  fileName=$(basename "$1" .puml)
+  fileBase="$directory/$fileName"
+
+  plantuml -DLOG_LEVEL="$LOG_LEVEL" -preproc "$1"
+  sed -e 's/^[ ]*//' "$fileBase.preproc" > scrapbook/preprocessed/"$fileName.preproc.puml"
+  rm "$fileBase.preproc"
+}
+
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
   cmd="$1"
