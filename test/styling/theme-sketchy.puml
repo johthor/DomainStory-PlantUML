@@ -1,7 +1,7 @@
 @startuml
 !theme sketchy
 
-!include ../../domainStory.puml
+!include ../../src/domainStoryComposite.puml
 
 Boundary(Party) {
     Person(Alice)

@@ -1,0 +1,111 @@
+' Work Objects
+' ##################################
+
+!unquoted procedure Object($kind, $iconName, $name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    $debug($kind + " : " + $iconName + " : " + $name + " : " + $label + " : " + $tag + " : " + $note + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
+
+    !$shape = $getStyleProperty($shape, Object, $kind, $tag, Shape)
+    !$scale = $getStyleProperty($scale, Object, $kind, $tag, IconScale)
+    !$color = $getStyleProperty($color, Object, $kind, $tag, IconColor)
+
+    !if $label == ""
+        !$label = $name
+    !endif
+
+    ' output below
+    !if $iconName
+        !if $color
+            $shape "<$iconName{scale=$scale,color=$color}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
+        !else
+            $shape "<$iconName{scale=$scale}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
+        !endif
+    !else
+        $shape $label as $name $computeStereotypes($kind, $tag) $computeColorName($background)
+    !endif
+
+    $createElementNote($name, $note)
+!endprocedure
+
+' Document Work Object
+' ==================================
+
+!global $Document_IconStyle ?= $Object_IconStyle
+
+!if $Document_IconStyle == "outline"
+    $extendStyleDeclarations("Object", "Document", "file_document")
+!else
+    $extendStyleDeclarations("Object", "Document", "document")
+!endif
+
+!unquoted procedure Document($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    Object("Document", $Document_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endprocedure
+
+' Folder Work Object
+' ==================================
+
+!global $Folder_IconStyle ?= $Object_IconStyle
+
+!if $Folder_IconStyle == "outline"
+    $extendStyleDeclarations("Object", "Folder", "folder_outline")
+!else
+    $extendStyleDeclarations("Object", "Folder", "folder")
+!endif
+
+!unquoted procedure Folder($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    Object("Folder", $Folder_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endprocedure
+
+' Call Work Object
+' ==================================
+
+$extendStyleDeclarations("Object", "Call", "phone")
+
+!unquoted procedure Call($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    Object("Call", $Call_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endprocedure
+
+' Email Work Object
+' ==================================
+
+!global $Email_IconStyle ?= $Object_IconStyle
+
+!if $Email_IconStyle == "outline"
+    $extendStyleDeclarations("Object", "Email", "at")
+!else
+    $extendStyleDeclarations("Object", "Email", "email")
+!endif
+
+!unquoted procedure Email($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    Object("Email", $Email_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endprocedure
+
+' Conversation Work Object
+' ==================================
+
+!global $Conversation_IconStyle ?= $Object_IconStyle
+
+!if $Conversation_IconStyle == "outline"
+    $extendStyleDeclarations("Object", "Conversation", "message_outline")
+!else
+    $extendStyleDeclarations("Object", "Conversation", "message")
+!endif
+
+!unquoted procedure Conversation($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    Object("Conversation", $Conversation_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endprocedure
+
+' Info Work Object
+' ==================================
+
+!global $Info_IconStyle ?= $Object_IconStyle
+
+!if $Info_IconStyle == "outline"
+    $extendStyleDeclarations("Object", "Info", "information_outline")
+!else
+    $extendStyleDeclarations("Object", "Info", "information")
+!endif
+
+!unquoted procedure Info($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    Object("Info", $Info_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endprocedure

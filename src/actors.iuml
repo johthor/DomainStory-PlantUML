@@ -1,0 +1,82 @@
+' Actors
+' ##################################
+
+!unquoted procedure Actor($kind, $iconName, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    $debug($kind + " : " + $iconName + " : " + $name + " : " + $label + " : " + $tag + " : " + $note + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
+
+    !$shape = $getStyleProperty($shape, Actor, $kind, $tag, Shape)
+    !$scale = $getStyleProperty($scale, Actor, $kind, $tag, IconScale)
+    !$color = $getStyleProperty($color, Actor, $kind, $tag, IconColor)
+
+    !if $label == ""
+        !$label = $name
+    !endif
+
+    ' output below
+    !if $iconName
+        !if $color
+            $shape "<$iconName{scale=$scale,color=$color}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
+        !else
+            $shape "<$iconName{scale=$scale}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
+        !endif
+    !else
+        $shape $label as $name $computeStereotypes($kind, $tag) $computeColorName($background)
+    !endif
+
+    $createElementNote($name, $note)
+!endprocedure
+
+' Person Actor
+' ==================================
+
+!global $Person_IconStyle ?= $Actor_IconStyle
+
+!if $Person_IconStyle == "stickman"
+    !$Person_Shape ?= "Actor"
+    $extendStyleDeclarations("Actor", "Person", "")
+    skinparam ActorStyle stickman
+!elseif $Person_IconStyle == "stickmanAlt"
+    !$Person_Shape ?= "Actor/"
+    $extendStyleDeclarations("Actor", "Person", "")
+    skinparam ActorStyle stickman
+!elseif $Person_IconStyle == "hollow"
+    !$Person_Shape ?= "Actor"
+    $extendStyleDeclarations("Actor", "Person", "")
+    skinparam ActorStyle hollow
+!elseif $Person_IconStyle == "awesome"
+    !$Person_Shape ?= "Actor"
+    $extendStyleDeclarations("Actor", "Person", "")
+    skinparam ActorStyle awesome
+!elseif $Person_IconStyle == "outline"
+    $extendStyleDeclarations("Actor", "Person", "account_outline")
+!else
+    $extendStyleDeclarations("Actor", "Person", "account")
+!endif
+
+!unquoted procedure Person($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    Actor("Person", $Person_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endprocedure
+
+' Group Actor
+' ==================================
+
+!global $Group_IconStyle ?= $Actor_IconStyle
+
+!if $Group_IconStyle == "outline"
+    $extendStyleDeclarations("Actor", "Group", "account_multiple_outline")
+!else
+    $extendStyleDeclarations("Actor", "Group", "account_multiple")
+!endif
+
+!unquoted procedure Group($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    Actor("Group", $Group_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endprocedure
+
+' System Actor
+' ==================================
+
+$extendStyleDeclarations("Actor", "System", "laptop")
+
+!unquoted procedure System($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    Actor("System", $System_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endprocedure

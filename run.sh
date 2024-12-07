@@ -22,6 +22,35 @@ puml::convert() {
   fi
 }
 
+# Compile split source files into one PUML file
+run::compile() {
+  {
+    cat src/header.iuml
+    echo ''
+    cat src/utilities.iuml
+    echo ''
+    cat src/storyLayout.iuml
+    echo ''
+    cat src/styling.iuml
+    echo ''
+    cat src/theming.iuml
+    echo ''
+    cat src/state.iuml
+    echo ''
+    cat src/actors.iuml
+    echo ''
+    cat src/objects.iuml
+    echo ''
+    cat src/boundaries.iuml
+    echo ''
+    cat src/activities.iuml
+    echo ''
+    cat src/notes.iuml
+    echo ''
+    cat src/helper.iuml
+  } > domainStory.puml
+}
+
 # Convert all samples and assets
 run::convertAssets() {
   set -e
