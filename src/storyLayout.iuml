@@ -1,0 +1,11 @@
+' Story Layout
+' ##################################
+
+!global $Story_Layout ?= "left-to-right"
+
+!if $Story_Layout == "left-to-right" || $Story_Layout == "landscape"
+    !global $Story_Layout = "left-to-right"
+    left to right direction
+!else
+    top to bottom direction
+!endif

@@ -1,0 +1,18 @@
+' Version
+' ##################################
+
+!function DomainStoryVersion()
+    ' This is method is directly copied from C4-PlantUML and only slightly adjusted
+    ' 2 spaces are used as a unique marker, that the release script makes the correct version update
+    !global $DomainStoryVersion  =  "0.4.0"
+    !return $DomainStoryVersion
+!end function
+
+' Logging Utilities
+' ##################################
+
+!procedure $debug($message)
+    !if LOG_LEVEL == "debug"
+        !log [DEBUG] $message
+    !endif
+!endprocedure

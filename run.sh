@@ -3,7 +3,7 @@
 
 PUML_OPTIONS='-Tsvg'
 DS_PUML_URL='https://github.com/johthor/DomainStory-PlantUML'
-LOG_LEVEL=$LOG_LEVEL
+LOG_LEVEL="${LOG_LEVEL:-info}"
 
 PROJECT_ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 
@@ -20,6 +20,35 @@ puml::convert() {
     echo "Converting $fileName in light mode to directory $outputDir"
     plantuml "$PUML_OPTIONS" -o "$PROJECT_ROOT/$outputDir" "$fileName"
   fi
+}
+
+# Compile split source files into one PUML file
+run::compile() {
+  {
+    cat src/header.iuml
+    echo ''
+    cat src/utilities.iuml
+    echo ''
+    cat src/storyLayout.iuml
+    echo ''
+    cat src/styling.iuml
+    echo ''
+    cat src/theming.iuml
+    echo ''
+    cat src/state.iuml
+    echo ''
+    cat src/actors.iuml
+    echo ''
+    cat src/objects.iuml
+    echo ''
+    cat src/boundaries.iuml
+    echo ''
+    cat src/activities.iuml
+    echo ''
+    cat src/notes.iuml
+    echo ''
+    cat src/helper.iuml
+  } > domainStory.puml
 }
 
 # Convert all samples and assets
@@ -39,25 +68,6 @@ run::convertAssets() {
 # Extract Table of Contents from Readme
 run::extractTOC() {
   grep -e '^##' README.md
-}
-
-run::processFileDark() {
-  directory=$(dirname "$1")
-  fileName=$(basename "$1" .puml)
-  fileBase="$directory/$fileName"
-
-  plantuml -Tsvg -darkmode -DPUML_MODE=dark -DLOG_LEVEL=debug "$1"
-  mv "$fileBase.svg" scrapbook/darkmode/
-}
-
-run::preprocessFile() {
-  directory=$(dirname "$1")
-  fileName=$(basename "$1" .puml)
-  fileBase="$directory/$fileName"
-
-  plantuml -DLOG_LEVEL="$LOG_LEVEL" -preproc "$1"
-  sed -e 's/^[ ]*//' "$fileBase.preproc" > scrapbook/preprocessed/"$fileName.preproc.puml"
-  rm "$fileBase.preproc"
 }
 
 # Bake the next release version
@@ -85,6 +95,27 @@ run::bakeRelease() {
   # Copy over relevant PUML files into StdLib
   cp "$PROJECT_ROOT/domainStory.puml" "$domainStoryDir"
 }
+
+
+run::processFileDark() {
+  directory=$(dirname "$1")
+  fileName=$(basename "$1" .puml)
+  fileBase="$directory/$fileName"
+
+  plantuml -Tsvg -darkmode -DPUML_MODE=dark -DLOG_LEVEL=debug "$1"
+  mv "$fileBase.svg" scrapbook/darkmode/
+}
+
+run::preprocessFile() {
+  directory=$(dirname "$1")
+  fileName=$(basename "$1" .puml)
+  fileBase="$directory/$fileName"
+
+  plantuml -DLOG_LEVEL="$LOG_LEVEL" -preproc "$1"
+  sed -e 's/^[ ]*//' "$fileBase.preproc" > scrapbook/preprocessed/"$fileName.preproc.puml"
+  rm "$fileBase.preproc"
+}
+
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
   cmd="$1"

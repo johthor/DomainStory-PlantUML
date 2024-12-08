@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - t.b.d.
 
+### Changed
+
+- Split library PUML into multiple source files ([#22](https://github.com/johthor/DomainStory-PlantUML/pull/22)), ([@johthor][gh-johthor])
+
 
 ## Delta [0.4.0] - 2024-11-30
 

@@ -1,0 +1,18 @@
+' Boundaries
+' ##################################
+
+!unquoted procedure Boundary($name, $label = "", $tag = "", $note = "", $shape = "", $background = "")
+    !$shape = $getStyleProperty($shape, Boundary, "", $tag, Shape)
+
+    !if $label == ""
+        !$label = $name
+    !endif
+
+    !if $note
+        $shape $name
+        $createBoundaryNote($name, $note)
+    !endif
+
+    ' output below
+    $shape "==$label" as $name $computeStereotypes("", $tag) $computeColorName($background)
+!endprocedure

@@ -1,0 +1,167 @@
+' Helper procedures
+' ##################################
+
+' Be aware this function might produce side effects
+!function $ensureElementExists($element, $tag, $note, $shape, $scale, $color, $background)
+    !$separatorPosition = %strpos($element, ":")
+
+    !if $separatorPosition > -1
+        !$workObjectCounter = $workObjectCounter + 1
+
+        !$elementKind = %substr($element, 0, $separatorPosition)
+        !$elementLabel = %substr($element, $separatorPosition + 1)
+        !$elementName = $elementKind + $workObjectCounter
+
+        'Element($kind, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+        %invoke_procedure($elementKind, $elementName, $elementLabel, $tag, $note, $shape, $scale, $color, $background)
+
+        !return $elementName
+    !else
+        $createElementNote($element, $note)
+
+        !return $element
+    !endif
+!endfunction
+
+!procedure $createConnection($from, $to, $arrow = "-->", $label = "", $stepLabel = "")
+    !if %substr($arrow, 0, 1) == "<"
+        !if $label
+            !if $stepLabel
+                !if $Step_LabelPosition == "combined"
+                    $to $arrow $from : $label $stepLabel
+                !else
+                    $to $arrow "$stepLabel" $from : $label
+                !endif
+            !else
+                $to $arrow $from : $label
+            !endif
+        !else
+            $to $arrow $from
+        !endif
+    !else
+        !if $label
+            !if $stepLabel
+                !if $Step_LabelPosition == "combined"
+                    $from $arrow $to : $stepLabel $label
+                !else
+                    $from "$stepLabel" $arrow $to : $label
+                !endif
+            !else
+                $from $arrow $to : $label
+            !endif
+        !else
+            $from $arrow $to
+        !endif
+    !endif
+!endprocedure
+
+' Helper functions
+' ##################################
+
+!function $computeColorName($colorSpec)
+    !if $colorSpec
+        !$hexColor = %substr($colorSpec, 0, 1)
+        !if $hexColor == "#"
+            !return $colorSpec
+        !else
+            !return "#" + $colorSpec
+        !endif
+    !else
+        !return ""
+    !endif
+!endfunction
+
+!function $computeArrowDirection($step)
+    !$activityDirection = %substr($step, 0, 1)
+    !if $activityDirection == "^"
+        !if $Story_Layout == "left-to-right"
+            !return "<-"
+        !else
+            !return "<--"
+        !endif
+    !elseif $activityDirection == ">"
+        !if $Story_Layout == "left-to-right"
+            !return "-->"
+        !else
+            !return "->"
+        !endif
+    !elseif $activityDirection == "<"
+        !if $Story_Layout == "left-to-right"
+            !return "<--"
+        !else
+            !return "<-"
+        !endif
+    !elseif  $activityDirection == "v"
+        !if $Story_Layout == "left-to-right"
+            !return "->"
+        !else
+            !return "-->"
+        !endif
+    !elseif  $activityDirection == "~"
+        !return "<--"
+    !else
+        ' Signal no direction found
+        !return %false()
+    !endif
+!endfunction
+
+!function $computeStepLabel($step)
+    !$stepNumber = $computeStepNumber($step)
+
+    !if $stepNumber
+        !if $Step_LabelFraming == "round"
+            !$result = "(" + $stepNumber + ")"
+        !elseif $Step_LabelFraming == "square"
+            !$result = "[" + $stepNumber + "]"
+        !elseif $Step_LabelFraming == "curly"
+            !$result = "{" + $stepNumber + "}"
+        !elseif $Step_LabelFraming == "pointy"
+            !$result = "〈" + $stepNumber + "〉"
+        !else
+            !$result = $stepNumber
+        !endif
+
+        !if $Step_FontStyle == "bold"
+            !$result = "**" + $result + "**"
+        !elseif $Step_FontStyle == "italic"
+            !$result = "//" + $result + "//"
+        !elseif $Step_FontStyle == "monospace"
+            !$result = '""' + $result + '""'
+        !elseif $Step_FontStyle == "underline"
+            !$result = "__" + $result + "__"
+        !elseif $Step_FontStyle == "wave"
+            !$result = "~~" + $result + "~~"
+        !endif
+
+        !if $Step_FontColor
+            !$result = "<color:" + $Step_FontColor + ">" + $result + "</color>"
+        !endif
+        !if $Step_FontSize
+            !$result = "<size:" + $Step_FontSize + ">" + $result + "</size>"
+        !endif
+        !if $Step_BackgroundColor
+            !$result = "<back:" + $Step_BackgroundColor + ">" + $result + "</back>"
+        !endif
+        !return $result
+    !else
+        !return ""
+    !endif
+!endfunction
+
+!function $computeStepNumber($step)
+    !if $step == "_" || $step == "+"
+        !$result = $stepCounter
+        !$stepCounter = $stepCounter + 1
+        !return $result
+    !elseif $step == "|"
+        !return $stepCounter
+    !elseif %substr($step, 0, 1) == "="
+        !$stepCounter = %intval(%substr($step, 1))
+        !return $stepCounter
+    !elseif $step == "."
+        ' Signal unnumbered step
+        !return %false()
+    !else
+        !return $step
+    !endif
+!endfunction

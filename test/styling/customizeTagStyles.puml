@@ -3,7 +3,7 @@
 
 !$Element_TextAlignment = center
 
-!include ../../domainStory.puml
+!include ../../src/domainStoryComposite.puml
 
 customizeStyleProperty("LimeGreen", BackgroundColor, Actor, Person, friendly)
 customizeStyleProperty("yellow|red", BackgroundColor, Boundary, "", fun)

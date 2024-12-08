@@ -39,7 +39,7 @@
     top to bottom direction
 !endif
 
-' Style Utilities
+' Styling
 ' ##################################
 
 !function modeAdjustedColor($lightColor, $darkColor = "")
@@ -216,6 +216,20 @@
     $extendStyleProperty(Shadowing, $element, $kind, $themeable = %true())
 !endprocedure
 
+' Customize Style Declarations
+' ##################################
+
+!procedure customizeStyleProperty($value, $property, $context,  $kind = "", $tag = "", $skinParam = %true())
+    !if $kind
+        !$propertyValue = $setStyleProperty($property, $value, $kind, $tag, %false(), %true())
+    !else
+        !$propertyValue = $setStyleProperty($property, $value, $context, $tag, %false(), %true())
+    !endif
+    !if $skinParam
+        $activateStyleProperty($property, $context, $propertyValue, $kind, $tag)
+    !endif
+!endprocedure
+
 ' Global Style declarations
 ' ##################################
 
@@ -355,20 +369,6 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
 
 !global $stepCounter = 1
 !global $workObjectCounter = 0
-
-' Customize Style Declarations
-' ##################################
-
-!procedure customizeStyleProperty($value, $property, $context,  $kind = "", $tag = "", $skinParam = %true())
-    !if $kind
-        !$propertyValue = $setStyleProperty($property, $value, $kind, $tag, %false(), %true())
-    !else
-        !$propertyValue = $setStyleProperty($property, $value, $context, $tag, %false(), %true())
-    !endif
-    !if $skinParam
-        $activateStyleProperty($property, $context, $propertyValue, $kind, $tag)
-    !endif
-!endprocedure
 
 ' Actors
 ' ##################################

@@ -1,0 +1,133 @@
+' Global Style declarations
+' ##################################
+
+' Use `-darkmode -DPUML_MODE=dark` to set a preprocessing variable
+!global PUML_MODE ?= "light"
+
+' Element Styles
+' ==================================
+
+!global $Element_Shape = Default
+
+$declareStyleProperty("", FontColor, Element, modeAdjustedColor("#0B0C10"), $themeable = %true())
+$declareStyleProperty("", FontName, Element, $themeable = %true())
+$declareStyleProperty("", FontSize, Element, $themeable = %true())
+$declareStyleProperty("", FontStyle, Element, $themeable = %true())
+$declareStyleProperty("", TextAlignment, Element, center, $themeable = %true())
+
+$declareStyleProperty("", BackgroundColor, Element, "none", $themeable = %true())
+$declareStyleProperty("", BorderStyle, Element, "none", $themeable = %true())
+$declareStyleProperty("", BorderColor, Element, "none", $themeable = %true())
+$declareStyleProperty("", BorderThickness, Element, 1, $themeable = %true())
+$declareStyleProperty("", RoundCorner, Element, 0, $themeable = %true())
+$declareStyleProperty("", Shadowing, Element, false, $themeable = %true(), $skinParam = %false())
+
+hide stereotypes
+!ifndef $THEME
+    skinparam Shadowing $Element_Shadowing
+!endif
+
+' Actor Styles
+' ==================================
+
+$declareStyleProperty("", Shape, Actor, Agent, $themeable = %false(), $skinParam = %false())
+
+$declareStyleProperty("", IconStyle, Actor, "outline", $themeable = %false(), $skinParam = %false())
+$declareStyleProperty("", IconScale, Actor, 1, $themeable = %false(), $skinParam = %false())
+$declareStyleProperty("", IconColor, Actor, modeAdjustedColor("#1f2833"), $themeable = %true(), $skinParam = %false())
+
+$declareStyleProperty($Element_FontColor, FontColor, Actor, $themeable = %true())
+$declareStyleProperty($Element_FontName, FontName, Actor, $themeable = %true())
+$declareStyleProperty($Element_FontSize, FontSize, Actor, $themeable = %true())
+$declareStyleProperty($Element_FontStyle, FontStyle, Actor, $themeable = %true())
+$declareStyleProperty($Element_TextAlignment, TextAlignment, Actor, $themeable = %true())
+
+$declareStyleProperty($Element_BackgroundColor, BackgroundColor, Actor, $themeable = %true())
+$declareStyleProperty($Element_BorderStyle, BorderStyle, Actor, $themeable = %true())
+$declareStyleProperty($Element_BorderColor, BorderColor, Actor, $themeable = %true())
+$declareStyleProperty($Element_BorderThickness, BorderThickness, Actor, $themeable = %true())
+$declareStyleProperty($Element_RoundCorner, RoundCorner, Actor, $themeable = %true())
+$declareStyleProperty($Element_Shadowing, Shadowing, Actor, $themeable = %true(), $skinParam = %false())
+
+' Work Object Styles
+' ==================================
+
+$declareStyleProperty("", Shape, Object, Card, $themeable = %false(), $skinParam = %false())
+
+$declareStyleProperty("", IconStyle, Object, "outline", $themeable = %false(), $skinParam = %false())
+$declareStyleProperty("", IconScale, Object, 0.8, $themeable = %false(), $skinParam = %false())
+$declareStyleProperty("", IconColor, Object, modeAdjustedColor("#1f2833"), $themeable = %true(), $skinParam = %false())
+
+$declareStyleProperty($Element_FontColor, FontColor, Object, $themeable = %true())
+$declareStyleProperty($Element_FontName, FontName, Object, $themeable = %true())
+$declareStyleProperty($Element_FontSize, FontSize, Object, $themeable = %true())
+$declareStyleProperty($Element_FontStyle, FontStyle, Object, $themeable = %true())
+$declareStyleProperty($Element_TextAlignment, TextAlignment, Object, $themeable = %true())
+
+$declareStyleProperty($Element_BackgroundColor, BackgroundColor, Object, $themeable = %true())
+$declareStyleProperty($Element_BorderStyle, BorderStyle, Object, $themeable = %true())
+$declareStyleProperty($Element_BorderColor, BorderColor, Object, $themeable = %true())
+$declareStyleProperty($Element_BorderThickness, BorderThickness, Object, $themeable = %true())
+$declareStyleProperty($Element_RoundCorner, RoundCorner, Object, $themeable = %true())
+$declareStyleProperty($Element_Shadowing, Shadowing, Object, $themeable = %true(), $skinParam = %false())
+
+' Boundary Styles
+' ==================================
+
+$declareStyleProperty("", Shape, Boundary, Rectangle, $themeable = %false(), $skinParam = %false())
+
+$declareStyleProperty($Element_FontColor, FontColor, Boundary, $themeable = %true())
+$declareStyleProperty($Element_FontName, FontName, Boundary, $themeable = %true())
+$declareStyleProperty($Element_FontSize, FontSize, Boundary, $themeable = %true())
+$declareStyleProperty($Element_FontStyle, FontStyle, Boundary, $themeable = %true())
+$declareStyleProperty($Element_TextAlignment, TextAlignment, Boundary, $themeable = %true())
+
+$declareStyleProperty($Element_BackgroundColor, BackgroundColor, Boundary, $themeable = %true())
+$declareStyleProperty($Element_BorderStyle, BorderStyle, Boundary, "dashed", $themeable = %true())
+$declareStyleProperty($Element_BorderColor, BorderColor, Boundary, modeAdjustedColor("#1f2833"), $themeable = %true())
+$declareStyleProperty($Element_BorderThickness, BorderThickness, Boundary, 2, $themeable = %true())
+$declareStyleProperty($Element_RoundCorner, RoundCorner, Boundary, 15, $themeable = %true())
+$declareStyleProperty($Element_Shadowing, Shadowing, Boundary, $themeable = %true(), $skinParam = %false())
+
+' Note Styles
+' ==================================
+
+
+!global $Note_Shape = Note
+
+$declareStyleProperty($Element_FontColor, FontColor, Note, $themeable = %true())
+$declareStyleProperty($Element_FontName, FontName, Note, $themeable = %true())
+$declareStyleProperty($Element_FontSize, FontSize, Note, $themeable = %true())
+$declareStyleProperty($Element_FontStyle, FontStyle, Note, $themeable = %true())
+$declareStyleProperty($Element_TextAlignment, TextAlignment, Note, left, $themeable = %true())
+
+$declareStyleProperty($Element_BackgroundColor, BackgroundColor, Note, modeAdjustedColor("#c5c6c7"), $themeable = %true())
+$declareStyleProperty($Element_BorderStyle, BorderStyle, Note, $themeable = %true())
+$declareStyleProperty($Element_BorderColor, BorderColor, Note, modeAdjustedColor("#1f2833"), $themeable = %true())
+$declareStyleProperty($Element_BorderThickness, BorderThickness, Note, $themeable = %true())
+$declareStyleProperty($Element_RoundCorner, RoundCorner, Note, $themeable = %true())
+$declareStyleProperty($Element_Shadowing, Shadowing, Note, $themeable = %true(), $skinParam = %false())
+
+' Activity Styles
+' ==================================
+
+!global $Activity_Shape = Arrow
+
+$declareStyleProperty("", FontColor, Activity, modeAdjustedColor("#0B0C10"), $themeable = %true())
+$declareStyleProperty("", FontName, Activity, $themeable = %true())
+$declareStyleProperty("", FontSize, Activity, $themeable = %true())
+$declareStyleProperty("", FontStyle, Activity, $themeable = %true())
+$declareStyleProperty("", MessageAlignment, Activity, left, $themeable = %true())
+
+$declareStyleProperty("", Color, Activity, modeAdjustedColor("#c5c6c7", "#c5c6c7"), $themeable = %true())
+
+' Step Label Styles
+' ----------------------------------
+
+$declareStyleProperty("", LabelPosition, Step, combined, $themeable = %false(), $skinParam = %false())
+$declareStyleProperty("", LabelFraming, Step, round, $themeable = %false(), $skinParam = %false())
+$declareStyleProperty("", FontStyle, Step, plain, $themeable = %false(), $skinParam = %false())
+$declareStyleProperty("", FontColor, Step, modeAdjustedColor("#0B0C10"), $themeable = %true(), $skinParam = %false())
+$declareStyleProperty("", FontSize, Step, 16, $themeable = %true(), $skinParam = %false())
+
+$declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $themeable = %true(), $skinParam = %false())
