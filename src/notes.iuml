@@ -1,0 +1,68 @@
+' Notes
+' ##################################
+
+!procedure $createElementNote($reference, $note)
+    !if $note
+        !$notePosition = %substr($note, 0, 1)
+        !$noteText = %substr($note, 1)
+
+        !if $notePosition == "^"
+            note top of $reference : $noteText
+        !elseif $notePosition == ">"
+            note right of $reference : $noteText
+        !elseif $notePosition == "v"
+            note bottom of $reference : $noteText
+        !elseif $notePosition == "<"
+            note left of $reference : $noteText
+        !elseif $notePosition == "~"
+            !if $Story_Layout == "left-to-right"
+                note left of $reference : $noteText
+            !else
+                note top of $reference : $noteText
+            !endif
+        !else
+            !if $Story_Layout == "left-to-right"
+                note right of $reference : $note
+            !else
+                note bottom of $reference : $note
+            !endif
+        !endif
+    !endif
+!endprocedure
+
+!procedure $createBoundaryNote($reference, $note)
+    !if $note
+        !$notePosition = %substr($note, 0, 1)
+        !$noteText = %substr($note, 1)
+
+        !if $notePosition == "^"
+            !if $Story_Layout == "left-to-right"
+                note bottom of $reference : $noteText
+            !else
+                note top of $reference : $noteText
+            !endif
+        !elseif $notePosition == ">"
+            note right of $reference : $noteText
+        !elseif $notePosition == "v"
+            !if $Story_Layout == "left-to-right"
+                note top of $reference : $noteText
+            !else
+                note bottom of $reference : $noteText
+            !endif
+        !elseif $notePosition == "<"
+            note left of $reference : $noteText
+        !elseif $notePosition == "~"
+            !if $Story_Layout == "left-to-right"
+                note left of $reference : $noteText
+            !else
+                note top of $reference : $noteText
+            !endif
+        !else
+            !if $Story_Layout == "left-to-right"
+                note right of $reference : $note
+            !else
+                note bottom of $reference : $note
+            !endif
+        !endif
+    !endif
+!endprocedure

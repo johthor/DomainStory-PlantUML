@@ -1,0 +1,190 @@
+' Styling
+' ##################################
+
+!function modeAdjustedColor($lightColor, $darkColor = "")
+    !if PUML_MODE == "light"
+        !$result = $lightColor
+    !else
+        !if $darkColor
+            !$result = $darkColor
+        !else
+            !$result = %reverse_color($lightColor)
+        !endif
+    !endif
+    $debug(PUML_MODE + " mode with input color " + $lightColor + " and output color " + $result)
+    !return $result
+!endfunction
+
+!function $computeStereotypes($kind, $tag, $all = %true())
+    !if $kind
+        !if $tag
+            !if $all
+                !return "<<" + $kind + ":" + $tag + ">><<" + $kind + ">><<" + $tag + ">>"
+            !else
+                !return "<<" + $kind + ":" + $tag + ">>"
+            !endif
+        !else
+            !return "<<" + $kind + ">>"
+        !endif
+    !else
+        !if $tag
+            !return "<<" + $tag + ">>"
+        !else
+            !return ""
+        !endif
+    !endif
+!endfunction
+
+!function $decideVariableName($context, $tag, $property)
+    !if $tag
+        !return "$" + $context + "_" + $tag + "_" + $property
+    !else
+        !return "$" + $context + "_" + $property
+    !endif
+!endfunction
+
+!function $setStyleProperty($property, $value, $context, $tag = "", $themeable = %false(), $force = %false())
+    !$variableName = $decideVariableName($context, $tag, $property)
+
+    !if %not($force) && %variable_exists($variableName)
+        !return %get_variable_value($variableName)
+    !else
+        !if %not($force) && $themeable
+            !ifdef $THEME
+                !$value = ""
+            !endif
+        !endif
+
+        !if $value
+            %set_variable_value($variableName, $value)
+            $debug("declared " + $variableName + " with value [" + $value + "]")
+            !return $value
+        !else
+            %set_variable_value($variableName, "")
+            $debug("declared " + $variableName + " with empty value")
+            !return ""
+        !endif
+    !endif
+!endfunction
+
+!function $getStyleProperty($value, $element, $kind, $tag, $property)
+    !if $value
+        !return $value
+    !endif
+
+    ' Check tagged properties according to hierarchy first
+    !$value = %get_variable_value($decideVariableName($kind, $tag, $property))
+    !if $value
+        !return $value
+    !endif
+
+    !$value = %get_variable_value($decideVariableName($element, $tag, $property))
+    !if $value
+        !return $value
+    !endif
+
+    !$value = %get_variable_value($decideVariableName(Element, $tag, $property))
+    !if $value
+        !return $value
+    !endif
+
+    ' Check untagged properties according to hierarchy
+    !$value = %get_variable_value($decideVariableName($kind, "", $property))
+    !if $value
+        !return $value
+    !endif
+
+    !$value = %get_variable_value($decideVariableName($element, "", $property))
+    !if $value
+        !return $value
+    !endif
+
+    !return %get_variable_value($decideVariableName(Element, "", $property))
+!endfunction
+
+!procedure $activateStyleProperty($property, $element, $value = "", $kind = "", $tag = "")
+    !$variableName = $decideVariableName($element, $tag, "Shape")
+    !$shape = %get_variable_value($variableName)
+    $debug("found shape [" + $shape + "] in " + $variableName)
+
+    !if $shape == ""
+        !$variableName = $decideVariableName($element, "", "Shape")
+        !$shape = %get_variable_value($decideVariableName($element, "", "Shape"))
+        $debug("found shape [" + $shape + "] in " + $variableName)
+    !endif
+
+    !$stereotype = $computeStereotypes($kind, $tag, %false())
+
+    !if $value
+        !if $shape
+            skinparam $shape##$property##$stereotype $value
+        !else
+            skinparam $element##$property##$stereotype $value
+        !endif
+    !endif
+!endprocedure
+
+!procedure $declareStyleProperty($fallbackValue, $property, $context, $value = "", $kind = "", $tag = "", $themeable = %false(), $skinParam = %true())
+    !if $value
+        !$newValue = $value
+    !else
+        !$newValue = $fallbackValue
+    !endif
+
+    !if $kind
+        !$propertyValue = $setStyleProperty($property, $newValue, $kind, $tag, $themeable)
+    !else
+        !$propertyValue = $setStyleProperty($property, $newValue, $context, $tag, $themeable)
+    !endif
+    !if $skinParam && ($value != $fallbackValue)
+        $activateStyleProperty($property, $context, $propertyValue, $kind, $tag)
+    !endif
+!endprocedure
+
+!procedure $extendStyleProperty($property, $element, $kind, $themeable = %false(), $skinParam = %true())
+    !$fallbackValue = %get_variable_value($decideVariableName($element, "", $property))
+    $declareStyleProperty($fallbackValue, $property, $element, $fallbackValue, $kind, "", $themeable, $skinParam)
+!endprocedure
+
+!procedure $extendStyleDeclarations($element, $kind, $icon)
+    $extendStyleProperty(Shape, $element, $kind, $themeable = %false(), $skinParam = %false())
+    $extendStyleProperty(IconScale, $element, $kind, $themeable = %false(), $skinParam = %false())
+    $extendStyleProperty(IconColor, $element, $kind, $themeable = %true(), $skinParam = %false())
+
+    !$variableName = $decideVariableName($kind, "", "IconName")
+    !if $icon
+        !if %not(%variable_exists($variableName))
+            !include <material/$icon>
+            %set_variable_value($variableName, "$ma_" + $icon)
+        !endif
+    !else
+        %set_variable_value($variableName, "")
+    !endif
+
+    $extendStyleProperty(FontColor, $element, $kind, $themeable = %true())
+    $extendStyleProperty(FontName, $element, $kind, $themeable = %true())
+    $extendStyleProperty(FontSize, $element, $kind, $themeable = %true())
+    $extendStyleProperty(FontStyle, $element, $kind, $themeable = %true())
+    $extendStyleProperty(TextAlignment, $element, $kind, $themeable = %true())
+
+    $extendStyleProperty(BackgroundColor, $element, $kind, $themeable = %true())
+    $extendStyleProperty(BorderStyle, $element, $kind, $themeable = %true())
+    $extendStyleProperty(BorderColor, $element, $kind, $themeable = %true())
+    $extendStyleProperty(BorderThickness, $element, $kind, $themeable = %true())
+    $extendStyleProperty(RoundCorner, $element, $kind, $themeable = %true())
+    $extendStyleProperty(Shadowing, $element, $kind, $themeable = %true())
+!endprocedure
+
+' Customize Style Declarations
+' ##################################
+
+!procedure customizeStyleProperty($value, $property, $context,  $kind = "", $tag = "", $skinParam = %true())
+    !if $kind
+        !$propertyValue = $setStyleProperty($property, $value, $kind, $tag, %false(), %true())
+    !else
+        !$propertyValue = $setStyleProperty($property, $value, $context, $tag, %false(), %true())
+    !endif
+    !if $skinParam
+        $activateStyleProperty($property, $context, $propertyValue, $kind, $tag)
+    !endif
+!endprocedure

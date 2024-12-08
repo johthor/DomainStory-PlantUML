@@ -26,7 +26,7 @@
 !$Step_FontColor = PowderBlue
 !$Step_BackgroundColor = black
 
-!include ../../domainStory.puml
+!include ../../src/domainStoryComposite.puml
 
 
 Email(confirmation)
