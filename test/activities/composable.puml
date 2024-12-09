@@ -1,0 +1,114 @@
+@startuml
+!include ../../domainStory.puml
+
+!procedure $startActivity($step, $start, $label, $end)
+    $start --> $end : $label
+!endprocedure
+
+!procedure introduce($name, $element)
+    !log $name, $element
+    %set_variable_value($name, $element)
+!endprocedure
+
+!unquoted procedure append($predicate, $object, $objectArr = "", $color = "", $scale = "", $note = "")
+    !log $predicate, $object
+    !$start = $lastObjectName
+
+    ' ensure the object exists / create one dynamically
+    !$object = $ensureElementExists($object, $tag, $note, $shape, $scale, $color, $background)
+
+    !if $objectArr == ""
+        !$objectArr = "-->"
+    !endif
+
+    ' create connecting arrows
+    $createConnection($start, $object, $objectArr, $predicate)
+
+    $createElementNote($object, $note)
+
+    !$lastObjectName = $object
+!endprocedure
+
+!unquoted procedure otherContinue($predicate, $object, $objectArr = "", $color = "", $scale = "", $note = "")
+    !log $predicate, $object
+    !$start = $lastSplitObject
+
+    ' ensure the object exists / create one dynamically
+    !$object = $ensureElementExists($object, $tag, $note, $shape, $scale, $color, $background)
+
+    !if $objectArr == ""
+        !$objectArr = "-->"
+    !endif
+
+    ' create connecting arrows
+    $createConnection($start, $object, $objectArr, $predicate)
+
+    $createElementNote($object, $note)
+
+    !$lastObjectName = $object
+!endprocedure
+
+!unquoted procedure split($predicate, $object, $objectArr = "", $color = "", $scale = "", $note = "")
+    !log $predicate, $object
+    !$start = $lastObjectName
+    !global $lastSplitObject = $lastObjectName
+
+    ' ensure the object exists / create one dynamically
+    !$object = $ensureElementExists($object, $tag, $note, $shape, $scale, $color, $background)
+
+    !if $objectArr == ""
+        !$objectArr = "-->"
+    !endif
+
+    ' create connecting arrows
+    $createConnection($start, $object, $objectArr, $predicate)
+
+    $createElementNote($object, $note)
+
+    !$lastObjectName = $object
+!endprocedure
+
+' =========================================
+'beginSomeContext()
+'endSomeContext()
+
+Person(A)
+Person(Person1, "Betty", $note=hallo)
+
+!$activityContext = "open"
+
+introduce(p, Person(Pete))
+
+!xyz = Person(Sabrina)
+
+'actor Falk
+
+activity(1, A, works on, Info(w))
+
+append(and, Person(zeus))
+'split(and, Document(blitz, $color=red), ->)
+'append(and, System: hermes, $color=green)
+'append(and, poseidon)
+'
+'
+'otherContinue(and, frank)
+'append(and, susi)
+'
+'split(and, dfasfd)
+'otherContinue(and, zappa)
+'append(and, siomon)
+
+
+'activity(., dd, works on, Document(w1))
+'
+'activity(1, p, works on, Document(w1))
+'activity(1, Pete, works on, Document(w2))
+'activity(1, Sabrina, works on, Document(w3))
+'activity(1, xyz, works on, Document(w4))
+
+'withActivity(4, Pete, enjoys, withInfo(fun, and, Document(x)))
+
+'activity(3, Person(C), works on, Document(v, with(using, Document(u)))
+
+
+@enduml
