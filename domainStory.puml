@@ -425,15 +425,9 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
     $extendStyleDeclarations("Actor", "Person", "account")
 !endif
 
-!unquoted function Person($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+!unquoted procedure Person($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
     Actor("Person", $Person_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-
-    !if $activityContext == "open"
-        !return $name
-    !else
-        !return ""
-    !endif
-!endfunction
+!endprocedure
 
 ' Group Actor
 ' ==================================
@@ -567,15 +561,9 @@ $extendStyleDeclarations("Object", "Call", "phone")
     $extendStyleDeclarations("Object", "Info", "information")
 !endif
 
-!unquoted function Info($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+!unquoted procedure Info($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
     Object("Info", $Info_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-
-    !if $activityContext == "open"
-        !return $name
-    !else
-        !return ""
-    !endif
-!endfunction
+!endprocedure
 
 ' Boundaries
 ' ##################################
@@ -599,10 +587,6 @@ $extendStyleDeclarations("Object", "Call", "phone")
 ' Activities
 ' ##################################
 
-!global $stepCounter = 0
-!global $objectCounter = 0
-!global $lastObjectName = ""
-
 !unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "", $targetTag="", $targetNote = "", $targetShape = "", $targetScale = "", $targetColor = "", $targetBackground = "")
     ' Decide on the activity direction
     !if $objectArr == ""
@@ -623,7 +607,6 @@ $extendStyleDeclarations("Object", "Call", "phone")
 
     ' Handle first connection between subject and object
     !$object = $ensureElementExists($object, $tag, $note, $shape, $scale, $color, $background)
-    !$lastObjectName = $object
 
     $createConnection($subject, $object, $objectArr, $predicate, $computeStepLabel($step))
 
@@ -738,9 +721,9 @@ $extendStyleDeclarations("Object", "Call", "phone")
         !if $label
             !if $stepLabel
                 !if $Step_LabelPosition == "combined"
-                    $to $arrow $from <<backwards>> : $label $stepLabel
+                    $to $arrow $from : $label $stepLabel
                 !else
-                    $to $arrow "$stepLabel" $from <<backwards>> : $label
+                    $to $arrow "$stepLabel" $from : $label
                 !endif
             !else
                 $to $arrow $from : $label
@@ -752,9 +735,9 @@ $extendStyleDeclarations("Object", "Call", "phone")
         !if $label
             !if $stepLabel
                 !if $Step_LabelPosition == "combined"
-                    $from $arrow $to <<forwards>> : $stepLabel $label
+                    $from $arrow $to : $stepLabel $label
                 !else
-                    $from "$stepLabel" $arrow $to <<forwards>> : $label
+                    $from "$stepLabel" $arrow $to : $label
                 !endif
             !else
                 $from $arrow $to : $label
