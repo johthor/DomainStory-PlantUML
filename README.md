@@ -175,7 +175,8 @@ and is therefore the default orientation.
 If you combine multiple stories into a domain journey,
 a portrait orientation might produce better results.
 
-> :information_source: Wrangling diagram elements to an exact position
+> [!NOTE]
+> Wrangling diagram elements to an exact position
 > or layout is not what PlantUML is for.
 
 If the default layout does not please your inner artist,
@@ -273,7 +274,8 @@ See the following test cases for more details
 
 The appearance of a domain story may be influenced via any of the following methods.
 
-> :information_source: You may also mix and match all the approaches to get the look you desire.
+> [!NOTE]
+> You may also mix and match all the approaches to get the look you desire.
 
 #### Method 1: PlantUML Themes and Dark Mode
 The library is compatible with [PlantUML themes](https://plantuml.com/en/theme) like
@@ -373,7 +375,8 @@ Person(Alice)
 @enduml
 ```
 
-> :information_source: You might want to set a matching `$Step_BackgroundColor` and `$Step_FontColor` when using themes.
+> [!NOTE]
+> You might want to set a matching `$Step_BackgroundColor` and `$Step_FontColor` when using themes.
 
 See the test case [Global style declarations](test/styling/customizeGlobalStyles.puml) for more details.
 
@@ -453,7 +456,8 @@ Boundary(System) {
 @enduml
 ```
 
-> :warning: **If you want your dynamically created objects to be placed inside a boundary.**
+> [!WARNING]
+> **If you want your dynamically created objects to be placed inside a boundary.**
 > You need to declare the activity inside said boundary.
 
 See the test case for [dynamic object creation](test/activities/objectCreation.puml) for more details.
@@ -494,7 +498,7 @@ see [The Hitchhiker's Guide to PlantUML](https://crashedmind.github.io/PlantUMLH
 activity(1, Alice, talks about the, weather, with, Bob, -->, ->)
 ```
 
-You can use underscores `_` in cases where you don't have a _post action_,
+You can use underscores `_` in cases where you don't have a _post-action_,
 or _target_ but want to specify the arrow orientation directly.
 When you specify only the arrow between subject and object,
 the specification will also be used for the arrow between object and target.
