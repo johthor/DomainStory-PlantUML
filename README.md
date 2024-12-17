@@ -1,7 +1,29 @@
 # Domain Storytelling with PlantUML
 
-Use [PlantUML](http://en.plantuml.com/) to describe and document a domain story which was developed in a
+Use [PlantUML](http://plantuml.com/)
+to describe and document a domain story which was developed in a
 [Domain Storytelling](http://www.domainstorytelling.org) workshop.
+
+DomainStory-PlantUML includes macros, themes, and other tools
+for recording domain stories visually with PlantUML.
+
+> [!IMPORTANT]
+> There is a delay between the release of a new library version
+> and the availability as part of the PlantUML standard library.
+> Therefore, the version you are using might not be compatible
+> with the current documentation.
+>
+> <details>
+> <summary><strong>Show which version of PlantUML includes which library version</strong></summary>
+> 
+> | DomainStory                                                                             | PlantUML       |
+> |-----------------------------------------------------------------------------------------|----------------|
+> | [Delta v0.4.0](https://github.com/johthor/DomainStory-PlantUML/tree/v0.4.0)             | upcoming       |
+> | [Charlie's Quality v0.3.1](https://github.com/johthor/DomainStory-PlantUML/tree/v0.3.1) | since 1.2024.8 |
+> | [Charlie v0.3](https://github.com/johthor/DomainStory-PlantUML/tree/v0.3)               | since 1.2022.5 |
+> | [Bravo v0.2](https://github.com/johthor/DomainStory-PlantUML/tree/v0.2)                 | not packaged   |
+> | [Alpha v0.1](https://github.com/johthor/DomainStory-PlantUML/tree/v0.1)                 | not packaged   |
+> </details>
 
 <details>
 <summary><strong>Table of Contents</strong></summary>
