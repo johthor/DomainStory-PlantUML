@@ -38,6 +38,26 @@ and may be included via
 !include <DomainStory/domainStory>
 ```
 
+> [!WARNING]
+> There is a delay between releasing a new library version
+> and it being available as part of the PlantUML Standard Library.
+
+<details>
+<summary><strong>Click to show the PlantUML Version Compatibility Table</strong></summary>
+
+Click the DomainStory-PlantUML version to go directly to the documentation at that time
+
+| DomainStory-PlantUML version | PlantUML version range |
+|------------------------------|------------------------|
+| Delta v0.4.0                 | unknown                |
+| Delta v0.4.0                 |                        |
+| Charlie's Quality v0.3.1     |                        |
+| Charlie v0.3                 |                        |
+| Bravo v0.2                   |                        |
+| Alpha v0.1                   |                        |
+
+</details>
+
 If you want to use the always up-to-date version in this repository,
 use the following `include` definition
 
