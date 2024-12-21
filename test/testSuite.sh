@@ -4,6 +4,7 @@ TEST_ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 
 TEST_FILES=$(find "$TEST_ROOT" -type f -name '*.test.sh' | sort)
 LIB_DIR='lib'
+PLANTUML_CMD="java -jar $LIB_DIR/plantuml.jar"
 SHARNESS_DIR='sharness'
 AGGREGATE="$LIB_DIR/$SHARNESS_DIR/tools/aggregate-results.sh"
 
@@ -55,7 +56,7 @@ test::aggregate() {
 
 test::preprocess-all() {
   echo "*** ${FUNCNAME[0]} ***"
-  plantuml -preproc -r "$TEST_ROOT/puml/**/*.puml"
+  $PLANTUML_CMD -preproc -r "$TEST_ROOT/puml/**/*.puml"
 
   for old in "$TEST_ROOT"/puml/**/*.preproc; do
     new=$(echo "$old" | sed -r "s!puml/(.+)\.preproc!preprocessed/\1\.preproc!")
@@ -68,7 +69,7 @@ test::preprocess-all() {
 
 test::generate-all() {
   echo "*** ${FUNCNAME[0]} ***"
-  plantuml -T"$DIAGRAM_FORMAT" -r "$TEST_ROOT/puml/**/*.puml"
+  $PLANTUML_CMD -T"$DIAGRAM_FORMAT" -r "$TEST_ROOT/puml/**/*.puml"
 
   for old in "$TEST_ROOT"/puml/**/*."$DIAGRAM_FORMAT"; do
     new=$(echo "$old" | sed -r "s!puml/(.+)\.$DIAGRAM_FORMAT!diagrams/\1\.$DIAGRAM_FORMAT!")
@@ -86,8 +87,6 @@ test::check-sharness() {
 
 test::check-deps() {
   which diff >/dev/null || (echo "Please install a diff tool!" && false)
-
-  which plantuml >/dev/null || (echo "Please install PlantUML!" && false)
 
   which magick >/dev/null || (echo "Please install ImageMagick!" && false)
 }

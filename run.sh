@@ -66,13 +66,30 @@ run::convertAssets() {
 }
 
 run::compare() {
-  magick composite bag_frame1.gif bag_frame1.jpg \
-              -compose difference  difference_jpeg.gif
+  magick compare -metric MAE \
+    "$1" \
+    "$2" \
+    null: 2>&1
 }
 
 # Run tests in ./test
 run::test() {
   set -e
+
+  mkdir -p test/lib
+
+  if [ ! -f test/lib/plantuml.version ]
+  then
+    tag=$(curl -s https://api.github.com/repos/plantuml/plantuml/releases/latest | jq -r '.tag_name')
+    echo "$tag" > test/lib/plantuml.version
+  fi
+
+  if [ ! -f test/lib/plantuml.jar ]
+  then
+    version=$(cat test/lib/plantuml.version)
+    curl "https://github.com/plantuml/plantuml/releases/download/${version}/plantuml-${version#v}.jar" -L -o test/lib/plantuml.jar
+  fi
+
   chmod +x test/testSuite.sh
 
   cd test

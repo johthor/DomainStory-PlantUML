@@ -31,9 +31,6 @@ computeComposite() {
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_EXPECTATION$fileSuffix" \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_ACTUAL$fileSuffix" \
     -compose difference "$SHARNESS_TEST_DIRECTORY/$subject".COMPOSITE.png
-
-  magick "$SHARNESS_TEST_DIRECTORY/$subject".COMPOSITE.png \
-    -auto-level  "$SHARNESS_TEST_DIRECTORY/$subject".COMPOSITE_NORM.png
 }
 
 computeFlicker() {
@@ -55,7 +52,8 @@ computeStats() {
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_ACTUAL$fileSuffix" \
     -compose Difference -composite \
     -colorspace gray -verbose  info: |\
-    sed -n '/statistics:/,/^  [^ ]/ p' 1>&2
+    sed -n '/statistics:/,/^  [^ ]/ p' 1>&2 \
+    > "$SHARNESS_TEST_DIRECTORY/$subject".STATS.txt
 }
 
 computeDiff() {
