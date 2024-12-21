@@ -336,6 +336,13 @@ See the following test cases for more details.
 * [Using theme `crt-amber`](test/styling/theme-crt-amber.puml)
 
 #### Method 2: Global Style declarations
+
+> [!WARNING]
+> **Breaking Change:**
+> The global styling declarations have been rewritten between the versions
+> [Charlie's Quality v0.3.1](https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.3.1)
+> and [Delta v0.4.0](https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.4.0).
+
 If no theme is used, a fallback design is used which is heavily inspired by [Egon.io](https://egon.io/).
 The appearance of most of the elements may be customized via the following global
 style declarations.
@@ -381,12 +388,6 @@ Make sure that your values are compatible with the chosen theme.
 | `$Step_FontStyle`            | `plain`       | Font style for step numbers                                            |
 | `$Step_FontSize`             | `16`          | Font size for step numbers                                             |
 | `$Step_BackgroundColor`      | `#66fcf1`     | Background color for step numbers                                      |
-
-> [!WARNING]
-> **Breaking Change:**
-> The global styling declarations have been rewritten between the versions
-> [Charlie's Quality v0.3.1](https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.3.1)
-> and [Delta v0.4.0](https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.4.0).
 
 To use your own styling, you need to define the relevant styling properties before including the library.
 The following example would combine green actor icons with red text.
@@ -496,6 +497,14 @@ See the test case for [dynamic object creation](test/activities/objectCreation.p
 If the aforementioned lay-outing techniques described in [Basic Story Layout](#basic-story-layout) are not enough,
 the `activity` macro supports even more layout tricks.
 
+#### Control the Activity's Direction via the Step Parameter
+
+> [!WARNING]
+> **Breaking Change:**
+> The activity direction indicator has switched from suffix to prefix implementation between the versions
+> [Charlie's Quality v0.3.1](https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.3.1)
+> and [Delta v0.4.0](https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.4.0).
+
 In addition to the step counter specifications described above,
 the step value may also specify the direction of the activity where `X` is one of the specifications above.
 
@@ -507,17 +516,13 @@ the step value may also specify the direction of the activity where `X` is one o
 | `^X` _caret_ prefix             | direction of activity will be upwards                            | depends on X |
 | `~X` _tilde_ prefix             | direction of activity will be against the default flow direction | depends on X |
 
-> [!WARNING]
-> **Breaking Change:**
-> The activity direction indicator has switched from suffix to prefix implementation between the versions
-> [Charlie's Quality v0.3.1](https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.3.1)
-> and [Delta v0.4.0](https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.4.0). 
-
 See the test cases for more details
 
 * [activity directions for left-to-right layout](test/activities/direction-leftToRight.puml)
 * [activity directions for top-to-bottom layout](test/activities/direction-topToBottom.puml)
 * [activity directions for both layouts](test/activities/direction-optionalParameters.puml)
+
+#### Specify the Connecting Arrows Directly
 
 Furthermore, the `activity` macro also provides two optional parameters,
 which allow you to specify the arrow orientation in full details.
@@ -544,6 +549,8 @@ activity(1, Alice, talks about the, weather, , Bob, <--, <--)
 activity(1, Alice, talks about the, weather, Bob, _, <--)
 activity(1, Alice, talks about the, weather, _, _, <--)
 ```
+
+#### Hidden Arrows for Layouting
 
 If all of that does not help your layout problems,
 there's always the possibility to introduce hidden connections
