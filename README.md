@@ -23,6 +23,8 @@ for recording domain stories visually with PlantUML.
 > | [Charlie v0.3](https://github.com/johthor/DomainStory-PlantUML/tree/v0.3)               | since 1.2022.5 |
 > | [Bravo v0.2](https://github.com/johthor/DomainStory-PlantUML/tree/v0.2)                 | not packaged   |
 > | [Alpha v0.1](https://github.com/johthor/DomainStory-PlantUML/tree/v0.1)                 | not packaged   |
+>
+> See the [CHANGELOG](CHANGELOG.md) for detailed differences between the versions.
 > </details>
 
 <details>
@@ -45,7 +47,6 @@ for recording domain stories visually with PlantUML.
     * [Airport Bus](#airport-bus)
 * [License](#license)
 * [Acknowledgements](#acknowledgements)
-
 </details>
 
 ## Getting Started
@@ -296,7 +297,7 @@ See the following test cases for more details
 
 The appearance of a domain story may be influenced via any of the following methods.
 
-> [!NOTE]
+> [!TIP]
 > You may also mix and match all the approaches to get the look you desire.
 
 #### Method 1: PlantUML Themes and Dark Mode
@@ -381,13 +382,11 @@ Make sure that your values are compatible with the chosen theme.
 | `$Step_FontSize`             | `16`          | Font size for step numbers                                             |
 | `$Step_BackgroundColor`      | `#66fcf1`     | Background color for step numbers                                      |
 
-> [!IMPORTANT]
+> [!WARNING]
 > **Breaking Change:**
 > The global styling declarations have been rewritten between the versions
 > [Charlie's Quality v0.3.1](https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.3.1)
 > and [Delta v0.4.0](https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.4.0).
-> See the [README in version 0.3.1](https://github.com/johthor/DomainStory-PlantUML/blob/v0.3.1/README.md#basic-styling)
-> for the documentation at the time.
 
 To use your own styling, you need to define the relevant styling properties before including the library.
 The following example would combine green actor icons with red text.
@@ -405,7 +404,7 @@ Person(Alice)
 @enduml
 ```
 
-> [!NOTE]
+> [!TIP]
 > You might want to set a matching `$Step_BackgroundColor` and `$Step_FontColor` when using themes.
 
 See the test case [Global style declarations](test/styling/customizeGlobalStyles.puml) for more details.
@@ -508,13 +507,11 @@ the step value may also specify the direction of the activity where `X` is one o
 | `^X` _caret_ prefix             | direction of activity will be upwards                            | depends on X |
 | `~X` _tilde_ prefix             | direction of activity will be against the default flow direction | depends on X |
 
-> [!IMPORTANT]
+> [!WARNING]
 > **Breaking Change:**
 > The activity direction indicator has switched from suffix to prefix implementation between the versions
 > [Charlie's Quality v0.3.1](https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.3.1)
 > and [Delta v0.4.0](https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.4.0). 
-> See the [README in version 0.3.1](https://github.com/johthor/DomainStory-PlantUML/blob/v0.3.1/README.md#basic-story-layout)
-> for the documentation at the time.
 
 See the test cases for more details
 
