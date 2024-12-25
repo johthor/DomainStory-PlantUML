@@ -28,8 +28,20 @@
 
             skinparam DefaultFontColor #0B0C10
 
+    
 
 
+            skinparam DefaultFontName Arial, Dejavu Sans, SansSerif
+
+    
+
+
+            skinparam DefaultFontSize 12
+
+    
+
+
+            skinparam DefaultFontStyle normal
 
     
 
@@ -78,8 +90,20 @@ hide stereotypes
 
             skinparam AgentFontColor #0B0C10
 
+    
 
 
+            skinparam AgentFontName Arial, Dejavu Sans, SansSerif
+
+    
+
+
+            skinparam AgentFontSize 12
+
+    
+
+
+            skinparam AgentFontStyle normal
 
     
 
@@ -122,8 +146,20 @@ hide stereotypes
 
             skinparam CardFontColor #0B0C10
 
+    
 
 
+            skinparam CardFontName Arial, Dejavu Sans, SansSerif
+
+    
+
+
+            skinparam CardFontSize 12
+
+    
+
+
+            skinparam CardFontStyle normal
 
     
 
@@ -162,8 +198,20 @@ hide stereotypes
 
             skinparam RectangleFontColor #0B0C10
 
+    
 
 
+            skinparam RectangleFontName Arial, Dejavu Sans, SansSerif
+
+    
+
+
+            skinparam RectangleFontSize 12
+
+    
+
+
+            skinparam RectangleFontStyle normal
 
     
 
@@ -206,8 +254,20 @@ hide stereotypes
 
             skinparam NoteFontColor #0B0C10
 
+    
 
 
+            skinparam NoteFontName Arial, Dejavu Sans, SansSerif
+
+    
+
+
+            skinparam NoteFontSize 12
+
+    
+
+
+            skinparam NoteFontStyle normal
 
     
 

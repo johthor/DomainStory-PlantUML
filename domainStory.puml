@@ -242,9 +242,9 @@
 !global $Element_Shape = Default
 
 $declareStyleProperty("", FontColor, Element, modeAdjustedColor("#0B0C10"), $themeable = %true())
-$declareStyleProperty("", FontName, Element, "Arial, Dejavu Sans, SansSerif", $themeable = %true())
-$declareStyleProperty("", FontSize, Element, 12, $themeable = %true())
-$declareStyleProperty("", FontStyle, Element, normal, $themeable = %true())
+$declareStyleProperty("", FontName, Element, $themeable = %true())
+$declareStyleProperty("", FontSize, Element, $themeable = %true())
+$declareStyleProperty("", FontStyle, Element, $themeable = %true())
 $declareStyleProperty("", TextAlignment, Element, center, $themeable = %true())
 
 $declareStyleProperty("", BackgroundColor, Element, "none", $themeable = %true())
