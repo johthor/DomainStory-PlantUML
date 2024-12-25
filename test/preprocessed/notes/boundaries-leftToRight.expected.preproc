@@ -960,26 +960,46 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
     
 
 
-            Agent "<$ma_account_multiple_outline{scale=1,color=#1f2833}>\rpeople" as people <<Group>> 
-
-    
-
-
             Card "<$ma_phone{scale=.8,color=#1f2833}>\rconference" as conference <<Call>> 
 
+    }
+note bottom of office : below
+
+
+
+
+    Rectangle "==party" as party   {
     
 
 
-        
-                people --> conference : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> attend
+            Agent "<$ma_account_multiple_outline{scale=1,color=#1f2833}>\rpeople" as people <<Group>> 
 
-        
-}
+    }
+note left of party : left
 
-note top of office : below?
-note right of office : right
-note bottom of office : above?
-note left of office : left
+
+
+
+    Rectangle "==Team" as Team   {
+    
+
+
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rpete" as pete <<Person>> 
+
+    }
+note right of Team : right
+
+
+
+
+    Rectangle "==company" as company   {
+    
+
+
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsarah" as sarah <<Person>> 
+
+    }
+note top of company : above
 
 
 
