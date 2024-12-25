@@ -60,13 +60,17 @@ computeDiff() {
   subject="$1"
   fileSuffix="$2"
 
-  regex_pattern="^[^e]+e-.. \([^e]+e-..\)"
+  values_small="^0\.[^ ]+ \([^e]+e-..\)"
+  values_smaller="^[^e]+e-.. \([^e]+e-..\)"
   stat=$(magick compare -metric MAE \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_EXPECTATION$fileSuffix" \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_ACTUAL$fileSuffix" \
-    null: 2>&1)
+    null: 2>&1 | \
+    grep -iv -e 'inkscape' -e '^$')
 
-  if [[ "$stat" =~ $regex_pattern ]]; then
+  if [[ "$stat" =~ $values_small ]]; then
+    echo '0 (0)'
+  elif [[ "$stat" =~ $values_smaller ]]; then
     echo '0 (0)'
   else
     echo "$stat"

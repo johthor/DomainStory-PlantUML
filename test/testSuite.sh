@@ -8,7 +8,7 @@ PLANTUML_CMD="java -jar $LIB_DIR/plantuml.jar"
 SHARNESS_DIR='sharness'
 AGGREGATE="$LIB_DIR/$SHARNESS_DIR/tools/aggregate-results.sh"
 
-DIAGRAM_FORMAT='png'
+DIAGRAM_FORMAT='svg'
 
 test::all() {
   test::aggregate "$@"
@@ -23,8 +23,8 @@ test::clean() {
   rm -f diagrams/**/*.actual.*
   rm -f diagrams/**/*.COMPARISON.*
   rm -f diagrams/**/*.COMPOSITE.*
-  rm -f diagrams/**/*.COMPOSITE_NORM.*
   rm -f diagrams/**/*.FLICKER.*
+  rm -f diagrams/**/*.STATS.*
   rm -f preprocessed/**/*.actual.*
   rm -f preprocessed/**/*.DIFF.*
 }
@@ -69,7 +69,7 @@ test::preprocess-all() {
 
 test::generate-all() {
   echo "*** ${FUNCNAME[0]} ***"
-  $PLANTUML_CMD -T"$DIAGRAM_FORMAT" -r "$TEST_ROOT/puml/**/*.puml"
+  $PLANTUML_CMD -Playout=smetana -T"$DIAGRAM_FORMAT" -r "$TEST_ROOT/puml/**/*.puml"
 
   for old in "$TEST_ROOT"/puml/**/*."$DIAGRAM_FORMAT"; do
     new=$(echo "$old" | sed -r "s!puml/(.+)\.$DIAGRAM_FORMAT!diagrams/\1\.$DIAGRAM_FORMAT!")

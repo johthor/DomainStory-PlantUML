@@ -1,0 +1,23 @@
+@startuml
+!$Story_Layout = 'left-to-right'
+
+!include ../../../domainStory.puml
+
+Person(pete)
+
+note top of pete : above
+note right of pete : right
+note bottom of pete : below
+note left of pete : left
+
+Email(confirmation, $note= default)
+Info(news, $note=^ above)
+Document(list, $note=> right)
+Folder(documents, $note=v below)
+Call(question, $note=< left)
+Conversation(argument, $note=~ inverse)
+
+Person(Alice, $note= default)
+Group(Employees, $note=~ inverse)
+System(Boarding, $note=^ above)
+@enduml

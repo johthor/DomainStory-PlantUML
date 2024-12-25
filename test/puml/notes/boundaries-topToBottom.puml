@@ -4,15 +4,24 @@
 !include ../../../src/domainStoryComposite.puml
 
 Boundary(office) {
-    Group(people)
     Call(conference)
-    activity(6, people, attend, conference)
 }
+note bottom of office : below
 
-note bottom of office : below?
-note left of office : left
-note right of office : right
-note top of office : above?
+Boundary(party) {
+    Group(people)
+}
+note left of party : left
+
+Boundary(Team) {
+    Person(pete)
+}
+note right of Team : right
+
+Boundary(company) {
+    Person(sarah)
+}
+note top of company : above
 
 Boundary(one, $note= default) {
     Person(Jake)

@@ -72,6 +72,18 @@ run::compare() {
     null: 2>&1
 }
 
+run::compareImages() {
+  source ./test/lib/testUtils.sh
+  export SHARNESS_TEST_DIRECTORY="$PROJECT_ROOT/test"
+  compareImages "diagrams/$1" .svg
+}
+
+run::computeDiff() {
+  source ./test/lib/testUtils.sh
+  export SHARNESS_TEST_DIRECTORY="$PROJECT_ROOT/test"
+  computeDiff "diagrams/$1" .svg
+}
+
 # Run tests in ./test
 run::test() {
   set -e
