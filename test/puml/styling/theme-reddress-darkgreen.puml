@@ -1,5 +1,10 @@
 @startuml
-!theme sketchy
+!theme reddress-darkgreen
+!$THEME='reddress-darkgreen'
+
+!$Story_Layout = 'top-to-bottom'
+!$Step_FontColor = '#113300'
+!$Step_BackgroundColor = '#228811'
 
 !include ../../../src/domainStoryComposite.puml
 

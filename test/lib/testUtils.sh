@@ -20,7 +20,7 @@ computeComparison() {
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_EXPECTATION$fileSuffix" \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_ACTUAL$fileSuffix" \
     -highlight-color Magenta \
-    magick "$SHARNESS_TEST_DIRECTORY/$subject".COMPARISON.png
+    magick "$SHARNESS_TEST_DIRECTORY/$subject"._COMPARISON.png
 }
 
 computeComposite() {
@@ -30,7 +30,7 @@ computeComposite() {
   magick composite \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_EXPECTATION$fileSuffix" \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_ACTUAL$fileSuffix" \
-    -compose difference "$SHARNESS_TEST_DIRECTORY/$subject".COMPOSITE.png
+    -compose difference "$SHARNESS_TEST_DIRECTORY/$subject"._COMPOSITE.png
 }
 
 computeFlicker() {
@@ -40,7 +40,7 @@ computeFlicker() {
   magick -delay 100 \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_EXPECTATION$fileSuffix" \
     "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_ACTUAL$fileSuffix" \
-    -loop 0 "$SHARNESS_TEST_DIRECTORY/$subject".FLICKER.gif
+    -loop 0 "$SHARNESS_TEST_DIRECTORY/$subject"._FLICKER.gif
 }
 
 computeStats() {
@@ -53,7 +53,7 @@ computeStats() {
     -compose Difference -composite \
     -colorspace gray -verbose  info: |\
     sed -n '/statistics:/,/^  [^ ]/ p' 1>&2 \
-    > "$SHARNESS_TEST_DIRECTORY/$subject".STATS.txt
+    > "$SHARNESS_TEST_DIRECTORY/$subject"._STATS.txt
 }
 
 computeDiff() {
@@ -100,7 +100,7 @@ comparePreProcessed() {
       "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_ACTUAL$fileSuffix"; then
     diff "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_EXPECTATION$fileSuffix" \
       "$SHARNESS_TEST_DIRECTORY/$subject$SNAPSHOT_ACTUAL$fileSuffix" \
-      > "$SHARNESS_TEST_DIRECTORY/$subject".DIFF.txt
+      > "$SHARNESS_TEST_DIRECTORY/$subject"._DIFF.txt
     test 1 != 1
   fi
 }

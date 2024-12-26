@@ -2,439 +2,283 @@
 
 
 
-skinparam backgroundColor transparent
-skinparam useBetaStyle false
-skinparam handwritten true
-skinparam shadowing false
+skinparam stereotypeCBackgroundColor 228811
+skinparam backgroundColor 777
 
 
 
 
 
 
-<style>
-  root {
-    BackgroundColor transparent
-    FontColor #ffffff
-    HyperLinkColor #fd7e14
-    LineColor #2e2e2e
-    LineThickness 1
-    Margin 10
-    Padding 6
-    Shadowing 0.0
-  }
-  node {
-   Padding 15
-   roundcorner 20
-   BackgroundColor #333333-#2e2e2e
-  }
-  caption {
-    LineThickness 0
-  }
-  footer {
-    LineThickness 0
-  }
-  groupHeader {
-    BackgroundColor #555555
-    FontColor #17a2b8
-    FontStyle bold
-  }
-  header {
-    LineThickness 0
-  }
-  referenceHeader {
-    BackgroundColor transparent
-    FontColor #555555
-    FontStyle bold
-  }
-  separator {
-    BackgroundColor #ffffff
-    FontColor transparent
-    FontStyle bold
-  }
-  title {
-	FontSize 20
-	BorderRoundCorner            8
-	BorderThickness 	         1
-	BackgroundColor  #666666-#555555
-	FontColor #333333
-	BorderColor #555555
-  }
-  nwdiagDiagram {
-	network {
-			FontColor #ffffff
-	BorderColor #333333
-	BackgroundColor #474747    
-		LineColor #333333
-		LineThickness 1.0
-		FontColor #2e2e2e
-	}
-	server {
-			FontColor #ffffff
-	BorderColor #333333
-	BackgroundColor #474747
-	}
-	arrow {
-		FontColor #2e2e2e
-		LineColor #2e2e2e
-	}
-	group {
-		BackGroundColor #ffffff
-		LineColor #e6e6e6
-		LineThickness 2.0
-		Margin 5
-		Padding 5
-	}
-  }
-  ganttDiagram {
-	task {
-			FontColor #ffffff
-	BorderColor #333333
-	BackgroundColor #474747
-		LineColor #333333
-		Margin 10
-		Padding 6
-	}
-	note {
-		FontColor #ffffff
-		LineColor #1592a6
-		BackGroundColor #17a2b8
-	}
-	separator {
-		LineColor #555555
-		BackGroundColor #555555-#4d4d4d
-		FontColor #ffffff
-	}
-	milestone {
-		FontColor #17a2b8
-		FontSize 16
-		FontStyle italic
-		BackGroundColor #555555
-		LineColor #4d4d4d
-	}
-	timeline {
-		BackgroundColor #555555
-		FontColor #ffffff
-	}
-	closed {
-		BackgroundColor #e6ae06
-		FontColor #ffffff
-	}
-  }
-</style>
-skinparam defaultFontName       "Segoe Print"
-skinparam defaultFontSize       12
-skinparam dpi                   100
-skinparam shadowing             false
-skinparam roundcorner           8
-skinparam ParticipantPadding    40
-skinparam BoxPadding            40
-skinparam Padding               5
-skinparam ArrowColor            #555555
-skinparam stereotype {
-    CBackgroundColor #666666
-    CBorderColor #4d4d4d
-    ABackgroundColor #3eb058
-    ABorderColor #24963e
-    IBackgroundColor #e04958
-    IBorderColor #c6303e
-    EBackgroundColor #ffc720
-    EBorderColor #e6ae06
-    NBackgroundColor #2eabbf
-    NBorderColor #1592a6
-}
-skinparam title {
-	FontColor	                 #ffffff
-	BorderColor	                 #4d4d4d
-	FontSize	    	         20
-	BorderRoundCorner            8
-	BorderThickness 	         1
-	BackgroundColor              #666666-#555555
+
+skinparam circledCharacter {
+  radius 8
+  fontSize 11
+  fontName Verdana
 }
 
-skinparam legend {
-	BackgroundColor #555555
-	BorderColor #4d4d4d
-	FontColor #ffffff
-}
+skinparam class {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+    arrowColor fff
+  arrowFontName Verdana
+  arrowFontColor bbb
+  arrowFontSize 11
 
-skinparam swimlane {
-	BorderColor #17a2b8
-	BorderThickness 2
-	TitleBackgroundColor  #666666-#555555
-	TitleFontColor #ffffff
-}
-
-
-skinparam activity {
-		FontColor #ffffff
-	BorderColor #333333
-	BackgroundColor #474747
-	BarColor #28a745
-	StartColor #17a2b8
-	EndColor #17a2b8
-	DiamondBackgroundColor #666666
-  	DiamondBorderColor #4d4d4d
-  	DiamondFontColor #ffffff
-}
-
-
-skinparam participant {
-		FontColor #ffffff
-	BorderColor #333333
-	BackgroundColor #474747
-	ParticipantBorderThickness 2
+  attributeFontColor aaa
+  attributeFontSize 11
+  attributeIconSize 11
 }
 
 
 skinparam actor {
-		FontColor #ffffff
-	BorderColor #333333
-	BackgroundColor #474747
+    backgroundColor 228811
+  borderColor 113300
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
 }
 
-
-skinparam arrow {
-	Thickness 3
-	Color #333333
-	FontColor #ffffff
+skinparam participant {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
 }
-
-
-skinparam sequence {
-	BorderColor #333333
-	TitleFontColor #333333
-	BackgroundColor transparent
-	StartColor #333333
-	EndColor #333333
-	BoxBackgroundColor transparent
-	BoxBorderColor #555555
-	BoxFontColor #555555
-	DelayFontColor #555555
-	LifeLineBorderColor #555555
-	LifeLineBorderThickness 2
-	LifeLineBackgroundColor #4d4d4d
-	GroupBorderColor #555555
-	GroupFontColor #555555
-	GroupHeaderFontColor #17a2b8
-	GroupBackgroundColor #555555
-	GroupHeaderBackgroundColor transparent
-	DividerBackgroundColor #555555
-    DividerBorderColor #555555
-    DividerBorderThickness 2
-    DividerFontColor #ffffff
-	ReferenceBackgroundColor transparent
-	ReferenceBorderColor #555555
-	ReferenceFontColor #555555
-	ReferenceHeaderFontColor #17a2b8
-	ReferenceHeaderBackgroundColor #555555
-	StereotypeFontColor #ffffff
-}
-
-
-skinparam partition {
-	BorderColor #333333
-	FontColor #333333
-	BackgroundColor transparent
-}
-
 
 skinparam collections {
-		FontColor #ffffff
-	BorderColor #333333
-	BackgroundColor #474747
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
 }
 
-
-skinparam control {
-		FontColor #ffffff
-	BorderColor #333333
-	BackgroundColor #474747
-}
-
-
-skinparam entity {
-		FontColor #ffffff
-	BorderColor #333333
-	BackgroundColor #474747
-}
-
-
-skinparam boundary {
-		FontColor #ffffff
-	BorderColor #333333
-	BackgroundColor #474747
-}
-
-
-skinparam agent {
-	BackgroundColor #ffc107
-	BorderColor #ffc720
-	FontColor #555555
-}
-
-
-skinparam note {
-	BorderThickness 1
-	BackgroundColor #17a2b8
-	BorderColor #1592a6
-	FontColor #ffffff
-}
-
-
-skinparam artifact {
-	BackgroundColor #555555
-	BorderColor #4d4d4d
-	FontColor #ffffff
-}
-
-
-skinparam component {
-		FontColor #ffffff
-	BorderColor #333333
-	BackgroundColor #474747
+skinparam SequenceBox{
+    backgroundColor 575757
+  borderColor 767676
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
 }
 
 
 skinparam interface {
-	BackgroundColor  #c6303e
-	BorderColor  #dc3545
-	FontColor #555555
+    backgroundColor 228811
+  borderColor 113300
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
 }
 
-
-skinparam storage {
-	BackgroundColor #ffc107
-  	BorderColor #e6ae06
-	FontColor #ffffff
+skinparam component {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
 }
-
 
 skinparam node {
-	BackgroundColor  #555555
-	BorderColor #ffffff
-	FontColor #ffffff
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
 }
-
-
-skinparam cloud {
-	BackgroundColor #F2FCFE-#eeeeee
-	BorderColor #F2FCFE
-	FontColor #555555
-}
-
 
 skinparam database {
-		FontColor #ffffff
-	BorderColor #333333
-	BackgroundColor #474747
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
 }
 
-
-skinparam class {
-		FontColor #ffffff
-	BorderColor #333333
-	BackgroundColor #474747
-	FontColor #ffffff
-	HeaderBackgroundColor #474747
-	StereotypeFontColor #555555
-	BorderThickness 1
-	AttributeFontColor #ffffff
-	AttributeFontSize 11
-}
-
-
-skinparam object {
-		FontColor #ffffff
-	BorderColor #333333
-	BackgroundColor #474747
-	StereotypeFontColor #555555
-	BorderThickness 1
-	AttributeFontColor #ffffff
-	AttributeFontSize 11
+skinparam queue {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
 }
 
 
 skinparam usecase {
-		FontColor #ffffff
-	BorderColor #333333
-	BackgroundColor #474747
-	BorderThickness 2
-	StereotypeFontColor #333333
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+    arrowColor fff
+  arrowFontName Verdana
+  arrowFontColor bbb
+  arrowFontSize 11
 }
 
-
-skinparam rectangle {
-		FontColor #ffffff
-	BorderColor #333333
-	BackgroundColor #474747
-	BackgroundColor #666666
-	BorderThickness 2
-	StereotypeFontColor #333333
+skinparam activity {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+    arrowColor fff
+  arrowFontName Verdana
+  arrowFontColor bbb
+  arrowFontSize 11
 }
 
+skinparam sequence {
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+    arrowColor fff
+  arrowFontName Verdana
+  arrowFontColor bbb
+  arrowFontSize 11
 
-skinparam package {
-	BackgroundColor #555555
-  	BorderColor #333333
-	FontColor #333333
-	BorderThickness 2
+  lifeLineBorderColor 228811
+  lifeLineBackgroundColor 575757
 }
 
-
-skinparam folder {
-	BackgroundColor #666666
-  	BorderColor #ffc107
-	FontColor #ffc107
-	BorderThickness 2
+skinparam boundary {
+    backgroundColor 228811
+  borderColor 113300
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
 }
 
+skinparam control {
+    backgroundColor 228811
+  borderColor 113300
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+}
 
-skinparam frame {
-	BackgroundColor #666666
-  	BorderColor #17a2b8
-	FontColor #17a2b8
-	BorderThickness 2
+skinparam entity {
+    backgroundColor 228811
+  borderColor 113300
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
 }
 
 
 skinparam state {
-		FontColor #ffffff
-	BorderColor #333333
-	BackgroundColor #474747
-	StartColor #17a2b8
-	EndColor #17a2b8
-	AttributeFontColor #ffffff
-	AttributeFontSize 11
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+    arrowColor fff
+  arrowFontName Verdana
+  arrowFontColor bbb
+  arrowFontSize 11
+  startColor 228811
+  endColor 113300
 }
 
 
-skinparam queue {
-		FontColor #ffffff
-	BorderColor #333333
-	BackgroundColor #474747
+skinparam object {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+    arrowColor fff
+  arrowFontName Verdana
+  arrowFontColor bbb
+  arrowFontSize 11
 }
 
 
-skinparam card {
-	BackgroundColor #17a2b8
-	BorderColor #1592a6
-	FontColor #ffffff
+skinparam note {
+    backgroundColor 228811
+  borderColor 113300
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+}
+
+skinparam cloud {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+    arrowColor fff
+  arrowFontName Verdana
+  arrowFontColor bbb
+  arrowFontSize 11
+}
+
+skinparam rectangle {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+}
+
+skinparam storage {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
 }
 
 
-skinparam file {
-	BackgroundColor #4d4d4d
-	BorderColor #ffffff
-	FontColor #ffffff
-}
-
-
-skinparam stack {
-		FontColor #ffffff
-	BorderColor #333333
-	BackgroundColor #474747
-}
 
 
 
@@ -442,8 +286,7 @@ skinparam stack {
 
 
 
-
-    left to right direction
+    top to bottom direction
 
 
 
@@ -463,39 +306,48 @@ skinparam stack {
     
 
 
+            skinparam DefaultFontColor #0B0C10
 
     
 
 
+            skinparam DefaultFontName Arial, Helvetica, SansSerif
 
     
 
 
+            skinparam DefaultFontSize 12
 
     
 
 
+            skinparam DefaultFontStyle normal
 
     
 
 
-
-
-    
-
-
-
-    
-
-
-
-    
-
+            skinparam DefaultTextAlignment center
 
 
     
 
 
+            skinparam DefaultBackgroundColor none
+
+    
+
+
+            skinparam DefaultBorderStyle none
+
+    
+
+
+            skinparam DefaultBorderColor none
+
+    
+
+
+            skinparam DefaultBorderThickness 1
 
     
 
@@ -503,6 +355,7 @@ skinparam stack {
 
             
 hide stereotypes
+    skinparam Shadowing false
 
 
 
@@ -512,70 +365,166 @@ hide stereotypes
 
             
 
+    
 
 
+            skinparam AgentFontColor #0B0C10
+
+    
 
 
-            
+            skinparam AgentFontName Arial, Helvetica, SansSerif
+
+    
 
 
+            skinparam AgentFontSize 12
+
+    
 
 
+            skinparam AgentFontStyle normal
+
+    
 
 
-            
-
-
-            
-
-
-
-            
-
-
-
-
-
-            
-
-
-
-
-
-
-            
-
-
-            
-
-
-
-
-
-            
+            skinparam AgentTextAlignment center
 
 
     
 
 
+            skinparam AgentBackgroundColor none
 
     
 
 
+            skinparam AgentBorderStyle none
 
     
 
 
+            skinparam AgentBorderColor none
 
     
 
+
+            skinparam AgentBorderThickness 1
+
+
+            
 
 
             
 
 
 
+            
 
+    
+
+
+            skinparam CardFontColor #0B0C10
+
+    
+
+
+            skinparam CardFontName Arial, Helvetica, SansSerif
+
+    
+
+
+            skinparam CardFontSize 12
+
+    
+
+
+            skinparam CardFontStyle normal
+
+    
+
+
+            skinparam CardTextAlignment center
+
+
+    
+
+
+            skinparam CardBackgroundColor none
+
+    
+
+
+            skinparam CardBorderStyle none
+
+    
+
+
+            skinparam CardBorderColor none
+
+    
+
+
+            skinparam CardBorderThickness 1
+
+
+            
+
+
+            
+
+    
+
+
+            skinparam RectangleFontColor #0B0C10
+
+    
+
+
+            skinparam RectangleFontName Arial, Helvetica, SansSerif
+
+    
+
+
+            skinparam RectangleFontSize 12
+
+    
+
+
+            skinparam RectangleFontStyle normal
+
+    
+
+
+            skinparam RectangleTextAlignment center
+
+
+    
+
+
+            skinparam RectangleBackgroundColor none
+
+    
+
+
+            skinparam RectangleBorderStyle dashed
+
+    
+
+
+            skinparam RectangleBorderColor #1f2833
+
+    
+
+
+            skinparam RectangleBorderThickness 2
+
+    
+
+
+            skinparam RectangleRoundCorner 15
+
+            
 
 
 
@@ -583,17 +532,48 @@ hide stereotypes
     
 
 
+            skinparam NoteFontColor #0B0C10
+
+    
+
+
+            skinparam NoteFontName Arial, Helvetica, SansSerif
+
+    
+
+
+            skinparam NoteFontSize 12
+
+    
+
+
+            skinparam NoteFontStyle normal
+
+    
+
+
+            skinparam NoteTextAlignment left
 
 
     
 
 
-
+            skinparam NoteBackgroundColor #c5c6c7
 
     
 
 
+            skinparam NoteBorderStyle none
 
+    
+
+
+            skinparam NoteBorderColor #1f2833
+
+    
+
+
+            skinparam NoteBorderThickness 1
 
 
             
@@ -603,6 +583,7 @@ hide stereotypes
     
 
 
+            skinparam ArrowFontColor #0B0C10
 
 
 
@@ -610,18 +591,20 @@ hide stereotypes
     
 
 
+            skinparam ArrowMessageAlignment left
 
 
     
 
 
+            skinparam ArrowColor #c5c6c7
 
 
 
 
             
 
-            
+
 
 
 
@@ -1316,17 +1299,17 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
     
 
 
-            Agent "<$ma_account_outline{scale=1}>\rAlice" as Alice <<Person>> 
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rAlice" as Alice <<Person>> 
 
     
 
 
-            Card "<$ma_message_outline{scale=.8}>\rweather" as weather <<Conversation>> 
+            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rweather" as weather <<Conversation>> 
 
     
 
 
-            Agent "<$ma_account_outline{scale=1}>\rBob" as Bob <<Person>> 
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rBob" as Bob <<Person>> 
 
     }
 
@@ -1334,7 +1317,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
         
-                Alice --> weather : (1) talks about the
+                Alice --> weather : <back:#228811><size:16><color:#113300>(1)</color></size></back> talks about the
 
         
                         weather --> Bob :  with

@@ -38,7 +38,7 @@
     
 
 
-            skinparam DefaultFontName Arial, Dejavu Sans, SansSerif
+            skinparam DefaultFontName Arial, Helvetica, SansSerif
 
     
 
@@ -100,7 +100,7 @@ hide stereotypes
     
 
 
-            skinparam AgentFontName Arial, Dejavu Sans, SansSerif
+            skinparam AgentFontName Arial, Helvetica, SansSerif
 
     
 
@@ -156,7 +156,7 @@ hide stereotypes
     
 
 
-            skinparam CardFontName Arial, Dejavu Sans, SansSerif
+            skinparam CardFontName Arial, Helvetica, SansSerif
 
     
 
@@ -208,7 +208,7 @@ hide stereotypes
     
 
 
-            skinparam RectangleFontName Arial, Dejavu Sans, SansSerif
+            skinparam RectangleFontName Arial, Helvetica, SansSerif
 
     
 
@@ -264,7 +264,7 @@ hide stereotypes
     
 
 
-            skinparam NoteFontName Arial, Dejavu Sans, SansSerif
+            skinparam NoteFontName Arial, Helvetica, SansSerif
 
     
 
