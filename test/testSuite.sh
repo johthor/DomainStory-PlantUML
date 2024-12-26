@@ -21,12 +21,12 @@ test::clean() {
   # For example:
   # -rm -rf bin/ipfs
   rm -f diagrams/**/*.actual.*
-  rm -f diagrams/**/*.COMPARISON.*
-  rm -f diagrams/**/*.COMPOSITE.*
-  rm -f diagrams/**/*.FLICKER.*
-  rm -f diagrams/**/*.STATS.*
+  rm -f diagrams/**/*._COMPARISON.*
+  rm -f diagrams/**/*._COMPOSITE.*
+  rm -f diagrams/**/*._FLICKER.*
+  rm -f diagrams/**/*._STATS.*
   rm -f preprocessed/**/*.actual.*
-  rm -f preprocessed/**/*.DIFF.*
+  rm -f preprocessed/**/*._DIFF.*
 }
 
 test::clean-test-results() {
@@ -76,7 +76,12 @@ test::generate-all() {
 
     mkdir -p "$(dirname "$new")"
 
-    mv "$old" "$new"
+    if [ "$DIAGRAM_FORMAT" == "svg" ]; then
+      xmllint --format "$old" > "$new"
+      rm "$old"
+    else
+      mv "$old" "$new"
+    fi
   done
 }
 
