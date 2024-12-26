@@ -2,6 +2,16 @@
 !theme reddress-darkgreen
 !$THEME='reddress-darkgreen'
 
+skinparam Agent {
+    accent_style()
+    font_style()
+}
+
+skinparam Card {
+    light_style()
+    font_style()
+}
+
 !$Story_Layout = 'top-to-bottom'
 !$Step_FontColor = '#113300'
 !$Step_BackgroundColor = '#228811'
