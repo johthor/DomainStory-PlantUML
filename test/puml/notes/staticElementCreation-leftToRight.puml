@@ -1,7 +1,7 @@
 @startuml
 !$Story_Layout = 'left-to-right'
 
-!include ../../../domainStory.puml
+!include ../../../src/domainStoryComposite.puml
 
 Person(pete)
 
