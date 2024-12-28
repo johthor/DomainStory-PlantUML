@@ -169,6 +169,8 @@ skinparam UseCaseStereoType {
 
 
 
+
+
     
 
 
@@ -338,11 +340,12 @@ hide stereotypes
 
 
 
-            
+
+
 
             
 
-
+            
 
 
 
@@ -1027,7 +1030,6 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
 
-
     
         
 
@@ -1095,24 +1097,24 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
         
-                Alice -> spam : (1) reads the
+                        Alice -> spam : (1) reads the
 
         
 
 
 
         
-                Alice --> weather : (2) talks about the
+                        Alice --> weather : (2) talks about the
 
         
-                        weather --> Bob :  with
+                            weather --> Bob : with
 
 
 
         
-                proposal <-- Bob : (3) writes a
+                        proposal <-- Bob : (3) writes a
 
         
-                        Alice <-- proposal :  to
+                            Alice <-- proposal : to
 
 @enduml

@@ -189,6 +189,8 @@ skinparam UseCaseStereoType {
 
 
 
+
+
     
 
 
@@ -348,11 +350,12 @@ hide stereotypes
 
 
 
-            
+
+
 
             
 
-
+            
 
 
 
@@ -1040,7 +1043,6 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
 
-
     Rectangle "==Party" as Party   {
     
 
@@ -1063,8 +1065,8 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
         
-                Alice --> weather : (1) talks about the
+                        Alice --> weather : (1) talks about the
 
         
-                        weather --> Bob :  with
+                            weather --> Bob : with
 @enduml

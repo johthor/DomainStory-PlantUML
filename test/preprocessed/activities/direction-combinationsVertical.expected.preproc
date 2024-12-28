@@ -23,6 +23,8 @@
 
 
 
+
+
     
 
 
@@ -322,11 +324,12 @@ hide stereotypes
 
 
 
-            
+
+
 
             
 
-
+            
 
 
 
@@ -1011,7 +1014,6 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
 
-
     
 
 
@@ -1081,45 +1083,45 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
         
-                customer -> topic1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about
+                        customer -> topic1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about
 
         
-                        topic1 -> cashier1 :  with
-
-
-        
-                customer -> topic2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about
-
-        
-                        cashier2 <-- topic2 :  with
+                            topic1 -> cashier1 : with
 
 
         
-                customer -> topic3 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> talks about
+                        customer -> topic2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about
 
         
-                        topic3 --> cashier3 :  with
-
-
-
-        
-                topic4 <- customer : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> talks about
-
-        
-                        cashier4 <- topic4 :  with
+                            cashier2 <-- topic2 : with
 
 
         
-                topic5 <- customer : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> talks about
+                        customer -> topic3 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> talks about
 
         
-                        cashier5 <-- topic5 :  with
+                            topic3 --> cashier3 : with
+
+
+
+        
+                        topic4 <- customer : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> talks about
+
+        
+                            cashier4 <- topic4 : with
 
 
         
-                topic6 <- customer : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> talks about
+                        topic5 <- customer : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> talks about
 
         
-                        topic6 --> cashier6 :  with
+                            cashier5 <-- topic5 : with
+
+
+        
+                        topic6 <- customer : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> talks about
+
+        
+                            topic6 --> cashier6 : with
 
 @enduml

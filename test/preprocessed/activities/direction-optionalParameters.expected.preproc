@@ -23,6 +23,8 @@
 
 
 
+
+
     
 
 
@@ -322,11 +324,12 @@ hide stereotypes
 
 
 
-            
+
+
 
             
 
-
+            
 
 
 
@@ -1011,7 +1014,6 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
 
-
     
 
 
@@ -1031,39 +1033,39 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
         
-                weather <-- Alice : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about the
+                        weather <-- Alice : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about the
 
         
 
 
         
-                weather <-- Alice : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about the
+                        weather <-- Alice : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about the
 
         
 
 
         
-                weather <-- Alice : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> talks about the
-
-        
-                        Bob <-- weather
-
-
-        
-                weather <-- Alice : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> talks about the
+                        weather <-- Alice : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> talks about the
 
         
                         Bob <-- weather
 
 
         
-                weather <-- Alice : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> talks about the
+                        weather <-- Alice : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> talks about the
+
+        
+                        Bob <-- weather
+
+
+        
+                        weather <-- Alice : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> talks about the
 
         
 
 
         
-                weather <-- Alice : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> talks about the
+                        weather <-- Alice : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> talks about the
 
         
 @enduml

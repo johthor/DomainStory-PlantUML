@@ -23,6 +23,8 @@
 
 
 
+
+
     
 
 
@@ -322,11 +324,12 @@ hide stereotypes
 
 
 
-            
+
+
 
             
 
-
+            
 
 
 
@@ -1011,7 +1014,6 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
 
-
     
 
 
@@ -1081,45 +1083,45 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
         
-                superior --> document1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about
+                        superior --> document1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about
 
         
-                        document1 --> subordinate1 :  with
-
-
-        
-                superior --> document2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about
-
-        
-                        subordinate2 <- document2 :  with
+                            document1 --> subordinate1 : with
 
 
         
-                superior --> document3 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> talks about
+                        superior --> document2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about
 
         
-                        document3 -> subordinate3 :  with
-
-
-
-        
-                document4 <-- superior : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> talks about
-
-        
-                        subordinate4 <-- document4 :  with
+                            subordinate2 <- document2 : with
 
 
         
-                document5 <-- superior : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> talks about
+                        superior --> document3 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> talks about
 
         
-                        subordinate5 <- document5 :  with
+                            document3 -> subordinate3 : with
+
+
+
+        
+                        document4 <-- superior : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> talks about
+
+        
+                            subordinate4 <-- document4 : with
 
 
         
-                document6 <-- superior : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> talks about
+                        document5 <-- superior : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> talks about
 
         
-                        document6 -> subordinate6 :  with
+                            subordinate5 <- document5 : with
+
+
+        
+                        document6 <-- superior : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> talks about
+
+        
+                            document6 -> subordinate6 : with
 
 @enduml

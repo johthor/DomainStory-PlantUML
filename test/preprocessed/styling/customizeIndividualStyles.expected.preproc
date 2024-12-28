@@ -23,6 +23,8 @@
 
 
 
+
+
     
 
 
@@ -322,11 +324,12 @@ hide stereotypes
 
 
 
-            
+
+
 
             
 
-
+            
 
 
 
@@ -1011,7 +1014,6 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
 
-
     
 
 
@@ -1060,23 +1062,23 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
         
-                Alice -> spam : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> reads the
+                        Alice -> spam : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> reads the
 
         
 
 
 
         
-                Alice --> weather : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about the
+                        Alice --> weather : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about the
 
         
-                        weather --> Bob :  with
+                            weather --> Bob : with
 
 
 
         
-                proposal <-- Bob : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> writes a
+                        proposal <-- Bob : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> writes a
 
         
-                        Alice <-- proposal :  to
+                            Alice <-- proposal : to
 @enduml

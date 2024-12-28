@@ -24,7 +24,9 @@
 
 
 
-    
+
+
+
 
 
             skinparam DefaultFontColor #0B0C10
@@ -323,9 +325,6 @@ hide stereotypes
 
 
 
-            
-
-            
 
 
 
@@ -334,7 +333,11 @@ hide stereotypes
 
 
 
-    
+
+
+
+
+
     
     
             
@@ -1012,7 +1015,6 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
 
-
     
 
 
@@ -1041,7 +1043,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
         
                 note right of thing1 : default
 
-                person --> thing1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> reads
+                        person --> thing1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> reads
 
         
 
@@ -1050,7 +1052,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
         
             note top of thing2 :  above
 
-                person --> thing2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> reads
+                        person --> thing2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> reads
 
         
 
@@ -1059,7 +1061,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
         
             note right of thing3 :  right
 
-                person --> thing3 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> reads
+                        person --> thing3 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> reads
 
         
 
@@ -1073,7 +1075,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
     
             note bottom of Info1 :  below
 
-                person --> Info1 : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> reads
+                        person --> Info1 : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> reads
 
         
 
@@ -1087,7 +1089,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
     
             note left of Info2 :  left
 
-                person --> Info2 : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> reads
+                        person --> Info2 : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> reads
 
         
 
@@ -1101,7 +1103,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
     
                 note left of Info3 :  inverse
 
-                person --> Info3 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> reads
+                        person --> Info3 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> reads
 
         
 
@@ -1115,7 +1117,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
     
             note right of Document4 :  right
 
-                person --> Document4 : <back:#66fcf1><size:16><color:#0B0C10>(7)</color></size></back> reads
+                        person --> Document4 : <back:#66fcf1><size:16><color:#0B0C10>(7)</color></size></back> reads
 
         
 @enduml

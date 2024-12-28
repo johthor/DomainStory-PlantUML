@@ -23,6 +23,8 @@
 
 
 
+
+
     
 
 
@@ -322,11 +324,12 @@ hide stereotypes
 
 
 
-            
+
+
 
             
 
-
+            
 
 
 
@@ -1011,7 +1014,6 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
 
-
     
 
 
@@ -1027,7 +1029,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
             Card "<$ma_file_document{scale=.8,color=#1f2833}>\ra document" as Document1 <<Document>> 
 
     
-                person --> Document1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> reads
+                        person --> Document1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> reads
 
         
 
@@ -1039,7 +1041,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
             Card "<$ma_folder_outline{scale=.8,color=#1f2833}>\ra folder" as Folder2 <<Folder>> 
 
     
-                person --> Folder2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> opens
+                        person --> Folder2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> opens
 
         
 
@@ -1051,7 +1053,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
             Card "<$ma_phone{scale=.8,color=#1f2833}>\ra call" as Call3 <<Call>> 
 
     
-                person --> Call3 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> makes
+                        person --> Call3 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> makes
 
         
 
@@ -1063,7 +1065,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
             Card "<$ma_at{scale=.8,color=#1f2833}>\ran email" as Email4 <<Email>> 
 
     
-                person --> Email4 : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> writes
+                        person --> Email4 : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> writes
 
         
 
@@ -1081,7 +1083,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
             Card "<$ma_message_outline{scale=2,color=#1f2833}>\ra conversation" as Conversation5 <<Conversation>> 
 
     
-                people --> Conversation5 : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> has
+                        people --> Conversation5 : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> has
 
         
 
@@ -1093,7 +1095,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
             Card "<$ma_information_outline{scale=.8,color=red}>\ran information" as Info6 <<Info>> 
 
     
-                people --> Info6 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> ask for
+                        people --> Info6 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> ask for
 
         
 
@@ -1111,7 +1113,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
             Card "<$ma_file_document{scale=.8,color=blue}>\r books" as Document7 <<Document>> 
 
     
-                writer --> Document7 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> writes
+                        writer --> Document7 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> writes
 
     
 
@@ -1119,5 +1121,5 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
             Card "<$ma_information_outline{scale=2,color=green}>\r stories" as Info8 <<Info>> 
 
     
-                        Document7 --> Info8 :  containing
+                            Document7 --> Info8 : containing
 @enduml

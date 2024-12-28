@@ -323,6 +323,8 @@ skinparam Card {
 
 
 
+
+
     
 
 
@@ -482,9 +484,10 @@ hide stereotypes
 
 
 
+
+
+
             
-
-
 
 
 
@@ -1174,7 +1177,6 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
 
-
     Rectangle "==Party" as Party   {
     
 
@@ -1197,8 +1199,8 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
         
-                Alice --> weather : <back:#228811><color:#113300>(1)</color></back> talks about the
+                        Alice --> weather : <back:#228811><color:#113300>(1)</color></back> talks about the
 
         
-                        weather --> Bob :  with
+                            weather --> Bob : with
 @enduml

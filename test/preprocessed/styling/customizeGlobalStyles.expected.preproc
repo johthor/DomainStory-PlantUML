@@ -30,6 +30,8 @@
 
 
 
+
+
     
 
 
@@ -329,9 +331,10 @@ hide stereotypes
 
 
 
+
+
+
             
-
-
 
 
 
@@ -1019,7 +1022,6 @@ skinparam folderBackgroundColor<<MA INFORMATION>> White
 
 
 
-
     
 
 
@@ -1111,23 +1113,23 @@ skinparam folderBackgroundColor<<MA INFORMATION>> White
 
 
         
-                Alice -> spam : <back:black><size:16><color:PowderBlue>(1)</color></size></back> reads the
+                        Alice -> spam : <back:black><size:16><color:PowderBlue>(1)</color></size></back> reads the
 
         
 
 
 
         
-                Alice --> weather : <back:black><size:16><color:PowderBlue>(2)</color></size></back> talks about the
+                        Alice --> weather : <back:black><size:16><color:PowderBlue>(2)</color></size></back> talks about the
 
         
-                        weather --> Bob :  with
+                            weather --> Bob : with
 
 
 
         
-                proposal <-- Bob : <back:black><size:16><color:PowderBlue>(3)</color></size></back> writes a
+                        proposal <-- Bob : <back:black><size:16><color:PowderBlue>(3)</color></size></back> writes a
 
         
-                        Alice <-- proposal :  to
+                            Alice <-- proposal : to
 @enduml
