@@ -24,6 +24,8 @@
 
 
 
+
+
     
 
 
@@ -323,11 +325,12 @@ hide stereotypes
 
 
 
-            
+
+
 
             
 
-
+            
 
 
 
@@ -1012,7 +1015,6 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
 
-
     
 
 
@@ -1021,7 +1023,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
     
 
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rdefault movie" as default <<Conversation>> 
+            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rdefaultMovie" as defaultMovie <<Conversation>> 
 
     
 
@@ -1031,7 +1033,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
     
 
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rdown movie" as down <<Conversation>> 
+            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rrightMovie" as rightMovie <<Conversation>> 
 
     
 
@@ -1041,7 +1043,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
     
 
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rleft movie" as left <<Conversation>> 
+            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rleftMovie" as leftMovie <<Conversation>> 
 
     
 
@@ -1051,7 +1053,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
     
 
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rup movie" as up <<Conversation>> 
+            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rdownMovie" as downMovie <<Conversation>> 
 
     
 
@@ -1061,7 +1063,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
     
 
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rright movie" as right <<Conversation>> 
+            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rupMovie" as upMovie <<Conversation>> 
 
     
 
@@ -1071,7 +1073,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
     
 
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rreverse movie" as reverse <<Conversation>> 
+            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rreverseMovie" as reverseMovie <<Conversation>> 
 
     
 
@@ -1083,48 +1085,48 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
         
-                colleague1 --> default : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about
+                        colleague1 --> defaultMovie : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about
 
         
-                        default --> colleague2 :  with
-
-
-
-        
-                colleague1 --> down : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about
-
-        
-                        down --> colleague3 :  with
+                            defaultMovie --> colleague2 : with
 
 
 
         
-                left <- colleague1 :  talks about
+                        upMovie <-- colleague1 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about
 
         
-                        colleague4 <- left :  with
-
-
-
-        
-                up <-- colleague1 : <back:#66fcf1><size:16><color:#0B0C10>(42)</color></size></back> talks about
-
-        
-                        colleague5 <-- up :  with
+                            colleague3 <-- upMovie : with
 
 
 
         
-                colleague1 -> right : <back:#66fcf1><size:16><color:#0B0C10>(43)</color></size></back> talks about
+                        colleague1 -> rightMovie : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> talks about
 
         
-                        right -> colleague6 :  with
+                            rightMovie -> colleague4 : with
 
 
 
         
-                reverse <-- colleague1 : <back:#66fcf1><size:16><color:#0B0C10>(44)</color></size></back> talks about
+                        colleague1 --> downMovie : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> talks about
 
         
-                        colleague7 <-- reverse :  with
+                            downMovie --> colleague5 : with
+
+
+
+        
+                        leftMovie <- colleague1 : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> talks about
+
+        
+                            colleague6 <- leftMovie : with
+
+
+
+        
+                        reverseMovie <-- colleague1 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> talks about
+
+        
+                            colleague7 <-- reverseMovie : with
 @enduml
