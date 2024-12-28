@@ -124,7 +124,7 @@ $declareStyleProperty("", Color, Activity, modeAdjustedColor("#c5c6c7", "#c5c6c7
 ' Step Label Styles
 ' ----------------------------------
 
-$declareStyleProperty("", LabelPosition, Step, combined, $themeable = %false(), $skinParam = %false())
+$declareStyleProperty("", LabelPosition, Step, prefix, $themeable = %false(), $skinParam = %false())
 $declareStyleProperty("", LabelFraming, Step, round, $themeable = %false(), $skinParam = %false())
 $declareStyleProperty("", FontStyle, Step, plain, $themeable = %false(), $skinParam = %false())
 $declareStyleProperty("", FontColor, Step, modeAdjustedColor("#0B0C10"), $themeable = %true(), $skinParam = %false())

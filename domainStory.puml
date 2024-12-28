@@ -356,7 +356,7 @@ $declareStyleProperty("", Color, Activity, modeAdjustedColor("#c5c6c7", "#c5c6c7
 ' Step Label Styles
 ' ----------------------------------
 
-$declareStyleProperty("", LabelPosition, Step, combined, $themeable = %false(), $skinParam = %false())
+$declareStyleProperty("", LabelPosition, Step, prefix, $themeable = %false(), $skinParam = %false())
 $declareStyleProperty("", LabelFraming, Step, round, $themeable = %false(), $skinParam = %false())
 $declareStyleProperty("", FontStyle, Step, plain, $themeable = %false(), $skinParam = %false())
 $declareStyleProperty("", FontColor, Step, modeAdjustedColor("#0B0C10"), $themeable = %true(), $skinParam = %false())
@@ -622,6 +622,63 @@ $extendStyleDeclarations("Object", "Call", "phone")
     !endif
 !endprocedure
 
+!procedure $createConnection($from, $to, $arrow = "-->", $action = "", $stepLabel = "")
+    !$backwardsArrow = %substr($arrow, 0, 1) == "<"
+    !if $action
+        !if $stepLabel
+            !if $backwardsArrow
+                !if $Step_LabelPosition == "tail"
+                    $to $arrow "$stepLabel" $from : $action
+                !elseif $Step_LabelPosition == "combined"
+                    $to $arrow $from : $action $stepLabel
+                !else
+                    $to $arrow $from : $stepLabel $action
+                !endif
+            !else
+                !if $Step_LabelPosition == "tail"
+                    $from "$stepLabel" $arrow $to : $action
+                !else
+                    $from $arrow $to : $stepLabel $action
+                !endif
+            !endif
+        !else
+            !if $backwardsArrow
+                $to $arrow $from : $action
+            !else
+                $from $arrow $to : $action
+            !endif
+        !endif
+    !else
+        !if $backwardsArrow
+            $to $arrow $from
+        !else
+            $from $arrow $to
+        !endif
+    !endif
+!endprocedure
+
+' Be aware this function might produce side effects
+!function $ensureElementExists($element, $tag, $note, $shape, $scale, $color, $background)
+    !$separatorPosition = %strpos($element, ":")
+
+    !if $separatorPosition > -1
+        !$workObjectCounter = $workObjectCounter + 1
+
+        !$elementKind = %substr($element, 0, $separatorPosition)
+        !$elementLabel = %substr($element, $separatorPosition + 1)
+        !$elementName = $elementKind + $workObjectCounter
+
+        'Element($kind, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+        %invoke_procedure($elementKind, $elementName, $elementLabel, $tag, $note, $shape, $scale, $color, $background)
+
+        !return $elementName
+    !else
+        $createElementNote($element, $note)
+
+        !return $element
+    !endif
+!endfunction
+
 ' Notes
 ' ##################################
 
@@ -687,63 +744,6 @@ $extendStyleDeclarations("Object", "Call", "phone")
             !else
                 note bottom of $reference : $note
             !endif
-        !endif
-    !endif
-!endprocedure
-
-' Helper procedures
-' ##################################
-
-' Be aware this function might produce side effects
-!function $ensureElementExists($element, $tag, $note, $shape, $scale, $color, $background)
-    !$separatorPosition = %strpos($element, ":")
-
-    !if $separatorPosition > -1
-        !$workObjectCounter = $workObjectCounter + 1
-
-        !$elementKind = %substr($element, 0, $separatorPosition)
-        !$elementLabel = %substr($element, $separatorPosition + 1)
-        !$elementName = $elementKind + $workObjectCounter
-
-        'Element($kind, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-        %invoke_procedure($elementKind, $elementName, $elementLabel, $tag, $note, $shape, $scale, $color, $background)
-
-        !return $elementName
-    !else
-        $createElementNote($element, $note)
-
-        !return $element
-    !endif
-!endfunction
-
-!procedure $createConnection($from, $to, $arrow = "-->", $label = "", $stepLabel = "")
-    !if %substr($arrow, 0, 1) == "<"
-        !if $label
-            !if $stepLabel
-                !if $Step_LabelPosition == "combined"
-                    $to $arrow $from : $label $stepLabel
-                !else
-                    $to $arrow "$stepLabel" $from : $label
-                !endif
-            !else
-                $to $arrow $from : $label
-            !endif
-        !else
-            $to $arrow $from
-        !endif
-    !else
-        !if $label
-            !if $stepLabel
-                !if $Step_LabelPosition == "combined"
-                    $from $arrow $to : $stepLabel $label
-                !else
-                    $from "$stepLabel" $arrow $to : $label
-                !endif
-            !else
-                $from $arrow $to : $label
-            !endif
-        !else
-            $from $arrow $to
         !endif
     !endif
 !endprocedure
