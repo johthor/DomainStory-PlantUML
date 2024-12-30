@@ -1,43 +1,28 @@
 @startuml
-!$Story_Layout = 'left-to-right'
+!$Story_Layout = 'top-to-bottom'
 
 !include ../../../src/domainStoryComposite.puml
-
-Boundary(office) {
-    Call(conference)
-}
-note bottom of office : below
-
-Boundary(party) {
-    Group(people)
-}
-note left of party : left
-
-Boundary(Team) {
-    Person(pete)
-}
-note right of Team : right
-
-Boundary(company) {
-    Person(sarah)
-}
-note top of company : above
 
 Boundary(one, $note= default) {
     Person(Jake)
 }
+
 Boundary(two, $note=^ above) {
     Person(Simon)
 }
+
 Boundary(three, $note=> right) {
     Person(Sloane)
 }
+
 Boundary(four, $note=v below) {
     Person(Marry)
 }
+
 Boundary(five, $note=< left) {
     Person(Ashley)
 }
+
 Boundary(six, $note=~ inverse) {
     Person(Sam)
 }

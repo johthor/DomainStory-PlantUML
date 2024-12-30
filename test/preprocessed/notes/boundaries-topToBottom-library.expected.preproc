@@ -1017,54 +1017,6 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
 
-
-    Rectangle "==office" as office   {
-    
-
-
-            Card "<$ma_phone{scale=.8,color=#1f2833}>\rconference" as conference <<Call>> 
-
-    }
-note bottom of office : below
-
-
-
-
-    Rectangle "==party" as party   {
-    
-
-
-            Agent "<$ma_account_multiple_outline{scale=1,color=#1f2833}>\rpeople" as people <<Group>> 
-
-    }
-note left of party : left
-
-
-
-
-    Rectangle "==Team" as Team   {
-    
-
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rpete" as pete <<Person>> 
-
-    }
-note right of Team : right
-
-
-
-
-    Rectangle "==company" as company   {
-    
-
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsarah" as sarah <<Person>> 
-
-    }
-note top of company : above
-
-
-
         Rectangle "==one" as one
         
                 note bottom of one : default
@@ -1076,6 +1028,7 @@ note top of company : above
             Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rJake" as Jake <<Person>> 
 
     }
+
 
 
         Rectangle "==two" as two
@@ -1091,6 +1044,7 @@ note top of company : above
     }
 
 
+
         Rectangle "==three" as three
         
             note right of three :  right
@@ -1102,6 +1056,7 @@ note top of company : above
             Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rSloane" as Sloane <<Person>> 
 
     }
+
 
 
         Rectangle "==four" as four
@@ -1117,6 +1072,7 @@ note top of company : above
     }
 
 
+
         Rectangle "==five" as five
         
             note left of five :  left
@@ -1130,6 +1086,7 @@ note top of company : above
     }
 
 
+
         Rectangle "==six" as six
         
                 note top of six :  inverse
@@ -1141,5 +1098,4 @@ note top of company : above
             Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rSam" as Sam <<Person>> 
 
     }
-
 @enduml

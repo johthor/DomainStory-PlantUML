@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="708px" preserveAspectRatio="none" style="width:358px;height:708px;background:#FFFFFF;" version="1.1" viewBox="0 0 358 708" width="358px" zoomAndPan="magnify">
+  <defs/>
+  <g>
+    <!--cluster office-->
+    <g id="cluster_office">
+      <rect fill="none" height="148" rx="7.5" ry="7.5" style="stroke:#1F2833;stroke-width:2;stroke-dasharray:7.0,7.0;" width="127.37" x="69.49" y="554"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="37.3379" x="114.5061" y="569.1318">office</text>
+    </g>
+    <!--cluster party-->
+    <g id="cluster_party">
+      <rect fill="none" height="172" rx="7.5" ry="7.5" style="stroke:#1F2833;stroke-width:2;stroke-dasharray:7.0,7.0;" width="116" x="236.86" y="186"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="34.2344" x="277.7428" y="201.1318">party</text>
+    </g>
+    <!--cluster Team-->
+    <g id="cluster_Team">
+      <rect fill="none" height="172" rx="7.5" ry="7.5" style="stroke:#1F2833;stroke-width:2;stroke-dasharray:7.0,7.0;" width="116" x="75.17" y="7"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="36.5723" x="114.8839" y="22.1318">Team</text>
+    </g>
+    <!--cluster company-->
+    <g id="cluster_company">
+      <rect fill="none" height="172" rx="7.5" ry="7.5" style="stroke:#1F2833;stroke-width:2;stroke-dasharray:7.0,7.0;" width="116" x="75.17" y="251"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="61.4619" x="102.439" y="266.1318">company</text>
+    </g>
+    <!--entity conference-->
+    <g id="elem_conference">
+      <rect fill="none" height="58.1988" rx="2.5" ry="2.5" style="stroke:none;stroke-width:1;" width="79.373" x="93.49" y="619.9"/>
+      <image height="38" width="38" x="113.9765" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAYAAACoPemuAAADnklEQVR4Xs2Xa0gUURTHg15fhIKkvhRNZWVrpqauya62lFlZpmUPEqXNIEUCrYwygyQxxB5EhkGZI2oqbuUjs3yVMbVlBpKVWFmG6/qE3Qx23Yd4uxcbm+5xtWC29sPvg/89Z87fufeeM3caQmiaIwIERwEIjgIQHAUgjI6Ozhga+s50a3sYTTekt6+fsVqtznSe2ACBmIo9koSWuknRYldvgG/AZvSwtoGl88QGCORNLVs9sSkCs8oHnTyTxtJ5YgMEbU8vs9JTBgwJSUhKqcbLOZ/OFRMgaHv6GIl3ADAjJCYuUafT6cPoXDEBQv/AICMP2gHMCNkXfRhpurVKOldMgKDXf2MilXHAjJDA4DD06nWLks4VEyAYjEYm+Ww6MCOEnNh7FQ+UdK6YAGFkZGROTl5hKTl9tCEhN3ILynHsXDpfLIBAqKl/onSXKoAZHh95MKpteJqCm/FMOlcsgED48LFDGbo7GhgiuHkHooJiFWcwGF3oPDEBAgEvkVPiiTMq2hThbnmVxmw2//uRxFP5oCZntc/6Ud6Qq5cc3cGm6Dh7AQQe3EDDt0VE6Xlj+w/EIdJK6Dh7AQQhFVWPON6YZK0cNTRyKjrGXgBBCJ6HC0L3/DoEso3bkcFg8KXj7AEQaFretGYIh/rx5FSNyfQfNz+P0TjsnJZxmVu+xv/nkgag/Nul9fhkLqJjxQQIE9H5tSsoIjJGw781f0WIqaq6tuSfd34a3OFnceqmIo91G8aXVBq4xap+0VxHx9Lg3Nk6vX6X0Wh0p3+bDCBMRlllNSfBnZ83R3imbqq3teeGh00Lr2bfHI8lB+nc+UsIj7z21ndtx7o02pW27hDgYVNRrCpT+SlCxouRPZd1/RaHC/jgtzOdj8N9UJ55+dqg8J+YCFt3CFB4KswWi5Oq7H6ObGPob+YOxia8Vb9szicxeOnk6ZlXPq3wGDswk2HrDgEK/wkWi9WpkXuuEu45UsAT/x1/9FQn/p4b/BNTPLgFsXQNUPRvIM02KiZeQ+YoXexvEN0YAW9w59z8osqt4ft1tu6iU2EXYwR8qua9b2sPy76R16LYshMUngq7GeMhsxXfS6VsQYlm0/a9aInEF5iYCLsbo1E3NXO4b3VuCInQ4s9xM/lcd/WSIRd3P3yhGTNNRl3GpSyWzgUPswe4ATMdn7+k1dQ9ZvMKS9iLV7LZ1PQLbNLpVJaY6usfOETngIc4CkBwFIDgKADBUfgB4u5y1lXNpH4AAAAASUVORK5CYII=" y="622.9"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="59.373" x="103.49" y="672.5559">conference</text>
+    </g>
+    <!--entity people-->
+    <g id="elem_people">
+      <rect fill="none" height="81.7988" rx="2.5" ry="2.5" style="stroke:none;stroke-width:1;" width="68" x="260.86" y="252.1"/>
+      <image height="48" width="48" x="270.86" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB+ElEQVR4Xu2WIUsEURSF959YTRaDySBoEwxGTcZNNrHYhC0mg8FiEiy2BcEqgmBTsKt/YP0DI2dhhjvnvPf2DV5YLhg+mP3ufefNzHszO6OmaUaRERENEdEQEQ0R0RARDRHREBENEdEQEQ0RJWazn+3JxWWzu3/YrKyuz8ExHGrcn8MrB4jIMX147CbLgR4ex3jltIhIUTNpzeReORYRDJbUBq9tbPXCcby5s9ebPLUNvHIYEQz2pZ00FQqHWtuHMdzjlcOIYOxdKS2r3R54ILnulcOIYNowwDWm1FuqMUN6RTBDwkq9pRozpFcEY9/Vf1l6rxxGBGMfPuzj3MNn93jq4fPKYUQwXq8/rxxGRAq7rIuo3R6LKOVYROSombxmUq+cFhElsKQeH2FeOUBENEREQ0SKt/eP16vrm2Z8fDJfavu9gmM41NCDXh7vnWMRYSc7PTvvTVILxmAsMrxy+PyyF/D59T05OBpL2LLBOeHc+Hx7P27v7mUgwJ3A0qKOu2HfFDiGQw09pTvtkcOv2O7g6flFmhFUWr4cyMJYzoPn3hI1OV2z/RvHw5RarqHg4vldzz01lHK6JnuFQ/9MSvA3ENdryeV0DamiF17ZqZxi0Quv7FROshiB/wtYNnIBURERDRHREBENEdEQEQ0R0RARDRHREBGNX2sWLY71bo8MAAAAAElFTkSuQmCC" y="262.1"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="36.0352" x="276.8424" y="321.3559">people</text>
+    </g>
+    <!--entity pete-->
+    <g id="elem_pete">
+      <rect fill="none" height="81.7988" rx="2.5" ry="2.5" style="stroke:none;stroke-width:1;" width="68" x="99.17" y="73.1"/>
+      <image height="48" width="48" x="109.17" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB9ElEQVR4Xt2WIUtFMRiG7z+xmiwGk0HQJhiMmow32cRiE24xGQwWk2CxCYJVBMGmYFf/wPUPTN4Lk/G+Zzvb2TzwGR44PPvO9m37ds4mzrmJZURYQ4Q1RFhDhDVEWEOENURYQ0QtH59fs+OTU7e+teOWllcX4BkObRxfi4gakKRPOgZi+L0aRAxl72AqycZALL8/FBFDiK08SicspZBWOyGiFNQ1Jzc9PHLz+femj8EzHMe1OBMiSuHVR6Ic4+FJzM7Oo7G5iCiFSyRceQZtYSze5ZhSRJRSmhBPmNtLEVGK+QlwQuZKCAcxTMrcITb/GQX8KfWY+JF5TF8lPLGdCGm18h4RtaCucTj5Og3XouYZEdYQYQ0RQ8Bn8u7+YVEmOKAomZW1jd8SwjMc2hCD2NQPrwQRuXTVeiktzoaIPl7f3l9KPpm5bO/uu8enZ8fj9SEiBrYcg/DAMXzZcDn1gTFKyktEF1iZVBIYFKWAuFQ5oA0xiE0tBsbK3Q0RTNddxw9ycXmVTLgPvIs+YouT07cIpusSdn1z6ziuFkyEx0ndbD0iGO40Z1WG0rXbHMOIYMLOULfc3ho+G9zOiGD+1QT8JP4SHo/zYUQw3OHYcD6MCIY7HBvOhxHBcIdjw/kwIqwhwhoirCHCGiKsIcIaIqwhwho/XuapJhKAviEAAAAASUVORK5CYII=" y="83.1"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="23.3555" x="121.4923" y="142.3559">pete</text>
+    </g>
+    <!--entity sarah-->
+    <g id="elem_sarah">
+      <rect fill="none" height="81.7988" rx="2.5" ry="2.5" style="stroke:none;stroke-width:1;" width="68" x="99.17" y="317.1"/>
+      <image height="48" width="48" x="109.17" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB9ElEQVR4Xt2WIUtFMRiG7z+xmiwGk0HQJhiMmow32cRiE24xGQwWk2CxCYJVBMGmYFf/wPUPTN4Lk/G+Zzvb2TzwGR44PPvO9m37ds4mzrmJZURYQ4Q1RFhDhDVEWEOENURYQ0QtH59fs+OTU7e+teOWllcX4BkObRxfi4gakKRPOgZi+L0aRAxl72AqycZALL8/FBFDiK08SicspZBWOyGiFNQ1Jzc9PHLz+femj8EzHMe1OBMiSuHVR6Ic4+FJzM7Oo7G5iCiFSyRceQZtYSze5ZhSRJRSmhBPmNtLEVGK+QlwQuZKCAcxTMrcITb/GQX8KfWY+JF5TF8lPLGdCGm18h4RtaCucTj5Og3XouYZEdYQYQ0RQ8Bn8u7+YVEmOKAomZW1jd8SwjMc2hCD2NQPrwQRuXTVeiktzoaIPl7f3l9KPpm5bO/uu8enZ8fj9SEiBrYcg/DAMXzZcDn1gTFKyktEF1iZVBIYFKWAuFQ5oA0xiE0tBsbK3Q0RTNddxw9ycXmVTLgPvIs+YouT07cIpusSdn1z6ziuFkyEx0ndbD0iGO40Z1WG0rXbHMOIYMLOULfc3ho+G9zOiGD+1QT8JP4SHo/zYUQw3OHYcD6MCIY7HBvOhxHBcIdjw/kwIqwhwhoirCHCGiKsIcIaIqwhwho/XuapJhKAviEAAAAASUVORK5CYII=" y="327.1"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="30.0176" x="118.1612" y="386.3559">sarah</text>
+    </g>
+    <g id="elem_GMN4">
+      <path d="M107,506.1 L107,529.8988 L159.3535,529.8988 L159.3535,516.1 L149.3535,506.1 L107,506.1 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <path d="M149.3535,506.1 L149.3535,516.1 L159.3535,516.1 L149.3535,506.1 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="31.3535" x="113" y="522.3559">below</text>
+    </g>
+    <g id="elem_GMN9">
+      <path d="M114.67,203.1 L114.67,226.8988 L151.6778,226.8988 L151.6778,213.1 L141.6778,203.1 L114.67,203.1 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <path d="M141.6778,203.1 L141.6778,213.1 L151.6778,213.1 L141.6778,203.1 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="16.0078" x="120.67" y="219.3559">left</text>
+    </g>
+    <g id="elem_GMN14">
+      <path d="M272.69,24.1 L272.69,47.8988 L317.0338,47.8988 L317.0338,34.1 L307.0338,24.1 L272.69,24.1 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <path d="M307.0338,24.1 L307.0338,34.1 L317.0338,34.1 L307.0338,24.1 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="23.3438" x="278.69" y="40.3559">right</text>
+    </g>
+    <g id="elem_GMN19">
+      <path d="M106.32,447.1 L106.32,470.8988 L160.0153,470.8988 L160.0153,457.1 L150.0153,447.1 L106.32,447.1 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <path d="M150.0153,447.1 L150.0153,457.1 L160.0153,457.1 L150.0153,447.1 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="32.6953" x="112.32" y="463.3559">above</text>
+    </g>
+    <!--link office to GMN4-->
+    <g id="link_office_GMN4">
+      <path d="M133.17,553.9031 C133.17,553.3775 133.17,552.8519 133.17,552.3263 C133.17,551.275 133.17,550.2237 133.17,549.1725 C133.17,547.07 133.17,544.9675 133.17,542.865 C133.17,538.66 133.17,534.455 133.17,530.25 " fill="none" id="office-GMN4" style="stroke:#C5C6C7;stroke-width:1;stroke-dasharray:7.0,7.0;"/>
+    </g>
+    <!--link GMN9 to party-->
+    <g id="link_GMN9_party">
+      <path d="M151.87,215 C171.36,215 203.7775,215 232.72,215 C233.6245,215 234.5255,215 235.4227,215 C235.8713,215 236.3189,215 236.7654,215 " fill="none" id="GMN9-party" style="stroke:#C5C6C7;stroke-width:1;stroke-dasharray:7.0,7.0;"/>
+    </g>
+    <!--link Team to GMN14-->
+    <g id="link_Team_GMN14">
+      <path d="M191.579,36 C191.7962,36 192.0136,36 192.2313,36 C220.09,36 251.78,36 272.26,36 " fill="none" id="Team-GMN14" style="stroke:#C5C6C7;stroke-width:1;stroke-dasharray:7.0,7.0;"/>
+    </g>
+    <!--link GMN19 to company-->
+    <g id="link_GMN19_company">
+      <path d="M106.3,452.47 C79.86,444.45 40.99,427.98 23.49,397.5 C6,367.05 6,348.95 23.49,318.5 C29.32,308.35 38.1381,300.8231 48.2913,295.2517 C53.3678,292.466 58.7781,290.1692 64.3155,288.2778 C67.0843,287.332 69.8847,286.4877 72.6912,285.7342 C73.3928,285.5459 74.0948,285.3632 74.7967,285.186 " fill="none" id="GMN19-company" style="stroke:#C5C6C7;stroke-width:1;stroke-dasharray:7.0,7.0;"/>
+    </g>
+    <!--SRC=[NS_1QWCX40RWkqynWK2sXspkWLwIGoyz59fxcNN7H517tB55IjyzkccQfU9bvFy_dDNwNJYLZrSid0MUOUF8o5Puc-pv8XkbLZPebqU2lj_TxfJqRcIFDipT8_l8anNgO_PEgGFdC68g7HjZDJt1ju9wZkXSfpaOIXJgi_fHWOLWO17sm0PkUTZ3G8w_5b349ENkl2JEiOl4qJsGzkb6pCagj7a1d0ZzlVz6QU9G0NdKvrrRlmLhVPuNVLrNn53-4HCclFmPmh49lz6AuC2VT0K0]-->
+  </g>
+</svg>
