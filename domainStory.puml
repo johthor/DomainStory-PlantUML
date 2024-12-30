@@ -613,10 +613,14 @@ $extendStyleDeclarations("Object", "Call", "phone")
     ' Handle possible second connection between object and target
     !$target = $ensureElementExists($target, $targetTag, $targetNote, $targetShape, $targetScale, $targetColor, $targetBackground)
 
-    !if $post && $post != "_"
-        !if $target && $target != "_"
+    !if $target && $target != "_"
+        !if $post && $post != "_"
             $createConnection($object, $target, $targetArr, $post)
         !else
+            $createConnection($object, $target, $targetArr)
+        !endif
+    !else
+        !if $post && $post != "_"
             $createConnection($object, $post, $targetArr)
         !endif
     !endif

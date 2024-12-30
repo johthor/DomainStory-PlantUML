@@ -1,0 +1,32 @@
+@startuml
+!include ../../../src/domainStoryComposite.puml
+
+Person(superior)
+Document(document1)
+Person(subordinate1)
+Document(document2)
+Person(subordinate2)
+Document(document3)
+Person(subordinate3)
+Document(document4)
+Person(subordinate4)
+Document(document5)
+Person(subordinate5)
+Document(document6)
+Person(subordinate6)
+'Document(document7)
+'Person(subordinate7)
+'Document(document8)
+'Person(subordinate8)
+
+activity(1, superior, talks about, document1, with, subordinate1, -->, -->)
+activity(2, superior, talks about, document2, with, subordinate2, -->, <-)
+activity(3, superior, talks about, document3, with, subordinate3, -->, ->)
+
+activity(4, superior, talks about, document4, with, subordinate4, <--, <--)
+activity(5, superior, talks about, document5, with, subordinate5, <--, <-)
+activity(6, superior, talks about, document6, with, subordinate6, <--, ->)
+
+'activity(7, superior, talks about, document7, with, subordinate3, -->, <--)
+'activity(8, superior, talks about, document8, with, subordinate5, <--, -->)
+@enduml

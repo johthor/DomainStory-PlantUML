@@ -1033,39 +1033,60 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
         
-                        weather <-- Alice : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about the
+                        weather <-- Alice : <back:#66fcf1><size:16><color:#0B0C10>(42)</color></size></back> talks about
+
+        
+                            Bob <-- weather : with
+
+
+        
+                        s <-- ()A : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about
+
+        
+                        M <-- s
+
+
+        
+                        t <-- ()B : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about
+
+        
+                        N <-- t
+
+
+        
+                        u <-- ()C : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> talks about
+
+        
+                        O <-- u
+
+
+        
+                        v <-- ()D : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> talks about
+
+        
+                        P <-- v
+
+
+        
+                        w <-- ()E : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> talks about
 
         
 
 
         
-                        weather <-- Alice : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about the
+                        x <-- ()F : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> talks about
 
         
 
 
         
-                        weather <-- Alice : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> talks about the
-
-        
-                        Bob <-- weather
-
-
-        
-                        weather <-- Alice : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> talks about the
-
-        
-                        Bob <-- weather
-
-
-        
-                        weather <-- Alice : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> talks about the
+                        y <-- ()G : <back:#66fcf1><size:16><color:#0B0C10>(7)</color></size></back> talks about
 
         
 
 
         
-                        weather <-- Alice : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> talks about the
+                        z <-- ()H : <back:#66fcf1><size:16><color:#0B0C10>(8)</color></size></back> talks about
 
         
 @enduml
