@@ -576,7 +576,7 @@ $extendStyleDeclarations("Object", "Call", "phone")
     !endif
 
     !if $note
-        $shape $name
+        $shape "==$label" as $name
         $createBoundaryNote($name, $note)
     !endif
 

@@ -26,7 +26,7 @@
 
 
 
-
+    
 
 
             skinparam DefaultFontColor #0B0C10
@@ -328,16 +328,16 @@ hide stereotypes
 
 
 
+            
+
+            
 
 
 
 
 
 
-
-
-
-
+    
     
     
             
@@ -1065,7 +1065,7 @@ note top of company : above
 
 
 
-        Rectangle one
+        Rectangle "==one" as one
         
                 note right of one : default
 
@@ -1078,7 +1078,7 @@ note top of company : above
     }
 
 
-        Rectangle two
+        Rectangle "==two" as two
         
                 note bottom of two :  above
 
@@ -1091,7 +1091,7 @@ note top of company : above
     }
 
 
-        Rectangle three
+        Rectangle "==three" as three
         
             note right of three :  right
 
@@ -1104,7 +1104,7 @@ note top of company : above
     }
 
 
-        Rectangle four
+        Rectangle "==four" as four
         
                 note top of four :  below
 
@@ -1117,7 +1117,7 @@ note top of company : above
     }
 
 
-        Rectangle five
+        Rectangle "==five" as five
         
             note left of five :  left
 
@@ -1130,7 +1130,7 @@ note top of company : above
     }
 
 
-        Rectangle six
+        Rectangle "==six" as six
         
                 note left of six :  inverse
 
