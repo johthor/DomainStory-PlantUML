@@ -367,7 +367,7 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
 ' Mutable state
 ' ##################################
 
-!global $stepCounter = 1
+!global $stepCounter = 0
 !global $workObjectCounter = 0
 
 ' Actors
@@ -843,11 +843,14 @@ $extendStyleDeclarations("Object", "Call", "phone")
 
 !function $computeStepNumber($step)
     !if $step == "_" || $step == "+"
-        !$result = $stepCounter
         !$stepCounter = $stepCounter + 1
-        !return $result
-    !elseif $step == "|"
         !return $stepCounter
+    !elseif $step == "|"
+        !if $stepCounter
+            !return $stepCounter
+        !else
+            !return '?'
+        !endif
     !elseif %substr($step, 0, 1) == "="
         !$stepCounter = %intval(%substr($step, 1))
         !return $stepCounter

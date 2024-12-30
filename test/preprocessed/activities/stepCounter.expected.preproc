@@ -23,6 +23,8 @@
 
 
 
+
+
     
 
 
@@ -322,11 +324,12 @@ hide stereotypes
 
 
 
-            
+
+
 
             
 
-
+            
 
 
 
@@ -1011,12 +1014,6 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
 
-
-    
-
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rBob" as Bob <<Person>> 
-
     
 
 
@@ -1026,108 +1023,116 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
     
 
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rweather" as weather1 <<Info>> 
+            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_1" as step_1 <<Info>> 
 
     
 
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rgood weather" as weather2 <<Info>> 
+            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_2" as step_2 <<Info>> 
 
     
 
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rbad weather" as weather3 <<Info>> 
+            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_2_" as step_2_ <<Info>> 
 
     
 
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rmixed weather" as weather4 <<Info>> 
+            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rhidden_step" as hidden_step <<Info>> 
 
     
 
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rtalking" as talking1 <<Conversation>> 
+            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rhidden_step_" as hidden_step_ <<Info>> 
 
     
 
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rthe exaggerated talk" as talking2 <<Conversation>> 
+            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_42" as step_42 <<Info>> 
 
     
 
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rtalking" as talking3 <<Conversation>> 
+            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_10" as step_10 <<Info>> 
 
     
 
 
-            Card "<$ma_at{scale=.8,color=#1f2833}>\ran exasperated e-mail" as mail <<Email>> 
+            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_11" as step_11 <<Info>> 
 
     
 
 
 
         
-                Bob --> weather1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about the
-
-         
-
-
-
-        
-                Bob --> weather2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about the
-
-         
-
-
-
-        
-                Alice --> weather2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about the
-
-         
-
-
-
-        
-                weather3 <-- Bob :  also talks about the
+                        Alice --> step_1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about
 
         
 
 
 
         
-                Alice --> talking1 : <back:#66fcf1><size:16><color:#0B0C10>(42)</color></size></back> asks about all the
+                        Alice --> step_2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about
 
         
-                        talking1 --> Bob :  again 
-
-
-
-        
-                Bob --> weather4 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about the
-
-         
 
 
 
         
-                Alice --> talking2 : <back:#66fcf1><size:16><color:#0B0C10>(10)</color></size></back> talks about
+                        Alice --> step_2_ : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about
 
         
-                        talking2 --> Bob
-
-
-
-        
-                talking3 <-- Bob : <back:#66fcf1><size:16><color:#0B0C10>(11)</color></size></back> is embarrassed about
-
-         
 
 
 
         
-                Alice --> mail :  writes
+                    Alice --> hidden_step : talks about
 
         
-                        mail --> Bob :  to
+
+
+
+        
+                    Alice --> hidden_step_ : talks about
+
+        
+
+
+
+        
+                        Alice --> step_42 : <back:#66fcf1><size:16><color:#0B0C10>(42)</color></size></back> talks about
+
+        
+
+
+
+        
+                        Alice --> step_10 : <back:#66fcf1><size:16><color:#0B0C10>(10)</color></size></back> talks about
+
+        
+
+
+
+        
+                        Alice --> step_11 : <back:#66fcf1><size:16><color:#0B0C10>(11)</color></size></back> talks about
+
+        
+
+    
+
+
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rBob" as Bob <<Person>> 
+
+    
+
+
+            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_error" as step_error <<Info>>
+
+
+
+
+        
+                        Bob --> step_error : <back:#66fcf1><size:16><color:#0B0C10>(?)</color></size></back> talks about
+
+        
 @enduml

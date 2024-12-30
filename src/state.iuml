@@ -1,5 +1,5 @@
 ' Mutable state
 ' ##################################
 
-!global $stepCounter = 1
+!global $stepCounter = 0
 !global $workObjectCounter = 0
