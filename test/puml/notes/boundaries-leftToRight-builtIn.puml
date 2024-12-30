@@ -1,0 +1,25 @@
+@startuml
+!$Story_Layout = 'left-to-right'
+
+!include ../../../src/domainStoryComposite.puml
+
+Boundary(office) {
+    Call(conference)
+}
+note bottom of office : below
+
+Boundary(party) {
+    Group(people)
+}
+note left of party : left
+
+Boundary(Team) {
+    Person(pete)
+}
+note right of Team : right
+
+Boundary(company) {
+    Person(sarah)
+}
+note top of company : above
+@enduml

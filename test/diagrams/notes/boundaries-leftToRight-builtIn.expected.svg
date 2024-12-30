@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="652px" preserveAspectRatio="none" style="width:241px;height:652px;background:#FFFFFF;" version="1.1" viewBox="0 0 241 652" width="241px" zoomAndPan="magnify">
+  <defs/>
+  <g>
+    <!--cluster office-->
+    <g id="cluster_office">
+      <rect fill="none" height="135" rx="7.5" ry="7.5" style="stroke:#1F2833;stroke-width:2;stroke-dasharray:7.0,7.0;" width="95" x="36.3985" y="176"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="37.3379" x="65.2295" y="191.1318">office</text>
+    </g>
+    <!--cluster party-->
+    <g id="cluster_party">
+      <rect fill="none" height="159" rx="7.5" ry="7.5" style="stroke:#1F2833;stroke-width:2;stroke-dasharray:7.0,7.0;" width="84" x="151.3985" y="482"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="34.2344" x="176.2813" y="497.1318">party</text>
+    </g>
+    <!--cluster Team-->
+    <g id="cluster_Team">
+      <rect fill="none" height="159" rx="7.5" ry="7.5" style="stroke:#1F2833;stroke-width:2;stroke-dasharray:7.0,7.0;" width="84" x="41.8985" y="353"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="36.5723" x="65.6124" y="368.1318">Team</text>
+    </g>
+    <!--cluster company-->
+    <g id="cluster_company">
+      <rect fill="none" height="159" rx="7.5" ry="7.5" style="stroke:#1F2833;stroke-width:2;stroke-dasharray:7.0,7.0;" width="84" x="41.8985" y="9"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="61.4619" x="53.1675" y="24.1318">company</text>
+    </g>
+    <g id="elem_GMN4">
+      <path d="M57.8985,622 L57.8985,645.7988 L110.252,645.7988 L110.252,632 L100.252,622 L57.8985,622 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <path d="M100.252,622 L100.252,632 L110.252,632 L100.252,622 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="31.3535" x="63.8985" y="638.2559">below</text>
+    </g>
+    <g id="elem_GMN9">
+      <path d="M65.3985,580 L65.3985,603.7988 L102.4063,603.7988 L102.4063,590 L92.4063,580 L65.3985,580 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <path d="M92.4063,580 L92.4063,590 L102.4063,590 L92.4063,580 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="16.0078" x="71.3985" y="596.2559">left</text>
+    </g>
+    <g id="elem_GMN14">
+      <path d="M171.3985,450 L171.3985,473.7988 L215.7422,473.7988 L215.7422,460 L205.7422,450 L171.3985,450 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <path d="M205.7422,450 L205.7422,460 L215.7422,460 L205.7422,450 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="23.3438" x="177.3985" y="466.2559">right</text>
+    </g>
+    <g id="elem_GMN19">
+      <path d="M56.8985,321 L56.8985,344.7988 L110.5938,344.7988 L110.5938,331 L100.5938,321 L56.8985,321 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <path d="M100.5938,321 L100.5938,331 L110.5938,331 L100.5938,321 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="32.6953" x="62.8985" y="337.2559">above</text>
+    </g>
+    <!--entity conference-->
+    <g id="elem_conference">
+      <rect fill="none" height="58.1988" rx="2.5" ry="2.5" style="stroke:none;stroke-width:1;" width="79.373" x="44.3985" y="203"/>
+      <image height="38" width="38" x="64.885" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAYAAACoPemuAAADpElEQVR4Xs2Xa0gUURTHg15fhIKkvhRNZeUzLVctXG1JszLNxJIKpcUgRaIsDTEFLVHEUqLCwMSxLBU38pnlq4ypLTOQFKOHZbmuT9jNcFfXFW/3JmPTPa4WzNp++H3wv+fM+Ttzz7n3LkAILbBEgGApAMFSAIKlAITJyclFw8M/mB51L6PqgfT1DzBGo9GazhMbIBBTkafi0HoHd7TW1hUg8dqDHtU1snSe2ACBvKkNjjObIjB2EhSflMrSeWIDBHVvH7PZxRMYEnI6LrFmfNy4ks4VEyCoe/sZe1cvYEZIRFSMRqPRBtG5YgKEgcEhRup7AJgREhp+EnX3qOV0rpgAQav9zhyTRwEzQrz9gtDrN61yOldMgKDT65mE5DRgRgjp2AcVD+V0rpgAYWJiYllewd1S0n20ISG5+YXlOHY5nS8WQCDUNjyVO7nLgBkeidQP1TU+S8TDeDGdKxZAIHz42CkPPBQODBEcXL1RYbGCG9Hpbeg8MQECAX8iq5jzSQraFOF+eZXKYDDM/5bEU/mwNs9RsnOSN2S7VYpNVavoOHMBBB48QA/uDwnT8saOHI9EGjxK6DhzAQQhFdWPOd6Y/TYpamziFHSMuQCCEHy8WRV4+HcTePoEoJERnRsdZw6AQNP6ti1DuKnHJqSoxsb+4+Ln0etHrVMzsrmNW3b8Mma3zQvdvlfagDtzDR0rJkCYia6v3b4hxyJU/FvbLvMfq66pK5n3yU+DJ/wSTtlc5Lx91/QndfPea1S+bKmnY2lw7lKNVhus1+ud6N9mAwizUVZZw9njyc+bIzxXNjeYWnOjo2Orr+Xcmo4ljXQxPQvhLe99W3vHuW/dPZtN3SHAw+aiWFGm8JD5Txcja+7azTwOF5Dgt7OQj8NzUJqZfWNI+E/MhKk7BCg8F4bxcStFWVWep0/gH+bkkWfala9a7pAY/OmkaZlXP21ynmqY2TB1hwCF/wZ83rdq4l4ohGuOFHDBf0efje/C57mhvzHFE5uQzNI1QNF/QafTScIiolVkH6WL/QuiGyPgBW6df6eoct/BoxpTd9G5MIsxAu6qFR3v3gfl5Ba0yvYGg8JzYTZjPGRvxfdSd7awRLU7IBSts3cDJmbC7MZolM0t3KX0rK5d/iFqfBw3kOO67VZPZOPkgS80U6bJVpeRdZ2lc8HDzAEewEzn5y+ptfVP2IK7JeyVqzlsStplNu5CCktM9fcPnqBzwEMsBSBYCkCwFIBgKfwEYVFyrxk1B0sAAAAASUVORK5CYII=" y="206"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="59.373" x="54.3985" y="255.6559">conference</text>
+    </g>
+    <!--entity people-->
+    <g id="elem_people">
+      <rect fill="none" height="81.7988" rx="2.5" ry="2.5" style="stroke:none;stroke-width:1;" width="68" x="159.3985" y="509"/>
+      <image height="48" width="48" x="169.3985" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB+ElEQVR4Xu2WIUsEURSF959YTRaDySBoEwxGTcZNNrHYhC0mg8FiEiy2BcEqgmBTsKt/YP0DI2dhhjvnvPf2DV5YLhg+mP3ufefNzHszO6OmaUaRERENEdEQEQ0R0RARDRHREBENEdEQEQ0RJWazn+3JxWWzu3/YrKyuz8ExHGrcn8MrB4jIMX147CbLgR4ex3jltIhIUTNpzeReORYRDJbUBq9tbPXCcby5s9ebPLUNvHIYEQz2pZ00FQqHWtuHMdzjlcOIYOxdKS2r3R54ILnulcOIYNowwDWm1FuqMUN6RTBDwkq9pRozpFcEY9/Vf1l6rxxGBGMfPuzj3MNn93jq4fPKYUQwXq8/rxxGRAq7rIuo3R6LKOVYROSombxmUq+cFhElsKQeH2FeOUBENEREQ0SKt/eP16vrm2Z8fDJfavu9gmM41NCDXh7vnWMRYSc7PTvvTVILxmAsMrxy+PyyF/D59T05OBpL2LLBOeHc+Hx7P27v7mUgwJ3A0qKOu2HfFDiGQw09pTvtkcOv2O7g6flFmhFUWr4cyMJYzoPn3hI1OV2z/RvHw5RarqHg4vldzz01lHK6JnuFQ/9MSvA3ENdryeV0DamiF17ZqZxi0Quv7FROshiB/wtYNnIBURERDRHREBENEdEQEQ0R0RARDRHREBGNX2sWLY71bo8MAAAAAElFTkSuQmCC" y="519"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="36.0352" x="175.3809" y="578.2559">people</text>
+    </g>
+    <!--entity pete-->
+    <g id="elem_pete">
+      <rect fill="none" height="81.7988" rx="2.5" ry="2.5" style="stroke:none;stroke-width:1;" width="68" x="49.8985" y="380"/>
+      <image height="48" width="48" x="59.8985" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB9ElEQVR4Xt2WIUtFMRiG7z+xmiwGk0HQJhiMmow32cRiE24xGQwWk2CxCYJVBMGmYFf/wPUPTN4Lk/G+Zzvb2TzwGR44PPvO9m37ds4mzrmJZURYQ4Q1RFhDhDVEWEOENURYQ0QtH59fs+OTU7e+teOWllcX4BkObRxfi4gakKRPOgZi+L0aRAxl72AqycZALL8/FBFDiK08SicspZBWOyGiFNQ1Jzc9PHLz+femj8EzHMe1OBMiSuHVR6Ic4+FJzM7Oo7G5iCiFSyRceQZtYSze5ZhSRJRSmhBPmNtLEVGK+QlwQuZKCAcxTMrcITb/GQX8KfWY+JF5TF8lPLGdCGm18h4RtaCucTj5Og3XouYZEdYQYQ0RQ8Bn8u7+YVEmOKAomZW1jd8SwjMc2hCD2NQPrwQRuXTVeiktzoaIPl7f3l9KPpm5bO/uu8enZ8fj9SEiBrYcg/DAMXzZcDn1gTFKyktEF1iZVBIYFKWAuFQ5oA0xiE0tBsbK3Q0RTNddxw9ycXmVTLgPvIs+YouT07cIpusSdn1z6ziuFkyEx0ndbD0iGO40Z1WG0rXbHMOIYMLOULfc3ho+G9zOiGD+1QT8JP4SHo/zYUQw3OHYcD6MCIY7HBvOhxHBcIdjw/kwIqwhwhoirCHCGiKsIcIaIqwhwho/XuapJhKAviEAAAAASUVORK5CYII=" y="390"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="23.3555" x="72.2208" y="449.2559">pete</text>
+    </g>
+    <!--entity sarah-->
+    <g id="elem_sarah">
+      <rect fill="none" height="81.7988" rx="2.5" ry="2.5" style="stroke:none;stroke-width:1;" width="68" x="49.8985" y="36"/>
+      <image height="48" width="48" x="59.8985" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB9ElEQVR4Xt2WIUtFMRiG7z+xmiwGk0HQJhiMmow32cRiE24xGQwWk2CxCYJVBMGmYFf/wPUPTN4Lk/G+Zzvb2TzwGR44PPvO9m37ds4mzrmJZURYQ4Q1RFhDhDVEWEOENURYQ0QtH59fs+OTU7e+teOWllcX4BkObRxfi4gakKRPOgZi+L0aRAxl72AqycZALL8/FBFDiK08SicspZBWOyGiFNQ1Jzc9PHLz+femj8EzHMe1OBMiSuHVR6Ic4+FJzM7Oo7G5iCiFSyRceQZtYSze5ZhSRJRSmhBPmNtLEVGK+QlwQuZKCAcxTMrcITb/GQX8KfWY+JF5TF8lPLGdCGm18h4RtaCucTj5Og3XouYZEdYQYQ0RQ8Bn8u7+YVEmOKAomZW1jd8SwjMc2hCD2NQPrwQRuXTVeiktzoaIPl7f3l9KPpm5bO/uu8enZ8fj9SEiBrYcg/DAMXzZcDn1gTFKyktEF1iZVBIYFKWAuFQ5oA0xiE0tBsbK3Q0RTNddxw9ycXmVTLgPvIs+YouT07cIpusSdn1z6ziuFkyEx0ndbD0iGO40Z1WG0rXbHMOIYMLOULfc3ho+G9zOiGD+1QT8JP4SHo/zYUQw3OHYcD6MCIY7HBvOhxHBcIdjw/kwIqwhwhoirCHCGiKsIcIaIqwhwho/XuapJhKAviEAAAAASUVORK5CYII=" y="46"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="30.0176" x="68.8897" y="105.2559">sarah</text>
+    </g>
+    <path d="M36.1618,304.5717 C35.5161,304.9466 34.8766,305.3316 34.2441,305.7271 C32.9792,306.5181 31.7426,307.3509 30.5423,308.2278 C25.7412,311.735 21.5219,315.9462 18.3985,321 C1.8672,347.7482 1.8672,577.2518 18.3985,604 C26.881,617.725 43.4466,625.2354 57.7951,629.3093 " fill="none" style="stroke:#C5C6C7;stroke-width:1;stroke-dasharray:7.0,7.0;"/>
+    <path d="M102.6499,596.7888 C114.6962,600.0384 131.207,604.4925 146.7845,608.6948 C147.7581,608.9575 148.728,609.2191 149.693,609.4794 C150.1755,609.6096 150.6567,609.7394 151.1366,609.8689 " fill="none" style="stroke:#C5C6C7;stroke-width:1;stroke-dasharray:7.0,7.0;"/>
+    <path d="M126.0284,480.5219 C126.1431,480.4899 126.2579,480.4578 126.3728,480.4258 C126.6025,480.3617 126.8326,480.2975 127.0629,480.2332 C127.5237,480.1046 127.9856,479.9757 128.4485,479.8465 C143.263,475.7122 159.1507,471.2784 171.3842,467.8644 " fill="none" style="stroke:#C5C6C7;stroke-width:1;stroke-dasharray:7.0,7.0;"/>
+    <path d="M56.6841,329.3824 C42.5407,325.9298 26.5461,319.1831 18.3985,306 C3.7949,282.3708 3.8309,204.6514 18.3985,181 C21.5704,175.8502 25.8203,171.4753 30.6388,167.7651 C33.0481,165.91 35.5996,164.2211 38.2296,162.6845 C38.8871,162.3004 39.5495,161.9258 40.2158,161.5605 C40.549,161.3778 40.8831,161.1975 41.2181,161.0195 C41.3856,160.9305 41.5533,160.842 41.7212,160.7542 " fill="none" style="stroke:#C5C6C7;stroke-width:1;stroke-dasharray:7.0,7.0;"/>
+    <!--SRC=[NO-nQiGm38PtFuK2XKk7o-s5BhsXoms5TY-A8zy5RClOSeifVVVQIQyNAhH8_D-7r8M8PuTWiN0MI8u4FQhkxbKublVJkdw4dIKZU-5zdCyNsIdLpLxRF14Cms7j5FLXOeUpNzWZky1f5Xf2TbQf9yv-mbXwDcRMT0zV2ceTqTfUipSKoTUr-bQUXM1a4NR01jOyFC18bZytee1HojNp73c7FX07UvEqevjYILP3cpU2Dq9tvLye9lPL83Ty-RNnBLZnPTxmkhw8llnJ98nu-NC8XsRuZLO9Zln1Fm00]-->
+  </g>
+</svg>
