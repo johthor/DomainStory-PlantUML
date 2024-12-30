@@ -69,7 +69,7 @@ test::preprocess-all() {
 
 test::generate-all() {
   echo "*** ${FUNCNAME[0]} ***"
-  $PLANTUML_CMD -Playout=smetana -T"$DIAGRAM_FORMAT" -r "$TEST_ROOT/puml/**/*.puml"
+  $PLANTUML_CMD -T"$DIAGRAM_FORMAT" -r "$TEST_ROOT/puml/**/*.puml"
 
   for old in "$TEST_ROOT"/puml/**/*."$DIAGRAM_FORMAT"; do
     new=$(echo "$old" | sed -r "s!puml/(.+)\.$DIAGRAM_FORMAT!diagrams/\1\.$DIAGRAM_FORMAT!")
