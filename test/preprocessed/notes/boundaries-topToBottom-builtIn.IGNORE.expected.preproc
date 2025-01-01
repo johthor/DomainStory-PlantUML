@@ -1018,6 +1018,30 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
 
+    Rectangle "==company" as company   {
+    
+
+
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsarah" as sarah <<Person>> 
+
+    }
+note top of company : above
+
+
+
+
+    Rectangle "==team" as team   {
+    
+
+
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rpete" as pete <<Person>> 
+
+    }
+note right of team : !! right
+
+
+
+
     Rectangle "==office" as office   {
     
 
@@ -1038,28 +1062,4 @@ note bottom of office : below
 
     }
 note left of party : left
-
-
-
-
-    Rectangle "==Team" as Team   {
-    
-
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rpete" as pete <<Person>> 
-
-    }
-note right of Team : right
-
-
-
-
-    Rectangle "==company" as company   {
-    
-
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsarah" as sarah <<Person>> 
-
-    }
-note top of company : above
 @enduml

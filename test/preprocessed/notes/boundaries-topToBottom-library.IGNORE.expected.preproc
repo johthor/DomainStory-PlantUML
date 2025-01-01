@@ -7,7 +7,7 @@
 
 
 
-    left to right direction
+    top to bottom direction
 
 
 
@@ -1017,49 +1017,85 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
 
 
+        Rectangle "==one" as one
+        
+                note bottom of one : default
 
-    Rectangle "==office" as office   {
+    Rectangle "==one" as one   {
     
 
 
-            Card "<$ma_phone{scale=.8,color=#1f2833}>\rconference" as conference <<Call>> 
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rJake" as Jake <<Person>> 
 
     }
-note bottom of office : below
 
 
 
+        Rectangle "==two" as two
+        
+                note top of two :  above
 
-    Rectangle "==party" as party   {
+    Rectangle "==two" as two   {
     
 
 
-            Agent "<$ma_account_multiple_outline{scale=1,color=#1f2833}>\rpeople" as people <<Group>> 
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rSimon" as Simon <<Person>> 
 
     }
-note left of party : left
 
 
 
+        Rectangle "==three" as three
+        
+            note right of three :  !! right
 
-    Rectangle "==Team" as Team   {
+    Rectangle "==three" as three   {
     
 
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rpete" as pete <<Person>> 
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rSloane" as Sloane <<Person>> 
 
     }
-note right of Team : right
 
 
 
+        Rectangle "==four" as four
+        
+                note bottom of four :  below
 
-    Rectangle "==company" as company   {
+    Rectangle "==four" as four   {
     
 
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsarah" as sarah <<Person>> 
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rMarry" as Marry <<Person>> 
 
     }
-note top of company : above
+
+
+
+        Rectangle "==five" as five
+        
+            note left of five :  left
+
+    Rectangle "==five" as five   {
+    
+
+
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rAshley" as Ashley <<Person>> 
+
+    }
+
+
+
+        Rectangle "==six" as six
+        
+                note top of six :  inverse
+
+    Rectangle "==six" as six   {
+    
+
+
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rSam" as Sam <<Person>> 
+
+    }
 @enduml

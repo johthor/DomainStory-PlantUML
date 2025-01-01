@@ -1,29 +1,43 @@
 @startuml
-!$Story_Layout = 'top-to-bottom'
+!startsub setUp
+!$Story_Layout = 'left-to-right'
 
 !include ../../../src/domainStoryComposite.puml
+!endsub
 
+!startsub default
 Boundary(one, $note= default) {
     Person(Jake)
 }
+!endsub
 
-Boundary(two, $note=^ above) {
+!startsub above
+Boundary(two, $note=^ !! above) {
     Person(Simon)
 }
+!endsub
 
+!startsub right
 Boundary(three, $note=> right) {
     Person(Sloane)
 }
+!endsub
 
+!startsub below
 Boundary(four, $note=v below) {
     Person(Marry)
 }
+!endsub
 
+!startsub left
 Boundary(five, $note=< left) {
     Person(Ashley)
 }
+!endsub
 
+!startsub inverse
 Boundary(six, $note=~ inverse) {
     Person(Sam)
 }
+!endsub
 @enduml

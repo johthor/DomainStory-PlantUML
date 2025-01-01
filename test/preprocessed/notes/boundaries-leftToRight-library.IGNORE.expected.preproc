@@ -7,7 +7,7 @@
 
 
 
-    top to bottom direction
+    left to right direction
 
 
 
@@ -1019,7 +1019,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
         Rectangle "==one" as one
         
-                note bottom of one : default
+                note right of one : default
 
     Rectangle "==one" as one   {
     
@@ -1033,7 +1033,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
         Rectangle "==two" as two
         
-                note top of two :  above
+                note bottom of two :  !! above
 
     Rectangle "==two" as two   {
     
@@ -1061,7 +1061,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
         Rectangle "==four" as four
         
-                note bottom of four :  below
+                note top of four :  below
 
     Rectangle "==four" as four   {
     
@@ -1089,7 +1089,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
         Rectangle "==six" as six
         
-                note top of six :  inverse
+                note left of six :  inverse
 
     Rectangle "==six" as six   {
     

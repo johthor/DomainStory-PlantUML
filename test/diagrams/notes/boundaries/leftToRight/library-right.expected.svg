@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="169px" preserveAspectRatio="none" style="width:177px;height:169px;background:#FFFFFF;" version="1.1" viewBox="0 0 177 169" width="177px" zoomAndPan="magnify">
+  <defs/>
+  <g>
+    <!--cluster three-->
+    <g id="cluster_three">
+      <rect fill="none" height="159" rx="7.5" ry="7.5" style="stroke:#1F2833;stroke-width:2;stroke-dasharray:7.0,7.0;" width="84" x="14" y="4"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="34.2344" x="38.8828" y="19.1318">three</text>
+    </g>
+    <g id="elem_GMN3">
+      <path d="M126,131 L126,154.7988 L170.3438,154.7988 L170.3438,141 L160.3438,131 L126,131 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <path d="M160.3438,131 L160.3438,141 L170.3438,141 L160.3438,131 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="23.3438" x="132" y="147.2559">right</text>
+    </g>
+    <!--entity Sloane-->
+    <g id="elem_Sloane">
+      <rect fill="none" height="81.7988" rx="2.5" ry="2.5" style="stroke:none;stroke-width:1;" width="68" x="22" y="31"/>
+      <image height="48" width="48" x="32" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB9ElEQVR4Xt2WIUtFMRiG7z+xmiwGk0HQJhiMmow32cRiE24xGQwWk2CxCYJVBMGmYFf/wPUPTN4Lk/G+Zzvb2TzwGR44PPvO9m37ds4mzrmJZURYQ4Q1RFhDhDVEWEOENURYQ0QtH59fs+OTU7e+teOWllcX4BkObRxfi4gakKRPOgZi+L0aRAxl72AqycZALL8/FBFDiK08SicspZBWOyGiFNQ1Jzc9PHLz+femj8EzHMe1OBMiSuHVR6Ic4+FJzM7Oo7G5iCiFSyRceQZtYSze5ZhSRJRSmhBPmNtLEVGK+QlwQuZKCAcxTMrcITb/GQX8KfWY+JF5TF8lPLGdCGm18h4RtaCucTj5Og3XouYZEdYQYQ0RQ8Bn8u7+YVEmOKAomZW1jd8SwjMc2hCD2NQPrwQRuXTVeiktzoaIPl7f3l9KPpm5bO/uu8enZ8fj9SEiBrYcg/DAMXzZcDn1gTFKyktEF1iZVBIYFKWAuFQ5oA0xiE0tBsbK3Q0RTNddxw9ycXmVTLgPvIs+YouT07cIpusSdn1z6ziuFkyEx0ndbD0iGO40Z1WG0rXbHMOIYMLOULfc3ho+G9zOiGD+1QT8JP4SHo/zYUQw3OHYcD6MCIY7HBvOhxHBcIdjw/kwIqwhwhoirCHCGiKsIcIaIqwhwho/XuapJhKAviEAAAAASUVORK5CYII=" y="41"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="37.3652" x="37.3174" y="100.2559">Sloane</text>
+    </g>
+    <path d="M98.1215,143 C98.2116,143 98.3018,143 98.3919,143 C98.5722,143 98.7526,143 98.9331,143 C99.6549,143 100.3777,143 101.1009,143 C103.9936,143 106.8912,143 109.7459,143 C115.4554,143 120.9934,143 125.9771,143 " fill="none" style="stroke:#C5C6C7;stroke-width:1;stroke-dasharray:7.0,7.0;"/>
+    <!--SRC=[hOp92SCm403_ha8gm58LmUIJW4aAMDbhHx0wsEFXxeq_hY0mls76TuQzW2CucgcJWWeLXi7dkf2jA9PS2F6cMw5OcwB4rAokm1bb9Dpqq-Qy_tIad1Zu2C_fzPuVuGgye7xxdvzycHC0]-->
+  </g>
+</svg>

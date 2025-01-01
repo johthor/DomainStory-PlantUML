@@ -1,0 +1,6 @@
+@startuml
+!pragma layout smetana
+
+!includesub ../../../../puml/notes/boundaries-leftToRight-builtIn.IGNORE.puml!setUp
+!includesub ../../../../puml/notes/boundaries-leftToRight-builtIn.IGNORE.puml!right
+@enduml

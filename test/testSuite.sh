@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+shopt -s globstar
+
 TEST_ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 
 TEST_FILES=$(find "$TEST_ROOT" -type f -name '*.test.sh' | sort)
@@ -40,7 +42,8 @@ test::run-tests() {
   test::check-sharness "$@"
   test::check-deps "$@"
   test::preprocess-all "$@"
-  test::generate-all "$@"
+  test::generate-all puml "$@"
+  test::generate-all puml-smetana "$@"
   echo "*** ${FUNCNAME[0]} ***"
   for testFile in $TEST_FILES ; do
     DIAGRAM_FORMAT=$DIAGRAM_FORMAT $testFile
@@ -55,11 +58,13 @@ test::aggregate() {
 }
 
 test::preprocess-all() {
-  echo "*** ${FUNCNAME[0]} ***"
-  $PLANTUML_CMD -preproc -r "$TEST_ROOT/puml/**/*.puml"
+  pumlDir="${1:-puml}"
+  echo "*** ${FUNCNAME[0]} $pumlDir ***"
 
-  for old in "$TEST_ROOT"/puml/**/*.preproc; do
-    new=$(echo "$old" | sed -r "s!puml/(.+)\.preproc!preprocessed/\1\.preproc!")
+  $PLANTUML_CMD -preproc -r "$TEST_ROOT/$pumlDir/**/*.puml"
+
+  for old in "$TEST_ROOT/$pumlDir"/**/*.preproc; do
+    new=$(echo "$old" | sed -r "s!$pumlDir/(.+)\.preproc!preprocessed/\1\.preproc!")
 
     mkdir -p "$(dirname "$new")"
 
@@ -68,11 +73,13 @@ test::preprocess-all() {
 }
 
 test::generate-all() {
-  echo "*** ${FUNCNAME[0]} ***"
-  $PLANTUML_CMD -T"$DIAGRAM_FORMAT" -r "$TEST_ROOT/puml/**/*.puml"
+  pumlDir="${1:-puml}"
+  echo "*** ${FUNCNAME[0]} $pumlDir ***"
 
-  for old in "$TEST_ROOT"/puml/**/*."$DIAGRAM_FORMAT"; do
-    new=$(echo "$old" | sed -r "s!puml/(.+)\.$DIAGRAM_FORMAT!diagrams/\1\.$DIAGRAM_FORMAT!")
+  $PLANTUML_CMD -T"$DIAGRAM_FORMAT" -r "$TEST_ROOT/$pumlDir/**.puml"
+
+  for old in "$TEST_ROOT/$pumlDir"/**/*."$DIAGRAM_FORMAT"; do
+    new=$(echo "$old" | sed -r "s!$pumlDir/(.+)\.$DIAGRAM_FORMAT!diagrams/\1\.$DIAGRAM_FORMAT!")
 
     mkdir -p "$(dirname "$new")"
 
