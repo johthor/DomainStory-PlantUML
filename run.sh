@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # This script is intended to be run through run.sh (https://run.jotaen.net)
 
 PUML_OPTIONS='-Tsvg'
@@ -62,12 +62,59 @@ run::convertAssets() {
     puml::convert "$sample" docs/assets
   done
 
-  puml::convert test/styling/theme-sketchy.puml docs/assets
+  puml::convert test/puml/styling/theme-bluegray.puml docs/assets
 }
 
-# Extract Table of Contents from Readme
-run::extractTOC() {
-  grep -e '^##' README.md
+run::compare() {
+  magick compare -metric MAE \
+    "$1" \
+    "$2" \
+    null: 2>&1
+}
+
+run::compareImages() {
+  source ./test/lib/testUtils.sh
+  export SHARNESS_TEST_DIRECTORY="$PROJECT_ROOT/test"
+  compareImages "diagrams/$1" .svg
+}
+
+run::computeDiff() {
+  source ./test/lib/testUtils.sh
+  export SHARNESS_TEST_DIRECTORY="$PROJECT_ROOT/test"
+  computeDiff "diagrams/$1" .svg
+}
+
+# Run tests in ./test
+run::test() {
+  set -e
+
+  mkdir -p test/lib
+
+  if [ ! -f test/lib/plantuml.version ]
+  then
+    tag=$(curl -s https://api.github.com/repos/plantuml/plantuml/releases/latest | jq -r '.tag_name')
+    echo "$tag" > test/lib/plantuml.version
+  fi
+
+  if [ ! -f test/lib/plantuml.jar ]
+  then
+    version=$(cat test/lib/plantuml.version)
+    curl "https://github.com/plantuml/plantuml/releases/download/${version}/plantuml-${version#v}.jar" -L -o test/lib/plantuml.jar
+  fi
+
+  chmod +x test/testSuite.sh
+
+  cd test
+  ./testSuite.sh
+}
+
+# Clean tests in ./test
+run::test-clean() {
+  set -e
+  chmod +x test/testSuite.sh
+
+  cd test
+  ./testSuite.sh clean
 }
 
 # Bake the next release version

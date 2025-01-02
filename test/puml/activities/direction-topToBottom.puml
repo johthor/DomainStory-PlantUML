@@ -1,0 +1,26 @@
+@startuml
+!$Story_Layout = 'top-to-bottom'
+
+!include ../../../src/domainStoryComposite.puml
+
+Person(colleague1)
+Conversation(defaultMovie)
+Person(colleague2)
+Conversation(rightMovie)
+Person(colleague3)
+Conversation(leftMovie)
+Person(colleague4)
+Conversation(downMovie)
+Person(colleague5)
+Conversation(upMovie)
+Person(colleague6)
+Conversation(reverseMovie)
+Person(colleague7)
+
+activity(1, colleague1, talks about, defaultMovie, with, colleague2)
+activity(^2, colleague1, talks about, upMovie, with, colleague3)
+activity(>3, colleague1, talks about, rightMovie, with, colleague4)
+activity(v4, colleague1, talks about, downMovie, with, colleague5)
+activity(<5, colleague1, talks about, leftMovie, with, colleague6)
+activity(~6, colleague1, talks about, reverseMovie, with, colleague7)
+@enduml

@@ -1,5 +1,16 @@
 samples/*.png
 scrapbook
 
+# Test related
+test/**/*.png
+test/**/*.gif
+test/**/*.svg
+test/**/*.txt
+test/**/*.preproc
+
+!test/**/*.expected.png
+!test/**/*.expected.svg
+!test/**/*.expected.preproc
+
 # Build related
 *.bak

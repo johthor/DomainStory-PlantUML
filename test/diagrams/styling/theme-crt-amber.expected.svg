@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="457px" preserveAspectRatio="none" style="width:209px;height:457px;background:#282828;" version="1.1" viewBox="0 0 209 457" width="209px" zoomAndPan="magnify">
+  <defs/>
+  <g>
+    <rect fill="#282828" height="457" style="stroke:none;stroke-width:1;" width="209" x="0" y="0"/>
+    <!--cluster Party-->
+    <g id="cluster_Party">
+      <rect fill="#282828" height="439.44" rx="2.5" ry="2.5" style="stroke:#FFB000;stroke-width:1;" width="191" x="12" y="12"/>
+      <text fill="#FFB000" font-family="Verdana" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="48.0703" x="83.4648" y="30.0859">Party</text>
+    </g>
+    <!--entity Alice-->
+    <g id="elem_Alice">
+      <rect fill="#282828" height="85.0146" rx="2.5" ry="2.5" style="stroke:#FFB000;stroke-width:1;" width="68" x="29" y="50"/>
+      <image height="48" width="48" x="39" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB9UlEQVR4Xt2WsUrGMBSFC4IIggiCCIIIgnR1cXD1H93EVXBy1NXFwUnQ0UlwFdzcfAI3R5/AJ/ANKueHSDinSXPbWrgOH5Qvt8lNctOmquu68owIb4jwhghviPCGCG+I8IYIb4gYyuxg5/blarX5elpsmtdqDp7h0MbxQxExBCQZkk6BGH5vCCL68n63LMmmQCy/3xcRfUitPEonLqWYsXZChBXUNSf3drPS7O/tzkIMnuE4bowzIcIKrz4S5ZgAT+Lxci0ZW4oIK1wi8cozaItj8S7HWBFhxZoQT5jbrYiw4n4CnJC7EsJBjJNyd4jdf0YBf0oDLn5kAddXiUBqJ2LGWvmAiKGgrnE4+ToNN0bNMyK8IcIbIvqAz+TFyea8THBAUTLfzwu/JYRnOLQhBrG5H54FEaW01bqVMc6GiC6OD7c/LJ/MUj4flpqzoy3zF0pECmw5BuGBU4Sy4XLqAmNYyktEG1iZXBIYFKWAuFw5oA0xiM0tBsYq3Q0RTNtdJwxyf76eTbgLvIs+UotT0rcIpu0Sdn26UbQ6FjARHid3sw2IYLjTklXpS9tucwwjgok7Q91y+9jw2eB2RgTzryYQJvGX8HicDyOC4Q6nhvNhRDDc4dRwPowIhjucGs6HEeENEd4Q4Q0R3hDhDRHeEOENEd74Ae3Z5KedDgtbAAAAAElFTkSuQmCC" y="60"/>
+      <text fill="#FFB000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="32.8877" x="39" y="122.0752">Alice</text>
+    </g>
+    <!--entity weather-->
+    <g id="elem_weather">
+      <rect fill="#282828" height="61.4146" rx="2.5" ry="2.5" style="stroke:#FFB000;stroke-width:1;" width="76.8955" x="27.55" y="212.01"/>
+      <image height="38" width="38" x="37.55" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAYAAACoPemuAAABTklEQVR4XmPQ0NBgGIwYQ2CwYAyBwYIxBJwslQP2tvHefzKflS74ziy2+9Uxkot0tdXFcTrMyVIl4MsK5v//NzDQFf9ay/i/PUV8po6WOjdWh4FCCl0TvfDjeWz/bU1VFLA6DBS0MIWrqwXmVEZLJtAaIzvO2VKZsMNAmpDlaIVHHUYqHnUYqXjUYaTiUYeRikcdRioedRipeNRhpOJRh5GKh5/DgL0XnjgvOYwmMbUw2Q6riZVcDRSHa6YVJrozAnJYfbzE4S8rmTAMoTYm2H1DdtiJXu7/IEf9Xc/w/+1S5s8gOVpgojq8IIXovjkzgfNziItCMrI6emAUDrrDTvRy/fdzUAxB10QPjMJBdhgoKl2slGzQNdALo3BADgOlKVD0DVRIwTAKB+SwgUpT6BiFs7ZG4P5AhxQMo3BMDFRl0BUMFMYQGCwYQ2CwYACnt5iv6m/VYQAAAABJRU5ErkJggg==" y="215.01"/>
+      <text fill="#FFB000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="56.8955" x="37.55" y="267.4852">weather</text>
+    </g>
+    <!--entity Bob-->
+    <g id="elem_Bob">
+      <rect fill="#282828" height="85.0146" rx="2.5" ry="2.5" style="stroke:#FFB000;stroke-width:1;" width="68" x="32" y="350.43"/>
+      <image height="48" width="48" x="42" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB9UlEQVR4Xt2WsUrGMBSFC4IIggiCCIIIgnR1cXD1H93EVXBy1NXFwUnQ0UlwFdzcfAI3R5/AJ/ANKueHSDinSXPbWrgOH5Qvt8lNctOmquu68owIb4jwhghviPCGCG+I8IYIb4gYyuxg5/blarX5elpsmtdqDp7h0MbxQxExBCQZkk6BGH5vCCL68n63LMmmQCy/3xcRfUitPEonLqWYsXZChBXUNSf3drPS7O/tzkIMnuE4bowzIcIKrz4S5ZgAT+Lxci0ZW4oIK1wi8cozaItj8S7HWBFhxZoQT5jbrYiw4n4CnJC7EsJBjJNyd4jdf0YBf0oDLn5kAddXiUBqJ2LGWvmAiKGgrnE4+ToNN0bNMyK8IcIbIvqAz+TFyea8THBAUTLfzwu/JYRnOLQhBrG5H54FEaW01bqVMc6GiC6OD7c/LJ/MUj4flpqzoy3zF0pECmw5BuGBU4Sy4XLqAmNYyktEG1iZXBIYFKWAuFw5oA0xiM0tBsYq3Q0RTNtdJwxyf76eTbgLvIs+UotT0rcIpu0Sdn26UbQ6FjARHid3sw2IYLjTklXpS9tucwwjgok7Q91y+9jw2eB2RgTzryYQJvGX8HicDyOC4Q6nhvNhRDDc4dRwPowIhjucGs6HEeENEd4Q4Q0R3hDhDRHeEOENEd74Ae3Z5KedDgtbAAAAAElFTkSuQmCC" y="360.43"/>
+      <text fill="#FFB000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="26.8174" x="42" y="422.5052">Bob</text>
+    </g>
+    <!--link Alice to weather-->
+    <g id="link_Alice_weather">
+      <path d="M63.84,135.18 C64.34,159.5 64.83,183.6212 65.27,205.6212 " fill="none" id="Alice-to-weather" style="stroke:#FFB000;stroke-width:1;"/>
+      <polygon fill="#FFB000" points="65.39,211.62,69.2092,202.5418,65.29,206.621,61.2108,202.7018,65.39,211.62" style="stroke:#FFB000;stroke-width:1;"/>
+      <text fill="#FFB000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="122.9858" x="65.77" y="179.0798">(1) talks about the</text>
+    </g>
+    <!--link weather to Bob-->
+    <g id="link_weather_Bob">
+      <path d="M66,273.71 C66,295.7 66,319.85 66,344.19 " fill="none" id="weather-to-Bob" style="stroke:#FFB000;stroke-width:1;"/>
+      <polygon fill="#FFB000" points="66,350.19,70,341.19,66,345.19,62,341.19,66,350.19" style="stroke:#FFB000;stroke-width:1;"/>
+      <text fill="#FFB000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="27.5552" x="67" y="317.4998">with</text>
+    </g>
+    <!--SRC=[JOvD2i8m48NtESKKX3RG7po02-tMHS43o3GDD9XaIZgj1F7kfjM5mriC7- -3b_6edGOLk4BNwo14ThWnXNY_OgI5uGGvqrGnLJqnayjJmtXbbq53NJVVp44r0paqVdTRSXFDXdKzBSuASQ753nXYqM7WAE4b85sdmqo-E5kZjDn9ItvD4Daa_jIOjWNvtxrGByLR25HiLiEnE9Qm-oKmsiSCs6-RarV2pq-FuR64JVq0]-->
+  </g>
+</svg>

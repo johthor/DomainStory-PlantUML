@@ -1,60 +1,3 @@
-' Helper procedures
-' ##################################
-
-' Be aware this function might produce side effects
-!function $ensureElementExists($element, $tag, $note, $shape, $scale, $color, $background)
-    !$separatorPosition = %strpos($element, ":")
-
-    !if $separatorPosition > -1
-        !$workObjectCounter = $workObjectCounter + 1
-
-        !$elementKind = %substr($element, 0, $separatorPosition)
-        !$elementLabel = %substr($element, $separatorPosition + 1)
-        !$elementName = $elementKind + $workObjectCounter
-
-        'Element($kind, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-        %invoke_procedure($elementKind, $elementName, $elementLabel, $tag, $note, $shape, $scale, $color, $background)
-
-        !return $elementName
-    !else
-        $createElementNote($element, $note)
-
-        !return $element
-    !endif
-!endfunction
-
-!procedure $createConnection($from, $to, $arrow = "-->", $label = "", $stepLabel = "")
-    !if %substr($arrow, 0, 1) == "<"
-        !if $label
-            !if $stepLabel
-                !if $Step_LabelPosition == "combined"
-                    $to $arrow $from : $label $stepLabel
-                !else
-                    $to $arrow "$stepLabel" $from : $label
-                !endif
-            !else
-                $to $arrow $from : $label
-            !endif
-        !else
-            $to $arrow $from
-        !endif
-    !else
-        !if $label
-            !if $stepLabel
-                !if $Step_LabelPosition == "combined"
-                    $from $arrow $to : $stepLabel $label
-                !else
-                    $from "$stepLabel" $arrow $to : $label
-                !endif
-            !else
-                $from $arrow $to : $label
-            !endif
-        !else
-            $from $arrow $to
-        !endif
-    !endif
-!endprocedure
-
 ' Helper functions
 ' ##################################
 
@@ -150,11 +93,14 @@
 
 !function $computeStepNumber($step)
     !if $step == "_" || $step == "+"
-        !$result = $stepCounter
         !$stepCounter = $stepCounter + 1
-        !return $result
-    !elseif $step == "|"
         !return $stepCounter
+    !elseif $step == "|"
+        !if $stepCounter
+            !return $stepCounter
+        !else
+            !return '?'
+        !endif
     !elseif %substr($step, 0, 1) == "="
         !$stepCounter = %intval(%substr($step, 1))
         !return $stepCounter

@@ -242,9 +242,9 @@
 !global $Element_Shape = Default
 
 $declareStyleProperty("", FontColor, Element, modeAdjustedColor("#0B0C10"), $themeable = %true())
-$declareStyleProperty("", FontName, Element, $themeable = %true())
-$declareStyleProperty("", FontSize, Element, $themeable = %true())
-$declareStyleProperty("", FontStyle, Element, $themeable = %true())
+$declareStyleProperty("", FontName, Element, "Arial, Helvetica, SansSerif", $themeable = %true())
+$declareStyleProperty("", FontSize, Element, 12, $themeable = %true())
+$declareStyleProperty("", FontStyle, Element, normal, $themeable = %true())
 $declareStyleProperty("", TextAlignment, Element, center, $themeable = %true())
 
 $declareStyleProperty("", BackgroundColor, Element, "none", $themeable = %true())
@@ -356,7 +356,7 @@ $declareStyleProperty("", Color, Activity, modeAdjustedColor("#c5c6c7", "#c5c6c7
 ' Step Label Styles
 ' ----------------------------------
 
-$declareStyleProperty("", LabelPosition, Step, combined, $themeable = %false(), $skinParam = %false())
+$declareStyleProperty("", LabelPosition, Step, prefix, $themeable = %false(), $skinParam = %false())
 $declareStyleProperty("", LabelFraming, Step, round, $themeable = %false(), $skinParam = %false())
 $declareStyleProperty("", FontStyle, Step, plain, $themeable = %false(), $skinParam = %false())
 $declareStyleProperty("", FontColor, Step, modeAdjustedColor("#0B0C10"), $themeable = %true(), $skinParam = %false())
@@ -367,7 +367,7 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
 ' Mutable state
 ' ##################################
 
-!global $stepCounter = 1
+!global $stepCounter = 0
 !global $workObjectCounter = 0
 
 ' Actors
@@ -425,15 +425,9 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
     $extendStyleDeclarations("Actor", "Person", "account")
 !endif
 
-!unquoted function Person($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+!unquoted procedure Person($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
     Actor("Person", $Person_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-
-    !if $activityContext == "open"
-        !return $name
-    !else
-        !return ""
-    !endif
-!endfunction
+!endprocedure
 
 ' Group Actor
 ' ==================================
@@ -567,15 +561,9 @@ $extendStyleDeclarations("Object", "Call", "phone")
     $extendStyleDeclarations("Object", "Info", "information")
 !endif
 
-!unquoted function Info($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+!unquoted procedure Info($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
     Object("Info", $Info_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-
-    !if $activityContext == "open"
-        !return $name
-    !else
-        !return ""
-    !endif
-!endfunction
+!endprocedure
 
 ' Boundaries
 ' ##################################
@@ -588,7 +576,7 @@ $extendStyleDeclarations("Object", "Call", "phone")
     !endif
 
     !if $note
-        $shape $name
+        $shape "==$label" as $name
         $createBoundaryNote($name, $note)
     !endif
 
@@ -598,10 +586,6 @@ $extendStyleDeclarations("Object", "Call", "phone")
 
 ' Activities
 ' ##################################
-
-!global $stepCounter = 0
-!global $objectCounter = 0
-!global $lastObjectName = ""
 
 !unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "", $targetTag="", $targetNote = "", $targetShape = "", $targetScale = "", $targetColor = "", $targetBackground = "")
     ' Decide on the activity direction
@@ -623,21 +607,81 @@ $extendStyleDeclarations("Object", "Call", "phone")
 
     ' Handle first connection between subject and object
     !$object = $ensureElementExists($object, $tag, $note, $shape, $scale, $color, $background)
-    !$lastObjectName = $object
 
     $createConnection($subject, $object, $objectArr, $predicate, $computeStepLabel($step))
 
     ' Handle possible second connection between object and target
     !$target = $ensureElementExists($target, $targetTag, $targetNote, $targetShape, $targetScale, $targetColor, $targetBackground)
 
-    !if $post && $post != "_"
-        !if $target && $target != "_"
+    !if $target && $target != "_"
+        !if $post && $post != "_"
             $createConnection($object, $target, $targetArr, $post)
         !else
+            $createConnection($object, $target, $targetArr)
+        !endif
+    !else
+        !if $post && $post != "_"
             $createConnection($object, $post, $targetArr)
         !endif
     !endif
 !endprocedure
+
+!procedure $createConnection($from, $to, $arrow = "-->", $action = "", $stepLabel = "")
+    !$backwardsArrow = %substr($arrow, 0, 1) == "<"
+    !if $action
+        !if $stepLabel
+            !if $backwardsArrow
+                !if $Step_LabelPosition == "tail"
+                    $to $arrow "$stepLabel" $from : $action
+                !elseif $Step_LabelPosition == "combined"
+                    $to $arrow $from : $action $stepLabel
+                !else
+                    $to $arrow $from : $stepLabel $action
+                !endif
+            !else
+                !if $Step_LabelPosition == "tail"
+                    $from "$stepLabel" $arrow $to : $action
+                !else
+                    $from $arrow $to : $stepLabel $action
+                !endif
+            !endif
+        !else
+            !if $backwardsArrow
+                $to $arrow $from : $action
+            !else
+                $from $arrow $to : $action
+            !endif
+        !endif
+    !else
+        !if $backwardsArrow
+            $to $arrow $from
+        !else
+            $from $arrow $to
+        !endif
+    !endif
+!endprocedure
+
+' Be aware this function might produce side effects
+!function $ensureElementExists($element, $tag, $note, $shape, $scale, $color, $background)
+    !$separatorPosition = %strpos($element, ":")
+
+    !if $separatorPosition > -1
+        !$workObjectCounter = $workObjectCounter + 1
+
+        !$elementKind = %substr($element, 0, $separatorPosition)
+        !$elementLabel = %substr($element, $separatorPosition + 1)
+        !$elementName = $elementKind + $workObjectCounter
+
+        'Element($kind, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+        %invoke_procedure($elementKind, $elementName, $elementLabel, $tag, $note, $shape, $scale, $color, $background)
+
+        !return $elementName
+    !else
+        $createElementNote($element, $note)
+
+        !return $element
+    !endif
+!endfunction
 
 ' Notes
 ' ##################################
@@ -704,63 +748,6 @@ $extendStyleDeclarations("Object", "Call", "phone")
             !else
                 note bottom of $reference : $note
             !endif
-        !endif
-    !endif
-!endprocedure
-
-' Helper procedures
-' ##################################
-
-' Be aware this function might produce side effects
-!function $ensureElementExists($element, $tag, $note, $shape, $scale, $color, $background)
-    !$separatorPosition = %strpos($element, ":")
-
-    !if $separatorPosition > -1
-        !$workObjectCounter = $workObjectCounter + 1
-
-        !$elementKind = %substr($element, 0, $separatorPosition)
-        !$elementLabel = %substr($element, $separatorPosition + 1)
-        !$elementName = $elementKind + $workObjectCounter
-
-        'Element($kind, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-        %invoke_procedure($elementKind, $elementName, $elementLabel, $tag, $note, $shape, $scale, $color, $background)
-
-        !return $elementName
-    !else
-        $createElementNote($element, $note)
-
-        !return $element
-    !endif
-!endfunction
-
-!procedure $createConnection($from, $to, $arrow = "-->", $label = "", $stepLabel = "")
-    !if %substr($arrow, 0, 1) == "<"
-        !if $label
-            !if $stepLabel
-                !if $Step_LabelPosition == "combined"
-                    $to $arrow $from <<backwards>> : $label $stepLabel
-                !else
-                    $to $arrow "$stepLabel" $from <<backwards>> : $label
-                !endif
-            !else
-                $to $arrow $from : $label
-            !endif
-        !else
-            $to $arrow $from
-        !endif
-    !else
-        !if $label
-            !if $stepLabel
-                !if $Step_LabelPosition == "combined"
-                    $from $arrow $to <<forwards>> : $stepLabel $label
-                !else
-                    $from "$stepLabel" $arrow $to <<forwards>> : $label
-                !endif
-            !else
-                $from $arrow $to : $label
-            !endif
-        !else
-            $from $arrow $to
         !endif
     !endif
 !endprocedure
@@ -860,11 +847,14 @@ $extendStyleDeclarations("Object", "Call", "phone")
 
 !function $computeStepNumber($step)
     !if $step == "_" || $step == "+"
-        !$result = $stepCounter
         !$stepCounter = $stepCounter + 1
-        !return $result
-    !elseif $step == "|"
         !return $stepCounter
+    !elseif $step == "|"
+        !if $stepCounter
+            !return $stepCounter
+        !else
+            !return '?'
+        !endif
     !elseif %substr($step, 0, 1) == "="
         !$stepCounter = %intval(%substr($step, 1))
         !return $stepCounter

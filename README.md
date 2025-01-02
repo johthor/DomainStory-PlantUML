@@ -1,7 +1,11 @@
 # Domain Storytelling with PlantUML
 
-Use [PlantUML](http://en.plantuml.com/) to describe and document a domain story which was developed in a
+Use [PlantUML](http://plantuml.com/)
+to describe and document a domain story which was developed in a
 [Domain Storytelling](http://www.domainstorytelling.org) workshop.
+
+DomainStory-PlantUML includes macros, themes, and other tools
+for recording domain stories visually with PlantUML.
 
 <details>
 <summary><strong>Table of Contents</strong></summary>
@@ -23,15 +27,34 @@ Use [PlantUML](http://en.plantuml.com/) to describe and document a domain story 
     * [Airport Bus](#airport-bus)
 * [License](#license)
 * [Acknowledgements](#acknowledgements)
-
 </details>
+
+> [!IMPORTANT]
+> There is a delay between the release of a new library version
+> and the availability as part of the PlantUML standard library.
+> Therefore, the version you are using might not be compatible
+> with the current documentation.
+>
+> <details>
+> <summary><strong>Show which version of PlantUML includes which library version</strong></summary>
+> 
+> | DomainStory                                                                             | PlantUML       |
+> |-----------------------------------------------------------------------------------------|----------------|
+> | [Delta v0.4.0](https://github.com/johthor/DomainStory-PlantUML/tree/v0.4.0)             | upcoming       |
+> | [Charlie's Quality v0.3.1](https://github.com/johthor/DomainStory-PlantUML/tree/v0.3.1) | since 1.2024.8 |
+> | [Charlie v0.3](https://github.com/johthor/DomainStory-PlantUML/tree/v0.3)               | since 1.2022.5 |
+> | [Bravo v0.2](https://github.com/johthor/DomainStory-PlantUML/tree/v0.2)                 | not packaged   |
+> | [Alpha v0.1](https://github.com/johthor/DomainStory-PlantUML/tree/v0.1)                 | not packaged   |
+>
+> See the [CHANGELOG](CHANGELOG.md) for detailed differences between the versions.
+> </details>
 
 ## Getting Started
 
 At the top of your domain story `.puml` file,
 you need to include the `domainStory.puml` file found in the root of this repository.
 
-The library is now part of the [PlantUML Standard Library](https://plantuml.com/en/stdlib)
+The library is part of the [PlantUML Standard Library](https://plantuml.com/en/stdlib) since PlantUML v1.2022.5
 and may be included via
 
 ```puml
@@ -175,7 +198,8 @@ and is therefore the default orientation.
 If you combine multiple stories into a domain journey,
 a portrait orientation might produce better results.
 
-> :information_source: Wrangling diagram elements to an exact position
+> [!NOTE]
+> Wrangling diagram elements to an exact position
 > or layout is not what PlantUML is for.
 
 If the default layout does not please your inner artist,
@@ -273,16 +297,17 @@ See the following test cases for more details
 
 The appearance of a domain story may be influenced via any of the following methods.
 
-> :information_source: You may also mix and match all the approaches to get the look you desire.
+> [!TIP]
+> You may also mix and match all the approaches to get the look you desire.
 
 #### Method 1: PlantUML Themes and Dark Mode
 The library is compatible with [PlantUML themes](https://plantuml.com/en/theme) like
-`sunlust` (light) `crt-amber` (dark) or `sketchy` (mixed) and others.
+`bluegray` (light) or `crt-amber` (dark) and others.
 Choose the theme before including the library.
 
 ```puml
 @startuml
-!theme sketchy
+!theme bluegray
 
 !include <DomainStory/domainStory>
 
@@ -292,7 +317,7 @@ Choose the theme before including the library.
 
 This will result in the following appearance.
 
-![theme sketchy sample](docs/assets/theme-sketchy.svg)
+![theme bluegray sample](docs/assets/theme-bluegray.svg)
 
 If you want to use PlantUML's dark mode, please also specify the mode via the `-D` commandline option e.g.
 
@@ -306,11 +331,18 @@ Which will be rendered as below.
 
 See the following test cases for more details.
 
-* [Using theme `sunlust`](test/styling/theme-sunlust.puml)
-* [Using theme `sketchy`](test/styling/theme-sketchy.puml)
-* [Using theme `crt-amber`](test/styling/theme-crt-amber.puml)
+* [Using theme `bluegray`](test/puml/styling/theme-bluegray.puml)
+* [Using theme `reddress-darkgreen`](test/puml/styling/theme-reddress-darkgreen.puml)
+* [Using theme `crt-amber`](test/puml/styling/theme-crt-amber.puml)
 
 #### Method 2: Global Style declarations
+
+> [!WARNING]
+> **Breaking Change:**
+> The global styling declarations have been rewritten between the versions
+> [Charlie's Quality v0.3.1](https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.3.1)
+> and [Delta v0.4.0](https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.4.0).
+
 If no theme is used, a fallback design is used which is heavily inspired by [Egon.io](https://egon.io/).
 The appearance of most of the elements may be customized via the following global
 style declarations.
@@ -373,7 +405,8 @@ Person(Alice)
 @enduml
 ```
 
-> :information_source: You might want to set a matching `$Step_BackgroundColor` and `$Step_FontColor` when using themes.
+> [!TIP]
+> You might want to set a matching `$Step_BackgroundColor` and `$Step_FontColor` when using themes.
 
 See the test case [Global style declarations](test/styling/customizeGlobalStyles.puml) for more details.
 
@@ -453,7 +486,8 @@ Boundary(System) {
 @enduml
 ```
 
-> :warning: **If you want your dynamically created objects to be placed inside a boundary.**
+> [!WARNING]
+> **If you want your dynamically created objects to be placed inside a boundary.**
 > You need to declare the activity inside said boundary.
 
 See the test case for [dynamic object creation](test/activities/objectCreation.puml) for more details.
@@ -462,6 +496,14 @@ See the test case for [dynamic object creation](test/activities/objectCreation.p
 
 If the aforementioned lay-outing techniques described in [Basic Story Layout](#basic-story-layout) are not enough,
 the `activity` macro supports even more layout tricks.
+
+#### Control the Activity's Direction via the Step Parameter
+
+> [!WARNING]
+> **Breaking Change:**
+> The activity direction indicator has switched from suffix to prefix implementation between the versions
+> [Charlie's Quality v0.3.1](https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.3.1)
+> and [Delta v0.4.0](https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.4.0).
 
 In addition to the step counter specifications described above,
 the step value may also specify the direction of the activity where `X` is one of the specifications above.
@@ -480,6 +522,8 @@ See the test cases for more details
 * [activity directions for top-to-bottom layout](test/activities/direction-topToBottom.puml)
 * [activity directions for both layouts](test/activities/direction-optionalParameters.puml)
 
+#### Specify the Connecting Arrows Directly
+
 Furthermore, the `activity` macro also provides two optional parameters,
 which allow you to specify the arrow orientation in full details.
 
@@ -494,7 +538,7 @@ see [The Hitchhiker's Guide to PlantUML](https://crashedmind.github.io/PlantUMLH
 activity(1, Alice, talks about the, weather, with, Bob, -->, ->)
 ```
 
-You can use underscores `_` in cases where you don't have a _post action_,
+You can use underscores `_` in cases where you don't have a _post-action_,
 or _target_ but want to specify the arrow orientation directly.
 When you specify only the arrow between subject and object,
 the specification will also be used for the arrow between object and target.
@@ -505,6 +549,8 @@ activity(1, Alice, talks about the, weather, , Bob, <--, <--)
 activity(1, Alice, talks about the, weather, Bob, _, <--)
 activity(1, Alice, talks about the, weather, _, _, <--)
 ```
+
+#### Hidden Arrows for Layouting
 
 If all of that does not help your layout problems,
 there's always the possibility to introduce hidden connections

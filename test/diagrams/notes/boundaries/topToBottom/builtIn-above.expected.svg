@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="160px" preserveAspectRatio="none" style="width:141px;height:160px;background:#FFFFFF;" version="1.1" viewBox="0 0 141 160" width="141px" zoomAndPan="magnify">
+  <defs/>
+  <g>
+    <!--cluster company-->
+    <g id="cluster_company">
+      <rect fill="none" height="117" rx="7.5" ry="7.5" style="stroke:#1F2833;stroke-width:2;stroke-dasharray:7.0,7.0;" width="118" x="17" y="37"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="61.4619" x="45.269" y="52.1318">company</text>
+    </g>
+    <g id="elem_GMN4">
+      <path d="M6,4 L6,27.7988 L59.6953,27.7988 L59.6953,14 L49.6953,4 L6,4 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <path d="M49.6953,4 L49.6953,14 L59.6953,14 L49.6953,4 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="32.6953" x="12" y="20.2559">above</text>
+    </g>
+    <!--entity sarah-->
+    <g id="elem_sarah">
+      <rect fill="none" height="81.7988" rx="2.5" ry="2.5" style="stroke:none;stroke-width:1;" width="68" x="59" y="64"/>
+      <image height="48" width="48" x="69" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB9ElEQVR4Xt2WIUtFMRiG7z+xmiwGk0HQJhiMmow32cRiE24xGQwWk2CxCYJVBMGmYFf/wPUPTN4Lk/G+Zzvb2TzwGR44PPvO9m37ds4mzrmJZURYQ4Q1RFhDhDVEWEOENURYQ0QtH59fs+OTU7e+teOWllcX4BkObRxfi4gakKRPOgZi+L0aRAxl72AqycZALL8/FBFDiK08SicspZBWOyGiFNQ1Jzc9PHLz+femj8EzHMe1OBMiSuHVR6Ic4+FJzM7Oo7G5iCiFSyRceQZtYSze5ZhSRJRSmhBPmNtLEVGK+QlwQuZKCAcxTMrcITb/GQX8KfWY+JF5TF8lPLGdCGm18h4RtaCucTj5Og3XouYZEdYQYQ0RQ8Bn8u7+YVEmOKAomZW1jd8SwjMc2hCD2NQPrwQRuXTVeiktzoaIPl7f3l9KPpm5bO/uu8enZ8fj9SEiBrYcg/DAMXzZcDn1gTFKyktEF1iZVBIYFKWAuFQ5oA0xiE0tBsbK3Q0RTNddxw9ycXmVTLgPvIs+YouT07cIpusSdn1z6ziuFkyEx0ndbD0iGO40Z1WG0rXbHMOIYMLOULfc3ho+G9zOiGD+1QT8JP4SHo/zYUQw3OHYcD6MCIY7HBvOhxHBcIdjw/kwIqwhwhoirCHCGiKsIcIaIqwhwho/XuapJhKAviEAAAAASUVORK5CYII=" y="74"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="30.0176" x="77.9912" y="133.2559">sarah</text>
+    </g>
+    <path d="M33,28.0186 C33,30.099 33,32.4097 33,34.8934 C33,35.5143 33,36.146 33,36.7877 " fill="none" style="stroke:#C5C6C7;stroke-width:1;stroke-dasharray:7.0,7.0;"/>
+    <!--SRC=[hSn12eGm343HlQTe3s1x1q46DoE87Y3LC1JQf9X4cDiFi_44mj- -xzi9dmgkm9TDdLHK8EWwdsalTg1OSY74ksQrH695YOcD3ZWpIg_SLXvObMkVB1UTA4olzxoCuG-ye6xjuISall07]-->
+  </g>
+</svg>

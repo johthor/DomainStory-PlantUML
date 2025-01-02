@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="127px" preserveAspectRatio="none" style="width:177px;height:127px;background:#FFFFFF;" version="1.1" viewBox="0 0 177 127" width="177px" zoomAndPan="magnify">
+  <defs/>
+  <g>
+    <!--cluster five-->
+    <g id="cluster_five">
+      <rect fill="none" height="117" rx="7.5" ry="7.5" style="stroke:#1F2833;stroke-width:2;stroke-dasharray:7.0,7.0;" width="118" x="53.5" y="4"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="24.124" x="100.438" y="19.1318">five</text>
+    </g>
+    <g id="elem_GMN3">
+      <path d="M6,60 L6,83.7988 L43.0078,83.7988 L43.0078,70 L33.0078,60 L6,60 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <path d="M33.0078,60 L33.0078,70 L43.0078,70 L33.0078,60 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="16.0078" x="12" y="76.2559">left</text>
+    </g>
+    <!--entity Ashley-->
+    <g id="elem_Ashley">
+      <rect fill="none" height="81.7988" rx="2.5" ry="2.5" style="stroke:none;stroke-width:1;" width="68" x="95.5" y="31"/>
+      <image height="48" width="48" x="105.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB9ElEQVR4Xt2WIUtFMRiG7z+xmiwGk0HQJhiMmow32cRiE24xGQwWk2CxCYJVBMGmYFf/wPUPTN4Lk/G+Zzvb2TzwGR44PPvO9m37ds4mzrmJZURYQ4Q1RFhDhDVEWEOENURYQ0QtH59fs+OTU7e+teOWllcX4BkObRxfi4gakKRPOgZi+L0aRAxl72AqycZALL8/FBFDiK08SicspZBWOyGiFNQ1Jzc9PHLz+femj8EzHMe1OBMiSuHVR6Ic4+FJzM7Oo7G5iCiFSyRceQZtYSze5ZhSRJRSmhBPmNtLEVGK+QlwQuZKCAcxTMrcITb/GQX8KfWY+JF5TF8lPLGdCGm18h4RtaCucTj5Og3XouYZEdYQYQ0RQ8Bn8u7+YVEmOKAomZW1jd8SwjMc2hCD2NQPrwQRuXTVeiktzoaIPl7f3l9KPpm5bO/uu8enZ8fj9SEiBrYcg/DAMXzZcDn1gTFKyktEF1iZVBIYFKWAuFQ5oA0xiE0tBsbK3Q0RTNddxw9ycXmVTLgPvIs+YouT07cIpusSdn1z6ziuFkyEx0ndbD0iGO40Z1WG0rXbHMOIYMLOULfc3ho+G9zOiGD+1QT8JP4SHo/zYUQw3OHYcD6MCIY7HBvOhxHBcIdjw/kwIqwhwhoirCHCGiKsIcIaIqwhwho/XuapJhKAviEAAAAASUVORK5CYII=" y="41"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="36.0176" x="111.4912" y="100.2559">Ashley</text>
+    </g>
+    <path d="M43.1328,72 C46.1541,72 49.1753,72 52.1965,72 C52.5742,72 52.9518,72 53.3295,72 C53.3767,72 53.4239,72 53.4711,72 " fill="none" style="stroke:#C5C6C7;stroke-width:1;stroke-dasharray:7.0,7.0;"/>
+    <!--SRC=[hSp12SCm343HUwQm1uYzGw2KNX88pG1oeXQ3R1bBEcJxq4id2Fph-xvr-1Pm12UREYceK64OVAuxsO5YoOKG_pKh52ihIanizO2UKKRbzkQ9LRcCb5E7VeRNSrxMH_W1BwXRk_b9-D4B]-->
+  </g>
+</svg>
