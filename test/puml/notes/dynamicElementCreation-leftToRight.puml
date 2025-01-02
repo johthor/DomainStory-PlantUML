@@ -1,0 +1,19 @@
+@startuml
+!$Story_Layout = 'left-to-right'
+
+!include ../../../src/domainStoryComposite.puml
+
+Person(person)
+
+Info(thing1)
+Info(thing2)
+Info(thing3)
+
+activity(1, person, reads, thing1, $note= default)
+activity(2, person, reads, thing2, $note=^ above)
+activity(3, person, reads, thing3, $note=> right)
+activity(4, person, reads, Info: thing4, $note=v below)
+activity(5, person, reads, Info: thing5, $note=< left)
+activity(6, person, reads, Info: thing6, $note=~ inverse)
+activity(7, person, reads, Document:Book, $note=> right)
+@enduml

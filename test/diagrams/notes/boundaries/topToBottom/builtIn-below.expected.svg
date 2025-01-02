@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="163px" preserveAspectRatio="none" style="width:152px;height:163px;background:#FFFFFF;" version="1.1" viewBox="0 0 152 163" width="152px" zoomAndPan="magnify">
+  <defs/>
+  <g>
+    <!--cluster office-->
+    <g id="cluster_office">
+      <rect fill="none" height="93" rx="7.5" ry="7.5" style="stroke:#1F2833;stroke-width:2;stroke-dasharray:7.0,7.0;" width="130" x="16" y="12"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="37.3379" x="62.3311" y="27.1318">office</text>
+    </g>
+    <g id="elem_GMN4">
+      <path d="M6,133 L6,156.7988 L58.3535,156.7988 L58.3535,143 L48.3535,133 L6,133 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <path d="M48.3535,133 L48.3535,143 L58.3535,143 L48.3535,133 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="31.3535" x="12" y="149.2559">below</text>
+    </g>
+    <!--entity conference-->
+    <g id="elem_conference">
+      <rect fill="none" height="58.1988" rx="2.5" ry="2.5" style="stroke:none;stroke-width:1;" width="79.373" x="58.5" y="39"/>
+      <image height="38" width="38" x="78.9865" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAYAAACoPemuAAADpElEQVR4Xs2Xa0gUURTHg15fhIKkvhRNZeUzLVctXG1JszLNxJIKpcUgRaIsDTEFLVHEUqLCwMSxLBU38pnlq4ypLTOQFKOHZbmuT9jNcFfXFW/3JmPTPa4WzNp++H3wv+fM+Ttzz7n3LkAILbBEgGApAMFSAIKlAITJyclFw8M/mB51L6PqgfT1DzBGo9GazhMbIBBTkafi0HoHd7TW1hUg8dqDHtU1snSe2ACBvKkNjjObIjB2EhSflMrSeWIDBHVvH7PZxRMYEnI6LrFmfNy4ks4VEyCoe/sZe1cvYEZIRFSMRqPRBtG5YgKEgcEhRup7AJgREhp+EnX3qOV0rpgAQav9zhyTRwEzQrz9gtDrN61yOldMgKDT65mE5DRgRgjp2AcVD+V0rpgAYWJiYllewd1S0n20ISG5+YXlOHY5nS8WQCDUNjyVO7nLgBkeidQP1TU+S8TDeDGdKxZAIHz42CkPPBQODBEcXL1RYbGCG9Hpbeg8MQECAX8iq5jzSQraFOF+eZXKYDDM/5bEU/mwNs9RsnOSN2S7VYpNVavoOHMBBB48QA/uDwnT8saOHI9EGjxK6DhzAQQhFdWPOd6Y/TYpamziFHSMuQCCEHy8WRV4+HcTePoEoJERnRsdZw6AQNP6ti1DuKnHJqSoxsb+4+Ln0etHrVMzsrmNW3b8Mma3zQvdvlfagDtzDR0rJkCYia6v3b4hxyJU/FvbLvMfq66pK5n3yU+DJ/wSTtlc5Lx91/QndfPea1S+bKmnY2lw7lKNVhus1+ud6N9mAwizUVZZw9njyc+bIzxXNjeYWnOjo2Orr+Xcmo4ljXQxPQvhLe99W3vHuW/dPZtN3SHAw+aiWFGm8JD5Txcja+7azTwOF5Dgt7OQj8NzUJqZfWNI+E/MhKk7BCg8F4bxcStFWVWep0/gH+bkkWfala9a7pAY/OmkaZlXP21ynmqY2TB1hwCF/wZ83rdq4l4ohGuOFHDBf0efje/C57mhvzHFE5uQzNI1QNF/QafTScIiolVkH6WL/QuiGyPgBW6df6eoct/BoxpTd9G5MIsxAu6qFR3v3gfl5Ba0yvYGg8JzYTZjPGRvxfdSd7awRLU7IBSts3cDJmbC7MZolM0t3KX0rK5d/iFqfBw3kOO67VZPZOPkgS80U6bJVpeRdZ2lc8HDzAEewEzn5y+ptfVP2IK7JeyVqzlsStplNu5CCktM9fcPnqBzwEMsBSBYCkCwFIBgKfwEYVFyrxk1B0sAAAAASUVORK5CYII=" y="42"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="59.373" x="68.5" y="91.6559">conference</text>
+    </g>
+    <path d="M32,105.1113 C32,105.2621 32,105.4129 32,105.5638 C32,105.8655 32,106.1673 32,106.4691 C32,116.1268 32,125.7872 32,132.8881 " fill="none" style="stroke:#C5C6C7;stroke-width:1;stroke-dasharray:7.0,7.0;"/>
+    <!--SRC=[hSp12SCm343HUwQm1uYzGo6KN1e8xG1o8ef1bama4RfzwQKJ1Fxr_TWFU3S811zn2zhGW64OOkMDV4Vr4bBA_xetoYo6ceiuxt1KrD6aF-KcPjB6ufLivZJV7yiwfH-8YlRg5pyBafnV]-->
+  </g>
+</svg>

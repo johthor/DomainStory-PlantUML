@@ -302,12 +302,12 @@ The appearance of a domain story may be influenced via any of the following meth
 
 #### Method 1: PlantUML Themes and Dark Mode
 The library is compatible with [PlantUML themes](https://plantuml.com/en/theme) like
-`sunlust` (light) `crt-amber` (dark) or `sketchy` (mixed) and others.
+`bluegray` (light) or `crt-amber` (dark) and others.
 Choose the theme before including the library.
 
 ```puml
 @startuml
-!theme sketchy
+!theme bluegray
 
 !include <DomainStory/domainStory>
 
@@ -317,7 +317,7 @@ Choose the theme before including the library.
 
 This will result in the following appearance.
 
-![theme sketchy sample](docs/assets/theme-sketchy.svg)
+![theme bluegray sample](docs/assets/theme-bluegray.svg)
 
 If you want to use PlantUML's dark mode, please also specify the mode via the `-D` commandline option e.g.
 
@@ -331,9 +331,9 @@ Which will be rendered as below.
 
 See the following test cases for more details.
 
-* [Using theme `sunlust`](test/styling/theme-sunlust.puml)
-* [Using theme `sketchy`](test/styling/theme-sketchy.puml)
-* [Using theme `crt-amber`](test/styling/theme-crt-amber.puml)
+* [Using theme `bluegray`](test/puml/styling/theme-bluegray.puml)
+* [Using theme `reddress-darkgreen`](test/puml/styling/theme-reddress-darkgreen.puml)
+* [Using theme `crt-amber`](test/puml/styling/theme-crt-amber.puml)
 
 #### Method 2: Global Style declarations
 

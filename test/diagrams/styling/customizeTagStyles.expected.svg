@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="349px" preserveAspectRatio="none" style="width:580px;height:349px;background:#003153;" version="1.1" viewBox="0 0 580 349" width="580px" zoomAndPan="magnify">
+  <defs>
+    <linearGradient id="gywtogyv1hqgj0" x1="0%" x2="100%" y1="50%" y2="50%">
+      <stop offset="0%" stop-color="#FFFF00"/>
+      <stop offset="100%" stop-color="#FF0000"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <rect fill="#003153" height="349" style="stroke:none;stroke-width:1;" width="580" x="0" y="0"/>
+    <!--cluster Home-->
+    <g id="cluster_Home">
+      <path d="M23.8,11 L76.7375,11 A3.75,3.75 0 0 1 79.2375,13.5 L86.2375,36.4453 L109.2,36.4453 A2.5,2.5 0 0 1 111.7,38.9453 L111.7,146.5 A2.5,2.5 0 0 1 109.2,149 L23.8,149 A2.5,2.5 0 0 1 21.3,146.5 L21.3,13.5 A2.5,2.5 0 0 1 23.8,11 " fill="#FFA500" style="stroke:#D9D3D0;stroke-width:1;"/>
+      <line style="stroke:#D9D3D0;stroke-width:1;" x1="21.3" x2="86.2375" y1="36.4453" y2="36.4453"/>
+      <text fill="#D9D3D0" font-family="Verdana" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="51.9375" x="25.3" y="29.0859">Home</text>
+    </g>
+    <!--cluster Party-->
+    <g id="cluster_Party">
+      <rect fill="url(#gywtogyv1hqgj0)" height="116" rx="2.5" ry="2.5" style="stroke:#D9D3D0;stroke-width:1;" width="108.9" x="272.03" y="87"/>
+      <text fill="#D9D3D0" font-family="Verdana" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="48.0703" x="302.4448" y="105.0859">Party</text>
+    </g>
+    <!--cluster Office-->
+    <g id="cluster_Office">
+      <rect fill="#003153" height="116" rx="2.5" ry="2.5" style="stroke:#D9D3D0;stroke-width:1;" width="111.96" x="270.5" y="227"/>
+      <text fill="#D9D3D0" font-family="Verdana" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="52.625" x="300.1675" y="245.0859">Office</text>
+    </g>
+    <!--entity spam-->
+    <g id="elem_spam">
+      <path d="M37.3,58.79 C37.3,48.79 66.5,48.79 66.5,48.79 C66.5,48.79 95.7,48.79 95.7,58.79 L95.7,123.2046 C95.7,133.2046 66.5,133.2046 66.5,133.2046 C66.5,133.2046 37.3,133.2046 37.3,123.2046 L37.3,58.79 " fill="#003153" style="stroke:#D9D3D0;stroke-width:1;"/>
+      <path d="M37.3,58.79 C37.3,68.79 66.5,68.79 66.5,68.79 C66.5,68.79 95.7,68.79 95.7,58.79 " fill="none" style="stroke:#D9D3D0;stroke-width:1;"/>
+      <image height="38" width="38" x="47.3" xlink:href="data:image/png;base64,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" y="72.79"/>
+      <text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="38.042" x="47.479" y="125.2652">spam</text>
+    </g>
+    <!--entity weather-->
+    <g id="elem_weather">
+      <rect fill="#003153" height="61.4146" rx="2.5" ry="2.5" style="stroke:#D9D3D0;stroke-width:1;" width="76.8955" x="288.03" y="125.29"/>
+      <image height="38" width="38" x="307.2778" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAYAAACoPemuAAABWUlEQVR4XmNgMAxmGJQYQ2CwYAyBwYLRBaRckwKmLVp5f9/+A3TB23buuR9c0LyI1SRMHKfDpFySAs6dOvn/5uULdMVXzp/9H1/RNZPFJJQbq8OmLVx1H10TvfCefQf+izrGK2B1GChoYQpbpsyfE5jXlEBrjOw4addkwg4DaUKWoxUedRipeNRhpOJRh5GKRx1GKh51GKl41GGk4lGHkYpHHUYqHn4OA/ZeeMwiizCaxNTCZDsstKB59T5gRwHZAFpgojsjIIdFFLcdPnfqFIYh1MYEu2/IDlu4csP/c6dP/r9+6fz/48eOfQbJ0QIT1eEFKUT3zbK1mz7rBucmo2iiB0bmoDts4aoN/9V8M0MwNNEDI3OQHQZylIx7sg2GBnphZA7IYaA0tXTt5s8DFlIwjMwBOWzA0hQ6Rua0TVtwf8BDCoaROTzWUTIYCgYKYwgMFowhMEgwAEDV2+NO3jx0AAAAAElFTkSuQmCC" y="128.29"/>
+      <text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="56.8955" x="298.03" y="180.7652">weather</text>
+    </g>
+    <!--entity proposal-->
+    <g id="elem_proposal">
+      <rect fill="#003153" height="61.4146" rx="2.5" ry="2.5" style="stroke:#D9D3D0;stroke-width:1;" width="79.958" x="286.5" y="265.29"/>
+      <image height="38" width="38" x="307.279" xlink:href="data:image/png;base64,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" y="268.29"/>
+      <text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="59.958" x="296.5" y="320.7652">proposal</text>
+    </g>
+    <!--entity Alice-->
+    <g id="elem_Alice">
+      <rect fill="#003153" height="85.0146" rx="2.5" ry="2.5" style="stroke:#D9D3D0;stroke-width:1;" width="68" x="32.5" y="184.49"/>
+      <image height="48" width="48" x="42.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB7UlEQVR4Xu2WsUrFMBSG+wQ+gW/g5CiuIq4iuOgm4uIiOt5JEF0EERyvbjrp4OKiOCriIDj5NJX/Qi7h/5s2p43CEYcPypfT5iQ5SVNV82uVa0R4Q4Q3RHhDhDdEeEOEN0R4Q8RAZpe3Tg7PL+vHp+f66/NjAp7h0MbxgxExACQZkk6BGH5vECJ6cnVzJ8mmQCy/3xsRPUjNPEonLqWYYishwgjqmpM7G1/XM4sbSyEGz3AcV2RPiDDCs49EOSbAg9g/vkjGZiPCCJdIPPMM2uJYvMsxZkQYsSbEA+Z2MyKMuB8AJ+SuhLAR46TcbWL3xyjgozTg4kcWcH2VCKRWIqbYzAdEDAR1jc3J12m4IjXPiPCGCG+I6AGOyZWd0aRMsEFRMm+vL9MSwjMc2hCD2LYfngkRmTTVupUie0NEB3Oru++WIzOX2/uHemHzwH5CiUiAJUcn3HGKUDZcTl2gD1N5iWgAM9OWBDpFKSCurRzQhhjEtk0G+speDRFE010ndLI9Om1NuAu8i2+kJifr2yKIpkvY+t5R3uwYwEC4n7ab7RQRBH80a1Z60rTaHCOIIOKPoW65vTS8N7hdEEH8qQGEQfwk3B/nI4joGMBvw/kIIv4HUBbORxDhDRHeEOENEd4Q4Q0R3hDhDRHO+AavmoK/v3G1XAAAAABJRU5ErkJggg==" y="194.49"/>
+      <text fill="#D9D3D0" font-family="Verdana" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="32.874" x="50.063" y="256.5652">Alice</text>
+    </g>
+    <!--entity Bob-->
+    <g id="elem_Bob">
+      <rect fill="#32CD32" height="85.0146" rx="2.5" ry="2.5" style="stroke:#D9D3D0;stroke-width:1;" width="68" x="506.46" y="173.49"/>
+      <image height="48" width="48" x="516.46" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB60lEQVR4Xt2WMUvFMBSF3296s26CruIqjoKj4ObgJoKLk4uTg5uDm+AouNnX9jn5ayrnQSSc06S5bX1wHT4oX26Tm+SmzWJZLReeEeENEd4Q4Q0R3hDhDRHeEOENEVM5qPZv7pu77n391n1/NRvwDIc2jp+KiCkgyZB0CsTwe1MQMZbn9kmSTYFYfn8sIsaQWnmUTlxKMXPthAgrqGtO7rF96Harnb0Qg2c4jpvjTIiwwquPRDkmwJO4ba6TsaWIsMIlEq88g7Y4Fu9yjBURVqwJ8YS53YoIK+4nwAm5KyEcxDgpd4fY/WcU8Kc04OJHFnB9lQikdiJmrpUPiJgK6hqHk6/TcHPUPCPCGyK8IWIM+Eye1aebMsEBRclU64/fEsIzHNoQg9jcD8+CiFL6at3KHGdDxBBHq8NPyyezlNf2pTtZHZu/UCJSYMsxCA+cIpQNl9MQGMNSXiL6wMrkksCgKAXE5coBbYhBbG4xMFbpbohg+u46YZCr+jKb8BB4F32kFqekbxFM3yXsoj4vWh0LmAiPk7vZBkQw3GnJqoylb7c5hhHBxJ2hbrl9bvhscDsjgvlXEwiT+Et4PM6HEcFwh9uG82FEMNzhtuF8GBEMd7htOB9GhDdEeEOEN0R4Q4Q3RHhDhDdEeOMH9p2FUC3kJdYAAAAASUVORK5CYII=" y="183.49"/>
+      <text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="26.8174" x="527.0513" y="245.5652">Bob</text>
+    </g>
+    <!--link Alice to spam-->
+    <g id="link_Alice_spam">
+      <path d="M66.5,184.34 C66.5,168.14 66.5,155.7 66.5,139.51 " fill="none" id="Alice-to-spam" style="stroke:#D9D3D0;stroke-width:1;"/>
+      <polygon fill="#D9D3D0" points="66.5,133.51,62.5,142.51,66.5,138.51,70.5,142.51,66.5,133.51" style="stroke:#D9D3D0;stroke-width:1;"/>
+      <text fill="#D9D3D0" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="86.2773" x="12" y="164.4198">(1) reads the</text>
+    </g>
+    <!--link Alice to weather-->
+    <g id="link_Alice_weather">
+      <path d="M100.96,217.79 C149.09,204.55 231.7952,181.7825 282.1052,167.9325 " fill="none" id="Alice-to-weather" style="stroke:#D9D3D0;stroke-width:1;"/>
+      <polygon fill="#D9D3D0" points="287.89,166.34,278.1511,164.8722,283.0693,167.6671,280.2745,172.5853,287.89,166.34" style="stroke:#D9D3D0;stroke-width:1;"/>
+      <text fill="#D9D3D0" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="122.9858" x="131.5" y="174.0498">(2) talks about the</text>
+    </g>
+    <!--link weather to Bob-->
+    <g id="link_weather_Bob">
+      <path d="M365.38,166.73 C405.39,178.05 462.087,194.0952 500.297,204.9152 " fill="none" id="weather-to-Bob" style="stroke:#D9D3D0;stroke-width:1;"/>
+      <polygon fill="#D9D3D0" points="506.07,206.55,498.5003,200.2492,501.2592,205.1877,496.3207,207.9465,506.07,206.55" style="stroke:#D9D3D0;stroke-width:1;"/>
+      <text fill="#D9D3D0" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="27.5552" x="423.96" y="174.1898">with</text>
+    </g>
+    <!--reverse link proposal to Bob-->
+    <g id="link_proposal_Bob">
+      <path d="M372.4634,279.0211 C412.5734,263.8811 468.48,242.79 506.22,228.55 " fill="none" id="proposal-backto-Bob" style="stroke:#D9D3D0;stroke-width:1;"/>
+      <polygon fill="#D9D3D0" points="366.85,281.14,376.6827,281.704,371.5278,279.3743,373.8576,274.2194,366.85,281.14" style="stroke:#D9D3D0;stroke-width:1;"/>
+      <text fill="#D9D3D0" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="76.4131" x="399.46" y="238.9498">(3) writes a</text>
+    </g>
+    <!--reverse link Alice to proposal-->
+    <g id="link_Alice_proposal">
+      <path d="M106.7561,237.5008 C154.3361,250.2308 235.58,271.95 286.17,285.49 " fill="none" id="Alice-backto-proposal" style="stroke:#D9D3D0;stroke-width:1;"/>
+      <polygon fill="#D9D3D0" points="100.96,235.95,108.6204,242.1402,105.7901,237.2423,110.688,234.412,100.96,235.95" style="stroke:#D9D3D0;stroke-width:1;"/>
+      <text fill="#D9D3D0" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="13.0127" x="186" y="242.5798">to</text>
+    </g>
+    <!--SRC=[dPDjQzim4CVV-rEe8GERkkaNM0fDrhM5GGFP-tAMpuaMMMUaSpFluRll_91uWPh1Z42sJl-V_tSdNV4UIrIPhR7ond4KNSqVh2mvVlsAt_dUcfrhlzHIQPdGomxZjArpL8l5RJ-2rxSvbM3SbiatQoeh2ePnKTMbZI9T1wRI_C0jDnOtdYhqtCIpBwR4Hu_ePgbQWJxiFDKkNvCbdwfxpUsqGH_8fQhm1brkcsIIrg2rTFpbCNyFjshVmJUfcacugDqqg2SyQtA3zYNxXffJzI0PsbGPoSupE5cPXuDn6_1GBZyKO0F6IJAPxoTWo21WghPxg73ajev48V-T84u03OCrEbMVoN4NELUj9HwDovjfDnkf4En6CvS5-XyxvC6rm7_KlaUBiRwriHmnBQevmsvvydnIn4zKdcA3JlsCb3nTB-9GGNaPZdwVmIlAXjXuU4Qo9CNDAIx7OU2koRs97DW8uOWWzyDtqBFmfIZ4yAMFIcf00Up0Ev-GJWcQpPkH0brBV_faFK8UbB2b75qAhzsukKlUsorjFWG56TNSQmPVROzvtzOt-qltyRfRaQ2NAoYwL8tsc0Pg4lq1]-->
+  </g>
+</svg>

@@ -27,11 +27,72 @@
     ' Handle possible second connection between object and target
     !$target = $ensureElementExists($target, $targetTag, $targetNote, $targetShape, $targetScale, $targetColor, $targetBackground)
 
-    !if $post && $post != "_"
-        !if $target && $target != "_"
+    !if $target && $target != "_"
+        !if $post && $post != "_"
             $createConnection($object, $target, $targetArr, $post)
         !else
+            $createConnection($object, $target, $targetArr)
+        !endif
+    !else
+        !if $post && $post != "_"
             $createConnection($object, $post, $targetArr)
         !endif
     !endif
 !endprocedure
+
+!procedure $createConnection($from, $to, $arrow = "-->", $action = "", $stepLabel = "")
+    !$backwardsArrow = %substr($arrow, 0, 1) == "<"
+    !if $action
+        !if $stepLabel
+            !if $backwardsArrow
+                !if $Step_LabelPosition == "tail"
+                    $to $arrow "$stepLabel" $from : $action
+                !elseif $Step_LabelPosition == "combined"
+                    $to $arrow $from : $action $stepLabel
+                !else
+                    $to $arrow $from : $stepLabel $action
+                !endif
+            !else
+                !if $Step_LabelPosition == "tail"
+                    $from "$stepLabel" $arrow $to : $action
+                !else
+                    $from $arrow $to : $stepLabel $action
+                !endif
+            !endif
+        !else
+            !if $backwardsArrow
+                $to $arrow $from : $action
+            !else
+                $from $arrow $to : $action
+            !endif
+        !endif
+    !else
+        !if $backwardsArrow
+            $to $arrow $from
+        !else
+            $from $arrow $to
+        !endif
+    !endif
+!endprocedure
+
+' Be aware this function might produce side effects
+!function $ensureElementExists($element, $tag, $note, $shape, $scale, $color, $background)
+    !$separatorPosition = %strpos($element, ":")
+
+    !if $separatorPosition > -1
+        !$workObjectCounter = $workObjectCounter + 1
+
+        !$elementKind = %substr($element, 0, $separatorPosition)
+        !$elementLabel = %substr($element, $separatorPosition + 1)
+        !$elementName = $elementKind + $workObjectCounter
+
+        'Element($kind, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+        %invoke_procedure($elementKind, $elementName, $elementLabel, $tag, $note, $shape, $scale, $color, $background)
+
+        !return $elementName
+    !else
+        $createElementNote($element, $note)
+
+        !return $element
+    !endif
+!endfunction

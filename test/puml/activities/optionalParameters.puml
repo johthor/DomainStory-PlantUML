@@ -1,0 +1,17 @@
+@startuml
+!include ../../../src/domainStoryComposite.puml
+
+Person(Alice)
+Person(Bob)
+Info(weather)
+
+activity(42, Alice, talks about, weather, with, Bob, <--)
+activity( 1,   ()A, talks about,       s,    M,    , <--)
+activity( 2,   ()B, talks about,       t,    N,   _, <--)
+activity( 3,   ()C, talks about,       u,     ,   O, <--)
+activity( 4,   ()D, talks about,       v,    _,   P, <--)
+activity( 5,   ()E, talks about,       w,     ,    , <--)
+activity( 6,   ()F, talks about,       x,     ,   _, <--)
+activity( 7,   ()G, talks about,       y,    _,    , <--)
+activity( 8,   ()H, talks about,       z,    _,   _, <--)
+@enduml

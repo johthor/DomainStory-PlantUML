@@ -1,0 +1,32 @@
+@startuml
+!include ../../../src/domainStoryComposite.puml
+
+Person(customer)
+Conversation(topic1)
+Person(cashier1)
+Conversation(topic2)
+Person(cashier2)
+Conversation(topic3)
+Person(cashier3)
+Conversation(topic4)
+Person(cashier4)
+Conversation(topic5)
+Person(cashier5)
+Conversation(topic6)
+Person(cashier6)
+'Conversation(topic7)
+'Person(cashier7)
+'Conversation(topic8)
+'Person(cashier8)
+
+activity(1, customer, talks about, topic1, with, cashier1, ->, ->)
+activity(2, customer, talks about, topic2, with, cashier2, ->, <--)
+activity(3, customer, talks about, topic3, with, cashier3, ->, -->)
+
+activity(4, customer, talks about, topic4, with, cashier4, <-, <-)
+activity(5, customer, talks about, topic5, with, cashier5, <-, <--)
+activity(6, customer, talks about, topic6, with, cashier6, <-, -->)
+
+'activity(7, customer, talks about, topic7, with, cashier7, <-, ->)
+'activity(8, customer, talks about, topic8, with, cashier8, ->, <-)
+@enduml

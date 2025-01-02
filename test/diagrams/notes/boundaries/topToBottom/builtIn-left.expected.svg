@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="127px" preserveAspectRatio="none" style="width:177px;height:127px;background:#FFFFFF;" version="1.1" viewBox="0 0 177 127" width="177px" zoomAndPan="magnify">
+  <defs/>
+  <g>
+    <!--cluster party-->
+    <g id="cluster_party">
+      <rect fill="none" height="117" rx="7.5" ry="7.5" style="stroke:#1F2833;stroke-width:2;stroke-dasharray:7.0,7.0;" width="118" x="53.5" y="4"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="34.2344" x="95.3828" y="19.1318">party</text>
+    </g>
+    <g id="elem_GMN4">
+      <path d="M6,60 L6,83.7988 L43.0078,83.7988 L43.0078,70 L33.0078,60 L6,60 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <path d="M33.0078,60 L33.0078,70 L43.0078,70 L33.0078,60 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="16.0078" x="12" y="76.2559">left</text>
+    </g>
+    <!--entity people-->
+    <g id="elem_people">
+      <rect fill="none" height="81.7988" rx="2.5" ry="2.5" style="stroke:none;stroke-width:1;" width="68" x="95.5" y="31"/>
+      <image height="48" width="48" x="105.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB+ElEQVR4Xu2WIUsEURSF959YTRaDySBoEwxGTcZNNrHYhC0mg8FiEiy2BcEqgmBTsKt/YP0DI2dhhjvnvPf2DV5YLhg+mP3ufefNzHszO6OmaUaRERENEdEQEQ0R0RARDRHREBENEdEQEQ0RJWazn+3JxWWzu3/YrKyuz8ExHGrcn8MrB4jIMX147CbLgR4ex3jltIhIUTNpzeReORYRDJbUBq9tbPXCcby5s9ebPLUNvHIYEQz2pZ00FQqHWtuHMdzjlcOIYOxdKS2r3R54ILnulcOIYNowwDWm1FuqMUN6RTBDwkq9pRozpFcEY9/Vf1l6rxxGBGMfPuzj3MNn93jq4fPKYUQwXq8/rxxGRAq7rIuo3R6LKOVYROSombxmUq+cFhElsKQeH2FeOUBENEREQ0SKt/eP16vrm2Z8fDJfavu9gmM41NCDXh7vnWMRYSc7PTvvTVILxmAsMrxy+PyyF/D59T05OBpL2LLBOeHc+Hx7P27v7mUgwJ3A0qKOu2HfFDiGQw09pTvtkcOv2O7g6flFmhFUWr4cyMJYzoPn3hI1OV2z/RvHw5RarqHg4vldzz01lHK6JnuFQ/9MSvA3ENdryeV0DamiF17ZqZxi0Quv7FROshiB/wtYNnIBURERDRHREBENEdEQEQ0R0RARDRHREBGNX2sWLY71bo8MAAAAAElFTkSuQmCC" y="41"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="36.0352" x="111.4824" y="100.2559">people</text>
+    </g>
+    <path d="M43.1328,72 C46.1541,72 49.1753,72 52.1965,72 C52.5742,72 52.9518,72 53.3295,72 C53.3767,72 53.4239,72 53.4711,72 " fill="none" style="stroke:#C5C6C7;stroke-width:1;stroke-dasharray:7.0,7.0;"/>
+    <!--SRC=[hSp12SCm343HUwQm1uYzGw64N188xG1oeXQ3B9b8EdJxq4idAFph-x6Vy6uG23xY5hIX0SCmnCex-O7g9QIKVtLlb5aCDHTnFk2igAD9VyXDpAIDnIlPp6cUbdMxfo-8YlRiVtuIlkm2]-->
+  </g>
+</svg>
