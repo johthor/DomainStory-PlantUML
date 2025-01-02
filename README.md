@@ -7,26 +7,6 @@ to describe and document a domain story which was developed in a
 DomainStory-PlantUML includes macros, themes, and other tools
 for recording domain stories visually with PlantUML.
 
-> [!IMPORTANT]
-> There is a delay between the release of a new library version
-> and the availability as part of the PlantUML standard library.
-> Therefore, the version you are using might not be compatible
-> with the current documentation.
->
-> <details>
-> <summary><strong>Show which version of PlantUML includes which library version</strong></summary>
-> 
-> | DomainStory                                                                             | PlantUML       |
-> |-----------------------------------------------------------------------------------------|----------------|
-> | [Delta v0.4.0](https://github.com/johthor/DomainStory-PlantUML/tree/v0.4.0)             | upcoming       |
-> | [Charlie's Quality v0.3.1](https://github.com/johthor/DomainStory-PlantUML/tree/v0.3.1) | since 1.2024.8 |
-> | [Charlie v0.3](https://github.com/johthor/DomainStory-PlantUML/tree/v0.3)               | since 1.2022.5 |
-> | [Bravo v0.2](https://github.com/johthor/DomainStory-PlantUML/tree/v0.2)                 | not packaged   |
-> | [Alpha v0.1](https://github.com/johthor/DomainStory-PlantUML/tree/v0.1)                 | not packaged   |
->
-> See the [CHANGELOG](CHANGELOG.md) for detailed differences between the versions.
-> </details>
-
 <details>
 <summary><strong>Table of Contents</strong></summary>
 
@@ -49,12 +29,32 @@ for recording domain stories visually with PlantUML.
 * [Acknowledgements](#acknowledgements)
 </details>
 
+> [!IMPORTANT]
+> There is a delay between the release of a new library version
+> and the availability as part of the PlantUML standard library.
+> Therefore, the version you are using might not be compatible
+> with the current documentation.
+>
+> <details>
+> <summary><strong>Show which version of PlantUML includes which library version</strong></summary>
+> 
+> | DomainStory                                                                             | PlantUML       |
+> |-----------------------------------------------------------------------------------------|----------------|
+> | [Delta v0.4.0](https://github.com/johthor/DomainStory-PlantUML/tree/v0.4.0)             | upcoming       |
+> | [Charlie's Quality v0.3.1](https://github.com/johthor/DomainStory-PlantUML/tree/v0.3.1) | since 1.2024.8 |
+> | [Charlie v0.3](https://github.com/johthor/DomainStory-PlantUML/tree/v0.3)               | since 1.2022.5 |
+> | [Bravo v0.2](https://github.com/johthor/DomainStory-PlantUML/tree/v0.2)                 | not packaged   |
+> | [Alpha v0.1](https://github.com/johthor/DomainStory-PlantUML/tree/v0.1)                 | not packaged   |
+>
+> See the [CHANGELOG](CHANGELOG.md) for detailed differences between the versions.
+> </details>
+
 ## Getting Started
 
 At the top of your domain story `.puml` file,
 you need to include the `domainStory.puml` file found in the root of this repository.
 
-The library is now part of the [PlantUML Standard Library](https://plantuml.com/en/stdlib)
+The library is part of the [PlantUML Standard Library](https://plantuml.com/en/stdlib) since PlantUML v1.2022.5
 and may be included via
 
 ```puml
