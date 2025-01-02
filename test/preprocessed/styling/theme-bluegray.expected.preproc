@@ -1,16 +1,7 @@
 @startuml
 
-
-
 skinparam backgroundColor transparent
 skinparam useBetaStyle false
-
-
-
-
-
-
-
 
 <style>
   root {
@@ -62,17 +53,17 @@ skinparam useBetaStyle false
   }
   nwdiagDiagram {
 	network {
-		
+
 	FontColor #fff
 	BorderColor #33b2e2
 	BackgroundColor #33b2e2-#009fdb
-    
+
 		LineColor #009fdb
 		LineThickness 1.0
 		FontColor #007faf
 	}
 	server {
-		
+
 	FontColor #fff
 	BorderColor #33b2e2
 	BackgroundColor #33b2e2-#009fdb
@@ -92,7 +83,7 @@ skinparam useBetaStyle false
   }
   ganttDiagram {
 	task {
-		
+
 	FontColor #fff
 	BorderColor #33b2e2
 	BackgroundColor #33b2e2-#009fdb
@@ -158,7 +149,6 @@ skinparam title {
 	BackgroundColor              #f5f5f5-#f2f2f2
 }
 
-
 skinparam legend {
 	BackgroundColor #f2f2f2
 	BorderColor #c2c2c2
@@ -172,7 +162,6 @@ skinparam swimlane {
 	TitleFontColor #009fdb
 }
 
-
 skinparam activity {
 	FontColor #fff
 	BorderColor #009fdb
@@ -185,9 +174,8 @@ skinparam activity {
 	DiamondFontColor #5a5a5a
 }
 
-
 skinparam participant {
-	
+
 	FontColor #fff
 	BorderColor #33b2e2
 	BackgroundColor #33b2e2-#009fdb
@@ -195,9 +183,8 @@ skinparam participant {
 	ParticipantBorderThickness 2
 }
 
-
 skinparam actor {
-	
+
 	FontColor #fff
 	BorderColor #33b2e2
 	BackgroundColor #33b2e2-#009fdb
@@ -205,13 +192,11 @@ skinparam actor {
 	FontColor #009fdb
 }
 
-
 skinparam arrow {
 	Thickness 3
 	Color #009fdb
 	FontColor #5a5a5a
 }
-
 
 skinparam sequence {
 	BorderColor #009fdb
@@ -240,59 +225,52 @@ skinparam sequence {
 	StereotypeFontColor #fff
 }
 
-
 skinparam partition {
 	BorderColor #009fdb
 	FontColor #009fdb
 	BackgroundColor transparent
 }
 
-
 skinparam collections {
-	
+
 	FontColor #fff
 	BorderColor #33b2e2
 	BackgroundColor #33b2e2-#009fdb
 
 }
-
 
 skinparam control {
-	
+
 	FontColor #fff
 	BorderColor #33b2e2
 	BackgroundColor #33b2e2-#009fdb
 
 	FontColor #009fdb
 }
-
 
 skinparam entity {
-	
+
 	FontColor #fff
 	BorderColor #33b2e2
 	BackgroundColor #33b2e2-#009fdb
 
 	FontColor #009fdb
 }
-
 
 skinparam boundary {
-	
+
 	FontColor #fff
 	BorderColor #33b2e2
 	BackgroundColor #33b2e2-#009fdb
 
 	FontColor #009fdb
 }
-
 
 skinparam agent {
 	BackgroundColor #orange
 	BorderColor #999999
 	FontColor #333333
 }
-
 
 skinparam note {
 	BorderThickness 1
@@ -301,22 +279,19 @@ skinparam note {
 	FontColor #fff
 }
 
-
 skinparam artifact {
 	BackgroundColor #fff-#d2d2d2
 	BorderColor #c2c2c2
 	FontColor #5a5a5a
 }
 
-
 skinparam component {
-	
+
 	FontColor #fff
 	BorderColor #33b2e2
 	BackgroundColor #33b2e2-#009fdb
 
 }
-
 
 skinparam interface {
 	BackgroundColor  #d95555
@@ -324,13 +299,11 @@ skinparam interface {
 	FontColor #5a5a5a
 }
 
-
 skinparam storage {
 	BackgroundColor #ee9033-#ea7400
   	BorderColor #ea7400
 	FontColor #fff
 }
-
 
 skinparam node {
 	BackgroundColor #f5f5f5-#f2f2f2
@@ -338,16 +311,14 @@ skinparam node {
 	FontColor #009fdb
 }
 
-
 skinparam cloud {
 	BackgroundColor #F2FCFE-#eeeeee
 	BorderColor #F2FCFE
 	FontColor #009fdb
 }
 
-
 skinparam database {
-	
+
 	FontColor #fff
 	BorderColor #33b2e2
 	BackgroundColor #33b2e2-#009fdb
@@ -355,9 +326,8 @@ skinparam database {
 	BorderColor #007faf
 }
 
-
 skinparam class {
-	
+
 	FontColor #fff
 	BorderColor #33b2e2
 	BackgroundColor #33b2e2-#009fdb
@@ -369,9 +339,8 @@ skinparam class {
 	AttributeFontSize 11
 }
 
-
 skinparam object {
-	
+
 	FontColor #fff
 	BorderColor #33b2e2
 	BackgroundColor #33b2e2-#009fdb
@@ -382,9 +351,8 @@ skinparam object {
 	AttributeFontSize 11
 }
 
-
 skinparam usecase {
-	
+
 	FontColor #fff
 	BorderColor #33b2e2
 	BackgroundColor #33b2e2-#009fdb
@@ -392,7 +360,6 @@ skinparam usecase {
 	BorderThickness 2
 	StereotypeFontColor #009fdb
 }
-
 
 skinparam rectangle {
 		FontColor #5a5a5a
@@ -402,14 +369,12 @@ skinparam rectangle {
 	StereotypeFontColor #009fdb
 }
 
-
 skinparam package {
 	FontColor #009fdb
 	BorderColor #33b2e2
 	BackgroundColor transparent
 	BorderThickness 2
 }
-
 
 skinparam folder {
 	BackgroundColor #fff-#f5f5f5
@@ -418,7 +383,6 @@ skinparam folder {
 	BorderThickness 2
 }
 
-
 skinparam frame {
 	BackgroundColor #fff-#f5f5f5
   	BorderColor #0568ae
@@ -426,9 +390,8 @@ skinparam frame {
 	BorderThickness 2
 }
 
-
 skinparam state {
-	
+
 	FontColor #fff
 	BorderColor #33b2e2
 	BackgroundColor #33b2e2-#009fdb
@@ -440,22 +403,19 @@ skinparam state {
 	AttributeFontSize 11
 }
 
-
 skinparam queue {
-	
+
 	FontColor #fff
 	BorderColor #33b2e2
 	BackgroundColor #33b2e2-#009fdb
 
 }
 
-
 skinparam card {
 	BackgroundColor #3786be-#0568ae
 	BorderColor #0568ae
 	FontColor #fff
 }
-
 
 skinparam file {
 	BackgroundColor #f5f5f5-#f2f2f2
@@ -464,216 +424,18 @@ skinparam file {
 
 }
 
-
 skinparam stack {
-	
+
 	FontColor #fff
 	BorderColor #33b2e2
 	BackgroundColor #33b2e2-#009fdb
 
 }
 
-
-
-
-
-
-
-
     left to right direction
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-            
 hide stereotypes
 
-
-
-            
-
-
-
-            
-
-
-
-
-
-            
-
-
-
-
-
-
-            
-
-
-            
-
-
-
-            
-
-
-
-
-
-            
-
-
-
-
-
-
-            
-
-
-            
-
-
-
-
-
-            
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-            
-
-
-
-
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-
-            
-
-
-
-    
-
-
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-            
-
-            
-
-
-
-
-
-
-    
-    
-    
-            
 sprite $ma_account_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -726,28 +488,7 @@ sprite $ma_account_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA ACCOUNT_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_account_multiple_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -800,27 +541,7 @@ sprite $ma_account_multiple_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA ACCOUNT_MULTIPLE_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-    
-    
-    
-            
 sprite $ma_laptop [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -873,30 +594,7 @@ FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 }
 
 skinparam folderBackgroundColor<<MA LAPTOP>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-
-
-    
-    
-    
-            
 sprite $ma_file_document [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -949,28 +647,7 @@ sprite $ma_file_document [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA FILE_DOCUMENT>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_folder_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -1023,27 +700,7 @@ sprite $ma_folder_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA FOLDER_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-    
-    
-    
-            
 sprite $ma_phone [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -1096,28 +753,7 @@ sprite $ma_phone [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA PHONE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_at [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -1170,28 +806,7 @@ sprite $ma_at [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA AT>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_message_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -1244,28 +859,7 @@ sprite $ma_message_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA MESSAGE_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_information_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -1318,63 +912,20 @@ sprite $ma_information_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
-            
-
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     Rectangle "==Party" as Party   {
-    
 
+            Agent "<$ma_account_outline{scale=1}>\rAlice" as Alice <<Person>>
 
-            Agent "<$ma_account_outline{scale=1}>\rAlice" as Alice <<Person>> 
+            Card "<$ma_message_outline{scale=.8}>\rweather" as weather <<Conversation>>
 
-    
-
-
-            Card "<$ma_message_outline{scale=.8}>\rweather" as weather <<Conversation>> 
-
-    
-
-
-            Agent "<$ma_account_outline{scale=1}>\rBob" as Bob <<Person>> 
+            Agent "<$ma_account_outline{scale=1}>\rBob" as Bob <<Person>>
 
     }
 
-
-
-
-        
                         Alice --> weather : (1) talks about the
 
-        
                             weather --> Bob : with
 @enduml
+
+

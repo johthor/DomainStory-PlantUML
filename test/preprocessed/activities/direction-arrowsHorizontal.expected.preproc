@@ -1,345 +1,108 @@
 @startuml
 
-
-
-
-
-
-
     left to right direction
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
 
             skinparam DefaultFontColor #0B0C10
 
-    
-
-
             skinparam DefaultFontName Arial, Helvetica, SansSerif
-
-    
-
 
             skinparam DefaultFontSize 12
 
-    
-
-
             skinparam DefaultFontStyle normal
-
-    
-
 
             skinparam DefaultTextAlignment center
 
-
-    
-
-
             skinparam DefaultBackgroundColor none
-
-    
-
 
             skinparam DefaultBorderStyle none
 
-    
-
-
             skinparam DefaultBorderColor none
-
-    
-
 
             skinparam DefaultBorderThickness 1
 
-    
-
-
-
-            
 hide stereotypes
     skinparam Shadowing false
 
-
-
-            
-
-
-
-            
-
-    
-
-
             skinparam AgentFontColor #0B0C10
-
-    
-
 
             skinparam AgentFontName Arial, Helvetica, SansSerif
 
-    
-
-
             skinparam AgentFontSize 12
-
-    
-
 
             skinparam AgentFontStyle normal
 
-    
-
-
             skinparam AgentTextAlignment center
-
-
-    
-
 
             skinparam AgentBackgroundColor none
 
-    
-
-
             skinparam AgentBorderStyle none
-
-    
-
 
             skinparam AgentBorderColor none
 
-    
-
-
             skinparam AgentBorderThickness 1
-
-
-            
-
-
-            
-
-
-
-            
-
-    
-
 
             skinparam CardFontColor #0B0C10
 
-    
-
-
             skinparam CardFontName Arial, Helvetica, SansSerif
-
-    
-
 
             skinparam CardFontSize 12
 
-    
-
-
             skinparam CardFontStyle normal
-
-    
-
 
             skinparam CardTextAlignment center
 
-
-    
-
-
             skinparam CardBackgroundColor none
-
-    
-
 
             skinparam CardBorderStyle none
 
-    
-
-
             skinparam CardBorderColor none
-
-    
-
 
             skinparam CardBorderThickness 1
 
-
-            
-
-
-            
-
-    
-
-
             skinparam RectangleFontColor #0B0C10
-
-    
-
 
             skinparam RectangleFontName Arial, Helvetica, SansSerif
 
-    
-
-
             skinparam RectangleFontSize 12
-
-    
-
 
             skinparam RectangleFontStyle normal
 
-    
-
-
             skinparam RectangleTextAlignment center
-
-
-    
-
 
             skinparam RectangleBackgroundColor none
 
-    
-
-
             skinparam RectangleBorderStyle dashed
-
-    
-
 
             skinparam RectangleBorderColor #1f2833
 
-    
-
-
             skinparam RectangleBorderThickness 2
-
-    
-
 
             skinparam RectangleRoundCorner 15
 
-            
-
-
-
-
-    
-
-
             skinparam NoteFontColor #0B0C10
-
-    
-
 
             skinparam NoteFontName Arial, Helvetica, SansSerif
 
-    
-
-
             skinparam NoteFontSize 12
-
-    
-
 
             skinparam NoteFontStyle normal
 
-    
-
-
             skinparam NoteTextAlignment left
-
-
-    
-
 
             skinparam NoteBackgroundColor #c5c6c7
 
-    
-
-
             skinparam NoteBorderStyle none
-
-    
-
 
             skinparam NoteBorderColor #1f2833
 
-    
-
-
             skinparam NoteBorderThickness 1
-
-
-            
-
-
-
-    
-
 
             skinparam ArrowFontColor #0B0C10
 
-
-
-
-    
-
-
             skinparam ArrowMessageAlignment left
-
-
-    
-
 
             skinparam ArrowColor #c5c6c7
 
-
-
-
-
-
-
-            
-
-            
-
-
-
-
-
-
-    
-    
-    
-            
 sprite $ma_account_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -392,28 +155,7 @@ sprite $ma_account_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA ACCOUNT_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_account_multiple_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -466,27 +208,7 @@ sprite $ma_account_multiple_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA ACCOUNT_MULTIPLE_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-    
-    
-    
-            
 sprite $ma_laptop [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -539,30 +261,7 @@ FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 }
 
 skinparam folderBackgroundColor<<MA LAPTOP>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-
-
-    
-    
-    
-            
 sprite $ma_file_document [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -615,28 +314,7 @@ sprite $ma_file_document [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA FILE_DOCUMENT>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_folder_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -689,27 +367,7 @@ sprite $ma_folder_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA FOLDER_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-    
-    
-    
-            
 sprite $ma_phone [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -762,28 +420,7 @@ sprite $ma_phone [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA PHONE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_at [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -836,28 +473,7 @@ sprite $ma_at [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA AT>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_message_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -910,28 +526,7 @@ sprite $ma_message_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA MESSAGE_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_information_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -984,144 +579,57 @@ sprite $ma_information_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsuperior" as superior <<Person>>
 
+            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument1" as document1 <<Document>>
 
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate1" as subordinate1 <<Person>>
 
+            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument2" as document2 <<Document>>
 
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate2" as subordinate2 <<Person>>
 
+            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument3" as document3 <<Document>>
 
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate3" as subordinate3 <<Person>>
 
+            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument4" as document4 <<Document>>
 
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate4" as subordinate4 <<Person>>
 
+            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument5" as document5 <<Document>>
 
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate5" as subordinate5 <<Person>>
 
+            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument6" as document6 <<Document>>
 
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate6" as subordinate6 <<Person>>
 
-
-
-    
-
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsuperior" as superior <<Person>> 
-
-    
-
-
-            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument1" as document1 <<Document>> 
-
-    
-
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate1" as subordinate1 <<Person>> 
-
-    
-
-
-            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument2" as document2 <<Document>> 
-
-    
-
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate2" as subordinate2 <<Person>> 
-
-    
-
-
-            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument3" as document3 <<Document>> 
-
-    
-
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate3" as subordinate3 <<Person>> 
-
-    
-
-
-            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument4" as document4 <<Document>> 
-
-    
-
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate4" as subordinate4 <<Person>> 
-
-    
-
-
-            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument5" as document5 <<Document>> 
-
-    
-
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate5" as subordinate5 <<Person>> 
-
-    
-
-
-            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument6" as document6 <<Document>> 
-
-    
-
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate6" as subordinate6 <<Person>> 
-
-    
-
-
-        
                         superior --> document1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about
 
-        
                             document1 --> subordinate1 : with
 
-
-        
                         superior --> document2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about
 
-        
                             subordinate2 <- document2 : with
 
-
-        
                         superior --> document3 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> talks about
 
-        
                             document3 -> subordinate3 : with
 
-
-
-        
                         document4 <-- superior : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> talks about
 
-        
                             subordinate4 <-- document4 : with
 
-
-        
                         document5 <-- superior : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> talks about
 
-        
                             subordinate5 <- document5 : with
 
-
-        
                         document6 <-- superior : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> talks about
 
-        
                             document6 -> subordinate6 : with
 
 @enduml
+
+

@@ -1,15 +1,7 @@
 @startuml
 
-
-
 skinparam stereotypeCBackgroundColor 228811
 skinparam backgroundColor 777
-
-
-
-
-
-
 
 skinparam circledCharacter {
   radius 8
@@ -34,7 +26,6 @@ skinparam class {
   attributeFontSize 11
   attributeIconSize 11
 }
-
 
 skinparam actor {
     backgroundColor 228811
@@ -75,7 +66,6 @@ skinparam SequenceBox{
   stereotypeFontColor aaa
   stereotypeFontSize 11
 }
-
 
 skinparam interface {
     backgroundColor 228811
@@ -126,7 +116,6 @@ skinparam queue {
   stereotypeFontColor aaa
   stereotypeFontSize 11
 }
-
 
 skinparam usecase {
     backgroundColor 2e2e2e
@@ -201,7 +190,6 @@ skinparam entity {
   stereotypeFontSize 11
 }
 
-
 skinparam state {
     backgroundColor 2e2e2e
   borderColor 1b1b1b
@@ -218,7 +206,6 @@ skinparam state {
   endColor 113300
 }
 
-
 skinparam object {
     backgroundColor 2e2e2e
   borderColor 1b1b1b
@@ -232,7 +219,6 @@ skinparam object {
   arrowFontColor bbb
   arrowFontSize 11
 }
-
 
 skinparam note {
     backgroundColor 228811
@@ -298,208 +284,10 @@ skinparam Card {
   stereotypeFontSize 11
 }
 
-
-
-
-
-
-
-
-
     top to bottom direction
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-            
 hide stereotypes
 
-
-
-            
-
-
-
-            
-
-
-
-
-
-            
-
-
-
-
-
-
-            
-
-
-            
-
-
-
-            
-
-
-
-
-
-            
-
-
-
-
-
-
-            
-
-
-            
-
-
-
-
-
-            
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-            
-
-
-
-
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-
-            
-
-
-
-    
-
-
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-            
-
-
-
-
-
-
-
-
-    
-    
-    
-            
 sprite $ma_account_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -552,28 +340,7 @@ sprite $ma_account_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA ACCOUNT_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_account_multiple_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -626,27 +393,7 @@ sprite $ma_account_multiple_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA ACCOUNT_MULTIPLE_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-    
-    
-    
-            
 sprite $ma_laptop [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -699,30 +446,7 @@ FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 }
 
 skinparam folderBackgroundColor<<MA LAPTOP>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-
-
-    
-    
-    
-            
 sprite $ma_file_document [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -775,28 +499,7 @@ sprite $ma_file_document [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA FILE_DOCUMENT>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_folder_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -849,27 +552,7 @@ sprite $ma_folder_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA FOLDER_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-    
-    
-    
-            
 sprite $ma_phone [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -922,28 +605,7 @@ sprite $ma_phone [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA PHONE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_at [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -996,28 +658,7 @@ sprite $ma_at [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA AT>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_message_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -1070,28 +711,7 @@ sprite $ma_message_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA MESSAGE_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_information_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -1144,63 +764,20 @@ sprite $ma_information_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
-            
-
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     Rectangle "==Party" as Party   {
-    
 
+            Agent "<$ma_account_outline{scale=1}>\rAlice" as Alice <<Person>>
 
-            Agent "<$ma_account_outline{scale=1}>\rAlice" as Alice <<Person>> 
+            Card "<$ma_message_outline{scale=.8}>\rweather" as weather <<Conversation>>
 
-    
-
-
-            Card "<$ma_message_outline{scale=.8}>\rweather" as weather <<Conversation>> 
-
-    
-
-
-            Agent "<$ma_account_outline{scale=1}>\rBob" as Bob <<Person>> 
+            Agent "<$ma_account_outline{scale=1}>\rBob" as Bob <<Person>>
 
     }
 
-
-
-
-        
                         Alice --> weather : <back:#228811><color:#113300>(1)</color></back> talks about the
 
-        
                             weather --> Bob : with
 @enduml
+
+
