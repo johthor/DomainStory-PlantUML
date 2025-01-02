@@ -1,9 +1,5 @@
 @startuml
 
-
-
-
-
 <style>
   root {
     BackgroundColor #003153
@@ -144,218 +140,12 @@ skinparam UseCaseStereoType {
   FontName Verdana
 }
 
-
-
-
-
-
-
-
-
     left to right direction
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
 
             skinparam DefaultTextAlignment center
 
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-            
 hide stereotypes
 
-
-
-            
-
-
-
-            
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-            
-
-
-            
-
-
-
-            
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-            
-
-
-            
-
-
-
-
-
-    
-
-
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-            
-
-
-
-
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-
-            
-
-
-
-    
-
-
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-            
-
-            
-
-
-
-
-
-
-    
-    
-    
-            
 sprite $ma_account_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -408,28 +198,7 @@ sprite $ma_account_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA ACCOUNT_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_account_multiple_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -482,27 +251,7 @@ sprite $ma_account_multiple_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA ACCOUNT_MULTIPLE_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-    
-    
-    
-            
 sprite $ma_laptop [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -555,30 +304,7 @@ FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 }
 
 skinparam folderBackgroundColor<<MA LAPTOP>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-
-
-    
-    
-    
-            
 sprite $ma_file_document [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -631,28 +357,7 @@ sprite $ma_file_document [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA FILE_DOCUMENT>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_folder_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -705,27 +410,7 @@ sprite $ma_folder_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA FOLDER_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-    
-    
-    
-            
 sprite $ma_phone [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -778,28 +463,7 @@ sprite $ma_phone [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA PHONE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_at [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -852,28 +516,7 @@ sprite $ma_at [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA AT>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_message_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -926,28 +569,7 @@ sprite $ma_message_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA MESSAGE_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_information_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -1000,121 +622,47 @@ sprite $ma_information_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
-            
-
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-        
 
             skinparam AgentBackgroundColor<<Person:friendly>> LimeGreen
-    
-        
 
             skinparam RectangleBackgroundColor<<fun>> yellow|red
-            
-    
-        
 
             skinparam AgentFontStyle<<windy>> italic
 
-    
-
-
             skinparam PackageBackgroundColor<<stored>> orange
 
-    
-
-
-            Agent "<$ma_account_outline{scale=1}>\rAlice" as Alice <<Person:windy>><<Person>><<windy>> 
-
-    
-
-
+            Agent "<$ma_account_outline{scale=1}>\rAlice" as Alice <<Person:windy>><<Person>><<windy>>
 
     Package "==Home" as Home <<stored>>  {
-    
 
-
-            Database "<$ma_at{scale=.8}>\rspam" as spam <<Email:stored>><<Email>><<stored>> 
+            Database "<$ma_at{scale=.8}>\rspam" as spam <<Email:stored>><<Email>><<stored>>
 
     }
 
-    
-
-
-            Agent "<$ma_account_outline{scale=1}>\rBob" as Bob <<Person:friendly>><<Person>><<friendly>> 
-
-    
-
-
+            Agent "<$ma_account_outline{scale=1}>\rBob" as Bob <<Person:friendly>><<Person>><<friendly>>
 
     Rectangle "==Party" as Party <<fun>>  {
-    
 
-
-            Card "<$ma_message_outline{scale=.8}>\rweather" as weather <<Conversation>> 
+            Card "<$ma_message_outline{scale=.8}>\rweather" as weather <<Conversation>>
 
     }
-
-
-
 
     Rectangle "==Office" as Office   {
-    
 
-
-            Card "<$ma_at{scale=.8,color=red}>\rproposal" as proposal <<Email:important>><<Email>><<important>> 
+            Card "<$ma_at{scale=.8,color=red}>\rproposal" as proposal <<Email:important>><<Email>><<important>>
 
     }
 
-
-
-        
                         Alice -> spam : (1) reads the
 
-        
-
-
-
-        
                         Alice --> weather : (2) talks about the
 
-        
                             weather --> Bob : with
 
-
-
-        
                         proposal <-- Bob : (3) writes a
 
-        
                             Alice <-- proposal : to
 
 @enduml
+
+

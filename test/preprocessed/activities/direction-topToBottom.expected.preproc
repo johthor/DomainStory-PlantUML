@@ -1,346 +1,108 @@
 @startuml
 
-
-
-
-
-
-
-
     top to bottom direction
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
 
             skinparam DefaultFontColor #0B0C10
 
-    
-
-
             skinparam DefaultFontName Arial, Helvetica, SansSerif
-
-    
-
 
             skinparam DefaultFontSize 12
 
-    
-
-
             skinparam DefaultFontStyle normal
-
-    
-
 
             skinparam DefaultTextAlignment center
 
-
-    
-
-
             skinparam DefaultBackgroundColor none
-
-    
-
 
             skinparam DefaultBorderStyle none
 
-    
-
-
             skinparam DefaultBorderColor none
-
-    
-
 
             skinparam DefaultBorderThickness 1
 
-    
-
-
-
-            
 hide stereotypes
     skinparam Shadowing false
 
-
-
-            
-
-
-
-            
-
-    
-
-
             skinparam AgentFontColor #0B0C10
-
-    
-
 
             skinparam AgentFontName Arial, Helvetica, SansSerif
 
-    
-
-
             skinparam AgentFontSize 12
-
-    
-
 
             skinparam AgentFontStyle normal
 
-    
-
-
             skinparam AgentTextAlignment center
-
-
-    
-
 
             skinparam AgentBackgroundColor none
 
-    
-
-
             skinparam AgentBorderStyle none
-
-    
-
 
             skinparam AgentBorderColor none
 
-    
-
-
             skinparam AgentBorderThickness 1
-
-
-            
-
-
-            
-
-
-
-            
-
-    
-
 
             skinparam CardFontColor #0B0C10
 
-    
-
-
             skinparam CardFontName Arial, Helvetica, SansSerif
-
-    
-
 
             skinparam CardFontSize 12
 
-    
-
-
             skinparam CardFontStyle normal
-
-    
-
 
             skinparam CardTextAlignment center
 
-
-    
-
-
             skinparam CardBackgroundColor none
-
-    
-
 
             skinparam CardBorderStyle none
 
-    
-
-
             skinparam CardBorderColor none
-
-    
-
 
             skinparam CardBorderThickness 1
 
-
-            
-
-
-            
-
-    
-
-
             skinparam RectangleFontColor #0B0C10
-
-    
-
 
             skinparam RectangleFontName Arial, Helvetica, SansSerif
 
-    
-
-
             skinparam RectangleFontSize 12
-
-    
-
 
             skinparam RectangleFontStyle normal
 
-    
-
-
             skinparam RectangleTextAlignment center
-
-
-    
-
 
             skinparam RectangleBackgroundColor none
 
-    
-
-
             skinparam RectangleBorderStyle dashed
-
-    
-
 
             skinparam RectangleBorderColor #1f2833
 
-    
-
-
             skinparam RectangleBorderThickness 2
-
-    
-
 
             skinparam RectangleRoundCorner 15
 
-            
-
-
-
-
-    
-
-
             skinparam NoteFontColor #0B0C10
-
-    
-
 
             skinparam NoteFontName Arial, Helvetica, SansSerif
 
-    
-
-
             skinparam NoteFontSize 12
-
-    
-
 
             skinparam NoteFontStyle normal
 
-    
-
-
             skinparam NoteTextAlignment left
-
-
-    
-
 
             skinparam NoteBackgroundColor #c5c6c7
 
-    
-
-
             skinparam NoteBorderStyle none
-
-    
-
 
             skinparam NoteBorderColor #1f2833
 
-    
-
-
             skinparam NoteBorderThickness 1
-
-
-            
-
-
-
-    
-
 
             skinparam ArrowFontColor #0B0C10
 
-
-
-
-    
-
-
             skinparam ArrowMessageAlignment left
-
-
-    
-
 
             skinparam ArrowColor #c5c6c7
 
-
-
-
-
-
-
-            
-
-            
-
-
-
-
-
-
-    
-    
-    
-            
 sprite $ma_account_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -393,28 +155,7 @@ sprite $ma_account_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA ACCOUNT_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_account_multiple_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -467,27 +208,7 @@ sprite $ma_account_multiple_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA ACCOUNT_MULTIPLE_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-    
-    
-    
-            
 sprite $ma_laptop [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -540,30 +261,7 @@ FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 }
 
 skinparam folderBackgroundColor<<MA LAPTOP>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-
-
-    
-    
-    
-            
 sprite $ma_file_document [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -616,28 +314,7 @@ sprite $ma_file_document [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA FILE_DOCUMENT>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_folder_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -690,27 +367,7 @@ sprite $ma_folder_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA FOLDER_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-    
-    
-    
-            
 sprite $ma_phone [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -763,28 +420,7 @@ sprite $ma_phone [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA PHONE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_at [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -837,28 +473,7 @@ sprite $ma_at [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA AT>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_message_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -911,28 +526,7 @@ sprite $ma_message_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA MESSAGE_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_information_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -985,148 +579,56 @@ sprite $ma_information_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague1" as colleague1 <<Person>>
 
+            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rdefaultMovie" as defaultMovie <<Conversation>>
 
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague2" as colleague2 <<Person>>
 
+            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rrightMovie" as rightMovie <<Conversation>>
 
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague3" as colleague3 <<Person>>
 
+            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rleftMovie" as leftMovie <<Conversation>>
 
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague4" as colleague4 <<Person>>
 
+            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rdownMovie" as downMovie <<Conversation>>
 
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague5" as colleague5 <<Person>>
 
+            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rupMovie" as upMovie <<Conversation>>
 
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague6" as colleague6 <<Person>>
 
+            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rreverseMovie" as reverseMovie <<Conversation>>
 
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague7" as colleague7 <<Person>>
 
-
-
-    
-
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague1" as colleague1 <<Person>> 
-
-    
-
-
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rdefaultMovie" as defaultMovie <<Conversation>> 
-
-    
-
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague2" as colleague2 <<Person>> 
-
-    
-
-
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rrightMovie" as rightMovie <<Conversation>> 
-
-    
-
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague3" as colleague3 <<Person>> 
-
-    
-
-
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rleftMovie" as leftMovie <<Conversation>> 
-
-    
-
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague4" as colleague4 <<Person>> 
-
-    
-
-
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rdownMovie" as downMovie <<Conversation>> 
-
-    
-
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague5" as colleague5 <<Person>> 
-
-    
-
-
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rupMovie" as upMovie <<Conversation>> 
-
-    
-
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague6" as colleague6 <<Person>> 
-
-    
-
-
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rreverseMovie" as reverseMovie <<Conversation>> 
-
-    
-
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague7" as colleague7 <<Person>> 
-
-    
-
-
-
-        
                         colleague1 --> defaultMovie : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about
 
-        
                             defaultMovie --> colleague2 : with
 
-
-
-        
                         upMovie <-- colleague1 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about
 
-        
                             colleague3 <-- upMovie : with
 
-
-
-        
                         colleague1 -> rightMovie : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> talks about
 
-        
                             rightMovie -> colleague4 : with
 
-
-
-        
                         colleague1 --> downMovie : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> talks about
 
-        
                             downMovie --> colleague5 : with
 
-
-
-        
                         leftMovie <- colleague1 : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> talks about
 
-        
                             colleague6 <- leftMovie : with
 
-
-
-        
                         reverseMovie <-- colleague1 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> talks about
 
-        
                             colleague7 <-- reverseMovie : with
 @enduml
+
+

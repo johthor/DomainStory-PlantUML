@@ -68,7 +68,8 @@ test::preprocess-all() {
 
     mkdir -p "$(dirname "$new")"
 
-    mv "$old" "$new"
+    awk -v RS='([[:blank:]]*\n){2,}' -v ORS="\n\n" 1 "$old" > "$new"
+    rm "$old"
   done
 }
 

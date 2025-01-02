@@ -1,346 +1,108 @@
 @startuml
 
-
-
-
-
-
-
-
     left to right direction
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
 
             skinparam DefaultFontColor #0B0C10
 
-    
-
-
             skinparam DefaultFontName Arial, Helvetica, SansSerif
-
-    
-
 
             skinparam DefaultFontSize 12
 
-    
-
-
             skinparam DefaultFontStyle normal
-
-    
-
 
             skinparam DefaultTextAlignment center
 
-
-    
-
-
             skinparam DefaultBackgroundColor none
-
-    
-
 
             skinparam DefaultBorderStyle none
 
-    
-
-
             skinparam DefaultBorderColor none
-
-    
-
 
             skinparam DefaultBorderThickness 1
 
-    
-
-
-
-            
 hide stereotypes
     skinparam Shadowing false
 
-
-
-            
-
-
-
-            
-
-    
-
-
             skinparam AgentFontColor #0B0C10
-
-    
-
 
             skinparam AgentFontName Arial, Helvetica, SansSerif
 
-    
-
-
             skinparam AgentFontSize 12
-
-    
-
 
             skinparam AgentFontStyle normal
 
-    
-
-
             skinparam AgentTextAlignment center
-
-
-    
-
 
             skinparam AgentBackgroundColor none
 
-    
-
-
             skinparam AgentBorderStyle none
-
-    
-
 
             skinparam AgentBorderColor none
 
-    
-
-
             skinparam AgentBorderThickness 1
-
-
-            
-
-
-            
-
-
-
-            
-
-    
-
 
             skinparam CardFontColor #0B0C10
 
-    
-
-
             skinparam CardFontName Arial, Helvetica, SansSerif
-
-    
-
 
             skinparam CardFontSize 12
 
-    
-
-
             skinparam CardFontStyle normal
-
-    
-
 
             skinparam CardTextAlignment center
 
-
-    
-
-
             skinparam CardBackgroundColor none
-
-    
-
 
             skinparam CardBorderStyle none
 
-    
-
-
             skinparam CardBorderColor none
-
-    
-
 
             skinparam CardBorderThickness 1
 
-
-            
-
-
-            
-
-    
-
-
             skinparam RectangleFontColor #0B0C10
-
-    
-
 
             skinparam RectangleFontName Arial, Helvetica, SansSerif
 
-    
-
-
             skinparam RectangleFontSize 12
-
-    
-
 
             skinparam RectangleFontStyle normal
 
-    
-
-
             skinparam RectangleTextAlignment center
-
-
-    
-
 
             skinparam RectangleBackgroundColor none
 
-    
-
-
             skinparam RectangleBorderStyle dashed
-
-    
-
 
             skinparam RectangleBorderColor #1f2833
 
-    
-
-
             skinparam RectangleBorderThickness 2
-
-    
-
 
             skinparam RectangleRoundCorner 15
 
-            
-
-
-
-
-    
-
-
             skinparam NoteFontColor #0B0C10
-
-    
-
 
             skinparam NoteFontName Arial, Helvetica, SansSerif
 
-    
-
-
             skinparam NoteFontSize 12
-
-    
-
 
             skinparam NoteFontStyle normal
 
-    
-
-
             skinparam NoteTextAlignment left
-
-
-    
-
 
             skinparam NoteBackgroundColor #c5c6c7
 
-    
-
-
             skinparam NoteBorderStyle none
-
-    
-
 
             skinparam NoteBorderColor #1f2833
 
-    
-
-
             skinparam NoteBorderThickness 1
-
-
-            
-
-
-
-    
-
 
             skinparam ArrowFontColor #0B0C10
 
-
-
-
-    
-
-
             skinparam ArrowMessageAlignment left
-
-
-    
-
 
             skinparam ArrowColor #c5c6c7
 
-
-
-
-
-
-
-            
-
-            
-
-
-
-
-
-
-    
-    
-    
-            
 sprite $ma_account_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -393,28 +155,7 @@ sprite $ma_account_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA ACCOUNT_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_account_multiple_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -467,27 +208,7 @@ sprite $ma_account_multiple_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA ACCOUNT_MULTIPLE_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-    
-    
-    
-            
 sprite $ma_laptop [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -540,30 +261,7 @@ FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 }
 
 skinparam folderBackgroundColor<<MA LAPTOP>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-
-
-    
-    
-    
-            
 sprite $ma_file_document [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -616,28 +314,7 @@ sprite $ma_file_document [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA FILE_DOCUMENT>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_folder_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -690,27 +367,7 @@ sprite $ma_folder_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA FOLDER_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-    
-    
-    
-            
 sprite $ma_phone [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -763,28 +420,7 @@ sprite $ma_phone [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA PHONE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_at [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -837,28 +473,7 @@ sprite $ma_at [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA AT>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_message_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -911,28 +526,7 @@ sprite $ma_message_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA MESSAGE_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
-
-
-
-    
-    
-    
-            
 sprite $ma_information_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -985,109 +579,49 @@ sprite $ma_information_outline [48x48/16] {
 }
 
 skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
-            
 
-    
-    
-    
-    
-    
-            
-    
-    
-    
-    
-    
-    
-            
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rpete" as pete <<Person>>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rpete" as pete <<Person>> 
-
-    
 note top of pete : above
 note right of pete : right
 note bottom of pete : below
 note left of pete : left
 
-    
+            Card "<$ma_at{scale=.8,color=#1f2833}>\rconfirmation" as confirmation <<Email>>
 
-
-            Card "<$ma_at{scale=.8,color=#1f2833}>\rconfirmation" as confirmation <<Email>> 
-
-    
                 note right of confirmation : default
-    
 
+            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rnews" as news <<Info>>
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rnews" as news <<Info>> 
-
-    
             note top of news :  above
-    
 
+            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rlist" as list <<Document>>
 
-            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rlist" as list <<Document>> 
-
-    
             note right of list :  right
-    
 
+            Card "<$ma_folder_outline{scale=.8,color=#1f2833}>\rdocuments" as documents <<Folder>>
 
-            Card "<$ma_folder_outline{scale=.8,color=#1f2833}>\rdocuments" as documents <<Folder>> 
-
-    
             note bottom of documents :  below
-    
 
+            Card "<$ma_phone{scale=.8,color=#1f2833}>\rquestion" as question <<Call>>
 
-            Card "<$ma_phone{scale=.8,color=#1f2833}>\rquestion" as question <<Call>> 
-
-    
             note left of question :  left
-    
 
+            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rargument" as argument <<Conversation>>
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rargument" as argument <<Conversation>> 
-
-    
                 note left of argument :  inverse
 
-    
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rAlice" as Alice <<Person>>
 
-
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rAlice" as Alice <<Person>> 
-
-    
                 note right of Alice : default
-    
 
+            Agent "<$ma_account_multiple_outline{scale=1,color=#1f2833}>\rEmployees" as Employees <<Group>>
 
-            Agent "<$ma_account_multiple_outline{scale=1,color=#1f2833}>\rEmployees" as Employees <<Group>> 
-
-    
                 note left of Employees :  inverse
-    
 
+            Agent "<$ma_laptop{scale=1,color=#1f2833}>\rBoarding" as Boarding <<System>>
 
-            Agent "<$ma_laptop{scale=1,color=#1f2833}>\rBoarding" as Boarding <<System>> 
-
-    
             note top of Boarding :  above
 @enduml
+
+
