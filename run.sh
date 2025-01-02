@@ -62,7 +62,7 @@ run::convertAssets() {
     puml::convert "$sample" docs/assets
   done
 
-  puml::convert test/puml/styling/theme-sketchy.puml docs/assets
+  puml::convert test/puml/styling/theme-bluegray.puml docs/assets
 }
 
 run::compare() {
