@@ -1,4 +1,6 @@
 @startuml
+' Contents inspired by https://domainstorytelling.org/quick-start-guide#putting-it-all-together
+
 !include ../../../src/domainStoryComposite.puml
 
 activateComposableActivities()
@@ -22,6 +24,4 @@ continue(and, Person(C))
 
 startActivity(+, Person(A), collaborates on, Document(w))
 terminateActivity(|, Person(B), collaborates on, <--)
-
-'introduce(p, Person(Pete))
 @enduml

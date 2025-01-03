@@ -636,7 +636,7 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
                     Document8 --> b41 : to
 
-                    b41 --> c41 : and
+                    Document8 --> c41 : and
 
     Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as a51 <<Person>>
 
@@ -649,5 +649,3 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
                         Document9 <-- b51 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> collaborates on
 
 @enduml
-
-

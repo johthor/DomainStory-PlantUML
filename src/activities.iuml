@@ -24,6 +24,7 @@
 
     $createConnection($subject, $object, $arrow, $predicate, $computeStepLabel($step))
 
+    !global $previousNodeConnected = $lastNodeConnected
     !global $lastNodeConnected = $object
     !global $currentActivityDirection = $arrow
 !endprocedure
@@ -40,6 +41,7 @@
     ' create connecting arrows
     $createConnection($start, $object, $arrow, $action)
 
+    !global $previousNodeConnected = $lastNodeConnected
     !global $lastNodeConnected = $object
     !global $currentActivityDirection = $arrow
 !endprocedure

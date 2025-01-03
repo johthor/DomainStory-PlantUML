@@ -22,7 +22,7 @@ Person(a41, "A")
 Person(b41, "B")
 Person(c41, "C")
 activity(+, a41, hands over, Document:w, to, b41)
-activity(., $lastNodeConnected, and, c41)
+activity(., $previousNodeConnected, and, c41)
 
 Person(a51, "A")
 Person(b51, "B")
