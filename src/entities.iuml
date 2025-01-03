@@ -2,32 +2,36 @@
 ' ##################################
 
 !unquoted function Actor($kind, $icon, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    !if $DST_PUML_ENTITY_NAMES == "static"
-        !$actorName = $createElement("Actor", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
-        $createElementNote($name, $note)
-    !else
+    !if $DST_PUML_ENTITY_NAMES == "dynamic" || $dynamicElementNames == "active"
         !$tmpLabel = $name
         !$name = $computeNextElementName("Actor")
         !$actorName = $createElement("Actor", $kind, $icon, $name, $tmpLabel, $label, $note, $shape, $scale, $color)
         $createElementNote($name, $tag)
+    !else
+        !$actorName = $createElement("Actor", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
+        $createElementNote($name, $note)
     !endif
 
     !return $actorName
 !endfunction
 
 !unquoted function Object($kind, $icon, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    !if $DST_PUML_ENTITY_NAMES == "static"
-        !$objectName = $createElement("Object", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
-        $createElementNote($name, $note)
-    !else
+    !if $DST_PUML_ENTITY_NAMES == "dynamic" || $dynamicElementNames == "active"
         !$tmpLabel = $name
         !$name = $computeNextElementName("Object")
         !$objectName = $createElement("Object", $kind, $icon, $name, $tmpLabel, $label, $note, $shape, $scale, $color)
         $createElementNote($name, $tag)
+    !else
+        !$objectName = $createElement("Object", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
+        $createElementNote($name, $note)
     !endif
 
     !return $objectName
 !endfunction
+
+!unquoted procedure introduce($name, $element)
+    %set_variable_value($name, $element)
+!endprocedure
 
 !unquoted function $createElement($type, $kind, $icon, $name, $label = "", $tag = "", $shape = "", $scale = "", $color = "", $background = "")
     $debug($type + "(" + $kind + ", " + $icon + ") " + $name + " : " + $label + " : " + $tag + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
@@ -46,7 +50,7 @@
     ' output below
     $pumlEntity($shape, $label, $name, $icon, $scale, $color, $stereotypes, $backgroundColor)
 
-    !if $activityContext == "open"
+    !if $dynamicElementNames == "active"
         !return $name
     !else
         !return ""

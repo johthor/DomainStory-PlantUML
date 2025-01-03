@@ -1,0 +1,27 @@
+@startuml
+!include ../../../src/domainStoryComposite.puml
+
+activateComposableActivities()
+
+startActivity(+, Person(A), works on, Document(w))
+
+startActivity(+, Person(A), works on, Document(w))
+append(using, Document(v))
+
+startActivity(+, Person(A), works on, Document(w))
+append(using, Document(v))
+append(and, Document(u))
+append(as well as, Document(t))
+
+startActivity(+, Person(A), hands over, Document(w))
+append(to, Person(B))
+
+startActivity(+, Person(A), hands over, Document(w))
+split(to, Person(B))
+continue(and, Person(C))
+
+startActivity(+, Person(A), collaborates on, Document(w))
+terminateActivity(|, Person(B), collaborates on, <--)
+
+'introduce(p, Person(Pete))
+@enduml

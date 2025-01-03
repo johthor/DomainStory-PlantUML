@@ -3,35 +3,43 @@
 
 !include ../../../src/domainStoryComposite.puml
 
-Person(Pete)
+introduce(p, Person(Pete))
 
 !assert $actorCounter == 1
+!assert p == "actor1"
 
-Person(Smart Sarah)
+introduce(s, Person(Smart Sarah))
 
 !assert $actorCounter == 2
+!assert s == "actor2"
 
-Person(Funny Frida, funny)
+introduce(f, Person(Funny Frida, funny))
 
 !assert $actorCounter == 3
+!assert f == "actor3"
 
-Person(Happy Hannah, happy, real happy)
+introduce(h, Person(Happy Hannah, happy, real happy))
 
 !assert $actorCounter == 4
+!assert h == "actor4"
 
-Person(Mindful Max, mindful, thinks a lot, cloud)
+introduce(m, Person(Mindful Max, mindful, thinks a lot, cloud))
 
 !assert $actorCounter == 5
+!assert m == "actor5"
 
-Person(Noble Noah, noble, shows high moral qualities, cloud, 2)
+introduce(n, Person(Noble Noah, noble, shows high moral qualities, cloud, 2))
 
 !assert $actorCounter == 6
+!assert n == "actor6"
 
-Person(Orderly Olivia, orderly, is organized, folder, 2, darkblue)
+introduce(o, Person(Orderly Olivia, orderly, is organized, folder, 2, darkblue))
 
 !assert $actorCounter == 7
+!assert o == "actor7"
 
-Person(Questioning Quentin, questioning, doubtful, database, 2, red, grey)
+introduce(q, Person(Questioning Quentin, questioning, doubtful, database, 2, red, grey))
 
 !assert $actorCounter == 8
+!assert q == "actor8"
 @enduml

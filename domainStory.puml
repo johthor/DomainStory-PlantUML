@@ -417,47 +417,59 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
 ' Mutable state
 ' ##################################
 
-!global $activityContext = "closed"
+!if $DST_PUML_ENTITY_NAMES == "dynamic"
+    !global $dynamicElementNames = "active"
+!else
+    !global $dynamicElementNames = "inactive"
+!endif
 
+
+' Element Related State
 !global $actorCounter = 0
 !global $objectCounter = 0
 !global $elementCounter = 0
 
+' Activity Related State
 !global $stepCounter = 0
 
-!global $lastObjectName = ""
-!global $lastTargetName = ""
+!global $lastNodeConnected = ""
+!global $splitNode = ""
+!global $currentActivityDirection = ""
 
 ' Entity Creation
 ' ##################################
 
 !unquoted function Actor($kind, $icon, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    !if $DST_PUML_ENTITY_NAMES == "static"
-        !$actorName = $createElement("Actor", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
-        $createElementNote($name, $note)
-    !else
+    !if $DST_PUML_ENTITY_NAMES == "dynamic" || $dynamicElementNames == "active"
         !$tmpLabel = $name
         !$name = $computeNextElementName("Actor")
         !$actorName = $createElement("Actor", $kind, $icon, $name, $tmpLabel, $label, $note, $shape, $scale, $color)
         $createElementNote($name, $tag)
+    !else
+        !$actorName = $createElement("Actor", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
+        $createElementNote($name, $note)
     !endif
 
     !return $actorName
 !endfunction
 
 !unquoted function Object($kind, $icon, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    !if $DST_PUML_ENTITY_NAMES == "static"
-        !$objectName = $createElement("Object", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
-        $createElementNote($name, $note)
-    !else
+    !if $DST_PUML_ENTITY_NAMES == "dynamic" || $dynamicElementNames == "active"
         !$tmpLabel = $name
         !$name = $computeNextElementName("Object")
         !$objectName = $createElement("Object", $kind, $icon, $name, $tmpLabel, $label, $note, $shape, $scale, $color)
         $createElementNote($name, $tag)
+    !else
+        !$objectName = $createElement("Object", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
+        $createElementNote($name, $note)
     !endif
 
     !return $objectName
 !endfunction
+
+!unquoted procedure introduce($name, $element)
+    %set_variable_value($name, $element)
+!endprocedure
 
 !unquoted function $createElement($type, $kind, $icon, $name, $label = "", $tag = "", $shape = "", $scale = "", $color = "", $background = "")
     $debug($type + "(" + $kind + ", " + $icon + ") " + $name + " : " + $label + " : " + $tag + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
@@ -476,7 +488,7 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
     ' output below
     $pumlEntity($shape, $label, $name, $icon, $scale, $color, $stereotypes, $backgroundColor)
 
-    !if $activityContext == "open"
+    !if $dynamicElementNames == "active"
         !return $name
     !else
         !return ""
@@ -660,50 +672,115 @@ $extendStyleDeclarations("Object", "Call", "phone")
 ' Activities
 ' ##################################
 
-!unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "", $targetTag="", $targetNote = "", $targetShape = "", $targetScale = "", $targetColor = "", $targetBackground = "")
-    ' Decide on the activity direction
-    !if $objectArr == ""
-        !$objectArr = $computeArrowDirection($step)
+!procedure activateComposableActivities($state = "active")
+    !global $dynamicElementNames = $state
+!endprocedure
 
-        !if $objectArr
+' Appending to the Activity Stream
+' ----------------------------------
+
+!unquoted procedure startActivity($step, $subject, $predicate, $object, $arrow = "")
+    ' Decide on the activity direction
+    !if $arrow == ""
+        !$arrow = $computeArrowDirection($step)
+
+        !if $arrow
             ' Delete position indicator from $step
             !$step = %substr($step, 1)
         !else
             ' No position indicator was found => follow default story flow
-            !$objectArr = "-->"
+            !$arrow = "-->"
         !endif
     !endif
 
-    !if $targetArr == ""
-        !$targetArr = $objectArr
+    $createConnection($subject, $object, $arrow, $predicate, $computeStepLabel($step))
+
+    !global $lastNodeConnected = $object
+    !global $currentActivityDirection = $arrow
+!endprocedure
+
+!unquoted procedure append($action, $object = "", $arrow = "", $start = "")
+    !if $start == ""
+        !$start = $lastNodeConnected
     !endif
 
+    !if $arrow == ""
+        !$arrow = $currentActivityDirection
+    !endif
+
+    ' create connecting arrows
+    $createConnection($start, $object, $arrow, $action)
+
+    !global $lastNodeConnected = $object
+    !global $currentActivityDirection = $arrow
+!endprocedure
+
+!unquoted procedure split($action, $object = "", $arrow = "")
+    !global $splitNode = $lastNodeConnected
+    append($action, $object, $arrow)
+!endprocedure
+
+!unquoted procedure continue($action, $object = "", $arrow = "")
+    append($action, $object, $arrow, $splitNode)
+!endprocedure
+
+' Prepending to the Activity Stream
+' ----------------------------------
+
+!unquoted procedure prepend($start, $action = "", $arrow = "", $end = "")
+    !if $end == ""
+        !$end = $lastStartName
+    !endif
+
+    !if $arrow == ""
+        !$arrow = $currentActivityDirection
+    !endif
+
+    $createConnection($start, $end, $arrow, $action)
+
+    !global $lastStartName = $start
+    !global $currentActivityDirection = $arrow
+!endprocedure
+
+!unquoted procedure terminateActivity($step, $subject, $predicate, $arrow = "", $object = "")
+    !if $object == ""
+        !$object = $lastNodeConnected
+    !endif
+
+    !if $arrow == ""
+        !$arrow = $currentActivityDirection
+    !endif
+
+    $createConnection($subject, $object, $arrow, $predicate, $computeStepLabel($step))
+!endprocedure
+
+' Classic Activity Definition
+' ----------------------------------
+
+!unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "", $targetTag="", $targetNote = "", $targetShape = "", $targetScale = "", $targetColor = "", $targetBackground = "")
     ' Handle first connection between subject and object
     !$object = $ensureElementExists($object, $tag, $note, $shape, $scale, $color, $background)
-    !$lastObjectName = $object
 
-    $createConnection($subject, $object, $objectArr, $predicate, $computeStepLabel($step))
+    startActivity($step, $subject, $predicate, $object, $objectArr)
 
     ' Handle possible second connection between object and target
-    !$target = $ensureElementExists($target, $targetTag, $targetNote, $targetShape, $targetScale, $targetColor, $targetBackground)
-    !$lastTargetName = $target
-
     !if $target && $target != "_"
-        !if $post && $post != "_"
-            $createConnection($object, $target, $targetArr, $post)
-        !else
-            $createConnection($object, $target, $targetArr)
-        !endif
-    !else
-        !if $post && $post != "_"
-            $createConnection($object, $post, $targetArr)
-        !endif
+        !$target = $ensureElementExists($target, $targetTag, $targetNote, $targetShape, $targetScale, $targetColor, $targetBackground)
+
+        append($post, $target, $targetArr)
+    !elseif $post && $post != "_"
+        !$target = $ensureElementExists($post, $targetTag, $targetNote, $targetShape, $targetScale, $targetColor, $targetBackground)
+
+        append("", $target, $targetArr)
     !endif
 !endprocedure
 
+' Activity Helpers
+' ----------------------------------
+
 !procedure $createConnection($from, $to, $arrow = "-->", $action = "", $stepLabel = "")
     !$backwardsArrow = %substr($arrow, 0, 1) == "<"
-    !if $action
+    !if $action && $action != "_"
         !if $stepLabel
             !if $backwardsArrow
                 !if $Step_LabelPosition == "tail"
