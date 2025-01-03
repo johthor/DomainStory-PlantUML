@@ -1,23 +1,13 @@
 !include ./header.iuml
-
 !include ./utilities.iuml
-
 !include ./storyLayout.iuml
-
 !include ./styling.iuml
-
 !include ./theming.iuml
-
 !include ./state.iuml
-
+!include ./entities.iuml
 !include ./actors.iuml
-
 !include ./objects.iuml
-
 !include ./boundaries.iuml
-
 !include ./activities.iuml
-
 !include ./notes.iuml
-
 !include ./helper.iuml

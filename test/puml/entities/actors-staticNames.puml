@@ -1,0 +1,19 @@
+@startuml
+!include ../../../src/domainStoryComposite.puml
+
+Person(Pete)
+
+Person(Sarah, Smart Sarah)
+
+Person(Frida, Funny Frida, funny)
+
+Person(Hannah, Happy Hannah, happy, real happy)
+
+Person(Max, Mindful Max, mindful, thinks a lot, cloud)
+
+Person(Noah, Noble Noah, noble, shows high moral qualities, cloud, 2)
+
+Person(Olivia, Orderly Olivia, orderly, is organized, folder, 2, darkblue)
+
+Person(Quentin, Questioning Quentin, questioning, doubtful, database, 2, red, grey)
+@enduml

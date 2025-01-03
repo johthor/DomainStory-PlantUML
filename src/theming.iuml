@@ -1,9 +1,6 @@
 ' Global Style declarations
 ' ##################################
 
-' Use `-darkmode -DPUML_MODE=dark` to set a preprocessing variable
-!global PUML_MODE ?= "light"
-
 ' Element Styles
 ' ==================================
 
@@ -91,7 +88,6 @@ $declareStyleProperty($Element_Shadowing, Shadowing, Boundary, $themeable = %tru
 
 ' Note Styles
 ' ==================================
-
 
 !global $Note_Shape = Note
 

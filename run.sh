@@ -37,6 +37,8 @@ run::compile() {
     echo ''
     cat src/state.iuml
     echo ''
+    cat src/entities.iuml
+    echo ''
     cat src/actors.iuml
     echo ''
     cat src/objects.iuml
@@ -63,6 +65,11 @@ run::convertAssets() {
   done
 
   puml::convert test/puml/styling/theme-bluegray.puml docs/assets
+
+  for asset in docs/assets/*.svg; do
+    xmllint --format "$asset" > "$asset".tmp
+    mv "$asset".tmp "$asset"
+  done
 }
 
 run::compare() {
