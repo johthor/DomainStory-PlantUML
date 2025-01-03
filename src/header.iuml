@@ -8,17 +8,22 @@
 '' Source: https://github.com/johthor/DomainStory-PlantUML
 ''
 
-'' Use `-darkmode -DPUML_MODE=dark` to set a preprocessing variable
+'' Use `-darkmode -DPUML_MODE=dark` to activate the support for PlantUML dark mode
 !ifdef PUML_MODE
     !global $PUML_MODE ?= PUML_MODE
 !else
     !global $PUML_MODE ?= "light"
 !endif
 
+'' Use `-DDST_PUML_ENTITY_NAMES=dynamic` to activate the dynamic naming feature
+!ifdef DST_PUML_ENTITY_NAMES
+    !global $DST_PUML_ENTITY_NAMES ?= DST_PUML_ENTITY_NAMES
+!else
+    !global $DST_PUML_ENTITY_NAMES ?= "static"
+!endif
+
 !global $DST_PUML_ELEMENT_SEPARATOR ?= "+"
 !global $DST_PUML_COMPONENT_SEPARATOR ?= ":"
-
-
 
 ' Version
 ' ##################################

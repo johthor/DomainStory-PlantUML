@@ -8,17 +8,22 @@
 '' Source: https://github.com/johthor/DomainStory-PlantUML
 ''
 
-'' Use `-darkmode -DPUML_MODE=dark` to set a preprocessing variable
+'' Use `-darkmode -DPUML_MODE=dark` to activate the support for PlantUML dark mode
 !ifdef PUML_MODE
     !global $PUML_MODE ?= PUML_MODE
 !else
     !global $PUML_MODE ?= "light"
 !endif
 
+'' Use `-DDST_PUML_ENTITY_NAMES=dynamic` to activate the dynamic naming feature
+!ifdef DST_PUML_ENTITY_NAMES
+    !global $DST_PUML_ENTITY_NAMES ?= DST_PUML_ENTITY_NAMES
+!else
+    !global $DST_PUML_ENTITY_NAMES ?= "static"
+!endif
+
 !global $DST_PUML_ELEMENT_SEPARATOR ?= "+"
 !global $DST_PUML_COMPONENT_SEPARATOR ?= ":"
-
-
 
 ' Version
 ' ##################################
@@ -57,15 +62,20 @@ Params:
 
 /' Creates an aliased entity with a colorized sprite, label, and stereotype
 Params:
-    $type:     the entity type (e.g. component, node, agent, etc.)
-    $sprite:   the sprite for the image representing the entity
-    $scale:    the scale for the sprite
-    $color:    the color for the sprite
-    $label:    the label to display under the sprite
-    $alias:    the alias to give the entity
-    $stereo:   the stereotype, which can define additional styling '/
-!procedure $pumlEntity($type, $sprite, $scale, $color, $label, $alias, $stereo)
-    $type "$pumlSprite($sprite, $scale, $color)\r $label" as $alias <<$stereo>>
+    $type:         the entity type (e.g. component, node, agent, etc.)
+    $label:        the label to display under the sprite
+    $alias:        the alias to give the entity
+    $sprite:       the sprite for the image representing the entity
+    $scale:        the scale for the sprite
+    $color:        the color for the sprite
+    $stereo:       the stereotype, which can define additional styling
+    $background:   the background color '/
+!procedure $pumlEntity($type, $label, $alias, $sprite = "", $scale = 1, $color = "", $stereo = "", $background = "")
+    !if $sprite
+$type "$pumlSprite($sprite, $scale, $color)\r##$label" as $alias $stereo $background
+    !else
+$type "$label" as $alias $stereo $background
+    !endif
 !endprocedure
 
 ' Various Auxiliary Utilities
@@ -409,17 +419,47 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
 
 !global $activityContext = "closed"
 
-!global $stepCounter = 0
+!global $actorCounter = 0
+!global $objectCounter = 0
 !global $elementCounter = 0
-!global $workObjectCounter = 0
+
+!global $stepCounter = 0
 
 !global $lastObjectName = ""
 !global $lastTargetName = ""
 
-' Actors
+' Entity Creation
 ' ##################################
 
-!unquoted procedure $createElement($type, $kind, $icon, $name, $label = "", $tag = "", $shape = "", $scale = "", $color = "", $background = "")
+!unquoted function Actor($kind, $icon, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $DST_PUML_ENTITY_NAMES == "static"
+        !$actorName = $createElement("Actor", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
+        $createElementNote($name, $note)
+    !else
+        !$tmpLabel = $name
+        !$name = $computeNextElementName("Actor")
+        !$actorName = $createElement("Actor", $kind, $icon, $name, $tmpLabel, $label, $note, $shape, $scale, $color)
+        $createElementNote($name, $tag)
+    !endif
+
+    !return $actorName
+!endfunction
+
+!unquoted function Object($kind, $icon, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $DST_PUML_ENTITY_NAMES == "static"
+        !$objectName = $createElement("Object", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
+        $createElementNote($name, $note)
+    !else
+        !$tmpLabel = $name
+        !$name = $computeNextElementName("Object")
+        !$objectName = $createElement("Object", $kind, $icon, $name, $tmpLabel, $label, $note, $shape, $scale, $color)
+        $createElementNote($name, $tag)
+    !endif
+
+    !return $objectName
+!endfunction
+
+!unquoted function $createElement($type, $kind, $icon, $name, $label = "", $tag = "", $shape = "", $scale = "", $color = "", $background = "")
     $debug($type + "(" + $kind + ", " + $icon + ") " + $name + " : " + $label + " : " + $tag + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
 
     !if $label == ""
@@ -434,20 +474,7 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
     !$stereotypes = $computeStereotypes($kind, $tag)
 
     ' output below
-    !if $icon
-        !if $color
-            $shape "<$icon{scale=$scale,color=$color}>\r##$label" as $name $stereotypes $backgroundColor
-        !else
-            $shape "<$icon{scale=$scale}>\r##$label" as $name $stereotypes $backgroundColor
-        !endif
-    !else
-        $shape $label as $name $stereotypes $backgroundColor
-    !endif
-!endprocedure
-
-!unquoted function Actor($kind, $icon, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    $createElement("Actor", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
-    $createElementNote($name, $note)
+    $pumlEntity($shape, $label, $name, $icon, $scale, $color, $stereotypes, $backgroundColor)
 
     !if $activityContext == "open"
         !return $name
@@ -456,15 +483,14 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
     !endif
 !endfunction
 
-!unquoted function Object($kind, $icon, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    $createElement("Object", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
-    $createElementNote($name, $note)
+!function $computeNextElementName($type)
+    !$prefix = %lower($type)
+    !$counterName = "$" + $prefix + "Counter"
 
-    !if $activityContext == "open"
-        !return $name
-    !else
-        !return ""
-    !endif
+    !$nextValue = %get_variable_value($counterName) + 1
+    %set_variable_value($counterName, $nextValue)
+
+    !return $prefix + %string($nextValue)
 !endfunction
 
 ' Actors
@@ -715,11 +741,11 @@ $extendStyleDeclarations("Object", "Call", "phone")
     !$separatorPosition = %strpos($element, ":")
 
     !if $separatorPosition > -1
-        !$workObjectCounter = $workObjectCounter + 1
+        !$elementCounter = $elementCounter + 1
 
         !$elementKind = %substr($element, 0, $separatorPosition)
         !$elementLabel = %substr($element, $separatorPosition + 1)
-        !$elementName = $elementKind + $workObjectCounter
+        !$elementName = $elementKind + $elementCounter
 
         'Element($kind, $name, $label, $tag, $note, $shape, $scale, $color, $background)
         %call_user_func($elementKind, $elementName, $elementLabel, $tag, $note, $shape, $scale, $color, $background)

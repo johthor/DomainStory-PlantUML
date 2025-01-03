@@ -1,5 +1,9 @@
 ' Mutable state
 ' ##################################
 
+!global $actorCounter = 0
+!global $objectCounter = 0
+!global $elementCounter = 0
+
 !global $stepCounter = 0
 !global $workObjectCounter = 0

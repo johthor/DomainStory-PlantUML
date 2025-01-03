@@ -80,14 +80,14 @@
     !$separatorPosition = %strpos($element, ":")
 
     !if $separatorPosition > -1
-        !$workObjectCounter = $workObjectCounter + 1
+        !$elementCounter = $elementCounter + 1
 
         !$elementKind = %substr($element, 0, $separatorPosition)
         !$elementLabel = %substr($element, $separatorPosition + 1)
-        !$elementName = $elementKind + $workObjectCounter
+        !$elementName = $elementKind + $elementCounter
 
         'Element($kind, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-        %invoke_procedure($elementKind, $elementName, $elementLabel, $tag, $note, $shape, $scale, $color, $background)
+        %call_user_func($elementKind, $elementName, $elementLabel, $tag, $note, $shape, $scale, $color, $background)
 
         !return $elementName
     !else

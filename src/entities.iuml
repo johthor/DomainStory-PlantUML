@@ -1,7 +1,35 @@
-' Actors
+' Entity Creation
 ' ##################################
 
-!unquoted procedure $createElement($type, $kind, $icon, $name, $label = "", $tag = "", $shape = "", $scale = "", $color = "", $background = "")
+!unquoted function Actor($kind, $icon, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $DST_PUML_ENTITY_NAMES == "static"
+        !$actorName = $createElement("Actor", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
+        $createElementNote($name, $note)
+    !else
+        !$tmpLabel = $name
+        !$name = $computeNextElementName("Actor")
+        !$actorName = $createElement("Actor", $kind, $icon, $name, $tmpLabel, $label, $note, $shape, $scale, $color)
+        $createElementNote($name, $tag)
+    !endif
+
+    !return $actorName
+!endfunction
+
+!unquoted function Object($kind, $icon, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $DST_PUML_ENTITY_NAMES == "static"
+        !$objectName = $createElement("Object", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
+        $createElementNote($name, $note)
+    !else
+        !$tmpLabel = $name
+        !$name = $computeNextElementName("Object")
+        !$objectName = $createElement("Object", $kind, $icon, $name, $tmpLabel, $label, $note, $shape, $scale, $color)
+        $createElementNote($name, $tag)
+    !endif
+
+    !return $objectName
+!endfunction
+
+!unquoted function $createElement($type, $kind, $icon, $name, $label = "", $tag = "", $shape = "", $scale = "", $color = "", $background = "")
     $debug($type + "(" + $kind + ", " + $icon + ") " + $name + " : " + $label + " : " + $tag + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
 
     !if $label == ""
@@ -16,20 +44,7 @@
     !$stereotypes = $computeStereotypes($kind, $tag)
 
     ' output below
-    !if $icon
-        !if $color
-            $shape "<$icon{scale=$scale,color=$color}>\r##$label" as $name $stereotypes $backgroundColor
-        !else
-            $shape "<$icon{scale=$scale}>\r##$label" as $name $stereotypes $backgroundColor
-        !endif
-    !else
-        $shape $label as $name $stereotypes $backgroundColor
-    !endif
-!endprocedure
-
-!unquoted function Actor($kind, $icon, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    $createElement("Actor", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
-    $createElementNote($name, $note)
+    $pumlEntity($shape, $label, $name, $icon, $scale, $color, $stereotypes, $backgroundColor)
 
     !if $activityContext == "open"
         !return $name
@@ -38,13 +53,12 @@
     !endif
 !endfunction
 
-!unquoted function Object($kind, $icon, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    $createElement("Object", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
-    $createElementNote($name, $note)
+!function $computeNextElementName($type)
+    !$prefix = %lower($type)
+    !$counterName = "$" + $prefix + "Counter"
 
-    !if $activityContext == "open"
-        !return $name
-    !else
-        !return ""
-    !endif
+    !$nextValue = %get_variable_value($counterName) + 1
+    %set_variable_value($counterName, $nextValue)
+
+    !return $prefix + %string($nextValue)
 !endfunction

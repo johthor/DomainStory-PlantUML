@@ -28,9 +28,9 @@
     $extendStyleDeclarations("Actor", "Person", "account")
 !endif
 
-!unquoted procedure Person($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Actor("Person", $Person_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function Person($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Actor("Person", $Person_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
 
 ' Group Actor
 ' ==================================
@@ -43,15 +43,15 @@
     $extendStyleDeclarations("Actor", "Group", "account_multiple")
 !endif
 
-!unquoted procedure Group($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Actor("Group", $Group_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function Group($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Actor("Group", $Group_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
 
 ' System Actor
 ' ==================================
 
 $extendStyleDeclarations("Actor", "System", "laptop")
 
-!unquoted procedure System($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Actor("System", $System_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function System($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Actor("System", $System_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction

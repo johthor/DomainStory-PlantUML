@@ -1,0 +1,37 @@
+@startuml
+!$DST_PUML_ENTITY_NAMES = "dynamic"
+
+!include ../../../src/domainStoryComposite.puml
+
+Person(Pete)
+
+!assert $actorCounter == 1
+
+Person(Smart Sarah)
+
+!assert $actorCounter == 2
+
+Person(Funny Frida, funny)
+
+!assert $actorCounter == 3
+
+Person(Happy Hannah, happy, real happy)
+
+!assert $actorCounter == 4
+
+Person(Mindful Max, mindful, thinks a lot, cloud)
+
+!assert $actorCounter == 5
+
+Person(Noble Noah, noble, shows high moral qualities, cloud, 2)
+
+!assert $actorCounter == 6
+
+Person(Orderly Olivia, orderly, is organized, folder, 2, darkblue)
+
+!assert $actorCounter == 7
+
+Person(Questioning Quentin, questioning, doubtful, database, 2, red, grey)
+
+!assert $actorCounter == 8
+@enduml

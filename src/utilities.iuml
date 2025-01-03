@@ -25,15 +25,20 @@ Params:
 
 /' Creates an aliased entity with a colorized sprite, label, and stereotype
 Params:
-    $type:     the entity type (e.g. component, node, agent, etc.)
-    $sprite:   the sprite for the image representing the entity
-    $scale:    the scale for the sprite
-    $color:    the color for the sprite
-    $label:    the label to display under the sprite
-    $alias:    the alias to give the entity
-    $stereo:   the stereotype, which can define additional styling '/
-!procedure $pumlEntity($type, $sprite, $scale, $color, $label, $alias, $stereo)
-    $type "$pumlSprite($sprite, $scale, $color)\r $label" as $alias <<$stereo>>
+    $type:         the entity type (e.g. component, node, agent, etc.)
+    $label:        the label to display under the sprite
+    $alias:        the alias to give the entity
+    $sprite:       the sprite for the image representing the entity
+    $scale:        the scale for the sprite
+    $color:        the color for the sprite
+    $stereo:       the stereotype, which can define additional styling
+    $background:   the background color '/
+!procedure $pumlEntity($type, $label, $alias, $sprite = "", $scale = 1, $color = "", $stereo = "", $background = "")
+    !if $sprite
+$type "$pumlSprite($sprite, $scale, $color)\r##$label" as $alias $stereo $background
+    !else
+$type "$label" as $alias $stereo $background
+    !endif
 !endprocedure
 
 ' Various Auxiliary Utilities
