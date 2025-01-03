@@ -1,31 +1,6 @@
 ' Actors
 ' ##################################
 
-!unquoted procedure Actor($kind, $iconName, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    $debug($kind + " : " + $iconName + " : " + $name + " : " + $label + " : " + $tag + " : " + $note + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
-
-    !$shape = $getStyleProperty($shape, Actor, $kind, $tag, Shape)
-    !$scale = $getStyleProperty($scale, Actor, $kind, $tag, IconScale)
-    !$color = $getStyleProperty($color, Actor, $kind, $tag, IconColor)
-
-    !if $label == ""
-        !$label = $name
-    !endif
-
-    ' output below
-    !if $iconName
-        !if $color
-            $shape "<$iconName{scale=$scale,color=$color}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-        !else
-            $shape "<$iconName{scale=$scale}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-        !endif
-    !else
-        $shape $label as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-    !endif
-
-    $createElementNote($name, $note)
-!endprocedure
-
 ' Person Actor
 ' ==================================
 

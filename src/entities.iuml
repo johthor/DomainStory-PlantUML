@@ -1,0 +1,50 @@
+' Actors
+' ##################################
+
+!unquoted procedure $createElement($type, $kind, $icon, $name, $label = "", $tag = "", $shape = "", $scale = "", $color = "", $background = "")
+    $debug($type + "(" + $kind + ", " + $icon + ") " + $name + " : " + $label + " : " + $tag + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
+
+    !if $label == ""
+        !$label = $name
+    !endif
+
+    !$shape = $getStyleProperty($shape, $type, $kind, $tag, Shape)
+    !$scale = $getStyleProperty($scale, $type, $kind, $tag, IconScale)
+    !$color = $getStyleProperty($color, $type, $kind, $tag, IconColor)
+
+    !$backgroundColor = $computeColorName($background)
+    !$stereotypes = $computeStereotypes($kind, $tag)
+
+    ' output below
+    !if $icon
+        !if $color
+            $shape "<$icon{scale=$scale,color=$color}>\r##$label" as $name $stereotypes $backgroundColor
+        !else
+            $shape "<$icon{scale=$scale}>\r##$label" as $name $stereotypes $backgroundColor
+        !endif
+    !else
+        $shape $label as $name $stereotypes $backgroundColor
+    !endif
+!endprocedure
+
+!unquoted function Actor($kind, $icon, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    $createElement("Actor", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
+    $createElementNote($name, $note)
+
+    !if $activityContext == "open"
+        !return $name
+    !else
+        !return ""
+    !endif
+!endfunction
+
+!unquoted function Object($kind, $icon, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    $createElement("Object", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
+    $createElementNote($name, $note)
+
+    !if $activityContext == "open"
+        !return $name
+    !else
+        !return ""
+    !endif
+!endfunction

@@ -1,31 +1,6 @@
 ' Work Objects
 ' ##################################
 
-!unquoted procedure Object($kind, $iconName, $name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    $debug($kind + " : " + $iconName + " : " + $name + " : " + $label + " : " + $tag + " : " + $note + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
-
-    !$shape = $getStyleProperty($shape, Object, $kind, $tag, Shape)
-    !$scale = $getStyleProperty($scale, Object, $kind, $tag, IconScale)
-    !$color = $getStyleProperty($color, Object, $kind, $tag, IconColor)
-
-    !if $label == ""
-        !$label = $name
-    !endif
-
-    ' output below
-    !if $iconName
-        !if $color
-            $shape "<$iconName{scale=$scale,color=$color}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-        !else
-            $shape "<$iconName{scale=$scale}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-        !endif
-    !else
-        $shape $label as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-    !endif
-
-    $createElementNote($name, $note)
-!endprocedure
-
 ' Document Work Object
 ' ==================================
 

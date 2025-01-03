@@ -8,6 +8,18 @@
 '' Source: https://github.com/johthor/DomainStory-PlantUML
 ''
 
+'' Use `-darkmode -DPUML_MODE=dark` to set a preprocessing variable
+!ifdef PUML_MODE
+    !global $PUML_MODE ?= PUML_MODE
+!else
+    !global $PUML_MODE ?= "light"
+!endif
+
+!global $DST_PUML_ELEMENT_SEPARATOR ?= "+"
+!global $DST_PUML_COMPONENT_SEPARATOR ?= ":"
+
+
+
 ' Version
 ' ##################################
 
@@ -27,34 +39,37 @@
     !endif
 !endprocedure
 
-' Story Layout
+' Entity Creation Utilities
 ' ##################################
 
-!global $Story_Layout ?= "left-to-right"
-
-!if $Story_Layout == "left-to-right" || $Story_Layout == "landscape"
-    !global $Story_Layout = "left-to-right"
-    left to right direction
-!else
-    top to bottom direction
-!endif
-
-' Styling
-' ##################################
-
-!function modeAdjustedColor($lightColor, $darkColor = "")
-    !if PUML_MODE == "light"
-        !$result = $lightColor
+/' Creates a colorized sprite
+Params:
+    $sprite:   the sprite for the image
+    $scale:    the scale for the sprite
+    $color:    the color for the sprite '/
+!function $pumlSprite($sprite, $scale = 1, $color = "")
+    !if $color
+        !return "<" + $sprite + "{scale=" + $scale + ",color=" + $color + "}>"
     !else
-        !if $darkColor
-            !$result = $darkColor
-        !else
-            !$result = %reverse_color($lightColor)
-        !endif
+        !return "<" + $sprite + "{scale=" + $scale + "}>"
     !endif
-    $debug(PUML_MODE + " mode with input color " + $lightColor + " and output color " + $result)
-    !return $result
 !endfunction
+
+/' Creates an aliased entity with a colorized sprite, label, and stereotype
+Params:
+    $type:     the entity type (e.g. component, node, agent, etc.)
+    $sprite:   the sprite for the image representing the entity
+    $scale:    the scale for the sprite
+    $color:    the color for the sprite
+    $label:    the label to display under the sprite
+    $alias:    the alias to give the entity
+    $stereo:   the stereotype, which can define additional styling '/
+!procedure $pumlEntity($type, $sprite, $scale, $color, $label, $alias, $stereo)
+    $type "$pumlSprite($sprite, $scale, $color)\r $label" as $alias <<$stereo>>
+!endprocedure
+
+' Various Auxiliary Utilities
+' ##################################
 
 !function $computeStereotypes($kind, $tag, $all = %true())
     !if $kind
@@ -82,6 +97,35 @@
     !else
         !return "$" + $context + "_" + $property
     !endif
+!endfunction
+
+' Story Layout
+' ##################################
+
+!global $Story_Layout ?= "left-to-right"
+
+!if $Story_Layout == "left-to-right" || $Story_Layout == "landscape"
+    !global $Story_Layout = "left-to-right"
+    left to right direction
+!else
+    top to bottom direction
+!endif
+
+' Styling
+' ##################################
+
+!function modeAdjustedColor($lightColor, $darkColor = "")
+    !if $PUML_MODE == "light"
+        !$result = $lightColor
+    !else
+        !if $darkColor
+            !$result = $darkColor
+        !else
+            !$result = %reverse_color($lightColor)
+        !endif
+    !endif
+    $debug(PUML_MODE + " mode with input color " + $lightColor + " and output color " + $result)
+    !return $result
 !endfunction
 
 !function $setStyleProperty($property, $value, $context, $tag = "", $themeable = %false(), $force = %false())
@@ -233,9 +277,6 @@
 ' Global Style declarations
 ' ##################################
 
-' Use `-darkmode -DPUML_MODE=dark` to set a preprocessing variable
-!global PUML_MODE ?= "light"
-
 ' Element Styles
 ' ==================================
 
@@ -324,7 +365,6 @@ $declareStyleProperty($Element_Shadowing, Shadowing, Boundary, $themeable = %tru
 ' Note Styles
 ' ==================================
 
-
 !global $Note_Shape = Note
 
 $declareStyleProperty($Element_FontColor, FontColor, Note, $themeable = %true())
@@ -367,36 +407,68 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
 ' Mutable state
 ' ##################################
 
+!global $activityContext = "closed"
+
 !global $stepCounter = 0
+!global $elementCounter = 0
 !global $workObjectCounter = 0
+
+!global $lastObjectName = ""
+!global $lastTargetName = ""
 
 ' Actors
 ' ##################################
 
-!unquoted procedure Actor($kind, $iconName, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    $debug($kind + " : " + $iconName + " : " + $name + " : " + $label + " : " + $tag + " : " + $note + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
-
-    !$shape = $getStyleProperty($shape, Actor, $kind, $tag, Shape)
-    !$scale = $getStyleProperty($scale, Actor, $kind, $tag, IconScale)
-    !$color = $getStyleProperty($color, Actor, $kind, $tag, IconColor)
+!unquoted procedure $createElement($type, $kind, $icon, $name, $label = "", $tag = "", $shape = "", $scale = "", $color = "", $background = "")
+    $debug($type + "(" + $kind + ", " + $icon + ") " + $name + " : " + $label + " : " + $tag + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
 
     !if $label == ""
         !$label = $name
     !endif
 
+    !$shape = $getStyleProperty($shape, $type, $kind, $tag, Shape)
+    !$scale = $getStyleProperty($scale, $type, $kind, $tag, IconScale)
+    !$color = $getStyleProperty($color, $type, $kind, $tag, IconColor)
+
+    !$backgroundColor = $computeColorName($background)
+    !$stereotypes = $computeStereotypes($kind, $tag)
+
     ' output below
-    !if $iconName
+    !if $icon
         !if $color
-            $shape "<$iconName{scale=$scale,color=$color}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
+            $shape "<$icon{scale=$scale,color=$color}>\r##$label" as $name $stereotypes $backgroundColor
         !else
-            $shape "<$iconName{scale=$scale}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
+            $shape "<$icon{scale=$scale}>\r##$label" as $name $stereotypes $backgroundColor
         !endif
     !else
-        $shape $label as $name $computeStereotypes($kind, $tag) $computeColorName($background)
+        $shape $label as $name $stereotypes $backgroundColor
     !endif
-
-    $createElementNote($name, $note)
 !endprocedure
+
+!unquoted function Actor($kind, $icon, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    $createElement("Actor", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
+    $createElementNote($name, $note)
+
+    !if $activityContext == "open"
+        !return $name
+    !else
+        !return ""
+    !endif
+!endfunction
+
+!unquoted function Object($kind, $icon, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    $createElement("Object", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
+    $createElementNote($name, $note)
+
+    !if $activityContext == "open"
+        !return $name
+    !else
+        !return ""
+    !endif
+!endfunction
+
+' Actors
+' ##################################
 
 ' Person Actor
 ' ==================================
@@ -425,9 +497,9 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
     $extendStyleDeclarations("Actor", "Person", "account")
 !endif
 
-!unquoted procedure Person($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Actor("Person", $Person_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function Person($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Actor("Person", $Person_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
 
 ' Group Actor
 ' ==================================
@@ -440,46 +512,21 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
     $extendStyleDeclarations("Actor", "Group", "account_multiple")
 !endif
 
-!unquoted procedure Group($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Actor("Group", $Group_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function Group($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Actor("Group", $Group_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
 
 ' System Actor
 ' ==================================
 
 $extendStyleDeclarations("Actor", "System", "laptop")
 
-!unquoted procedure System($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Actor("System", $System_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function System($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Actor("System", $System_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
 
 ' Work Objects
 ' ##################################
-
-!unquoted procedure Object($kind, $iconName, $name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    $debug($kind + " : " + $iconName + " : " + $name + " : " + $label + " : " + $tag + " : " + $note + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
-
-    !$shape = $getStyleProperty($shape, Object, $kind, $tag, Shape)
-    !$scale = $getStyleProperty($scale, Object, $kind, $tag, IconScale)
-    !$color = $getStyleProperty($color, Object, $kind, $tag, IconColor)
-
-    !if $label == ""
-        !$label = $name
-    !endif
-
-    ' output below
-    !if $iconName
-        !if $color
-            $shape "<$iconName{scale=$scale,color=$color}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-        !else
-            $shape "<$iconName{scale=$scale}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-        !endif
-    !else
-        $shape $label as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-    !endif
-
-    $createElementNote($name, $note)
-!endprocedure
 
 ' Document Work Object
 ' ==================================
@@ -492,9 +539,9 @@ $extendStyleDeclarations("Actor", "System", "laptop")
     $extendStyleDeclarations("Object", "Document", "document")
 !endif
 
-!unquoted procedure Document($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Object("Document", $Document_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function Document($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Document", $Document_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
 
 ' Folder Work Object
 ' ==================================
@@ -507,18 +554,18 @@ $extendStyleDeclarations("Actor", "System", "laptop")
     $extendStyleDeclarations("Object", "Folder", "folder")
 !endif
 
-!unquoted procedure Folder($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Object("Folder", $Folder_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function Folder($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Folder", $Folder_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
 
 ' Call Work Object
 ' ==================================
 
 $extendStyleDeclarations("Object", "Call", "phone")
 
-!unquoted procedure Call($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Object("Call", $Call_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function Call($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Call", $Call_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
 
 ' Email Work Object
 ' ==================================
@@ -531,9 +578,9 @@ $extendStyleDeclarations("Object", "Call", "phone")
     $extendStyleDeclarations("Object", "Email", "email")
 !endif
 
-!unquoted procedure Email($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Object("Email", $Email_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function Email($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Email", $Email_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
 
 ' Conversation Work Object
 ' ==================================
@@ -546,9 +593,9 @@ $extendStyleDeclarations("Object", "Call", "phone")
     $extendStyleDeclarations("Object", "Conversation", "message")
 !endif
 
-!unquoted procedure Conversation($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Object("Conversation", $Conversation_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function Conversation($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Conversation", $Conversation_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
 
 ' Info Work Object
 ' ==================================
@@ -561,9 +608,9 @@ $extendStyleDeclarations("Object", "Call", "phone")
     $extendStyleDeclarations("Object", "Info", "information")
 !endif
 
-!unquoted procedure Info($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Object("Info", $Info_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function Info($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Info", $Info_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
 
 ' Boundaries
 ' ##################################
@@ -607,11 +654,13 @@ $extendStyleDeclarations("Object", "Call", "phone")
 
     ' Handle first connection between subject and object
     !$object = $ensureElementExists($object, $tag, $note, $shape, $scale, $color, $background)
+    !$lastObjectName = $object
 
     $createConnection($subject, $object, $objectArr, $predicate, $computeStepLabel($step))
 
     ' Handle possible second connection between object and target
     !$target = $ensureElementExists($target, $targetTag, $targetNote, $targetShape, $targetScale, $targetColor, $targetBackground)
+    !$lastTargetName = $target
 
     !if $target && $target != "_"
         !if $post && $post != "_"
@@ -673,7 +722,7 @@ $extendStyleDeclarations("Object", "Call", "phone")
         !$elementName = $elementKind + $workObjectCounter
 
         'Element($kind, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-        %invoke_procedure($elementKind, $elementName, $elementLabel, $tag, $note, $shape, $scale, $color, $background)
+        %call_user_func($elementKind, $elementName, $elementLabel, $tag, $note, $shape, $scale, $color, $background)
 
         !return $elementName
     !else

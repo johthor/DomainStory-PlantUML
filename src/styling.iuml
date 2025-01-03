@@ -2,7 +2,7 @@
 ' ##################################
 
 !function modeAdjustedColor($lightColor, $darkColor = "")
-    !if PUML_MODE == "light"
+    !if $PUML_MODE == "light"
         !$result = $lightColor
     !else
         !if $darkColor
@@ -13,34 +13,6 @@
     !endif
     $debug(PUML_MODE + " mode with input color " + $lightColor + " and output color " + $result)
     !return $result
-!endfunction
-
-!function $computeStereotypes($kind, $tag, $all = %true())
-    !if $kind
-        !if $tag
-            !if $all
-                !return "<<" + $kind + ":" + $tag + ">><<" + $kind + ">><<" + $tag + ">>"
-            !else
-                !return "<<" + $kind + ":" + $tag + ">>"
-            !endif
-        !else
-            !return "<<" + $kind + ">>"
-        !endif
-    !else
-        !if $tag
-            !return "<<" + $tag + ">>"
-        !else
-            !return ""
-        !endif
-    !endif
-!endfunction
-
-!function $decideVariableName($context, $tag, $property)
-    !if $tag
-        !return "$" + $context + "_" + $tag + "_" + $property
-    !else
-        !return "$" + $context + "_" + $property
-    !endif
 !endfunction
 
 !function $setStyleProperty($property, $value, $context, $tag = "", $themeable = %false(), $force = %false())
