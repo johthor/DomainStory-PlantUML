@@ -63,6 +63,11 @@ run::convertAssets() {
   done
 
   puml::convert test/puml/styling/theme-bluegray.puml docs/assets
+
+  for asset in docs/assets/*.svg; do
+    xmllint --format "$asset" > "$asset".tmp
+    mv "$asset".tmp "$asset"
+  done
 }
 
 run::compare() {
