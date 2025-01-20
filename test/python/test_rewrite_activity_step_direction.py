@@ -1,0 +1,105 @@
+import unittest
+import os
+import sys
+
+minimum_version = 0.4
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../tools")))
+from rewrite import switch_suffix_to_prefix # the rewrite function to be tested
+
+
+class TestActivityStepDirection(unittest.TestCase):
+    def test_minimum_version(self):
+        """
+        Test that the target version must be >= 0.4
+        """
+        line = "activity(1>, A, uses, w)"
+        expectation = "activity(>1, A, uses, w)"
+
+        with self.subTest(target=0.3):
+            actual = switch_suffix_to_prefix(0.3, line)
+            self.assertEqual(actual, line)
+
+        with self.subTest(target=minimum_version):
+            actual = switch_suffix_to_prefix(minimum_version, line)
+            self.assertEqual(actual, expectation)
+
+        with self.subTest(target=0.5):
+            actual = switch_suffix_to_prefix(0.5, line)
+            self.assertEqual(actual, expectation)
+
+    def test_rewrite_indicator_up(self):
+        """
+        Test that the upward direction indicator will be a prefix
+        """
+        cases = [
+            ("activity(_^, A, uses, w)", "activity(^_, A, uses, w)"),
+            ("activity(|^, A, uses, w)", "activity(^|, A, uses, w)"),
+            ("activity(.^, A, uses, w)", "activity(^., A, uses, w)"),
+            ("activity( ^, A, uses, w)", "activity(^ , A, uses, w)"),
+            ("activity(^, A, uses, w)", "activity(^, A, uses, w)"),
+            ("activity(1^, A, uses, w)", "activity(^1, A, uses, w)"),
+            ("activity(=1^, A, uses, w)", "activity(^=1, A, uses, w)"),
+        ]
+        for line, expected in cases:
+            with self.subTest(line=line, expected=expected):
+                actual = switch_suffix_to_prefix(minimum_version, line)
+                self.assertEqual(actual, expected)
+
+    def test_rewrite_indicator_right(self):
+        """
+        Test that the right direction indicator will be a prefix
+        """
+        cases = [
+            ("activity(_>, A, uses, w)", "activity(>_, A, uses, w)"),
+            ("activity(|>, A, uses, w)", "activity(>|, A, uses, w)"),
+            ("activity(.>, A, uses, w)", "activity(>., A, uses, w)"),
+            ("activity( >, A, uses, w)", "activity(> , A, uses, w)"),
+            ("activity(>, A, uses, w)", "activity(>, A, uses, w)"),
+            ("activity(1>, A, uses, w)", "activity(>1, A, uses, w)"),
+            ("activity(=1>, A, uses, w)", "activity(>=1, A, uses, w)"),
+        ]
+        for line, expected in cases:
+            with self.subTest(line=line, expected=expected):
+                actual = switch_suffix_to_prefix(minimum_version, line)
+                self.assertEqual(actual, expected)
+
+    def test_rewrite_indicator_down(self):
+        """
+        Test that the downward direction indicator will be a prefix
+        """
+        cases = [
+            ("activity(_v, A, uses, w)", "activity(v_, A, uses, w)"),
+            ("activity(|v, A, uses, w)", "activity(v|, A, uses, w)"),
+            ("activity(.v, A, uses, w)", "activity(v., A, uses, w)"),
+            ("activity( v, A, uses, w)", "activity(v , A, uses, w)"),
+            ("activity(v, A, uses, w)", "activity(v, A, uses, w)"),
+            ("activity(1v, A, uses, w)", "activity(v1, A, uses, w)"),
+            ("activity(=1v, A, uses, w)", "activity(v=1, A, uses, w)"),
+        ]
+        for line, expected in cases:
+            with self.subTest(line=line, expected=expected):
+                actual = switch_suffix_to_prefix(minimum_version, line)
+                self.assertEqual(actual, expected)
+
+    def test_rewrite_indicator_left(self):
+        """
+        Test that the left direction indicator will be a prefix
+        """
+        cases = [
+            ("activity(_<, A, uses, w)", "activity(<_, A, uses, w)"),
+            ("activity(|<, A, uses, w)", "activity(<|, A, uses, w)"),
+            ("activity(.<, A, uses, w)", "activity(<., A, uses, w)"),
+            ("activity( <, A, uses, w)", "activity(< , A, uses, w)"),
+            ("activity(<, A, uses, w)", "activity(<, A, uses, w)"),
+            ("activity(1<, A, uses, w)", "activity(<1, A, uses, w)"),
+            ("activity(=1<, A, uses, w)", "activity(<=1, A, uses, w)"),
+        ]
+        for line, expected in cases:
+            with self.subTest(line=line, expected=expected):
+                actual = switch_suffix_to_prefix(minimum_version, line)
+                self.assertEqual(actual, expected)
+
+
+if __name__ == "__main__":
+    unittest.main()
