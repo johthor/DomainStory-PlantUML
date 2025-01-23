@@ -10,13 +10,13 @@
 
 ' Element Creation State
 !global $actorCounter = 0
-!global $lastCreatedActor = %false()
+!global $lastCreatedActor = ""
 
 !global $objectCounter = 0
-!global $lastCreatedObject = %false()
+!global $lastCreatedObject = ""
 
-!global $elementCounter = 0
-!global $lastCreatedElement = %false()
+!global $lastCreatedElement = ""
+!global $lastElementLabelUsed = ""
 
 ' Activity State
 !global $stepCounter = 0

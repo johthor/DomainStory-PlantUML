@@ -28,8 +28,15 @@
     $extendStyleDeclarations("Actor", "Person", "account")
 !endif
 
-!unquoted function Person($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    !return Actor("Person", $Person_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Person($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Actor("Person", $Person_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedPerson($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    introduce($name, Person($label, $tag, $note, $shape, $scale, $color, $background))
 !endfunction
 
 ' Group Actor
@@ -43,8 +50,15 @@
     $extendStyleDeclarations("Actor", "Group", "account_multiple")
 !endif
 
-!unquoted function Group($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    !return Actor("Group", $Group_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Group($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Actor("Group", $Group_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedGroup($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    introduce($name, Group($label, $tag, $note, $shape, $scale, $color, $background))
 !endfunction
 
 ' System Actor
@@ -52,6 +66,13 @@
 
 $extendStyleDeclarations("Actor", "System", "laptop")
 
-!unquoted function System($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    !return Actor("System", $System_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function System($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Actor("System", $System_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedSystem($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    introduce($name, System($label, $tag, $note, $shape, $scale, $color, $background))
 !endfunction

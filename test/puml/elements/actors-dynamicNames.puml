@@ -3,43 +3,66 @@
 
 !include ../../../src/domainStoryComposite.puml
 
-introduce(p, Person(Pete))
+introduce(Person(Pete))
 
 !assert $actorCounter == 1
-!assert p == "actor1"
+!assert Pete == "actor1"
+!assert $lastCreatedActor == "actor1"
+!assert $lastCreatedElement == "actor1"
 
-introduce(s, Person(Smart Sarah))
+introduce(Maria, Person(Maria))
 
 !assert $actorCounter == 2
-!assert s == "actor2"
+!assert Maria == "actor2"
+!assert $lastCreatedActor == "actor2"
+!assert $lastCreatedElement == "actor2"
 
-introduce(f, Person(Funny Frida, funny))
+introduce(Sarah, Person(Smart Sarah))
 
 !assert $actorCounter == 3
-!assert f == "actor3"
+!assert Sarah == "actor3"
+!assert $lastCreatedActor == "actor3"
+!assert $lastCreatedElement == "actor3"
 
-introduce(h, Person(Happy Hannah, happy, real happy))
+introduce(Frida, Person(Funny Frida, funny))
 
 !assert $actorCounter == 4
-!assert h == "actor4"
+!assert Frida == "actor4"
+!assert $lastCreatedActor == "actor4"
+!assert $lastCreatedElement == "actor4"
 
-introduce(m, Person(Mindful Max, mindful, thinks a lot, cloud))
+introduce(Hannah, Person(Happy Hannah, happy, real happy))
 
 !assert $actorCounter == 5
-!assert m == "actor5"
+!assert Hannah == "actor5"
+!assert $lastCreatedActor == "actor5"
+!assert $lastCreatedElement == "actor5"
 
-introduce(n, Person(Noble Noah, noble, shows high moral qualities, cloud, 2))
+introduce(Max, Person(Mindful Max, mindful, thinks a lot, cloud))
 
 !assert $actorCounter == 6
-!assert n == "actor6"
+!assert Max == "actor6"
+!assert $lastCreatedActor == "actor6"
+!assert $lastCreatedElement == "actor6"
 
-introduce(o, Person(Orderly Olivia, orderly, is organized, folder, 2, darkblue))
+introduce(Noah, Person(Noble Noah, noble, shows high moral qualities, cloud, 2))
 
 !assert $actorCounter == 7
-!assert o == "actor7"
+!assert Noah == "actor7"
+!assert $lastCreatedActor == "actor7"
+!assert $lastCreatedElement == "actor7"
 
-introduce(q, Person(Questioning Quentin, questioning, doubtful, database, 2, red, grey))
+introduce(Olivia, Person(Orderly Olivia, orderly, is organized, folder, 2, darkblue))
 
 !assert $actorCounter == 8
-!assert q == "actor8"
+!assert Olivia == "actor8"
+!assert $lastCreatedActor == "actor8"
+!assert $lastCreatedElement == "actor8"
+
+introduce(Quentin, Person(Questioning Quentin, questioning, doubtful, database, 2, red, grey))
+
+!assert $actorCounter == 9
+!assert Quentin == "actor9"
+!assert $lastCreatedActor == "actor9"
+!assert $lastCreatedElement == "actor9"
 @enduml

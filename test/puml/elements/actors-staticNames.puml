@@ -1,19 +1,48 @@
 @startuml
 !include ../../../src/domainStoryComposite.puml
 
-Person(Pete)
+namedPerson(Pete)
 
-Person(Sarah, Smart Sarah)
+!assert $actorCounter == 1
+!assert Pete == "actor1"
 
-Person(Frida, Funny Frida, funny)
+namedPerson(Maria, Maria)
 
-Person(Hannah, Happy Hannah, happy, real happy)
+!assert $actorCounter == 2
+!assert Maria == "actor2"
 
-Person(Max, Mindful Max, mindful, thinks a lot, cloud)
+namedPerson(Sarah, Smart Sarah)
 
-Person(Noah, Noble Noah, noble, shows high moral qualities, cloud, 2)
+!assert $actorCounter == 3
+!assert Sarah == "actor3"
 
-Person(Olivia, Orderly Olivia, orderly, is organized, folder, 2, darkblue)
+namedPerson(Frida, Funny Frida, funny)
 
-Person(Quentin, Questioning Quentin, questioning, doubtful, database, 2, red, grey)
+!assert $actorCounter == 4
+!assert Frida == "actor4"
+
+namedPerson(Hannah, Happy Hannah, happy, real happy)
+
+!assert $actorCounter == 5
+!assert Hannah == "actor5"
+
+namedPerson(Max, Mindful Max, mindful, thinks a lot, cloud)
+
+!assert $actorCounter == 6
+!assert Max == "actor6"
+
+namedPerson(Noah, Noble Noah, noble, shows high moral qualities, cloud, 2)
+
+!assert $actorCounter == 7
+!assert Noah == "actor7"
+
+namedPerson(Olivia, Orderly Olivia, orderly, is organized, folder, 2, darkblue)
+
+!assert $actorCounter == 8
+!assert Olivia == "actor8"
+
+namedPerson(Quentin, Questioning Quentin, questioning, doubtful, database, 2, red, grey)
+
+!assert $actorCounter == 9
+!assert Quentin == "actor9"
 @enduml

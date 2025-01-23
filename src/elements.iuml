@@ -17,8 +17,13 @@
     !return $objectAlias
 !endfunction
 
-!unquoted procedure introduce($element, $name)
-    %set_variable_value($name, $element)
+!unquoted procedure introduce($name, $element = "")
+    !if $element
+        %set_variable_value($name, $element)
+    !else
+        ' TODO This could use some more logic
+        %set_variable_value($lastElementLabelUsed, $name)
+    !endif
 !endprocedure
 
 !unquoted function $createElement($type, $kind, $icon, $label, $tag = "", $shape = "", $scale = "", $color = "", $background = "")
@@ -37,6 +42,7 @@
     $pumlEntity($shape, $label, $name, $icon, $scale, $color, $stereotypes, $backgroundColor)
 
     !global $lastCreatedElement = $name
+    !global $lastElementLabelUsed = $label
     !return $name
 !endfunction
 

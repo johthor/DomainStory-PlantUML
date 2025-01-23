@@ -3,13 +3,15 @@ title DomainStory-PlantUML Syntax
 
 domainStory = { actors | workObjects | boundaries | activities }-;
 
-actors = ( ("Person" | "Group" | "System"), "(", elementParameters, ")" )
-    | ( "Actor", "(", "$kind", "$iconName", elementParameters, ")" );
+actors = ( ("Person" | "Group" | "System"), "(", elementPositionalParameters, elementKeywordParameters, ")" )
+    | ( ("namedPerson" | "namedGroup" | "namedSystem"), "(", "$name", [ elementPositionalParameters ], elementKeywordParameters, ")" )
+    | ( "Actor", "(", "$kind", "$iconName", elementPositionalParameters, elementKeywordParameters, ")" );
 
-workObjects = ( ("Document" | "Folder" | "Call" | "Email" | "Conversation" | "Info"), "(", elementParameters, ")" )
-    | ( "Object", "(", "$kind", "$iconName", elementParameters, ")" );
+workObjects = ( ("Document" | "Folder" | "Call" | "Email" | "Conversation" | "Info"), "(", elementPositionalParameters, elementKeywordParameters, ")" )
+    | ( ("namedDocument" | "namedFolder" | "namedCall" | "namedEmail" | "namedConversation" | "namedInfo"), "(", "$name", [ elementPositionalParameters ], elementKeywordParameters, ")" )
+    | ( "Object", "(", "$kind", "$iconName", elementPositionalParameters, elementKeywordParameters, ")" );
 
-elementParameters = "$name",[ "$label", ["$tag", ["$note"] ] ], elementKeywordParameters;
+elementPositionalParameters = "$label", ["$tag", ["$note"] ];
 
 elementKeywordParameters = [ "<= 6" * ( ?$tag? | ?$note? | ?$shape? | ?$scale? | ?$color? | ?$background? ) ];
 (* each keyword parameter should only be set at most once *)
