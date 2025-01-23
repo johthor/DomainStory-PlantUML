@@ -1,0 +1,51 @@
+' Entity Creation
+' ##################################
+
+!unquoted function Actor($kind, $icon, $label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !$actorAlias = $createElement("Actor", $kind, $icon, $label, $tag, $shape, $scale, $color, $background)
+    $createElementNote($actorAlias, $note)
+
+    !global $lastCreatedActor = $actorAlias
+    !return $actorAlias
+!endfunction
+
+!unquoted function Object($kind, $icon, $label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !$objectAlias = $createElement("Object", $kind, $icon, $label, $tag, $shape, $scale, $color, $background)
+    $createElementNote($objectAlias, $note)
+
+    !global $lastCreatedObject = $objectAlias
+    !return $objectAlias
+!endfunction
+
+!unquoted procedure introduce($element, $name)
+    %set_variable_value($name, $element)
+!endprocedure
+
+!unquoted function $createElement($type, $kind, $icon, $label, $tag = "", $shape = "", $scale = "", $color = "", $background = "")
+    !$name = $computeNextElementName($type)
+
+    !$shape = $getStyleProperty($shape, $type, $kind, $tag, Shape)
+    !$scale = $getStyleProperty($scale, $type, $kind, $tag, IconScale)
+    !$color = $getStyleProperty($color, $type, $kind, $tag, IconColor)
+
+    !$backgroundColor = $computeColorName($background)
+    !$stereotypes = $computeStereotypes($kind, $tag)
+
+    $debug($type + "(" + $kind + ", " + $icon + ") " + $name + " : " + $label + " : " + $tag + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
+
+    ' output below
+    $pumlEntity($shape, $label, $name, $icon, $scale, $color, $stereotypes, $backgroundColor)
+
+    !global $lastCreatedElement = $name
+    !return $name
+!endfunction
+
+!function $computeNextElementName($type)
+    !$prefix = %lower($type)
+    !$counterName = "$" + $prefix + "Counter"
+
+    !$nextValue = %get_variable_value($counterName) + 1
+    %set_variable_value($counterName, $nextValue)
+
+    !return $prefix + %string($nextValue)
+!endfunction

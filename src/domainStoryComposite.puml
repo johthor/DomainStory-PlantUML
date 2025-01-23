@@ -4,7 +4,7 @@
 !include ./styling.iuml
 !include ./theming.iuml
 !include ./state.iuml
-!include ./entities.iuml
+!include ./elements.iuml
 !include ./actors.iuml
 !include ./objects.iuml
 !include ./boundaries.iuml

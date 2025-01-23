@@ -424,12 +424,17 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
 !endif
 
 
-' Element Related State
+' Element Creation State
 !global $actorCounter = 0
-!global $objectCounter = 0
-!global $elementCounter = 0
+!global $lastCreatedActor = %false()
 
-' Activity Related State
+!global $objectCounter = 0
+!global $lastCreatedObject = %false()
+
+!global $elementCounter = 0
+!global $lastCreatedElement = %false()
+
+' Activity State
 !global $stepCounter = 0
 
 !global $lastNodeConnected = ""
@@ -440,44 +445,28 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
 ' Entity Creation
 ' ##################################
 
-!unquoted function Actor($kind, $icon, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    !if $DST_PUML_ENTITY_NAMES == "dynamic" || $dynamicElementNames == "active"
-        !$tmpLabel = $name
-        !$name = $computeNextElementName("Actor")
-        !$actorName = $createElement("Actor", $kind, $icon, $name, $tmpLabel, $label, $note, $shape, $scale, $color)
-        $createElementNote($name, $tag)
-    !else
-        !$actorName = $createElement("Actor", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
-        $createElementNote($name, $note)
-    !endif
+!unquoted function Actor($kind, $icon, $label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !$actorAlias = $createElement("Actor", $kind, $icon, $label, $tag, $shape, $scale, $color, $background)
+    $createElementNote($actorAlias, $note)
 
-    !return $actorName
+    !global $lastCreatedActor = $actorAlias
+    !return $actorAlias
 !endfunction
 
-!unquoted function Object($kind, $icon, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    !if $DST_PUML_ENTITY_NAMES == "dynamic" || $dynamicElementNames == "active"
-        !$tmpLabel = $name
-        !$name = $computeNextElementName("Object")
-        !$objectName = $createElement("Object", $kind, $icon, $name, $tmpLabel, $label, $note, $shape, $scale, $color)
-        $createElementNote($name, $tag)
-    !else
-        !$objectName = $createElement("Object", $kind, $icon, $name, $label, $tag, $shape, $scale, $color, $background)
-        $createElementNote($name, $note)
-    !endif
+!unquoted function Object($kind, $icon, $label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !$objectAlias = $createElement("Object", $kind, $icon, $label, $tag, $shape, $scale, $color, $background)
+    $createElementNote($objectAlias, $note)
 
-    !return $objectName
+    !global $lastCreatedObject = $objectAlias
+    !return $objectAlias
 !endfunction
 
-!unquoted procedure introduce($name, $element)
+!unquoted procedure introduce($element, $name)
     %set_variable_value($name, $element)
 !endprocedure
 
-!unquoted function $createElement($type, $kind, $icon, $name, $label = "", $tag = "", $shape = "", $scale = "", $color = "", $background = "")
-    $debug($type + "(" + $kind + ", " + $icon + ") " + $name + " : " + $label + " : " + $tag + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
-
-    !if $label == ""
-        !$label = $name
-    !endif
+!unquoted function $createElement($type, $kind, $icon, $label, $tag = "", $shape = "", $scale = "", $color = "", $background = "")
+    !$name = $computeNextElementName($type)
 
     !$shape = $getStyleProperty($shape, $type, $kind, $tag, Shape)
     !$scale = $getStyleProperty($scale, $type, $kind, $tag, IconScale)
@@ -486,14 +475,13 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
     !$backgroundColor = $computeColorName($background)
     !$stereotypes = $computeStereotypes($kind, $tag)
 
+    $debug($type + "(" + $kind + ", " + $icon + ") " + $name + " : " + $label + " : " + $tag + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
+
     ' output below
     $pumlEntity($shape, $label, $name, $icon, $scale, $color, $stereotypes, $backgroundColor)
 
-    !if $dynamicElementNames == "active"
-        !return $name
-    !else
-        !return ""
-    !endif
+    !global $lastCreatedElement = $name
+    !return $name
 !endfunction
 
 !function $computeNextElementName($type)
@@ -536,8 +524,15 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
     $extendStyleDeclarations("Actor", "Person", "account")
 !endif
 
-!unquoted function Person($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    !return Actor("Person", $Person_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Person($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Actor("Person", $Person_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedPerson($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    !_ignored = Person($label, $tag, $note, $shape, $scale, $color, $background, $name)
 !endfunction
 
 ' Group Actor
@@ -551,8 +546,15 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
     $extendStyleDeclarations("Actor", "Group", "account_multiple")
 !endif
 
-!unquoted function Group($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    !return Actor("Group", $Group_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Group($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Actor("Group", $Group_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedGroup($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    !_ignored = Group($label, $tag, $note, $shape, $scale, $color, $background, $name)
 !endfunction
 
 ' System Actor
@@ -560,8 +562,8 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
 
 $extendStyleDeclarations("Actor", "System", "laptop")
 
-!unquoted function System($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    !return Actor("System", $System_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function System($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Actor("System", $System_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
 !endfunction
 
 ' Work Objects
@@ -578,8 +580,8 @@ $extendStyleDeclarations("Actor", "System", "laptop")
     $extendStyleDeclarations("Object", "Document", "document")
 !endif
 
-!unquoted function Document($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    !return Object("Document", $Document_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Document($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Document", $Document_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
 !endfunction
 
 ' Folder Work Object
@@ -593,8 +595,8 @@ $extendStyleDeclarations("Actor", "System", "laptop")
     $extendStyleDeclarations("Object", "Folder", "folder")
 !endif
 
-!unquoted function Folder($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    !return Object("Folder", $Folder_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Folder($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Folder", $Folder_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
 !endfunction
 
 ' Call Work Object
@@ -602,8 +604,8 @@ $extendStyleDeclarations("Actor", "System", "laptop")
 
 $extendStyleDeclarations("Object", "Call", "phone")
 
-!unquoted function Call($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    !return Object("Call", $Call_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Call($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Call", $Call_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
 !endfunction
 
 ' Email Work Object
@@ -617,8 +619,8 @@ $extendStyleDeclarations("Object", "Call", "phone")
     $extendStyleDeclarations("Object", "Email", "email")
 !endif
 
-!unquoted function Email($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    !return Object("Email", $Email_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Email($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Email", $Email_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
 !endfunction
 
 ' Conversation Work Object
@@ -632,8 +634,8 @@ $extendStyleDeclarations("Object", "Call", "phone")
     $extendStyleDeclarations("Object", "Conversation", "message")
 !endif
 
-!unquoted function Conversation($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    !return Object("Conversation", $Conversation_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Conversation($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Conversation", $Conversation_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
 !endfunction
 
 ' Info Work Object
@@ -647,8 +649,8 @@ $extendStyleDeclarations("Object", "Call", "phone")
     $extendStyleDeclarations("Object", "Info", "information")
 !endif
 
-!unquoted function Info($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    !return Object("Info", $Info_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Info($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Info", $Info_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
 !endfunction
 
 ' Boundaries
@@ -827,8 +829,8 @@ $extendStyleDeclarations("Object", "Call", "phone")
         !$elementLabel = %substr($element, $separatorPosition + 1)
         !$elementName = $elementKind + $elementCounter
 
-        'Element($kind, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-        %call_user_func($elementKind, $elementName, $elementLabel, $tag, $note, $shape, $scale, $color, $background)
+        'Element($kind, $label, $tag, $note, $shape, $scale, $color, $background)
+        %call_user_func($elementKind, $elementLabel, $tag, $note, $shape, $scale, $color, $background, $elementName)
 
         !return $elementName
     !else

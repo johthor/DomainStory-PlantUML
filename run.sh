@@ -37,7 +37,7 @@ run::compile() {
     echo ''
     cat src/state.iuml
     echo ''
-    cat src/entities.iuml
+    cat src/elements.iuml
     echo ''
     cat src/actors.iuml
     echo ''

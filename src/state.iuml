@@ -8,12 +8,17 @@
 !endif
 
 
-' Element Related State
+' Element Creation State
 !global $actorCounter = 0
-!global $objectCounter = 0
-!global $elementCounter = 0
+!global $lastCreatedActor = %false()
 
-' Activity Related State
+!global $objectCounter = 0
+!global $lastCreatedObject = %false()
+
+!global $elementCounter = 0
+!global $lastCreatedElement = %false()
+
+' Activity State
 !global $stepCounter = 0
 
 !global $lastNodeConnected = ""
