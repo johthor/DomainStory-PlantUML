@@ -23,5 +23,5 @@ split(to, Person(B))
 continue(and, Person(C))
 
 startActivity(+, Person(A), collaborates on, Document(w))
-terminateActivity(|, Person(B), collaborates on, <--)
+activity(|, Person(B), collaborates on, $lastCreatedObject, $objectArr = <--)
 @enduml

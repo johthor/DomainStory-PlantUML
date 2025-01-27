@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # This script is intended to be run through run.sh (https://run.jotaen.net)
+shopt -s globstar
 
 PUML_OPTIONS='-Tsvg'
-DS_PUML_URL='https://github.com/johthor/DomainStory-PlantUML'
 LOG_LEVEL="${LOG_LEVEL:-info}"
 
 PROJECT_ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
@@ -20,6 +20,19 @@ puml::convert() {
     echo "Converting $fileName in light mode to directory $outputDir"
     plantuml "$PUML_OPTIONS" -o "$PROJECT_ROOT/$outputDir" "$fileName"
   fi
+}
+
+run::rewritePUML() {
+
+  for diagram in test/puml/**/*.puml ; do
+    fileNameWithoutExt=$(basename "$diagram" .puml)
+    subPath=$(dirname "$diagram")
+    testSubject="$subPath/$fileNameWithoutExt"
+
+    if [[ ! "$testSubject" =~ .+REWRITTEN ]]; then
+      /usr/bin/env python3 tools/rewrite.py "$testSubject".puml > "$testSubject".REWRITTEN.puml
+    fi
+  done
 }
 
 # Compile split source files into one PUML file

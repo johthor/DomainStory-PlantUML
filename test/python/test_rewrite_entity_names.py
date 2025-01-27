@@ -53,6 +53,28 @@ class TestActivityStepDirection(unittest.TestCase):
                 actual = rewriter(minimum_version, line)
                 self.assertEqual(expected, actual)
 
+    def test_other_macros_are_not_rewritten(self):
+        """
+            Test that the following lines won't be rewritten
+        """
+        cases = [
+            "Boundary(team) {",
+            "Boundary(team, Best Team) {",
+            "activity(1, person, reads, Document:a document)",
+            "introduce(Person(Pete))",
+            "introduce(m, Person(Maria))"
+            "namedPerson(Pete)",
+            "namedPerson(m, Maria)",
+            "startActivity(+, Person(A), works on, Document(w))",
+            "append(using, Document(v))",
+            "split(to, Person(B))",
+            "continue(and, Person(C)"
+        ]
+        for line in cases:
+            with self.subTest(line=line):
+                actual = rewriter(minimum_version, line)
+                self.assertEqual(line, actual)
+
 
 if __name__ == "__main__":
     unittest.main()

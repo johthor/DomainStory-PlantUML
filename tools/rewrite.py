@@ -9,6 +9,7 @@ import math
 import re
 import sys
 
+
 # FIXME The following regex builder functions DO NOT work
 def pos_param(param):
     return rf"(?P<{param}>[^,]+)"
@@ -38,7 +39,7 @@ def parameters(positional, optional=[], keywords=[]):
 activity_pattern = re.compile(
     r"activity\((?P<step>[^>v<^,]+)(?P<direction>[>v<^])(?P<other>.+)\)"
 )
-entity_pattern = re.compile(r"(?P<type>\w+)\(" + pos_param('name') + "(?:, ?(?P<other>.+))?\)")
+entity_pattern = re.compile(r"(?P<type>\w+)\(" + pos_param('name') + r"(?:, ?(?P<other>.+))?\)")
 
 
 def minimum_version_included(minimum, target):
@@ -66,17 +67,21 @@ def fix_name(target, line):
     if match is None:
         return line
 
-    if match.group("type") != "Boundary":
+    macro_name = match.group("type")
+    forbidden_macro_names = ["introduce", "Boundary", "activity", "startActivity", "append", "split", "continue"]
+    if macro_name not in forbidden_macro_names and not macro_name.startswith("named"):
         if match.group("other"):
             return "introduce({name}, {type}({other}))".format(**match.groupdict())
         else:
             return "introduce({type}({name}))".format(**match.groupdict())
 
-
     return line
 
 
 def process_line(target, line):
+    if line.startswith("'"):
+        return line
+
     converters = [switch_suffix_to_prefix, fix_name]
     result = reduce(lambda acc, rewrite: rewrite(target, acc), converters, line)
 
