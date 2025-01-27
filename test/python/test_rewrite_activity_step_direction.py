@@ -5,7 +5,7 @@ import sys
 minimum_version = 0.4
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../tools")))
-from rewrite import switch_suffix_to_prefix # the rewrite function to be tested
+from rewrite import switch_suffix_to_prefix  # the rewrite function to be tested
 
 
 class TestActivityStepDirection(unittest.TestCase):
@@ -14,19 +14,19 @@ class TestActivityStepDirection(unittest.TestCase):
         Test that the target version must be >= 0.4
         """
         line = "activity(1>, A, uses, w)"
-        expectation = "activity(>1, A, uses, w)"
+        expected = "activity(>1, A, uses, w)"
 
         with self.subTest(target=0.3):
             actual = switch_suffix_to_prefix(0.3, line)
-            self.assertEqual(actual, line)
+            self.assertEqual(line, actual)
 
         with self.subTest(target=minimum_version):
             actual = switch_suffix_to_prefix(minimum_version, line)
-            self.assertEqual(actual, expectation)
+            self.assertEqual(expected, actual)
 
         with self.subTest(target=0.5):
             actual = switch_suffix_to_prefix(0.5, line)
-            self.assertEqual(actual, expectation)
+            self.assertEqual(expected, actual)
 
     def test_rewrite_indicator_up(self):
         """
@@ -44,7 +44,7 @@ class TestActivityStepDirection(unittest.TestCase):
         for line, expected in cases:
             with self.subTest(line=line, expected=expected):
                 actual = switch_suffix_to_prefix(minimum_version, line)
-                self.assertEqual(actual, expected)
+                self.assertEqual(expected, actual)
 
     def test_rewrite_indicator_right(self):
         """
@@ -62,7 +62,7 @@ class TestActivityStepDirection(unittest.TestCase):
         for line, expected in cases:
             with self.subTest(line=line, expected=expected):
                 actual = switch_suffix_to_prefix(minimum_version, line)
-                self.assertEqual(actual, expected)
+                self.assertEqual(expected, actual)
 
     def test_rewrite_indicator_down(self):
         """
@@ -80,7 +80,7 @@ class TestActivityStepDirection(unittest.TestCase):
         for line, expected in cases:
             with self.subTest(line=line, expected=expected):
                 actual = switch_suffix_to_prefix(minimum_version, line)
-                self.assertEqual(actual, expected)
+                self.assertEqual(expected, actual)
 
     def test_rewrite_indicator_left(self):
         """
@@ -98,8 +98,19 @@ class TestActivityStepDirection(unittest.TestCase):
         for line, expected in cases:
             with self.subTest(line=line, expected=expected):
                 actual = switch_suffix_to_prefix(minimum_version, line)
-                self.assertEqual(actual, expected)
+                self.assertEqual(expected, actual)
 
+    def test_rewrite_indicator_special_cases(self):
+        """
+        Test that the left direction indicator will be a prefix
+        """
+        cases = [
+            ("activity(1, vip, joins, party)", "activity(1, vip, joins, party)")
+        ]
+        for line, expected in cases:
+            with self.subTest(line=line, expected=expected):
+                actual = switch_suffix_to_prefix(minimum_version, line)
+                self.assertEqual(expected, actual)
 
-if __name__ == "__main__":
-    unittest.main()
+    if __name__ == "__main__":
+        unittest.main()

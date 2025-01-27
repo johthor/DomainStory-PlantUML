@@ -13,41 +13,45 @@ class TestActivityStepDirection(unittest.TestCase):
         """
         Test that the target version must be >= 0.5
         """
-        line = "Person(Albert)"
-        expectation = "introduce(Albert, Person(Albert))"
+        line = "Person(a, Albert)"
+        expected = "introduce(a, Person(Albert))"
 
         with self.subTest(target=0.4):
             actual = rewriter(0.4, line)
-            self.assertEqual(actual, line)
+            self.assertEqual(line, actual)
 
         with self.subTest(target=minimum_version):
             actual = rewriter(minimum_version, line)
-            self.assertEqual(actual, expectation)
+            self.assertEqual(expected, actual)
 
         with self.subTest(target=0.6):
             actual = rewriter(0.6, line)
-            self.assertEqual(actual, expectation)
+            self.assertEqual(expected, actual)
 
-    def test_rewrite_named_entities(self):
+    def test_rewrite_named_elements(self):
         """
         Test that named persons will be rewritten as explicitly named persons
         """
         cases = [
-            ("Person(Pete)", "namedPerson(Pete)"),
-            ("Person(Sarah, Smart Sarah)", "namedPerson(Sarah, Smart Sarah)"),
+            ("Person(Pete)", "introduce(Person(Pete))"),
+            ("Person(Sarah, Smart Sarah)", "introduce(Sarah, Person(Smart Sarah))"),
             (
                 "Person(Frida, Funny Frida, funny)",
-                "namedPerson(Frida, Funny Frida, funny)",
+                "introduce(Frida, Person(Funny Frida, funny))",
             ),
             (
                 "Person(Hannah, Happy Hannah, happy, real happy)",
-                "namedPerson(Hannah, Happy Hannah, happy, real happy)",
+                "introduce(Hannah, Person(Happy Hannah, happy, real happy))",
+            ),
+            (
+                "Person(Quentin, Questioning Quentin, $color = blue, $scale = 2)",
+                "introduce(Quentin, Person(Questioning Quentin, $color = blue, $scale = 2))",
             ),
         ]
         for line, expected in cases:
             with self.subTest(line=line, expected=expected):
                 actual = rewriter(minimum_version, line)
-                self.assertEqual(actual, expected)
+                self.assertEqual(expected, actual)
 
 
 if __name__ == "__main__":

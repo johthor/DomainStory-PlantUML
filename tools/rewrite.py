@@ -9,10 +9,36 @@ import math
 import re
 import sys
 
+# FIXME The following regex builder functions DO NOT work
+def pos_param(param):
+    return rf"(?P<{param}>[^,]+)"
+
+
+def kw_param(param):
+    return rf"\${param} = (?P<{param}>[^,]+)"
+
+
+def positional_parameters(params):
+    return ", ?".join([pos_param(x) for x in params])
+
+
+def optional_parameters(params):
+    rev = params[::-1]
+    return reduce(lambda acc, name: rf"{pos_param(name)}, (?:{acc})?", rev[1:], pos_param(rev[0]))
+
+
+def keyword_parameters(params):
+    return "|".join([kw_param(x) for x in params])
+
+
+def parameters(positional, optional=[], keywords=[]):
+    return positional_parameters(positional) + optional_parameters(optional) + keyword_parameters(keywords)
+
+
 activity_pattern = re.compile(
-    r"activity\((?P<step>[^>v<^]+)(?P<direction>[>v<^])(?P<other>.+)\)"
+    r"activity\((?P<step>[^>v<^,]+)(?P<direction>[>v<^])(?P<other>.+)\)"
 )
-entity_pattern = re.compile(r"(?P<type>\w+)\((?P<name>[^,]+)\)")
+entity_pattern = re.compile(r"(?P<type>\w+)\(" + pos_param('name') + "(?:, ?(?P<other>.+))?\)")
 
 
 def minimum_version_included(minimum, target):
@@ -29,11 +55,7 @@ def switch_suffix_to_prefix(target, line):
     if match is None:
         return line
 
-    return "activity({direction}{step}{other})".format(
-        step=match.group("step"),
-        direction=match.group("direction"),
-        other=match.group("other"),
-    )
+    return "activity({direction}{step}{other})".format(**match.groupdict())
 
 
 def fix_name(target, line):
@@ -45,9 +67,11 @@ def fix_name(target, line):
         return line
 
     if match.group("type") != "Boundary":
-        return "introduce({name}, {type}({name}))".format(
-            type=match.group("type"), name=match.group("name")
-        )
+        if match.group("other"):
+            return "introduce({name}, {type}({other}))".format(**match.groupdict())
+        else:
+            return "introduce({type}({name}))".format(**match.groupdict())
+
 
     return line
 
