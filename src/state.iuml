@@ -11,6 +11,9 @@
 !global $lastElementCreated = ""
 !global $lastElementLabelUsed = ""
 
+' Boundary Creation State
+!global $lastBoundaryCreated = ""
+
 ' Activity State
 !global $currentSequenceNumber = 0
 !global $currentActivityDirection = ""
@@ -18,4 +21,4 @@
 !global $lastNodeConnected = ""
 !global $previousNodeConnected = ""
 
-!global $splitNode = ""
+!global $lastSplitLocation = ""

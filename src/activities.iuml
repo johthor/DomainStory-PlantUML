@@ -18,37 +18,24 @@
         !endif
     !endif
 
-    $createConnection($subject, $object, $arrow, $predicate, $computeStepLabel($step))
+    $createLink($subject, $object, $arrow, $predicate, $computeStepLabel($step))
 
     !global $previousNodeConnected = $lastNodeConnected
     !global $lastNodeConnected = $object
     !global $currentActivityDirection = $arrow
 !endprocedure
 
-!unquoted procedure append($action, $object = "", $arrow = "", $start = "")
-    !if $start == ""
-        !$start = $lastNodeConnected
-    !endif
-
-    !if $arrow == ""
-        !$arrow = $currentActivityDirection
-    !endif
-
-    ' create connecting arrows
-    $createConnection($start, $object, $arrow, $action)
-
-    !global $previousNodeConnected = $lastNodeConnected
-    !global $lastNodeConnected = $object
-    !global $currentActivityDirection = $arrow
+!unquoted procedure append($action, $object, $arrow = "")
+    $createPartial($lastNodeConnected, $object, $action, $arrow)
 !endprocedure
 
-!unquoted procedure split($action, $object = "", $arrow = "")
-    !global $splitNode = $lastNodeConnected
-    append($action, $object, $arrow)
+!unquoted procedure split($action, $object, $arrow = "")
+    !global $lastSplitLocation = $lastNodeConnected
+    $createPartial($lastNodeConnected, $object, $action, $arrow)
 !endprocedure
 
-!unquoted procedure continue($action, $object = "", $arrow = "")
-    append($action, $object, $arrow, $splitNode)
+!unquoted procedure continue($action, $object, $arrow = "")
+    $createPartial($lastSplitLocation, $object, $action, $arrow)
 !endprocedure
 
 ' Classic Activity Definition
@@ -75,7 +62,20 @@
 ' Activity Helpers
 ' ----------------------------------
 
-!procedure $createConnection($from, $to, $arrow = "-->", $action = "", $stepLabel = "")
+!procedure $createPartial($from, $to, $action = "", $arrow = "")
+    !if $arrow == ""
+        !$arrow = $currentActivityDirection
+    !endif
+
+    ' create connecting arrows
+    $createLink($from, $to, $arrow, $action)
+
+    !global $previousNodeConnected = $lastNodeConnected
+    !global $lastNodeConnected = $to
+    !global $currentActivityDirection = $arrow
+!endprocedure
+
+!procedure $createLink($from, $to, $arrow = "-->", $action = "", $stepLabel = "")
     !$backwardsArrow = %substr($arrow, 0, 1) == "<"
     !if $action && $action != "_"
         !if $stepLabel

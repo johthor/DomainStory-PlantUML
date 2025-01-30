@@ -21,8 +21,12 @@ boundaries = "Boundary", "(", "$name", [ "$label", ["$tag", ["$note"] ] ], bound
 boundaryKeywordParameters = [ "<= 4" * ( ?$tag? | ?$note? | ?$shape? | ?$background? ) ];
 (* each keyword parameter should only be set at most once *)
 
-activities = "activity", "(", "$step", "$subject", "$predicate", "$object",\
-    [ "$post", ["$target", [ "$objectArr", ["$targetArr"] ] ] ], activityKeywordParameters,")";
+activities = ( "startActivity", "(", "$step", "$subject", "$predicate", "$object", [ "$arrow" ], ")" )
+    | ( "append", "(", "$action", "$object", [ "$arrow" ], ")" )
+    | ( "split", "(", "$action", "$object", [ "$arrow" ], ")" )
+    | ( "continue", "(", "$action", "$object", [ "$arrow" ], ")" )
+    | ( "activity", "(", "$step", "$subject", "$predicate", "$object",\
+        [ "$post", ["$target", [ "$objectArr", ["$targetArr"] ] ] ], activityKeywordParameters,")" );
 
 activityKeywordParameters = [ "<= 14" * ( ?$objectArr? |?$tag? | ?$note? | ?$shape? | ?$scale? | ?$color? | ?$background?
     | ?$targetArr? | ?$targetTag? | ?$targetNote? | ?$targetShape? | ?$targetScale? | ?$targetColor? | ?$targetBackground? ) ];

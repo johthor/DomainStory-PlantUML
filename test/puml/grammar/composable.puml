@@ -3,8 +3,6 @@
 
 !include ../../../src/domainStoryComposite.puml
 
-activateComposableActivities()
-
 startActivity(+, Person(A), works on, Document(w))
 
 startActivity(+, Person(A), works on, Document(w))
@@ -23,5 +21,5 @@ split(to, Person(B))
 continue(and, Person(C))
 
 startActivity(+, Person(A), collaborates on, Document(w))
-activity(|, Person(B), collaborates on, $lastObject,Created $objectArr = <--)
+activity(|, Person(B), collaborates on, $lastObjectCreated, $objectArr = <--)
 @enduml

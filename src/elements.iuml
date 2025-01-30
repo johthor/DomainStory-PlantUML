@@ -27,7 +27,7 @@
 !endprocedure
 
 !unquoted function $createElement($type, $kind, $icon, $label, $tag = "", $shape = "", $scale = "", $color = "", $background = "")
-    !$name = $computeNextElementName($type)
+    !$alias = $computeNextAlias($type)
 
     !$shape = $getStyleProperty($shape, $type, $kind, $tag, Shape)
     !$scale = $getStyleProperty($scale, $type, $kind, $tag, IconScale)
@@ -36,17 +36,17 @@
     !$backgroundColor = $computeColorName($background)
     !$stereotypes = $computeStereotypes($kind, $tag)
 
-    $debug($type + "(" + $kind + ", " + $icon + ") " + $name + " : " + $label + " : " + $tag + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
+    $debug($type + "(" + $kind + ", " + $icon + ") " + $alias + " : " + $label + " : " + $tag + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
 
     ' output below
-    $pumlEntity($shape, $label, $name, $icon, $scale, $color, $stereotypes, $backgroundColor)
+    $pumlEntity($shape, $label, $alias, $icon, $scale, $color, $stereotypes, $backgroundColor)
 
-    !global $lastElementCreated = $name
+    !global $lastElementCreated = $alias
     !global $lastElementLabelUsed = $label
-    !return $name
+    !return $alias
 !endfunction
 
-!function $computeNextElementName($type)
+!function $computeNextAlias($type)
     !$prefix = %lower($type)
     !$counterName = "$" + $prefix + "Counter"
 

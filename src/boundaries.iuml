@@ -13,6 +13,8 @@
         $createBoundaryNote($name, $note)
     !endif
 
-    ' output below
+    !$lastBoundaryCreated = $name
+
+    ' do not put anything after the next line
     $shape "==$label" as $name $computeStereotypes("", $tag) $computeColorName($background)
 !endprocedure

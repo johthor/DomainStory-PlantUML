@@ -420,6 +420,9 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
 !global $lastElementCreated = ""
 !global $lastElementLabelUsed = ""
 
+' Boundary Creation State
+!global $lastBoundaryCreated = ""
+
 ' Activity State
 !global $currentSequenceNumber = 0
 !global $currentActivityDirection = ""
@@ -427,7 +430,7 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
 !global $lastNodeConnected = ""
 !global $previousNodeConnected = ""
 
-!global $splitNode = ""
+!global $lastSplitLocation = ""
 
 ' Entity Creation
 ' ##################################
@@ -458,7 +461,7 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
 !endprocedure
 
 !unquoted function $createElement($type, $kind, $icon, $label, $tag = "", $shape = "", $scale = "", $color = "", $background = "")
-    !$name = $computeNextElementName($type)
+    !$alias = $computeNextAlias($type)
 
     !$shape = $getStyleProperty($shape, $type, $kind, $tag, Shape)
     !$scale = $getStyleProperty($scale, $type, $kind, $tag, IconScale)
@@ -467,17 +470,17 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
     !$backgroundColor = $computeColorName($background)
     !$stereotypes = $computeStereotypes($kind, $tag)
 
-    $debug($type + "(" + $kind + ", " + $icon + ") " + $name + " : " + $label + " : " + $tag + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
+    $debug($type + "(" + $kind + ", " + $icon + ") " + $alias + " : " + $label + " : " + $tag + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
 
     ' output below
-    $pumlEntity($shape, $label, $name, $icon, $scale, $color, $stereotypes, $backgroundColor)
+    $pumlEntity($shape, $label, $alias, $icon, $scale, $color, $stereotypes, $backgroundColor)
 
-    !global $lastElementCreated = $name
+    !global $lastElementCreated = $alias
     !global $lastElementLabelUsed = $label
-    !return $name
+    !return $alias
 !endfunction
 
-!function $computeNextElementName($type)
+!function $computeNextAlias($type)
     !$prefix = %lower($type)
     !$counterName = "$" + $prefix + "Counter"
 
@@ -710,7 +713,9 @@ $extendStyleDeclarations("Object", "Call", "phone")
         $createBoundaryNote($name, $note)
     !endif
 
-    ' output below
+    !$lastBoundaryCreated = $name
+
+    ' do not put anything after the next line
     $shape "==$label" as $name $computeStereotypes("", $tag) $computeColorName($background)
 !endprocedure
 
@@ -734,7 +739,7 @@ $extendStyleDeclarations("Object", "Call", "phone")
         !endif
     !endif
 
-    $createConnection($subject, $object, $arrow, $predicate, $computeStepLabel($step))
+    $createLink($subject, $object, $arrow, $predicate, $computeStepLabel($step))
 
     !global $previousNodeConnected = $lastNodeConnected
     !global $lastNodeConnected = $object
@@ -742,16 +747,16 @@ $extendStyleDeclarations("Object", "Call", "phone")
 !endprocedure
 
 !unquoted procedure append($action, $object, $arrow = "")
-    $createPartial($lastNodeConnected, $action, $object, $arrow)
+    $createPartial($lastNodeConnected, $object, $action, $arrow)
 !endprocedure
 
 !unquoted procedure split($action, $object, $arrow = "")
-    !global $splitNode = $lastNodeConnected
-    $createPartial($lastNodeConnected, $action, $object, $arrow)
+    !global $lastSplitLocation = $lastNodeConnected
+    $createPartial($lastNodeConnected, $object, $action, $arrow)
 !endprocedure
 
 !unquoted procedure continue($action, $object, $arrow = "")
-    $createPartial($splitNode, $action, $object, $arrow)
+    $createPartial($lastSplitLocation, $object, $action, $arrow)
 !endprocedure
 
 ' Classic Activity Definition
@@ -778,24 +783,20 @@ $extendStyleDeclarations("Object", "Call", "phone")
 ' Activity Helpers
 ' ----------------------------------
 
-!procedure $createPartial($from, $to, $arrow = "-->", $action = "", $stepLabel = "")
-    !if $start == ""
-        !$start = $lastNodeConnected
-    !endif
-
+!procedure $createPartial($from, $to, $action = "", $arrow = "")
     !if $arrow == ""
         !$arrow = $currentActivityDirection
     !endif
 
     ' create connecting arrows
-    $createConnection($start, $object, $arrow, $action)
+    $createLink($from, $to, $arrow, $action)
 
     !global $previousNodeConnected = $lastNodeConnected
-    !global $lastNodeConnected = $object
+    !global $lastNodeConnected = $to
     !global $currentActivityDirection = $arrow
 !endprocedure
 
-!procedure $createConnection($from, $to, $arrow = "-->", $action = "", $stepLabel = "")
+!procedure $createLink($from, $to, $arrow = "-->", $action = "", $stepLabel = "")
     !$backwardsArrow = %substr($arrow, 0, 1) == "<"
     !if $action && $action != "_"
         !if $stepLabel
