@@ -1,13 +1,6 @@
 ' Mutable state
 ' ##################################
 
-!if $DST_PUML_ENTITY_NAMES == "dynamic"
-    !global $dynamicElementNames = "active"
-!else
-    !global $dynamicElementNames = "inactive"
-!endif
-
-
 ' Element Creation State
 !global $actorCounter = 0
 !global $lastCreatedActor = ""

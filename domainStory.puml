@@ -15,13 +15,6 @@
     !global $PUML_MODE ?= "light"
 !endif
 
-'' Use `-DDST_PUML_ENTITY_NAMES=dynamic` to activate the dynamic naming feature
-!ifdef DST_PUML_ENTITY_NAMES
-    !global $DST_PUML_ENTITY_NAMES ?= DST_PUML_ENTITY_NAMES
-!else
-    !global $DST_PUML_ENTITY_NAMES ?= "static"
-!endif
-
 !global $DST_PUML_ELEMENT_SEPARATOR ?= "+"
 !global $DST_PUML_COMPONENT_SEPARATOR ?= ":"
 
@@ -417,13 +410,6 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
 ' Mutable state
 ' ##################################
 
-!if $DST_PUML_ENTITY_NAMES == "dynamic"
-    !global $dynamicElementNames = "active"
-!else
-    !global $dynamicElementNames = "inactive"
-!endif
-
-
 ' Element Creation State
 !global $actorCounter = 0
 !global $lastCreatedActor = ""
@@ -729,10 +715,6 @@ $extendStyleDeclarations("Object", "Call", "phone")
 
 ' Activities
 ' ##################################
-
-!procedure activateComposableActivities($state = "active")
-    !global $dynamicElementNames = $state
-!endprocedure
 
 ' Appending to the Activity Stream
 ' ----------------------------------

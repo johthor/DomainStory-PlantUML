@@ -1,6 +1,4 @@
 @startuml
-!$DST_PUML_ENTITY_NAMES = "dynamic"
-
 !include ../../../src/domainStoryComposite.puml
 
 introduce(Person(Pete))

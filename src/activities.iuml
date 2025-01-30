@@ -1,10 +1,6 @@
 ' Activities
 ' ##################################
 
-!procedure activateComposableActivities($state = "active")
-    !global $dynamicElementNames = $state
-!endprocedure
-
 ' Appending to the Activity Stream
 ' ----------------------------------
 
