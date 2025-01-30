@@ -149,16 +149,11 @@
     !$separatorPosition = %strpos($element, ":")
 
     !if $separatorPosition > -1
-        !$elementCounter = $elementCounter + 1
-
         !$elementKind = %substr($element, 0, $separatorPosition)
         !$elementLabel = %substr($element, $separatorPosition + 1)
-        !$elementName = $elementKind + $elementCounter
 
-        'Element($kind, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-        %call_user_func($elementKind, $elementName, $elementLabel, $tag, $note, $shape, $scale, $color, $background)
-
-        !return $elementName
+        'Element($kind, $label, $tag, $note, $shape, $scale, $color, $background)
+        !return %call_user_func($elementKind, $elementLabel, $tag, $note, $shape, $scale, $color, $background)
     !else
         $createElementNote($element, $note)
 

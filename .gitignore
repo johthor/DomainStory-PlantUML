@@ -12,5 +12,7 @@ test/**/*.preproc
 !test/**/*.expected.svg
 !test/**/*.expected.preproc
 
+__pycache__
+
 # Build related
 *.bak
