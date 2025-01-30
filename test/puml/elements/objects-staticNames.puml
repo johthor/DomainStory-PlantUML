@@ -5,62 +5,62 @@ namedDocument(Pete)
 
 !assert $objectCounter == 1
 !assert Pete == "object1"
-!assert $lastCreatedObject == "object1"
-!assert $lastCreatedElement == "object1"
+!assert $lastObjectCreated == "object1"
+!assert $lastElementCreated == "object1"
 
 namedDocument(Maria, Maria)
 
 !assert $objectCounter == 2
 !assert Maria == "object2"
-!assert $lastCreatedObject == "object2"
-!assert $lastCreatedElement == "object2"
+!assert $lastObjectCreated == "object2"
+!assert $lastElementCreated == "object2"
 
 namedDocument(Sarah, Smart Sarah)
 
 !assert $objectCounter == 3
 !assert Sarah == "object3"
-!assert $lastCreatedObject == "object3"
-!assert $lastCreatedElement == "object3"
+!assert $lastObjectCreated == "object3"
+!assert $lastElementCreated == "object3"
 
 namedDocument(Frida, Funny Frida, funny)
 
 !assert $objectCounter == 4
 !assert Frida == "object4"
-!assert $lastCreatedObject == "object4"
-!assert $lastCreatedElement == "object4"
+!assert $lastObjectCreated == "object4"
+!assert $lastElementCreated == "object4"
 
 namedDocument(Hannah, Happy Hannah, happy, real happy)
 
 !assert $objectCounter == 5
 !assert Hannah == "object5"
-!assert $lastCreatedObject == "object5"
-!assert $lastCreatedElement == "object5"
+!assert $lastObjectCreated == "object5"
+!assert $lastElementCreated == "object5"
 
 namedDocument(Max, Mindful Max, mindful, thinks a lot, cloud)
 
 !assert $objectCounter == 6
 !assert Max == "object6"
-!assert $lastCreatedObject == "object6"
-!assert $lastCreatedElement == "object6"
+!assert $lastObjectCreated == "object6"
+!assert $lastElementCreated == "object6"
 
 namedDocument(Noah, Noble Noah, noble, shows high moral qualities, cloud, 2)
 
 !assert $objectCounter == 7
 !assert Noah == "object7"
-!assert $lastCreatedObject == "object7"
-!assert $lastCreatedElement == "object7"
+!assert $lastObjectCreated == "object7"
+!assert $lastElementCreated == "object7"
 
 namedDocument(Olivia, Orderly Olivia, orderly, is organized, folder, 2, darkblue)
 
 !assert $objectCounter == 8
 !assert Olivia == "object8"
-!assert $lastCreatedObject == "object8"
-!assert $lastCreatedElement == "object8"
+!assert $lastObjectCreated == "object8"
+!assert $lastElementCreated == "object8"
 
 namedDocument(Quentin, Questioning Quentin, questioning, doubtful, database, 2, red, grey)
 
 !assert $objectCounter == 9
 !assert Quentin == "object9"
-!assert $lastCreatedObject == "object9"
-!assert $lastCreatedElement == "object9"
+!assert $lastObjectCreated == "object9"
+!assert $lastElementCreated == "object9"
 @enduml

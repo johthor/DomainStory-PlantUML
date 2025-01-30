@@ -412,21 +412,22 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
 
 ' Element Creation State
 !global $actorCounter = 0
-!global $lastCreatedActor = ""
+!global $lastActorCreated = ""
 
 !global $objectCounter = 0
-!global $lastCreatedObject = ""
+!global $lastObjectCreated = ""
 
-!global $lastCreatedElement = ""
+!global $lastElementCreated = ""
 !global $lastElementLabelUsed = ""
 
 ' Activity State
-!global $stepCounter = 0
+!global $currentSequenceNumber = 0
+!global $currentActivityDirection = ""
 
 !global $lastNodeConnected = ""
 !global $previousNodeConnected = ""
+
 !global $splitNode = ""
-!global $currentActivityDirection = ""
 
 ' Entity Creation
 ' ##################################
@@ -435,7 +436,7 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
     !$actorAlias = $createElement("Actor", $kind, $icon, $label, $tag, $shape, $scale, $color, $background)
     $createElementNote($actorAlias, $note)
 
-    !global $lastCreatedActor = $actorAlias
+    !global $lastActorCreated = $actorAlias
     !return $actorAlias
 !endfunction
 
@@ -443,7 +444,7 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
     !$objectAlias = $createElement("Object", $kind, $icon, $label, $tag, $shape, $scale, $color, $background)
     $createElementNote($objectAlias, $note)
 
-    !global $lastCreatedObject = $objectAlias
+    !global $lastObjectCreated = $objectAlias
     !return $objectAlias
 !endfunction
 
@@ -471,7 +472,7 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
     ' output below
     $pumlEntity($shape, $label, $name, $icon, $scale, $color, $stereotypes, $backgroundColor)
 
-    !global $lastCreatedElement = $name
+    !global $lastElementCreated = $name
     !global $lastElementLabelUsed = $label
     !return $name
 !endfunction
@@ -1036,17 +1037,17 @@ $extendStyleDeclarations("Object", "Call", "phone")
 
 !function $computeStepNumber($step)
     !if $step == "_" || $step == "+"
-        !$stepCounter = $stepCounter + 1
-        !return $stepCounter
+        !$currentSequenceNumber = $currentSequenceNumber + 1
+        !return $currentSequenceNumber
     !elseif $step == "|"
-        !if $stepCounter
-            !return $stepCounter
+        !if $currentSequenceNumber
+            !return $currentSequenceNumber
         !else
             !return '?'
         !endif
     !elseif %substr($step, 0, 1) == "="
-        !$stepCounter = %intval(%substr($step, 1))
-        !return $stepCounter
+        !$currentSequenceNumber = %intval(%substr($step, 1))
+        !return $currentSequenceNumber
     !elseif $step == "."
         ' Signal unnumbered step
         !return %false()

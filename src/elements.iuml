@@ -5,7 +5,7 @@
     !$actorAlias = $createElement("Actor", $kind, $icon, $label, $tag, $shape, $scale, $color, $background)
     $createElementNote($actorAlias, $note)
 
-    !global $lastCreatedActor = $actorAlias
+    !global $lastActorCreated = $actorAlias
     !return $actorAlias
 !endfunction
 
@@ -13,7 +13,7 @@
     !$objectAlias = $createElement("Object", $kind, $icon, $label, $tag, $shape, $scale, $color, $background)
     $createElementNote($objectAlias, $note)
 
-    !global $lastCreatedObject = $objectAlias
+    !global $lastObjectCreated = $objectAlias
     !return $objectAlias
 !endfunction
 
@@ -41,7 +41,7 @@
     ' output below
     $pumlEntity($shape, $label, $name, $icon, $scale, $color, $stereotypes, $backgroundColor)
 
-    !global $lastCreatedElement = $name
+    !global $lastElementCreated = $name
     !global $lastElementLabelUsed = $label
     !return $name
 !endfunction
