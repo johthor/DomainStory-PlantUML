@@ -51,36 +51,6 @@
     append($action, $object, $arrow, $splitNode)
 !endprocedure
 
-' Prepending to the Activity Stream
-' ----------------------------------
-
-!unquoted procedure prepend($start, $action = "", $arrow = "", $end = "")
-    !if $end == ""
-        !$end = $lastStartName
-    !endif
-
-    !if $arrow == ""
-        !$arrow = $currentActivityDirection
-    !endif
-
-    $createConnection($start, $end, $arrow, $action)
-
-    !global $lastStartName = $start
-    !global $currentActivityDirection = $arrow
-!endprocedure
-
-!unquoted procedure terminateActivity($step, $subject, $predicate, $arrow = "", $object = "")
-    !if $object == ""
-        !$object = $lastNodeConnected
-    !endif
-
-    !if $arrow == ""
-        !$arrow = $currentActivityDirection
-    !endif
-
-    $createConnection($subject, $object, $arrow, $predicate, $computeStepLabel($step))
-!endprocedure
-
 ' Classic Activity Definition
 ' ----------------------------------
 

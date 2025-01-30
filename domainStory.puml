@@ -741,60 +741,17 @@ $extendStyleDeclarations("Object", "Call", "phone")
     !global $currentActivityDirection = $arrow
 !endprocedure
 
-!unquoted procedure append($action, $object = "", $arrow = "", $start = "")
-    !if $start == ""
-        !$start = $lastNodeConnected
-    !endif
-
-    !if $arrow == ""
-        !$arrow = $currentActivityDirection
-    !endif
-
-    ' create connecting arrows
-    $createConnection($start, $object, $arrow, $action)
-
-    !global $previousNodeConnected = $lastNodeConnected
-    !global $lastNodeConnected = $object
-    !global $currentActivityDirection = $arrow
+!unquoted procedure append($action, $object, $arrow = "")
+    $createPartial($lastNodeConnected, $action, $object, $arrow)
 !endprocedure
 
-!unquoted procedure split($action, $object = "", $arrow = "")
+!unquoted procedure split($action, $object, $arrow = "")
     !global $splitNode = $lastNodeConnected
-    append($action, $object, $arrow)
+    $createPartial($lastNodeConnected, $action, $object, $arrow)
 !endprocedure
 
-!unquoted procedure continue($action, $object = "", $arrow = "")
-    append($action, $object, $arrow, $splitNode)
-!endprocedure
-
-' Prepending to the Activity Stream
-' ----------------------------------
-
-!unquoted procedure prepend($start, $action = "", $arrow = "", $end = "")
-    !if $end == ""
-        !$end = $lastStartName
-    !endif
-
-    !if $arrow == ""
-        !$arrow = $currentActivityDirection
-    !endif
-
-    $createConnection($start, $end, $arrow, $action)
-
-    !global $lastStartName = $start
-    !global $currentActivityDirection = $arrow
-!endprocedure
-
-!unquoted procedure terminateActivity($step, $subject, $predicate, $arrow = "", $object = "")
-    !if $object == ""
-        !$object = $lastNodeConnected
-    !endif
-
-    !if $arrow == ""
-        !$arrow = $currentActivityDirection
-    !endif
-
-    $createConnection($subject, $object, $arrow, $predicate, $computeStepLabel($step))
+!unquoted procedure continue($action, $object, $arrow = "")
+    $createPartial($splitNode, $action, $object, $arrow)
 !endprocedure
 
 ' Classic Activity Definition
@@ -820,6 +777,23 @@ $extendStyleDeclarations("Object", "Call", "phone")
 
 ' Activity Helpers
 ' ----------------------------------
+
+!procedure $createPartial($from, $to, $arrow = "-->", $action = "", $stepLabel = "")
+    !if $start == ""
+        !$start = $lastNodeConnected
+    !endif
+
+    !if $arrow == ""
+        !$arrow = $currentActivityDirection
+    !endif
+
+    ' create connecting arrows
+    $createConnection($start, $object, $arrow, $action)
+
+    !global $previousNodeConnected = $lastNodeConnected
+    !global $lastNodeConnected = $object
+    !global $currentActivityDirection = $arrow
+!endprocedure
 
 !procedure $createConnection($from, $to, $arrow = "-->", $action = "", $stepLabel = "")
     !$backwardsArrow = %substr($arrow, 0, 1) == "<"
