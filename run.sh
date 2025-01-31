@@ -23,14 +23,19 @@ puml::convert() {
 }
 
 run::rewritePUML() {
+  TARGET_DIR="${1:-test/puml}"
+  IN_PLACE="$2"
 
-  for diagram in test/puml/**/*.puml ; do
+  for diagram in "$TARGET_DIR"/**/*.puml ; do
     fileNameWithoutExt=$(basename "$diagram" .puml)
     subPath=$(dirname "$diagram")
     testSubject="$subPath/$fileNameWithoutExt"
 
     if [[ ! "$testSubject" =~ .+REWRITTEN ]]; then
       /usr/bin/env python3 tools/rewrite.py "$testSubject".puml > "$testSubject".REWRITTEN.puml
+      if [ "$IN_PLACE" ]; then
+        mv "$testSubject".REWRITTEN.puml "$testSubject".puml
+      fi
     fi
   done
 }

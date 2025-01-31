@@ -35,6 +35,7 @@ def keyword_parameters(params):
 def parameters(positional, optional=[], keywords=[]):
     return positional_parameters(positional) + optional_parameters(optional) + keyword_parameters(keywords)
 
+indentation_pattern = re.compile(r"(\s*)")
 
 activity_pattern = re.compile(
     r"activity\((?P<step>[^>v<^,]+)(?P<direction>[>v<^])(?P<other>.+)\)"
@@ -82,13 +83,20 @@ def process_line(target, line):
     if line.startswith("'"):
         return line
 
+    content = line.lstrip()
+    indentation_amount = len(line) - len(content)
+    if indentation_amount > 1:
+        indentation = " " * indentation_amount
+    else:
+        indentation = ""
+
     converters = [switch_suffix_to_prefix, fix_name]
-    result = reduce(lambda acc, rewrite: rewrite(target, acc), converters, line)
+    result = reduce(lambda acc, rewrite: rewrite(target, acc), converters, content)
 
     if result.endswith("\n"):
-        return result
+        return indentation + result
     else:
-        return result + "\n"
+        return indentation + result + "\n"
 
 
 def parse_arguments(arguments):

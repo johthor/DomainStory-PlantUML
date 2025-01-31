@@ -8,7 +8,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../t
 from rewrite import fix_name as rewriter  # the rewrite function to be tested
 
 
-class TestActivityStepDirection(unittest.TestCase):
+class TestRewriteElementNames(unittest.TestCase):
     def test_minimum_version(self):
         """
         Test that the target version must be >= 0.5
