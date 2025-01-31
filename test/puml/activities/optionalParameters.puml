@@ -1,9 +1,9 @@
 @startuml
 !include ../../../src/domainStoryComposite.puml
 
-Person(Alice)
-Person(Bob)
-Info(weather)
+introduce(Person(Alice))
+introduce(Person(Bob))
+introduce(Info(weather))
 
 activity(42, Alice, talks about, weather, with, Bob, <--)
 activity( 1,   ()A, talks about,       s,    M,    , <--)
