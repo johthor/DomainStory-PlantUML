@@ -1,7 +1,7 @@
 import unittest
 from rewrite import fix_name as rewriter  # the rewrite function to be tested
 
-minimum_version = 0.5
+minimum_version = [0, 5]
 
 
 class TestRewriteElementNames(unittest.TestCase):
@@ -13,7 +13,7 @@ class TestRewriteElementNames(unittest.TestCase):
         expected = "introduce(a, Person(Albert))"
 
         with self.subTest(target=0.4):
-            actual = rewriter(0.4, line)
+            actual = rewriter([0, 4], line)
             self.assertEqual(line, actual)
 
         with self.subTest(target=minimum_version):
@@ -21,7 +21,7 @@ class TestRewriteElementNames(unittest.TestCase):
             self.assertEqual(expected, actual)
 
         with self.subTest(target=0.6):
-            actual = rewriter(0.6, line)
+            actual = rewriter([0, 6], line)
             self.assertEqual(expected, actual)
 
     def test_rewrite_named_elements(self):
@@ -65,7 +65,8 @@ class TestRewriteElementNames(unittest.TestCase):
             "startActivity(+, Person(A), works on, Document(w))",
             "append(using, Document(v))",
             "split(to, Person(B))",
-            "continue(and, Person(C)"
+            "continue(and, Person(C)",
+            'customizeStyleProperty("LimeGreen", BackgroundColor, Actor, Person, friendly)'
         ]
         for line in cases:
             with self.subTest(line=line):

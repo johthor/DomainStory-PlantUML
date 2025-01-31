@@ -1,7 +1,7 @@
 import unittest
 from rewrite import switch_suffix_to_prefix  # the rewrite function to be tested
 
-minimum_version = 0.4
+minimum_version = [0, 4]
 
 
 class TestActivityStepDirection(unittest.TestCase):
@@ -13,7 +13,7 @@ class TestActivityStepDirection(unittest.TestCase):
         expected = "activity(>1, A, uses, w)"
 
         with self.subTest(target=0.3):
-            actual = switch_suffix_to_prefix(0.3, line)
+            actual = switch_suffix_to_prefix([0, 3], line)
             self.assertEqual(line, actual)
 
         with self.subTest(target=minimum_version):
@@ -21,7 +21,7 @@ class TestActivityStepDirection(unittest.TestCase):
             self.assertEqual(expected, actual)
 
         with self.subTest(target=0.5):
-            actual = switch_suffix_to_prefix(0.5, line)
+            actual = switch_suffix_to_prefix([0, 5], line)
             self.assertEqual(expected, actual)
 
     def test_rewrite_indicator_up(self):

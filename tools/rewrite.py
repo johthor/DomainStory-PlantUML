@@ -2,6 +2,7 @@
 
 """A simple python script template.
 """
+from __future__ import annotations
 
 import argparse
 from functools import reduce
@@ -11,24 +12,24 @@ import sys
 
 
 # FIXME The following regex builder functions DO NOT work
-def pos_param(param):
+def pos_param(param: str):
     return rf"(?P<{param}>\s*[^$,\s][^,]*)"
 
 
-def kw_param(param):
+def kw_param(param: str):
     return rf"\${param} = (?P<{param}>[^,]+)"
 
 
-def positional_parameters(params):
+def positional_parameters(params: tuple[str, ...]):
     return ", ?".join([pos_param(x) for x in params])
 
 
-def optional_parameters(params):
+def optional_parameters(params: tuple[str, ...]):
     rev = params[::-1]
     return reduce(lambda acc, name: rf"{pos_param(name)}, (?:{acc})?", rev[1:], pos_param(rev[0]))
 
 
-def keyword_parameters(params):
+def keyword_parameters(params: tuple[str, ...]):
     return "|".join([kw_param(x) for x in params])
 
 
@@ -46,14 +47,12 @@ entity_pattern = re.compile(
     r"(?P<type>\w+)\(" + pos_param('name') + "(?:," + pos_param('label') + ")?" + r"(?P<other>(?:,.+)?)\)")
 
 
-def minimum_version_included(minimum, target):
-    """Only breaking changes are relevant; therefore, versions might be
-    represented via floats as `major.minor` only"""
-    return math.isclose(minimum - 0.001, target) or (minimum > target)
+def minimum_version_included(minimum: str, target: list[int]):
+    return str_to_version(minimum) > target
 
 
 def switch_suffix_to_prefix(target, line):
-    if minimum_version_included(0.4, target):
+    if minimum_version_included('0.4', target):
         return line
 
     match = activity_pattern.search(line)
@@ -64,7 +63,7 @@ def switch_suffix_to_prefix(target, line):
 
 
 def fix_name(target, line):
-    if minimum_version_included(0.5, target):
+    if minimum_version_included('0.5', target):
         return line
 
     match = entity_pattern.search(line)
@@ -74,7 +73,7 @@ def fix_name(target, line):
     group_dict = match.groupdict()
 
     macro_name = match.group("type")
-    forbidden_macro_names = ["introduce", "Boundary", "activity", "startActivity", "append", "split", "continue"]
+    forbidden_macro_names = ["introduce", "Boundary", "activity", "startActivity", "append", "split", "continue", "customizeStyleProperty"]
 
     if macro_name not in forbidden_macro_names and not macro_name.startswith("named"):
 
@@ -112,12 +111,17 @@ def parse_arguments(arguments):
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
     parser.add_argument("infile", help="Input file", type=argparse.FileType("r"))
-    parser.add_argument(
-        "-t", "--target", help="Target version", default=math.inf, type=float
-    )
+    parser.add_argument("-t", "--target", help="Target version", default='', type=str_to_version)
     parser.add_argument("-o", "--outfile", help="Output file", default="stdout")
     args = parser.parse_args(arguments)
     return args
+
+
+def str_to_version(target: str):
+    if not target:
+        return [math.inf]
+    else:
+        return [int(component) for component in target.split('.')]
 
 
 def main(arguments):
