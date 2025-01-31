@@ -12,7 +12,7 @@ import sys
 
 # FIXME The following regex builder functions DO NOT work
 def pos_param(param):
-    return rf"(?P<{param}>[^,]+)"
+    return rf"(?P<{param}>\s*[^$,\s][^,]*)"
 
 
 def kw_param(param):
@@ -32,15 +32,18 @@ def keyword_parameters(params):
     return "|".join([kw_param(x) for x in params])
 
 
-def parameters(positional, optional=[], keywords=[]):
+def parameters(positional, optional=(), keywords=()):
     return positional_parameters(positional) + optional_parameters(optional) + keyword_parameters(keywords)
+
 
 indentation_pattern = re.compile(r"(\s*)")
 
 activity_pattern = re.compile(
     r"activity\((?P<step>[^>v<^,]+)(?P<direction>[>v<^])(?P<other>.+)\)"
 )
-entity_pattern = re.compile(r"(?P<type>\w+)\(" + pos_param('name') + r"(?:, ?(?P<other>.+))?\)")
+
+entity_pattern = re.compile(
+    r"(?P<type>\w+)\(" + pos_param('name') + "(?:," + pos_param('label') + ")?" + r"(?P<other>(?:,.+)?)\)")
 
 
 def minimum_version_included(minimum, target):
@@ -68,13 +71,18 @@ def fix_name(target, line):
     if match is None:
         return line
 
+    group_dict = match.groupdict()
+
     macro_name = match.group("type")
     forbidden_macro_names = ["introduce", "Boundary", "activity", "startActivity", "append", "split", "continue"]
+
     if macro_name not in forbidden_macro_names and not macro_name.startswith("named"):
-        if match.group("other"):
-            return "introduce({name}, {type}({other}))".format(**match.groupdict())
+
+        if match.group("label"):
+            group_dict['label'] = group_dict['label'].lstrip()
+            return "introduce({name}, {type}({label}{other}))".format(**group_dict)
         else:
-            return "introduce({type}({name}))".format(**match.groupdict())
+            return "introduce({type}({name}{other}))".format(**group_dict)
 
     return line
 

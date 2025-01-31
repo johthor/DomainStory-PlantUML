@@ -43,6 +43,7 @@ class TestRewriteElementNames(unittest.TestCase):
                 "Person(Quentin, Questioning Quentin, $color = blue, $scale = 2)",
                 "introduce(Quentin, Person(Questioning Quentin, $color = blue, $scale = 2))",
             ),
+            ("Person(confirmation, $note= default)", "introduce(Person(confirmation, $note= default))")
         ]
         for line, expected in cases:
             with self.subTest(line=line, expected=expected):
