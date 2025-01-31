@@ -1,8 +1,4 @@
 import unittest
-import os
-import sys
-
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../tools")))
 from rewrite import pos_param, kw_param, positional_parameters, optional_parameters, keyword_parameters
 
 

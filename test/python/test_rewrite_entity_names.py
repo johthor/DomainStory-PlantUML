@@ -1,11 +1,7 @@
 import unittest
-import os
-import sys
+from rewrite import fix_name as rewriter  # the rewrite function to be tested
 
 minimum_version = 0.5
-
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../tools")))
-from rewrite import fix_name as rewriter  # the rewrite function to be tested
 
 
 class TestRewriteElementNames(unittest.TestCase):

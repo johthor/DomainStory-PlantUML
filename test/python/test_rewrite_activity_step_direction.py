@@ -1,11 +1,7 @@
 import unittest
-import os
-import sys
+from rewrite import switch_suffix_to_prefix  # the rewrite function to be tested
 
 minimum_version = 0.4
-
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../tools")))
-from rewrite import switch_suffix_to_prefix  # the rewrite function to be tested
 
 
 class TestActivityStepDirection(unittest.TestCase):
