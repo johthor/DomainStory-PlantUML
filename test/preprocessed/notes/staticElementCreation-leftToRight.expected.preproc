@@ -580,48 +580,49 @@ sprite $ma_information_outline [48x48/16] {
 
 skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rpete" as pete <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rpete" as actor1 <<Person>>
 
-note top of pete : above
-note right of pete : right
-note bottom of pete : below
-note left of pete : left
+note top of actor1 : above
+note right of actor1 : right
+note bottom of actor1 : below
+note left of actor1 : left
 
-            Card "<$ma_at{scale=.8,color=#1f2833}>\rconfirmation" as confirmation <<Email>>
+    Card "<$ma_at{scale=.8,color=#1f2833}>\rconfirmation" as object1 <<Email>>
 
-                note right of confirmation : default
+                note right of object1 : default
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rnews" as news <<Info>>
+    Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rnews" as object2 <<Info>>
 
-            note top of news :  above
+            note top of object2 :  above
 
-            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rlist" as list <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rlist" as object3 <<Document>>
 
-            note right of list :  right
+            note right of object3 :  right
 
-            Card "<$ma_folder_outline{scale=.8,color=#1f2833}>\rdocuments" as documents <<Folder>>
+    Card "<$ma_folder_outline{scale=.8,color=#1f2833}>\rdocuments" as object4 <<Folder>>
 
-            note bottom of documents :  below
+            note bottom of object4 :  below
 
-            Card "<$ma_phone{scale=.8,color=#1f2833}>\rquestion" as question <<Call>>
+    Card "<$ma_phone{scale=.8,color=#1f2833}>\rquestion" as object5 <<Call>>
 
-            note left of question :  left
+            note left of object5 :  left
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rargument" as argument <<Conversation>>
+    Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rargument" as object6 <<Conversation>>
 
-                note left of argument :  inverse
+                note left of object6 :  inverse
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rAlice" as Alice <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rAlice" as actor2 <<Person>>
 
-                note right of Alice : default
+                note right of actor2 : default
 
-            Agent "<$ma_account_multiple_outline{scale=1,color=#1f2833}>\rEmployees" as Employees <<Group>>
+    Agent "<$ma_account_multiple_outline{scale=1,color=#1f2833}>\rEmployees" as actor3 <<Group>>
 
-                note left of Employees :  inverse
+                note left of actor3 :  inverse
 
-            Agent "<$ma_laptop{scale=1,color=#1f2833}>\rBoarding" as Boarding <<System>>
+    Agent "<$ma_laptop{scale=1,color=#1f2833}>\rBoarding" as actor4 <<System>>
 
-            note top of Boarding :  above
+            note top of actor4 :  above
+
 @enduml
 
 

@@ -580,73 +580,33 @@ sprite $ma_information_outline [48x48/16] {
 
 skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as actor1 <<Person>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rPete" as object1 <<Document>>
 
-    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rw" as object1 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rMaria" as object2 <<Document>>
 
-                        actor1 --> object1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> works on
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rSmart Sarah" as object3 <<Document>>
 
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as actor2 <<Person>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rFunny Frida" as object4 <<Document:funny>><<Document>><<funny>>
 
-    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rw" as object2 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rHappy Hannah" as object5 <<Document:happy>><<Document>><<happy>>
 
-                        actor2 --> object2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> works on
+                note right of object5 : real happy
 
-    Card "<$ma_file_document{scale=.8,color=#1f2833}>\r v" as object3 <<Document>>
+    cloud "<$ma_file_document{scale=.8,color=#1f2833}>\rMindful Max" as object6 <<Document:mindful>><<Document>><<mindful>>
 
-                    object2 --> object3 : using
+                note right of object6 : thinks a lot
 
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as actor3 <<Person>>
+    cloud "<$ma_file_document{scale=2,color=#1f2833}>\rNoble Noah" as object7 <<Document:noble>><<Document>><<noble>>
 
-    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rv" as object4 <<Document>>
+                note right of object7 : shows high moral qualities
 
-    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rw" as object5 <<Document>>
+    folder "<$ma_file_document{scale=2,color=darkblue}>\rOrderly Olivia" as object8 <<Document:orderly>><<Document>><<orderly>>
 
-                        actor3 --> object5 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> works on
+                note right of object8 : is organized
 
-                    object5 --> object4 : using
+    database "<$ma_file_document{scale=2,color=red}>\rQuestioning Quentin" as object9 <<Document:questioning>><<Document>><<questioning>> #grey
 
-    Card "<$ma_file_document{scale=.8,color=#1f2833}>\r u" as object6 <<Document>>
-
-                    object4 --> object6 : and
-
-    Card "<$ma_file_document{scale=.8,color=#1f2833}>\r t" as object7 <<Document>>
-
-                    object6 --> object7 : as well as
-
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as actor4 <<Person>>
-
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rB" as actor5 <<Person>>
-
-    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rw" as object8 <<Document>>
-
-                        actor4 --> object8 : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> hands over
-
-                    object8 --> actor5 : to
-
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as actor6 <<Person>>
-
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rB" as actor7 <<Person>>
-
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rC" as actor8 <<Person>>
-
-    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rw" as object9 <<Document>>
-
-                        actor6 --> object9 : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> hands over
-
-                    object9 --> actor7 : to
-
-                    object9 --> actor8 : and
-
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as actor9 <<Person>>
-
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rB" as actor10 <<Person>>
-
-    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rw" as object10 <<Document>>
-
-                        actor9 --> object10 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> collaborates on
-
-                        object10 <-- actor10 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> collaborates on
+                note right of object9 : doubtful
 
 @enduml
 

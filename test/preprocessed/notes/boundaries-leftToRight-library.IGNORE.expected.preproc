@@ -585,60 +585,54 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
                 note right of one : default
 
     Rectangle "==one" as one   {
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rJake" as actor1 <<Person>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rJake" as Jake <<Person>>
-
-    }
+}
 
         Rectangle "==two" as two
 
                 note bottom of two :  !! above
 
     Rectangle "==two" as two   {
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rSimon" as actor2 <<Person>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rSimon" as Simon <<Person>>
-
-    }
+}
 
         Rectangle "==three" as three
 
             note right of three :  right
 
     Rectangle "==three" as three   {
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rSloane" as actor3 <<Person>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rSloane" as Sloane <<Person>>
-
-    }
+}
 
         Rectangle "==four" as four
 
                 note top of four :  below
 
     Rectangle "==four" as four   {
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rMarry" as actor4 <<Person>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rMarry" as Marry <<Person>>
-
-    }
+}
 
         Rectangle "==five" as five
 
             note left of five :  left
 
     Rectangle "==five" as five   {
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rAshley" as actor5 <<Person>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rAshley" as Ashley <<Person>>
-
-    }
+}
 
         Rectangle "==six" as six
 
                 note left of six :  inverse
 
     Rectangle "==six" as six   {
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rSam" as actor6 <<Person>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rSam" as Sam <<Person>>
-
-    }
+}
 @enduml
 
 

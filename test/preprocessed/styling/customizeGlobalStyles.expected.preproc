@@ -580,55 +580,53 @@ sprite $ma_information [48x48/16] {
 
 skinparam folderBackgroundColor<<MA INFORMATION>> White
 
-            Card "<$ma_email{scale=.8,color=#1f2833}>\rconfirmation" as confirmation <<Email>>
+    Card "<$ma_email{scale=.8,color=#1f2833}>\rconfirmation" as object1 <<Email>>
 
-            Card "<$ma_information{scale=.8,color=#1f2833}>\rnews" as news <<Info>>
+    Card "<$ma_information{scale=.8,color=#1f2833}>\rnews" as object2 <<Info>>
 
-            Card "<$ma_document{scale=.8,color=#1f2833}>\rlist" as list <<Document>>
+    Card "<$ma_document{scale=.8,color=#1f2833}>\rlist" as object3 <<Document>>
 
-            Card "<$ma_folder{scale=.8,color=#1f2833}>\rdocuments" as documents <<Folder>>
+    Card "<$ma_folder{scale=.8,color=#1f2833}>\rdocuments" as object4 <<Folder>>
 
-            Card "<$ma_phone{scale=.8,color=#1f2833}>\rquestion" as question <<Call>>
+    Card "<$ma_phone{scale=.8,color=#1f2833}>\rquestion" as object5 <<Call>>
 
-            Card "<$ma_message{scale=.8,color=#1f2833}>\rargument" as argument <<Conversation>>
+    Card "<$ma_message{scale=.8,color=#1f2833}>\rargument" as object6 <<Conversation>>
 
-            Agent "<$ma_account_outline{scale=1,color=LightBlue}>\rAlice" as Alice <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=LightBlue}>\rAlice" as actor1 <<Person>>
 
-            Agent "<$ma_account_multiple_outline{scale=1,color=LightBlue}>\rEmployees" as Employees <<Group>>
+    Agent "<$ma_account_multiple_outline{scale=1,color=LightBlue}>\rEmployees" as actor2 <<Group>>
 
-            Agent "<$ma_laptop{scale=1,color=LightBlue}>\rBoarding" as Boarding <<System>>
+    Agent "<$ma_laptop{scale=1,color=LightBlue}>\rBoarding" as actor3 <<System>>
 
-            Agent "<$ma_account_outline{scale=1,color=LightBlue}>\rBob" as Bob <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=LightBlue}>\rBob" as actor4 <<Person>>
 
-                note right of Bob : something funny
+                note right of actor4 : something funny
 
     Rectangle "==Home" as Home   {
+    Card "<$ma_email{scale=.8,color=#1f2833}>\rspam" as object7 <<Email>>
 
-            Card "<$ma_email{scale=.8,color=#1f2833}>\rspam" as spam <<Email>>
-
-    }
+}
 
     Rectangle "==Party" as Party   {
+    Card "<$ma_message{scale=.8,color=#1f2833}>\rweather" as object8 <<Conversation>>
 
-            Card "<$ma_message{scale=.8,color=#1f2833}>\rweather" as weather <<Conversation>>
-
-    }
+}
 
     Rectangle "==Office" as Office   {
+    Card "<$ma_email{scale=.8,color=#1f2833}>\rproposal" as object9 <<Email>>
 
-            Card "<$ma_email{scale=.8,color=#1f2833}>\rproposal" as proposal <<Email>>
+}
 
-    }
+                        actor1 -> object7 : <back:black><size:16><color:PowderBlue>(1)</color></size></back> reads the
 
-                        Alice -> spam : <back:black><size:16><color:PowderBlue>(1)</color></size></back> reads the
+                        actor1 --> object8 : <back:black><size:16><color:PowderBlue>(2)</color></size></back> talks about the
 
-                        Alice --> weather : <back:black><size:16><color:PowderBlue>(2)</color></size></back> talks about the
+                    object8 --> actor4 : with
 
-                            weather --> Bob : with
+                        object9 <-- actor4 : <back:black><size:16><color:PowderBlue>(3)</color></size></back> writes a
 
-                        proposal <-- Bob : <back:black><size:16><color:PowderBlue>(3)</color></size></back> writes a
+                    actor1 <-- object9 : to
 
-                            Alice <-- proposal : to
 @enduml
 
 

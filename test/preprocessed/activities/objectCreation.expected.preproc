@@ -580,43 +580,44 @@ sprite $ma_information_outline [48x48/16] {
 
 skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rperson" as person <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rperson" as actor1 <<Person>>
 
-            Card "<$ma_file_document{scale=.8,color=#1f2833}>\ra document" as Document1 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\ra document" as object1 <<Document>>
 
-                        person --> Document1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> reads
+                        actor1 --> object1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> reads
 
-            Card "<$ma_folder_outline{scale=.8,color=#1f2833}>\ra folder" as Folder2 <<Folder>>
+    Card "<$ma_folder_outline{scale=.8,color=#1f2833}>\ra folder" as object2 <<Folder>>
 
-                        person --> Folder2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> opens
+                        actor1 --> object2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> opens
 
-            Card "<$ma_phone{scale=.8,color=#1f2833}>\ra call" as Call3 <<Call>>
+    Card "<$ma_phone{scale=.8,color=#1f2833}>\ra call" as object3 <<Call>>
 
-                        person --> Call3 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> makes
+                        actor1 --> object3 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> makes
 
-            Card "<$ma_at{scale=.8,color=#1f2833}>\ran email" as Email4 <<Email>>
+    Card "<$ma_at{scale=.8,color=#1f2833}>\ran email" as object4 <<Email>>
 
-                        person --> Email4 : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> writes
+                        actor1 --> object4 : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> writes
 
-            Agent "<$ma_account_multiple_outline{scale=1,color=green}>\rnice people" as people <<Group>>
+    Agent "<$ma_account_multiple_outline{scale=1,color=green}>\rnice people" as actor2 <<Group>>
 
-            Card "<$ma_message_outline{scale=2,color=#1f2833}>\ra conversation" as Conversation5 <<Conversation>>
+    Card "<$ma_message_outline{scale=2,color=#1f2833}>\ra conversation" as object5 <<Conversation>>
 
-                        people --> Conversation5 : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> has
+                        actor2 --> object5 : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> has
 
-            Card "<$ma_information_outline{scale=.8,color=red}>\ran information" as Info6 <<Info>>
+    Card "<$ma_information_outline{scale=.8,color=red}>\ran information" as object6 <<Info>>
 
-                        people --> Info6 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> ask for
+                        actor2 --> object6 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> ask for
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rwriter" as writer <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rwriter" as actor3 <<Person>>
 
-            Card "<$ma_file_document{scale=.8,color=blue}>\r books" as Document7 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=blue}>\r books" as object7 <<Document>>
 
-                        writer --> Document7 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> writes
+                        actor3 --> object7 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> writes
 
-            Card "<$ma_information_outline{scale=2,color=green}>\r stories" as Info8 <<Info>>
+    Card "<$ma_information_outline{scale=2,color=green}>\r stories" as object8 <<Info>>
 
-                            Document7 --> Info8 : containing
+                    object7 --> object8 : containing
+
 @enduml
 
 

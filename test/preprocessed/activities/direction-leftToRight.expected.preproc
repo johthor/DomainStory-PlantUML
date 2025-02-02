@@ -580,55 +580,56 @@ sprite $ma_information_outline [48x48/16] {
 
 skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague1" as colleague1 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague1" as actor1 <<Person>>
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rdefaultMovie" as defaultMovie <<Conversation>>
+    Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rdefaultMovie" as object1 <<Conversation>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague2" as colleague2 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague2" as actor2 <<Person>>
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rrightMovie" as rightMovie <<Conversation>>
+    Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rrightMovie" as object2 <<Conversation>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague3" as colleague3 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague3" as actor3 <<Person>>
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rleftMovie" as leftMovie <<Conversation>>
+    Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rleftMovie" as object3 <<Conversation>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague4" as colleague4 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague4" as actor4 <<Person>>
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rdownMovie" as downMovie <<Conversation>>
+    Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rdownMovie" as object4 <<Conversation>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague5" as colleague5 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague5" as actor5 <<Person>>
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rupMovie" as upMovie <<Conversation>>
+    Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rupMovie" as object5 <<Conversation>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague6" as colleague6 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague6" as actor6 <<Person>>
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rreverseMovie" as reverseMovie <<Conversation>>
+    Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rreverseMovie" as object6 <<Conversation>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague7" as colleague7 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcolleague7" as actor7 <<Person>>
 
-                        colleague1 --> defaultMovie : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about
+                        actor1 --> object1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about
 
-                            defaultMovie --> colleague2 : with
+                    object1 --> actor2 : with
 
-                        upMovie <- colleague1 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about
+                        object5 <- actor1 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about
 
-                            colleague3 <- upMovie : with
+                    actor3 <- object5 : with
 
-                        colleague1 --> rightMovie : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> talks about
+                        actor1 --> object2 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> talks about
 
-                            rightMovie --> colleague4 : with
+                    object2 --> actor4 : with
 
-                        colleague1 -> downMovie : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> talks about
+                        actor1 -> object4 : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> talks about
 
-                            downMovie -> colleague5 : with
+                    object4 -> actor5 : with
 
-                        leftMovie <-- colleague1 : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> talks about
+                        object3 <-- actor1 : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> talks about
 
-                            colleague6 <-- leftMovie : with
+                    actor6 <-- object3 : with
 
-                        reverseMovie <-- colleague1 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> talks about
+                        object6 <-- actor1 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> talks about
 
-                            colleague7 <-- reverseMovie : with
+                    actor7 <-- object6 : with
+
 @enduml
 
 

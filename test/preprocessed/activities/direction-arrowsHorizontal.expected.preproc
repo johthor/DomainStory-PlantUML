@@ -580,55 +580,55 @@ sprite $ma_information_outline [48x48/16] {
 
 skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsuperior" as superior <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsuperior" as actor1 <<Person>>
 
-            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument1" as document1 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument1" as object1 <<Document>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate1" as subordinate1 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate1" as actor2 <<Person>>
 
-            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument2" as document2 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument2" as object2 <<Document>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate2" as subordinate2 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate2" as actor3 <<Person>>
 
-            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument3" as document3 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument3" as object3 <<Document>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate3" as subordinate3 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate3" as actor4 <<Person>>
 
-            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument4" as document4 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument4" as object4 <<Document>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate4" as subordinate4 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate4" as actor5 <<Person>>
 
-            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument5" as document5 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument5" as object5 <<Document>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate5" as subordinate5 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate5" as actor6 <<Person>>
 
-            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument6" as document6 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rdocument6" as object6 <<Document>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate6" as subordinate6 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsubordinate6" as actor7 <<Person>>
 
-                        superior --> document1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about
+                        actor1 --> object1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about
 
-                            document1 --> subordinate1 : with
+                    object1 --> actor2 : with
 
-                        superior --> document2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about
+                        actor1 --> object2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about
 
-                            subordinate2 <- document2 : with
+                    actor3 <- object2 : with
 
-                        superior --> document3 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> talks about
+                        actor1 --> object3 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> talks about
 
-                            document3 -> subordinate3 : with
+                    object3 -> actor4 : with
 
-                        document4 <-- superior : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> talks about
+                        object4 <-- actor1 : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> talks about
 
-                            subordinate4 <-- document4 : with
+                    actor5 <-- object4 : with
 
-                        document5 <-- superior : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> talks about
+                        object5 <-- actor1 : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> talks about
 
-                            subordinate5 <- document5 : with
+                    actor6 <- object5 : with
 
-                        document6 <-- superior : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> talks about
+                        object6 <-- actor1 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> talks about
 
-                            document6 -> subordinate6 : with
+                    object6 -> actor7 : with
 
 @enduml
 

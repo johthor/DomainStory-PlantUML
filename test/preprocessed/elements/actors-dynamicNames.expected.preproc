@@ -582,29 +582,31 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
     Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rPete" as actor1 <<Person>>
 
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rSmart Sarah" as actor2 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rMaria" as actor2 <<Person>>
 
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rFunny Frida" as actor3 <<Person:funny>><<Person>><<funny>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rSmart Sarah" as actor3 <<Person>>
 
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rHappy Hannah" as actor4 <<Person:happy>><<Person>><<happy>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rFunny Frida" as actor4 <<Person:funny>><<Person>><<funny>>
 
-                note right of actor4 : real happy
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rHappy Hannah" as actor5 <<Person:happy>><<Person>><<happy>>
 
-    cloud "<$ma_account_outline{scale=1,color=#1f2833}>\rMindful Max" as actor5 <<Person:mindful>><<Person>><<mindful>>
+                note right of actor5 : real happy
 
-                note right of actor5 : thinks a lot
+    cloud "<$ma_account_outline{scale=1,color=#1f2833}>\rMindful Max" as actor6 <<Person:mindful>><<Person>><<mindful>>
 
-    cloud "<$ma_account_outline{scale=2,color=#1f2833}>\rNoble Noah" as actor6 <<Person:noble>><<Person>><<noble>>
+                note right of actor6 : thinks a lot
 
-                note right of actor6 : shows high moral qualities
+    cloud "<$ma_account_outline{scale=2,color=#1f2833}>\rNoble Noah" as actor7 <<Person:noble>><<Person>><<noble>>
 
-    folder "<$ma_account_outline{scale=2,color=darkblue}>\rOrderly Olivia" as actor7 <<Person:orderly>><<Person>><<orderly>>
+                note right of actor7 : shows high moral qualities
 
-                note right of actor7 : is organized
+    folder "<$ma_account_outline{scale=2,color=darkblue}>\rOrderly Olivia" as actor8 <<Person:orderly>><<Person>><<orderly>>
 
-    database "<$ma_account_outline{scale=2,color=red}>\rQuestioning Quentin" as actor8 <<Person:questioning>><<Person>><<questioning>> #grey
+                note right of actor8 : is organized
 
-                note right of actor8 : doubtful
+    database "<$ma_account_outline{scale=2,color=red}>\rQuestioning Quentin" as actor9 <<Person:questioning>><<Person>><<questioning>> #grey
+
+                note right of actor9 : doubtful
 
 @enduml
 

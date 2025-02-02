@@ -580,49 +580,49 @@ sprite $ma_information_outline [48x48/16] {
 
 skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rperson" as person <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rperson" as actor1 <<Person>>
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rthing1" as thing1 <<Info>>
+    Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rthing1" as object1 <<Info>>
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rthing2" as thing2 <<Info>>
+    Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rthing2" as object2 <<Info>>
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rthing3" as thing3 <<Info>>
+    Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rthing3" as object3 <<Info>>
 
-                note bottom of thing1 : default
+                note bottom of object1 : default
 
-                        person --> thing1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> reads
+                        actor1 --> object1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> reads
 
-            note top of thing2 :  above
+            note top of object2 :  above
 
-                        person --> thing2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> reads
+                        actor1 --> object2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> reads
 
-            note right of thing3 :  right
+            note right of object3 :  right
 
-                        person --> thing3 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> reads
+                        actor1 --> object3 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> reads
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\r thing4" as Info1 <<Info>>
+    Card "<$ma_information_outline{scale=.8,color=#1f2833}>\r thing4" as object4 <<Info>>
 
-            note bottom of Info1 :  below
+            note bottom of object4 :  below
 
-                        person --> Info1 : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> reads
+                        actor1 --> object4 : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> reads
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\r thing5" as Info2 <<Info>>
+    Card "<$ma_information_outline{scale=.8,color=#1f2833}>\r thing5" as object5 <<Info>>
 
-                note top of Info2 :  inverse
+                note top of object5 :  inverse
 
-                        person --> Info2 : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> reads
+                        actor1 --> object5 : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> reads
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\r thing6" as Info3 <<Info>>
+    Card "<$ma_information_outline{scale=.8,color=#1f2833}>\r thing6" as object6 <<Info>>
 
-            note right of Info3 :  right
+            note right of object6 :  right
 
-                        person --> Info3 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> reads
+                        actor1 --> object6 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> reads
 
-            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rBook" as Document4 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rBook" as object7 <<Document>>
 
-            note left of Document4 :  left
+            note left of object7 :  left
 
-                        person --> Document4 : <back:#66fcf1><size:16><color:#0B0C10>(7)</color></size></back> reads
+                        actor1 --> object7 : <back:#66fcf1><size:16><color:#0B0C10>(7)</color></size></back> reads
 
 @enduml
 

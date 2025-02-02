@@ -580,73 +580,73 @@ sprite $ma_information_outline [48x48/16] {
 
 skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as a10 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as actor1 <<Person>>
 
-    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rw" as w10 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rw" as object1 <<Document>>
 
-                        a10 --> w10 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> works on
+                        actor1 --> object1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> works on
 
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as a20 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as actor2 <<Person>>
 
-    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rw" as w20 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rw" as object2 <<Document>>
 
-    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rv" as v20 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rv" as object3 <<Document>>
 
-                        a20 --> w20 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> works on
+                        actor2 --> object2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> works on
 
-                    w20 --> v20 : using
+                    object2 --> object3 : using
 
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as xa20 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as actor3 <<Person>>
 
-    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rw" as xw20 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rw" as object4 <<Document>>
 
-    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rv" as xv20 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rv" as object5 <<Document>>
 
-    Card "<$ma_file_document{scale=.8,color=#1f2833}>\ru" as xu20 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\ru" as object6 <<Document>>
 
-    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rt" as xt20 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rt" as object7 <<Document>>
 
-                        xa20 --> xw20 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> works on
+                        actor3 --> object4 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> works on
 
-                    xw20 --> xv20 : using
+                    object4 --> object5 : using
 
-                    xv20 --> xu20 : and
+                    object5 --> object6 : and
 
-                    xu20 --> xt20 : as well as
+                    object6 --> object7 : as well as
 
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as a30 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as actor4 <<Person>>
 
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rB" as b30 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rB" as actor5 <<Person>>
 
-    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rw" as w30 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rw" as object8 <<Document>>
 
-                        a30 --> w30 : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> hands over
+                        actor4 --> object8 : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> hands over
 
-                    w30 --> b30 : to
+                    object8 --> actor5 : to
 
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as a40 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as actor6 <<Person>>
 
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rB" as b40 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rB" as actor7 <<Person>>
 
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rC" as c40 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rC" as actor8 <<Person>>
 
-    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rw" as w40 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rw" as object9 <<Document>>
 
-                        a40 --> w40 : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> hands over
+                        actor6 --> object9 : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> hands over
 
-                    w40 --> b40 : to
+                    object9 --> actor7 : to
 
-                    w40 --> c40 : and
+                    object9 --> actor8 : and
 
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as a50 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as actor9 <<Person>>
 
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rB" as b50 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rB" as actor10 <<Person>>
 
-    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rw" as w50 <<Document>>
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rw" as object10 <<Document>>
 
-                        a50 --> w50 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> collaborates on
+                        actor9 --> object10 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> collaborates on
 
-                        w50 <-- b50 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> collaborates on
+                        object10 <-- actor10 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> collaborates on
 
 @enduml
 

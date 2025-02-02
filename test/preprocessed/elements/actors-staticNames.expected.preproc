@@ -580,31 +580,33 @@ sprite $ma_information_outline [48x48/16] {
 
 skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rPete" as Pete <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rPete" as actor1 <<Person>>
 
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rSmart Sarah" as Sarah <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rMaria" as actor2 <<Person>>
 
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rFunny Frida" as Frida <<Person:funny>><<Person>><<funny>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rSmart Sarah" as actor3 <<Person>>
 
-    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rHappy Hannah" as Hannah <<Person:happy>><<Person>><<happy>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rFunny Frida" as actor4 <<Person:funny>><<Person>><<funny>>
 
-                note right of Hannah : real happy
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rHappy Hannah" as actor5 <<Person:happy>><<Person>><<happy>>
 
-    cloud "<$ma_account_outline{scale=1,color=#1f2833}>\rMindful Max" as Max <<Person:mindful>><<Person>><<mindful>>
+                note right of actor5 : real happy
 
-                note right of Max : thinks a lot
+    cloud "<$ma_account_outline{scale=1,color=#1f2833}>\rMindful Max" as actor6 <<Person:mindful>><<Person>><<mindful>>
 
-    cloud "<$ma_account_outline{scale=2,color=#1f2833}>\rNoble Noah" as Noah <<Person:noble>><<Person>><<noble>>
+                note right of actor6 : thinks a lot
 
-                note right of Noah : shows high moral qualities
+    cloud "<$ma_account_outline{scale=2,color=#1f2833}>\rNoble Noah" as actor7 <<Person:noble>><<Person>><<noble>>
 
-    folder "<$ma_account_outline{scale=2,color=darkblue}>\rOrderly Olivia" as Olivia <<Person:orderly>><<Person>><<orderly>>
+                note right of actor7 : shows high moral qualities
 
-                note right of Olivia : is organized
+    folder "<$ma_account_outline{scale=2,color=darkblue}>\rOrderly Olivia" as actor8 <<Person:orderly>><<Person>><<orderly>>
 
-    database "<$ma_account_outline{scale=2,color=red}>\rQuestioning Quentin" as Quentin <<Person:questioning>><<Person>><<questioning>> #grey
+                note right of actor8 : is organized
 
-                note right of Quentin : doubtful
+    database "<$ma_account_outline{scale=2,color=red}>\rQuestioning Quentin" as actor9 <<Person:questioning>><<Person>><<questioning>> #grey
+
+                note right of actor9 : doubtful
 
 @enduml
 

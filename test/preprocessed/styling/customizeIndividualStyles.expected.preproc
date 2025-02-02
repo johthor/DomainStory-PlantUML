@@ -580,37 +580,35 @@ sprite $ma_information_outline [48x48/16] {
 
 skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
-            Agent "<$ma_account_outline{scale=1,color=green}>\rAlice" as Alice <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=green}>\rAlice" as actor1 <<Person>>
 
     Rectangle "==Home" as Home   {
+    Card "<$ma_at{scale=.8,color=#1f2833}>\rspam" as object1 <<Email>>
 
-            Card "<$ma_at{scale=.8,color=#1f2833}>\rspam" as spam <<Email>>
+}
 
-    }
-
-            Agent "<$ma_account_outline{scale=1,color=blue}>\rBob" as Bob <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=blue}>\rBob" as actor2 <<Person>>
 
     Rectangle "==Party" as Party  #yellow/red {
+    Card "<$ma_message_outline{scale=.8,color=lightgreen}>\rweather" as object2 <<Conversation>>
 
-            Card "<$ma_message_outline{scale=.8,color=lightgreen}>\rweather" as weather <<Conversation>>
-
-    }
+}
 
     Rectangle "==Office" as Office  #aee {
+    Card "<$ma_at{scale=3,color=#f03000}>\rproposal" as object3 <<Email>>
 
-            Card "<$ma_at{scale=3,color=#f03000}>\rproposal" as proposal <<Email>>
+}
 
-    }
+                        actor1 -> object1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> reads the
 
-                        Alice -> spam : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> reads the
+                        actor1 --> object2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about the
 
-                        Alice --> weather : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about the
+                    object2 --> actor2 : with
 
-                            weather --> Bob : with
+                        object3 <-- actor2 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> writes a
 
-                        proposal <-- Bob : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> writes a
+                    actor1 <-- object3 : to
 
-                            Alice <-- proposal : to
 @enduml
 
 

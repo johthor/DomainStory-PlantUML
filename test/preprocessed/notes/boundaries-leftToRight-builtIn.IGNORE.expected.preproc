@@ -581,31 +581,27 @@ sprite $ma_information_outline [48x48/16] {
 skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
     Rectangle "==company" as company   {
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsarah" as actor1 <<Person>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rsarah" as sarah <<Person>>
-
-    }
+}
 note top of company : !! above ??
 
     Rectangle "==team" as team   {
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rpete" as actor2 <<Person>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rpete" as pete <<Person>>
-
-    }
+}
 note right of team : right
 
     Rectangle "==office" as office   {
+    Card "<$ma_phone{scale=.8,color=#1f2833}>\rconference" as object1 <<Call>>
 
-            Card "<$ma_phone{scale=.8,color=#1f2833}>\rconference" as conference <<Call>>
-
-    }
+}
 note bottom of office : below ??
 
     Rectangle "==party" as party   {
+    Agent "<$ma_account_multiple_outline{scale=1,color=#1f2833}>\rpeople" as actor3 <<Group>>
 
-            Agent "<$ma_account_multiple_outline{scale=1,color=#1f2833}>\rpeople" as people <<Group>>
-
-    }
+}
 note left of party : left
 @enduml
 

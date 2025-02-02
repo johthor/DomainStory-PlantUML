@@ -641,18 +641,18 @@ sprite $ma_information_outline [48x48/16] {
 skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
     Rectangle "==Party" as Party   {
+    Agent "<$ma_account_outline{scale=1}>\rAlice" as actor1 <<Person>>
 
-            Agent "<$ma_account_outline{scale=1}>\rAlice" as Alice <<Person>>
+    Card "<$ma_message_outline{scale=.8}>\rweather" as object1 <<Conversation>>
 
-            Card "<$ma_message_outline{scale=.8}>\rweather" as weather <<Conversation>>
+    Agent "<$ma_account_outline{scale=1}>\rBob" as actor2 <<Person>>
 
-            Agent "<$ma_account_outline{scale=1}>\rBob" as Bob <<Person>>
+}
 
-    }
+                        actor1 --> object1 : (1) talks about the
 
-                        Alice --> weather : (1) talks about the
+                    object1 --> actor2 : with
 
-                            weather --> Bob : with
 @enduml
 
 
