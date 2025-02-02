@@ -28,29 +28,29 @@
 
 !include ../../../src/domainStoryComposite.puml
 
-Email(confirmation)
-Info(news)
-Document(list)
-Folder(documents)
-Call(question)
-Conversation(argument)
+introduce(Email(confirmation))
+introduce(Info(news))
+introduce(Document(list))
+introduce(Folder(documents))
+introduce(Call(question))
+introduce(Conversation(argument))
 
-Person(Alice)
-Group(Employees)
-System(Boarding)
+introduce(Person(Alice))
+introduce(Group(Employees))
+introduce(System(Boarding))
 
 Boundary(Home) {
-    Email(spam)
+    introduce(Email(spam))
 }
 
-Person(Bob)
+introduce(Person(Bob))
 
 Boundary(Party) {
-    Conversation(weather)
+    introduce(Conversation(weather))
 }
 
 Boundary(Office) {
-    Email(proposal)
+    introduce(Email(proposal))
 }
 
 activity(+, Alice, reads the, spam, _, _, ->)

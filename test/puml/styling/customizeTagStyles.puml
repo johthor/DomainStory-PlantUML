@@ -15,20 +15,20 @@ customizeStyleProperty(italic, FontStyle, Actor, "", windy)
 customizeStyleProperty(Package, Shape, Boundary, "", stored, $skinParam=%false())
 customizeStyleProperty(orange, BackgroundColor, Boundary, "", stored)
 
-Person(Alice, $tag=windy)
+introduce(Person(Alice, $tag=windy))
 
 Boundary(Home, $tag=stored) {
-    Email(spam, $tag=stored)
+    introduce(Email(spam, $tag=stored))
 }
 
-Person(Bob, $tag=friendly)
+introduce(Person(Bob, $tag=friendly))
 
 Boundary(Party, $tag=fun) {
-    Conversation(weather)
+    introduce(Conversation(weather))
 }
 
 Boundary(Office) {
-    Email(proposal, $tag=important)
+    introduce(Email(proposal, $tag=important))
 }
 
 activity(+, Alice, reads the, spam, _, _, ->)
