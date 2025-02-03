@@ -16,7 +16,7 @@ class TestRewriteElementNames(unittest.TestCase):
             actual = rewriter([0, 4], line)
             self.assertEqual(line, actual)
 
-        with self.subTest(target=minimum_version):
+        with self.subTest(target=0.5):
             actual = rewriter(minimum_version, line)
             self.assertEqual(expected, actual)
 
@@ -26,7 +26,7 @@ class TestRewriteElementNames(unittest.TestCase):
 
     def test_rewrite_named_elements(self):
         """
-        Test that named persons will be rewritten as explicitly named persons
+        Test that named persons will be explicitly introduced
         """
         cases = [
             ("Person(Pete)", "introduce(Person(Pete))"),
@@ -43,7 +43,7 @@ class TestRewriteElementNames(unittest.TestCase):
                 "Person(Quentin, Questioning Quentin, $color = blue, $scale = 2)",
                 "introduce(Quentin, Person(Questioning Quentin, $color = blue, $scale = 2))",
             ),
-            ("Person(confirmation, $note= default)", "introduce(Person(confirmation, $note= default))")
+            ("Person(confirmation, $note = default)", "introduce(Person(confirmation, $note = default))")
         ]
         for line, expected in cases:
             with self.subTest(line=line, expected=expected):
@@ -59,7 +59,7 @@ class TestRewriteElementNames(unittest.TestCase):
             "Boundary(team, Best Team) {",
             "activity(1, person, reads, Document:a document)",
             "introduce(Person(Pete))",
-            "introduce(m, Person(Maria))"
+            "introduce(m, Person(Maria))",
             "namedPerson(Pete)",
             "namedPerson(m, Maria)",
             "startActivity(+, Person(A), works on, Document(w))",

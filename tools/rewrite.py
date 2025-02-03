@@ -37,18 +37,13 @@ def parameters(positional, optional=(), keywords=()):
     return positional_parameters(positional) + optional_parameters(optional) + keyword_parameters(keywords)
 
 
-indentation_pattern = re.compile(r"(\s*)")
+def minimum_version_included(minimum: str, target: list[int]):
+    return str_to_version(minimum) > target
+
 
 activity_pattern = re.compile(
     r"activity\((?P<step>[^>v<^,]+)(?P<direction>[>v<^])(?P<other>.+)\)"
 )
-
-entity_pattern = re.compile(
-    r"(?P<type>\w+)\(" + pos_param('name') + "(?:," + pos_param('label') + ")?" + r"(?P<other>(?:,.+)?)\)")
-
-
-def minimum_version_included(minimum: str, target: list[int]):
-    return str_to_version(minimum) > target
 
 
 def switch_suffix_to_prefix(target, line):
@@ -62,6 +57,10 @@ def switch_suffix_to_prefix(target, line):
     return "activity({direction}{step}{other})".format(**match.groupdict())
 
 
+entity_pattern = re.compile(
+    r"(?P<type>\w+)\(" + pos_param('name') + "(?:," + pos_param('label') + ")?" + r"(?P<other>(?:,.+)?)\)")
+
+
 def fix_name(target, line):
     if minimum_version_included('0.5', target):
         return line
@@ -73,7 +72,8 @@ def fix_name(target, line):
     group_dict = match.groupdict()
 
     macro_name = match.group("type")
-    forbidden_macro_names = ["introduce", "Boundary", "activity", "startActivity", "append", "split", "continue", "customizeStyleProperty"]
+    forbidden_macro_names = ["introduce", "Boundary", "activity", "startActivity", "append", "split", "continue",
+                             "customizeStyleProperty"]
 
     if macro_name not in forbidden_macro_names and not macro_name.startswith("named"):
 
