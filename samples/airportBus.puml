@@ -16,34 +16,26 @@ introduce(driver, Person(bus driver))
 introduce(Group(passengers))
 
 Boundary(contracting) {
-    introduce(busCall, Call(bus))
-    introduce(jobOrder, Document(job to order))
-    introduce(Call(order))
+    activity(_, agent, orders, Call(bus), from, dispatcher)
+    activity(_, dispatcher, creates, Document(job to order), in, dispatching, <--, -->)
+    activity(_, dispatcher, gives, Call(order), to, driver)
 }
 
 Boundary(transport) {
-    introduce(Bus(bus))
+    activity(_, driver, transports by, Bus(bus), passengers, _, <--)
 }
 
 Boundary(logging) {
-    introduce(details1, Document(details of the journey))
-    introduce(details2, Document(details of the journey))
-    introduce(details3, Document(details of the journey))
-    note right of details1
+    activity(_, driver, logs, Document(details of the journey))
+    note right of $lastObjectCreated
         Disruptions,
         number of
         passengers
         transported, etc.
     end note
+    activity(_, driver, hands over, Document(details of the journey), at the end of the shift to, dispatcher)
+    activity(_, dispatcher, enters, Document(details of the journey), in, dispatching, -->, <--)
 }
-
-activity(_, agent, orders, busCall, from, dispatcher)
-activity(_, dispatcher, creates, jobOrder, in, dispatching, <--, -->)
-activity(_, dispatcher, gives, order, to, driver)
-activity(_, driver, transports by, bus, passengers, _, <--)
-activity(_, driver, logs, details1)
-activity(_, driver, hands over, details2, at the end of the shift to, dispatcher)
-activity(_, dispatcher, enters, details3, in, dispatching, -->, <--)
 
 contracting -[hidden]> transport
 @enduml

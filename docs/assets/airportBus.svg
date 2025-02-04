@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="527px" preserveAspectRatio="none" style="width:1091px;height:527px;background:#FFFFFF;" version="1.1" viewBox="0 0 1091 527" width="1091px" zoomAndPan="magnify">
   <defs>
-    <filter height="1" id="b19xou57bdrydm0" width="1" x="0" y="0">
+    <filter height="1" id="b1ridjioq1gnb80" width="1" x="0" y="0">
       <feFlood flood-color="#66FCF1" result="flood"/>
       <feComposite in="SourceGraphic" in2="flood" operator="over"/>
     </filter>
@@ -52,6 +52,14 @@
       <image height="38" width="38" x="816.2982" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAYAAACoPemuAAACCElEQVR4Xu2XO0hCURjHozlobAkSih5g0kujdyFURFFjU3MtFlSGYS+kIaKpliByKQhuYCTYFkRtEdQWNDj0Qq1Fe5p08lBfxPcR13PvkUwcfsv/Xr//j3s+DpjFGMtKRUiQKpAgVSDBTwLB4ODQyIS/wdojzNjknD8cjuTjmYlCAuDq+nrA0twRLiitZloZHneycORBkxwJgJXVdXexqY6UqVFUXstqW7t+yoUur24a8Xw1SABMOF1uQ1kNKVbD3NQRUjy7a/Hj/BYdsU9diMqRABh1zLpxaSI0WLv90ehbzo7XpxjNLd9y/MuJ7BwJZIjBDI/Xd2is+ZTjiOwcCQAZYpwd754Cx/oll9DOkQCQJcaP1bPrE945EgCyxDjRN/GdIwEgUwyIfzmyc/gdgARAMsQ4eOfwc4AEgFaxsqqmCP/tb9jGnH8jJgruzYipgXvTQ2zQZlfiF6JBBscnp43SxEYdM278XCtcLv3Fmtv7LvB9pJWhYbsiTSyZ4N70ENNzlFgEg3uFxPQsPxbB4PcBEgD/QkzPBYtFMLhXSCyZ4N6MmBq4V1XMMT2v6Z+4CCUV9eJi+wdHLpOl7RUPk0Wh0cIWlpbPca+q2MvLq2Fja3uzs7efDNVLZZ2Vzc4vngWCISvuVRXjxGKx3NDdPbkC9HJzGzA8Pj3nvTOWjTsTEvtLSJAqfADf8TtdHx681QAAAABJRU5ErkJggg==" y="220.9"/>
       <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="110.7363" x="780.13" y="270.5559">details of the journey</text>
     </g>
+    <g id="elem_GMN24">
+      <path d="M961.87,218.4 L961.87,245.81 L901.35,248.46 L961.87,253.81 L961.87,283.5953 A0,0 0 0 0 961.87,283.5953 L1069.5829,283.5953 A0,0 0 0 0 1069.5829,283.5953 L1069.5829,228.4 L1059.5829,218.4 L961.87,218.4 A0,0 0 0 0 961.87,218.4 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <path d="M1059.5829,218.4 L1059.5829,228.4 L1069.5829,228.4 L1059.5829,218.4 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="63.3574" x="967.87" y="234.6559">Disruptions,</text>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="54.0293" x="967.87" y="248.4547">number of</text>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="33.3516" x="967.87" y="262.2535">actor5</text>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="86.7129" x="967.87" y="276.0523">transported, etc.</text>
+    </g>
     <!--entity object6-->
     <g id="elem_object6">
       <rect fill="transparent" height="58.1988" rx="2.5" ry="2.5" style="stroke:transparent;stroke-width:1;" width="130.7363" x="770.13" y="310.9"/>
@@ -63,14 +71,6 @@
       <rect fill="transparent" height="58.1988" rx="2.5" ry="2.5" style="stroke:transparent;stroke-width:1;" width="130.7363" x="770.13" y="403.9"/>
       <image height="38" width="38" x="816.2982" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAYAAACoPemuAAACCElEQVR4Xu2XO0hCURjHozlobAkSih5g0kujdyFURFFjU3MtFlSGYS+kIaKpliByKQhuYCTYFkRtEdQWNDj0Qq1Fe5p08lBfxPcR13PvkUwcfsv/Xr//j3s+DpjFGMtKRUiQKpAgVSDBTwLB4ODQyIS/wdojzNjknD8cjuTjmYlCAuDq+nrA0twRLiitZloZHneycORBkxwJgJXVdXexqY6UqVFUXstqW7t+yoUur24a8Xw1SABMOF1uQ1kNKVbD3NQRUjy7a/Hj/BYdsU9diMqRABh1zLpxaSI0WLv90ehbzo7XpxjNLd9y/MuJ7BwJZIjBDI/Xd2is+ZTjiOwcCQAZYpwd754Cx/oll9DOkQCQJcaP1bPrE945EgCyxDjRN/GdIwEgUwyIfzmyc/gdgARAMsQ4eOfwc4AEgFaxsqqmCP/tb9jGnH8jJgruzYipgXvTQ2zQZlfiF6JBBscnp43SxEYdM278XCtcLv3Fmtv7LvB9pJWhYbsiTSyZ4N70ENNzlFgEg3uFxPQsPxbB4PcBEgD/QkzPBYtFMLhXSCyZ4N6MmBq4V1XMMT2v6Z+4CCUV9eJi+wdHLpOl7RUPk0Wh0cIWlpbPca+q2MvLq2Fja3uzs7efDNVLZZ2Vzc4vngWCISvuVRXjxGKx3NDdPbkC9HJzGzA8Pj3nvTOWjTsTEvtLSJAqfADf8TtdHx681QAAAABJRU5ErkJggg==" y="406.9"/>
       <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="110.7363" x="780.13" y="456.5559">details of the journey</text>
-    </g>
-    <g id="elem_GMN17">
-      <path d="M961.87,218.4 L961.87,245.81 L901.35,248.46 L961.87,253.81 L961.87,283.5953 A0,0 0 0 0 961.87,283.5953 L1069.5829,283.5953 A0,0 0 0 0 1069.5829,283.5953 L1069.5829,228.4 L1059.5829,218.4 L961.87,218.4 A0,0 0 0 0 961.87,218.4 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
-      <path d="M1059.5829,218.4 L1059.5829,228.4 L1069.5829,228.4 L1059.5829,218.4 " fill="#C5C6C7" style="stroke:#1F2833;stroke-width:1;"/>
-      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="63.3574" x="967.87" y="234.6559">Disruptions,</text>
-      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="54.0293" x="967.87" y="248.4547">number of</text>
-      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="33.3516" x="967.87" y="262.2535">actor5</text>
-      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="86.7129" x="967.87" y="276.0523">transported, etc.</text>
     </g>
     <!--entity actor1-->
     <g id="elem_actor1">
@@ -106,7 +106,7 @@
     <g id="link_actor1_object1">
       <path d="M86.53,375 C129.08,375 191.5,375 229.9,375 " fill="transparent" id="actor1-to-object1" style="stroke:#C5C6C7;stroke-width:1;"/>
       <polygon fill="#C5C6C7" points="235.9,375,226.9,371,230.9,375,226.9,379,235.9,375" style="stroke:#C5C6C7;stroke-width:1;"/>
-      <text fill="#0B0C10" filter="url(#b19xou57bdrydm0)" font-family="Arial" font-size="16" lengthAdjust="spacing" textLength="19.5547" x="120.04" y="371.0078">(1)</text>
+      <text fill="#0B0C10" filter="url(#b1ridjioq1gnb80)" font-family="Arial" font-size="16" lengthAdjust="spacing" textLength="19.5547" x="120.04" y="371.0078">(1)</text>
       <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="34.0137" x="142.9287" y="371.8555">orders</text>
     </g>
     <!--link object1 to actor2-->
@@ -119,7 +119,7 @@
     <g id="link_object2_actor2">
       <path d="M311.8484,451.3614 C348.7284,437.7414 399.38,418.68 447.74,399 C458.21,394.74 469.37,390.02 479.94,385.46 " fill="transparent" id="object2-backto-actor2" style="stroke:#C5C6C7;stroke-width:1;"/>
       <polygon fill="#C5C6C7" points="306.22,453.44,316.0484,454.0744,310.9104,451.7078,313.2769,446.5698,306.22,453.44" style="stroke:#C5C6C7;stroke-width:1;"/>
-      <text fill="#0B0C10" filter="url(#b19xou57bdrydm0)" font-family="Arial" font-size="16" lengthAdjust="spacing" textLength="19.5547" x="369.74" y="395.0078">(2)</text>
+      <text fill="#0B0C10" filter="url(#b1ridjioq1gnb80)" font-family="Arial" font-size="16" lengthAdjust="spacing" textLength="19.5547" x="369.74" y="395.0078">(2)</text>
       <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="39.3516" x="392.6287" y="395.8555">creates</text>
     </g>
     <!--link object2 to actor3-->
@@ -132,7 +132,7 @@
     <g id="link_actor2_object3">
       <path d="M479.95,348.83 C425.62,331.83 345.0961,306.6323 300.6561,292.7223 " fill="transparent" id="actor2-to-object3" style="stroke:#C5C6C7;stroke-width:1;"/>
       <polygon fill="#C5C6C7" points="294.93,290.93,302.3242,297.4358,299.7017,292.4236,304.7139,289.8011,294.93,290.93" style="stroke:#C5C6C7;stroke-width:1;"/>
-      <text fill="#0B0C10" filter="url(#b19xou57bdrydm0)" font-family="Arial" font-size="16" lengthAdjust="spacing" textLength="19.5547" x="375.74" y="306.8678">(3)</text>
+      <text fill="#0B0C10" filter="url(#b1ridjioq1gnb80)" font-family="Arial" font-size="16" lengthAdjust="spacing" textLength="19.5547" x="375.74" y="306.8678">(3)</text>
       <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="28.0137" x="398.6287" y="307.7155">gives</text>
     </g>
     <!--link object3 to actor4-->
@@ -145,7 +145,7 @@
     <g id="link_object4_actor4">
       <path d="M300.146,117.1954 C348.306,144.5754 440.33,196.9 492.85,226.77 " fill="transparent" id="object4-backto-actor4" style="stroke:#C5C6C7;stroke-width:1;"/>
       <polygon fill="#C5C6C7" points="294.93,114.23,300.777,122.1554,299.2766,116.7012,304.7309,115.2008,294.93,114.23" style="stroke:#C5C6C7;stroke-width:1;"/>
-      <text fill="#0B0C10" filter="url(#b19xou57bdrydm0)" font-family="Arial" font-size="16" lengthAdjust="spacing" textLength="19.5547" x="354.74" y="146.4578">(4)</text>
+      <text fill="#0B0C10" filter="url(#b1ridjioq1gnb80)" font-family="Arial" font-size="16" lengthAdjust="spacing" textLength="19.5547" x="354.74" y="146.4578">(4)</text>
       <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="69.3633" x="377.6287" y="147.3055">transports by</text>
     </g>
     <!--reverse link actor5 to object4-->
@@ -157,14 +157,14 @@
     <g id="link_actor4_object5">
       <path d="M566.21,247 C616.13,247 701.54,247 763.64,247 " fill="transparent" id="actor4-to-object5" style="stroke:#C5C6C7;stroke-width:1;"/>
       <polygon fill="#C5C6C7" points="769.64,247,760.64,243,764.64,247,760.64,251,769.64,247" style="stroke:#C5C6C7;stroke-width:1;"/>
-      <text fill="#0B0C10" filter="url(#b19xou57bdrydm0)" font-family="Arial" font-size="16" lengthAdjust="spacing" textLength="19.5547" x="652.63" y="243.0078">(5)</text>
+      <text fill="#0B0C10" filter="url(#b1ridjioq1gnb80)" font-family="Arial" font-size="16" lengthAdjust="spacing" textLength="19.5547" x="652.63" y="243.0078">(5)</text>
       <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="22.0137" x="675.5187" y="243.8555">logs</text>
     </g>
     <!--link actor4 to object6-->
     <g id="link_actor4_object6">
       <path d="M566.06,259.8 C580.06,264.71 596.3,270.27 611.13,275 C664.24,291.93 719.2147,307.8635 763.9547,320.4635 " fill="transparent" id="actor4-to-object6" style="stroke:#C5C6C7;stroke-width:1;"/>
       <polygon fill="#C5C6C7" points="769.73,322.09,762.1513,315.8,764.9172,320.7346,759.9827,323.5005,769.73,322.09" style="stroke:#C5C6C7;stroke-width:1;"/>
-      <text fill="#0B0C10" filter="url(#b19xou57bdrydm0)" font-family="Arial" font-size="16" lengthAdjust="spacing" textLength="19.5547" x="633.63" y="271.0078">(6)</text>
+      <text fill="#0B0C10" filter="url(#b1ridjioq1gnb80)" font-family="Arial" font-size="16" lengthAdjust="spacing" textLength="19.5547" x="633.63" y="271.0078">(6)</text>
       <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="59.373" x="656.5187" y="271.8555">hands over</text>
     </g>
     <!--link object6 to actor2-->
@@ -177,7 +177,7 @@
     <g id="link_actor2_object7">
       <path d="M578.88,385.9 C589.36,390.04 600.5,394.01 611.13,397 C663.69,411.77 719.0734,420.4 764.1634,425.85 " fill="transparent" id="actor2-to-object7" style="stroke:#C5C6C7;stroke-width:1;"/>
       <polygon fill="#C5C6C7" points="770.12,426.57,761.665,421.5189,765.1561,425.97,760.705,429.4611,770.12,426.57" style="stroke:#C5C6C7;stroke-width:1;"/>
-      <text fill="#0B0C10" filter="url(#b19xou57bdrydm0)" font-family="Arial" font-size="16" lengthAdjust="spacing" textLength="19.5547" x="646.63" y="393.0078">(7)</text>
+      <text fill="#0B0C10" filter="url(#b1ridjioq1gnb80)" font-family="Arial" font-size="16" lengthAdjust="spacing" textLength="19.5547" x="646.63" y="393.0078">(7)</text>
       <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="33.3516" x="669.5187" y="393.8555">enters</text>
     </g>
     <!--reverse link actor3 to object7-->
@@ -187,6 +187,6 @@
       <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="9.3398" x="670.13" y="479.2559">in</text>
     </g>
     <!--link contracting to transport-->
-    <!--SRC=[dLDDYzim4BtxLsX3O1rGOjhUIfh3Rg0KMdOXz5HAa2N5LcfBhZJQ4ah_UqUAFvCKblfWv3TlPjwCdk_lbEQL5vAijwPcIk_0s5CcXlCcwIchrJYmQdnT9VTzj0HetFiii-pNgb1G-jmxQRdH83MikAcpeocXD3ORTLe-Lqp3ro-Vim1Tbn-Qhsi6qYfMPLXtWm6lVte3Kf23rnoKqUJ1ktHUiLnMbCo15UG3cStmg97MdLt9cl0nVygFaiD-5xu3pbarnZ-Xy5t0CCPDPUn5x35W6CiP_r5OuxM87HO9mUVEIl1MapC_dQ4mx3sRrsoVn-DOPIkmqzPfwVfEUYoIEwb5Dt2IA0tM2CzboWhSCYNFqZgZqm9tHIAqM8n8Ghc60I-bxPceXmpmJRRIg75tSY3h2HtnAT-gbylA4PgmFk8WJTemvwGka8d1v27Cnkmf3Mwn38V3qkHttEMGYGKVMOLR2-_mjLXSC8ucVx8YQDWQxciSFq043341lkB7GbtepqW7Yj2kCHQkLGIJdNkF4ofJ53T52mbCLUxDI58B4NCWK4foD6WLUReIrzBU_dVckzTcnl_3ggA44EyKnr1ujifPtmJ3ETg3sjUvjCZlaU5AUwXVenIKIE2h6447nvPXWU6kNnISqZqbhONZVJXA-ki-M5FJiKadMMDFSolH-9Wx645fIYP6NY-Nb2oNctzNAT2phjL1qJoqi_4qetLxFwCZ-IcgfgDLKBAFBM_deckGqItyDgTaMk2znVDW2GRn7iCgsojrfJh0MUqhDeMRZke6grmj2dVKIaz6loLPVYkL459_tmoZ_mK0]-->
+    <!--SRC=[ZLDDYzim4BtxLqn2O1rGudj9SzWib49B5q9FfGHPKcobjkHAeosXzBztfAm_iX_T-YI_UNhptdXyCzD6D44gsDpPbckpH-lEXHpFssoWhDVJmheBRPFT3DKQiVFlYiBnN-jAOntAu9KJrg0ok1QsBKwsnjgwOj9fTTzmWry_VoeYz5n-RBvfEIgdULEGxfOAmVmC5fM4Op02jJLm6to-Q7Yf6WOBv1MyX_cSZePe_TdNl8ilYo_bIGayxEDxn0LlflX7ChwF6DM4RQnxKjj5Z6eb5pygPuEHgSCo0tfcJc5m1YxyV4x6gFTyqV93cOvJbuy6Us-zbxxlLOzbDbD6ze6pJ1jqLWQXSbxHb1dSA-UjoIkQ5IHekPoGfFOTHr4hDp393upmYsnjoEF-x56rLtJ2h_bEFpnLJj0LwmC5wVAEUwzCHKmgPhSn6tVdF6wBunIEfE5tccLyUz1upWyC7aDQ9-aYWnrlcjXcoU3eRCkcGPxTdMONJj60IE7EYj2IPdwo9Q2zA9ESDWokuczMAmQhrVRVkXMbxNtrKcXPFuRipoGgvJI-imvV2jgFSY1vACyiBVWbxpW_1eTaxrgziLNroX1xRQ9C9o0LSjrui4V0Mi79qWAhy_8IEFr1JbSrnZfjhyVBRk_I96KYnUTEUnUwk9oU3Q09RQaStHoGqVu03L6LPA1Gh5E5jZqrVpL5pOqaq-dyLXPQ84n0L7si-LeVyVAH_dDvg44Q-zlTdcqHBT3uhIQx3gjljPPIcU_RSGv_0G00]-->
   </g>
 </svg>

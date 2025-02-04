@@ -9,7 +9,7 @@ Boundary(actors) {
     introduce(system, System(System Label))
 }
 
-Boundary(object, work objects) {
+Boundary(objects, work objects) {
     introduce(document, Document(Document Label))
     introduce(folder, Folder(Folder Label))
     introduce(call, Call(Call Label))
