@@ -22,3 +22,4 @@
 !global $previousNodeConnected = ""
 
 !global $lastSplitLocation = ""
+!global $previousSplitLocation = ""

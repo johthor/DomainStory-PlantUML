@@ -636,11 +636,32 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
     Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as actor9 <<Person>> 
     Card "<$ma_file_document{scale=.8,color=#1f2833}>\rw" as object10 <<Document>>
 
-                        actor9 --> object10 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> collaborates on
+                        actor9 --> object10 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> hands over
+
+    Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rfacts" as object11 <<Info>>
+
+                    object10 --> object11 : containing
 
     Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rB" as actor10 <<Person>>
 
-                        object10 <-- actor10 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> collaborates on
+                    object11 --> actor10 : about
+
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rC" as actor11 <<Person>>
+
+                    object11 --> actor11 : and
+
+    Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rfiction" as object12 <<Info>>
+
+                    object10 --> object12 : and
+
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rA" as actor12 <<Person>> 
+    Card "<$ma_file_document{scale=.8,color=#1f2833}>\rw" as object13 <<Document>>
+
+                        actor12 --> object13 : <back:#66fcf1><size:16><color:#0B0C10>(7)</color></size></back> collaborates on
+
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rB" as actor13 <<Person>>
+
+                        object13 <-- actor13 : <back:#66fcf1><size:16><color:#0B0C10>(7)</color></size></back> collaborates on
 
 @enduml
 

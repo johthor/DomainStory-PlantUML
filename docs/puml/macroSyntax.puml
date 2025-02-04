@@ -24,7 +24,9 @@ boundaryKeywordParameters = [ "<= 4" * ( ?$tag? | ?$note? | ?$shape? | ?$backgro
 activities = ( "startActivity", "(", "$step", "$subject", "$predicate", "$object", [ "$arrow" ], ")" )
     | ( "append", "(", "$action", "$object", [ "$arrow" ], ")" )
     | ( "split", "(", "$action", "$object", [ "$arrow" ], ")" )
+    | ( "splitAgain", "(", "$action", "$object", [ "$arrow" ], ")" )
     | ( "continue", "(", "$action", "$object", [ "$arrow" ], ")" )
+    | ( "continueFromBefore", "(", "$action", "$object", [ "$arrow" ], ")" )
     | ( "activity", "(", "$step", "$subject", "$predicate", "$object",\
         [ "$post", ["$target", [ "$objectArr", ["$targetArr"] ] ] ], activityKeywordParameters,")" );
 

@@ -20,7 +20,10 @@
 
     $createLink($subject, $object, $arrow, $predicate, $computeStepLabel($step))
 
-    !global $previousNodeConnected = $lastNodeConnected
+    !global $previousNodeConnected = ""
+    !global $lastSplitLocation = ""
+    !global $previousSplitLocation = ""
+
     !global $lastNodeConnected = $object
     !global $currentActivityDirection = $arrow
 !endprocedure
@@ -34,8 +37,18 @@
     $createPartial($lastNodeConnected, $object, $action, $arrow)
 !endprocedure
 
+!unquoted procedure splitAgain($action, $object, $arrow = "")
+    !global $previousSplitLocation = $lastSplitLocation
+    !global $lastSplitLocation = $lastNodeConnected
+    $createPartial($lastNodeConnected, $object, $action, $arrow)
+!endprocedure
+
 !unquoted procedure continue($action, $object, $arrow = "")
     $createPartial($lastSplitLocation, $object, $action, $arrow)
+!endprocedure
+
+!unquoted procedure continueFromBefore($action, $object, $arrow = "")
+    $createPartial($previousSplitLocation, $object, $action, $arrow)
 !endprocedure
 
 ' Classic Activity Definition

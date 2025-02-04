@@ -10,7 +10,7 @@ activity(4, person, writes, Email:an email)
 
 introduce(people, Group(nice people, $color = green))
 activity(5, people, has, Conversation:a conversation, $scale = 2)
-activity(6, people, ask for, Info:an information, $color = red)
+activity(6, people, ask for, Info(an information, $color = red))
 
 introduce(Person(writer))
 activity(_, writer, writes, Document: books, containing, Info: stories, $color=blue, $targetColor=green, $targetScale=2)

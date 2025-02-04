@@ -20,6 +20,12 @@ startActivity(+, Person(A), hands over, Document(w))
 split(to, Person(B))
 continue(and, Person(C))
 
+startActivity(+, Person(A), hands over, Document(w))
+split(containing, Info(facts))
+splitAgain(about, Person(B))
+continue(and, Person(C))
+continueFromBefore(and, Info(fiction))
+
 startActivity(+, Person(A), collaborates on, Document(w))
 activity(|, Person(B), collaborates on, $lastObjectCreated, $objectArr = <--)
 @enduml
