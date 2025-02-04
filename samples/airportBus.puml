@@ -5,30 +5,30 @@
 
 !include <material/bus>
 
-!unquoted procedure Bus($name, $label = "", $tag = "", $note = "", $shape = $Object_Shape, $scale = $Object_IconScale, $color = $Object_IconColor, $background = "")
-    Object("Bus", "$ma_bus", $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function Bus($label, $tag = "", $note = "", $shape = $Object_Shape, $scale = $Object_IconScale, $color = $Object_IconColor, $background = "")
+    !return Object("Bus", "$ma_bus", $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
 
-Person(agent, gate agent)
-Person(dispatcher ,bus dispatcher)
-System(dispatching, bus dispatching)
-Person(driver, bus driver)
-Group(passengers)
+introduce(agent, Person(gate agent))
+introduce(dispatcher, Person(bus dispatcher))
+introduce(dispatching, System(bus dispatching))
+introduce(driver, Person(bus driver))
+introduce(Group(passengers))
 
 Boundary(contracting) {
-    Call(busCall, bus)
-    Document(jobOrder, job to order)
-    Call(order)
+    introduce(busCall, Call(bus))
+    introduce(jobOrder, Document(job to order))
+    introduce(Call(order))
 }
 
 Boundary(transport) {
-    Bus(bus)
+    introduce(Bus(bus))
 }
 
 Boundary(logging) {
-    Document(details1, details of the journey)
-    Document(details2, details of the journey)
-    Document(details3, details of the journey)
+    introduce(details1, Document(details of the journey))
+    introduce(details2, Document(details of the journey))
+    introduce(details3, Document(details of the journey))
     note right of details1
         Disruptions,
         number of

@@ -4,17 +4,17 @@
 '!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 
 Boundary(actors) {
-    Person(person, Person Label)
-    Group(group, Group Label)
-    System(system, System Label)
+    introduce(person, Person(Person Label))
+    introduce(group, Group(Group Label))
+    introduce(system, System(System Label))
 }
 
 Boundary(object, work objects) {
-    Document(document, Document Label)
-    Folder(folder, Folder Label)
-    Call(call, Call Label)
-    Email(email, Email Label)
-    Conversation(conversation, Conversation Label)
-    Info(info, Info Label)
+    introduce(document, Document(Document Label))
+    introduce(folder, Folder(Folder Label))
+    introduce(call, Call(Call Label))
+    introduce(email, Email(Email Label))
+    introduce(conversation, Conversation(Conversation Label))
+    introduce(info, Info(Info Label))
 }
 @enduml

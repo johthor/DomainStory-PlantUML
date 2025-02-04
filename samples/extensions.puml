@@ -6,25 +6,25 @@
 ' Actors
 !include <material/store>
 
-!unquoted procedure Merchant($name, $label = "", $tag = "", $note = "", $shape = $Actor_Shape, $scale = $Actor_IconScale, $color = $Actor_IconColor, $background = "")
-    Actor("Merchant", "$ma_store", $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function Merchant($label, $tag = "", $note = "", $shape = $Actor_Shape, $scale = $Actor_IconScale, $color = $Actor_IconColor, $background = "")
+    !return Actor("Merchant", "$ma_store", $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
 
 !include <material/crown>
 
-!unquoted procedure Customer($name, $label = "", $tag = "", $note = "", $shape = $Actor_Shape, $scale = $Actor_IconScale, $color = $Actor_IconColor, $background = "")
-    Actor("Customer", "$ma_crown", $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function Customer($label, $tag = "", $note = "", $shape = $Actor_Shape, $scale = $Actor_IconScale, $color = $Actor_IconColor, $background = "")
+    !return Actor("Customer", "$ma_crown", $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
 
 !include <material/settings_box>
 
-!unquoted procedure Process($name, $label = "", $tag = "", $note = "", $shape = $Actor_Shape, $scale = $Actor_IconScale, $color = $Actor_IconColor, $background = "")
-    Actor("Process", "$ma_settings_box", $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function Process($label, $tag = "", $note = "", $shape = $Actor_Shape, $scale = $Actor_IconScale, $color = $Actor_IconColor, $background = "")
+    !return Actor("Process", "$ma_settings_box", $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
 
 Boundary(actors) {
-    Merchant(Merchant)
-    Customer(Customer)
-    Process(Process)
+    introduce(Merchant(Merchant))
+    introduce(Customer(Customer))
+    introduce(Process(Process))
 }
 @enduml

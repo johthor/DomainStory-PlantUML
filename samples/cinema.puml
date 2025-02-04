@@ -3,11 +3,11 @@
 !include ../domainStory.puml
 '!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 
-Person(customer)
+introduce(Person(customer))
 
 Boundary(counter, cash counter) {
-    Person(cashier)
-    System(ticketSystem, ticket system)
+    introduce(Person(cashier))
+    introduce(ticketSystem, System(ticket system))
 
     activity(_, customer, asks for, Conversation: reservation, cashier)
     activity(_, cashier, finds available seats in, Document: screen plan, with, ticketSystem)
