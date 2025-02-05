@@ -27,6 +27,7 @@ for recording domain stories visually with PlantUML.
     * [Airport Bus](#airport-bus)
 * [License](#license)
 * [Acknowledgements](#acknowledgements)
+
 </details>
 
 > [!IMPORTANT]
@@ -37,7 +38,7 @@ for recording domain stories visually with PlantUML.
 >
 > <details>
 > <summary><strong>Show which version of PlantUML includes which library version</strong></summary>
-> 
+>
 > | DomainStory                                                                             | PlantUML       |
 > |-----------------------------------------------------------------------------------------|----------------|
 > | [Delta v0.4.0](https://github.com/johthor/DomainStory-PlantUML/tree/v0.4.0)             | upcoming       |
@@ -81,20 +82,43 @@ to describe domain stories using the following pictographic language.
 
 ![pictographic language](docs/assets/pictographicLanguage.svg)
 
+[//]: # (> [!WARNING])
+
+[//]: # (> **Breaking Change:**)
+
+[//]: # (> The global styling declarations have been rewritten between the versions)
+
+[//]: # (> [Delta v0.4.0]&#40;https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.4.0&#41;)
+
+[//]: # (> and [Unreleased v0.5.0]&#40;https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.5.0&#41;)
+
 These macros are used to create domain story actors:
 
-* `Person($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
-* `Group($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
-* `System($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
+* `Person($label[, $note][, $shape][, $scale][, $color][, $background])`
+* `Group($label[, $note][, $shape][, $scale][, $color][, $background])`
+* `System($label[, $note][, $shape][, $scale][, $color][, $background])`
 
 And these are used to create work objects:
 
-* `Document($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
-* `Folder($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
-* `Call($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
-* `Email($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
-* `Conversation($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
-* `Info($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
+* `Document($label[, $note][, $shape][, $scale][, $color][, $background])`
+* `Folder($label[, $note][, $shape][, $scale][, $color][, $background])`
+* `Call($label[, $note][, $shape][, $scale][, $color][, $background])`
+* `Email($label[, $note][, $shape][, $scale][, $color][, $background])`
+* `Conversation($label[, $note][, $shape][, $scale][, $color][, $background])`
+* `Info($label[, $note][, $shape][, $scale][, $color][, $background])`
+
+For compatibility reasons and if you prefer the named element creators
+there also the following `namedXYZ` variants of the macros above:
+
+* `namedPerson($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
+* `namedGroup($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
+* `namedSystem($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
+* `namedDocument($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
+* `namedFolder($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
+* `namedCall($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
+* `namedEmail($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
+* `namedConversation($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
+* `namedInfo($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
 
 Activities between actors and involving work items are described via the `activity` macro:
 
@@ -106,6 +130,7 @@ activity($step, $subject, $predicate, $object[, $post][, $target][, $objectArr][
 
 In addition to these,
 it is also possible to define boundaries via
+
 ```puml
 Boundary($name[, $label][, $note][, $shape][, $background]) {
     ' Boundary Contents
@@ -119,7 +144,7 @@ Optional parameters are shown above in square brackets.
 
 Keyword parameters are displayed as _dashed terminals_ below.
 
-![macro syntax](docs/assets/macroSyntax.svg) 
+![macro syntax](docs/assets/macroSyntax.svg)
 
 </details>
 
@@ -236,7 +261,7 @@ the current step label supports multiple special value specifications to control
 | `n` _any integer_          | step label will be `(n)`                                                                                                | no             |
 | `=n` _equal sign_ prefix   | step label will be `(n)`<br/>and step counter will be set to that integer<br/>_auto-increment will continue from there_ | no             |
 
-See the following test case for more details [step labels and auto increment](test/activities/stepCounter.puml)
+See the following test case for more details [step labels and auto increment](test/puml/activities/stepCounter.puml)
 
 ```puml
 activity(_, Bob, talks about the, weather1) /' auto-increment will create step 1 '/
@@ -288,10 +313,10 @@ note right of wonderland : visit me
 
 See the following test cases for more details
 
-* [Notes on actors and work objects left-to-right orientation](test/notes/elements-leftToRight.puml)
-* [Notes on actors and work objects top-to-bottom orientation](test/notes/elements-topToBottom.puml)
-* [Notes on boundaries left-to-right orientation](test/notes/boundaries-leftToRight.puml)
-* [Notes on boundaries top-to-bottom orientation](test/notes/boundaries-topToBottom.puml)
+* [Notes on actors and work objects left-to-right orientation](test/puml/notes/elements-leftToRight.puml)
+* [Notes on actors and work objects top-to-bottom orientation](test/puml/notes/elements-topToBottom.puml)
+* [Notes on boundaries left-to-right orientation](test/puml/notes/boundaries-leftToRight.puml)
+* [Notes on boundaries top-to-bottom orientation](test/puml/notes/boundaries-topToBottom.puml)
 
 ### Basic Styling
 
@@ -301,6 +326,7 @@ The appearance of a domain story may be influenced via any of the following meth
 > You may also mix and match all the approaches to get the look you desire.
 
 #### Method 1: PlantUML Themes and Dark Mode
+
 The library is compatible with [PlantUML themes](https://plantuml.com/en/theme) like
 `bluegray` (light) or `crt-amber` (dark) and others.
 Choose the theme before including the library.
@@ -408,9 +434,10 @@ Person(Alice)
 > [!TIP]
 > You might want to set a matching `$Step_BackgroundColor` and `$Step_FontColor` when using themes.
 
-See the test case [Global style declarations](test/styling/customizeGlobalStyles.puml) for more details.
+See the test case [Global style declarations](test/puml/styling/customizeGlobalStyles.puml) for more details.
 
 #### Method 3: Changing the Element's Shapes and Icons
+
 By default, the library will use the
 following [PlantUML shapes](https://plantuml.com/en/deployment-diagram) to represent actors,
 work objects, and boundaries.
@@ -422,7 +449,9 @@ work objects, and boundaries.
 But these shapes may be reconfigured via the global styling declarations `$Actor_Shape`,
 `$Object_Shape` and `$Boundary_Shape`.
 
-By default, icons from the [PlantUML Standard Library - Google Material Icons](https://plantuml.com/en/stdlib#df026e38d6a98559) will be used to represent actors and work objects.
+By default, icons from
+the [PlantUML Standard Library - Google Material Icons](https://plantuml.com/en/stdlib#df026e38d6a98559) will be used to
+represent actors and work objects.
 The shape and icons used by specific actors and work objects may also be reconfigured via the following properties.
 
 | Property                  | Default Value   | Description                                          |
@@ -446,10 +475,10 @@ The shape and icons used by specific actors and work objects may also be reconfi
 | `$Info_Shape`             | `$Object_Shape` | Shape used by work objects of type info              |
 | `$Info_IconStyle`         | `outline`       | Icon style used by work objects of type info         |
 
-See the test case [element style declarations](test/styling/customizeElementStyles.puml) for more details.
+See the test case [element style declarations](test/puml/styling/customizeElementStyles.puml) for more details.
 
 While most `IconStyle` properties only distinguish between filled icons and icons with outlines,
-the `$Person_IconStyle` property supports also the following styles 
+the `$Person_IconStyle` property supports also the following styles
 `stickman`, `stickmanAlt`, `hollow` as well as `awesome`.
 
 ### Extensions
@@ -471,7 +500,7 @@ Prefix the work object with the kind of object you want to create
 followed by a colon e.g. `Conversation:`.
 
 Additionally, you can specify the shape, icon scale, icon color,
-and background color of the created work object via the keyword arguments 
+and background color of the created work object via the keyword arguments
 `$shape`, `$scale`, `$color` and `$background`.
 
 ```puml
@@ -490,7 +519,7 @@ Boundary(System) {
 > **If you want your dynamically created objects to be placed inside a boundary.**
 > You need to declare the activity inside said boundary.
 
-See the test case for [dynamic object creation](test/activities/objectCreation.puml) for more details.
+See the test case for [dynamic object creation](test/puml/activities/objectCreation.puml) for more details.
 
 ### Advanced Story Layout
 
@@ -518,9 +547,9 @@ the step value may also specify the direction of the activity where `X` is one o
 
 See the test cases for more details
 
-* [activity directions for left-to-right layout](test/activities/direction-leftToRight.puml)
-* [activity directions for top-to-bottom layout](test/activities/direction-topToBottom.puml)
-* [activity directions for both layouts](test/activities/direction-optionalParameters.puml)
+* [activity directions for left-to-right layout](test/puml/activities/direction-leftToRight.puml)
+* [activity directions for top-to-bottom layout](test/puml/activities/direction-topToBottom.puml)
+* [activity directions for both layouts](test/puml/activities/direction-optionalParameters.puml)
 
 #### Specify the Connecting Arrows Directly
 
@@ -563,9 +592,9 @@ Bob ---[hidden]-> Alice
 
 See the test cases again for more details
 
-* [activity directions for left-to-right layout](test/activities/direction-leftToRight.puml)
-* [activity directions for top-to-bottom layout](test/activities/direction-topToBottom.puml)
-* [activity directions for both layouts](test/activities/direction-optionalParameters.puml)
+* [activity directions for left-to-right layout](test/puml/activities/direction-leftToRight.puml)
+* [activity directions for top-to-bottom layout](test/puml/activities/direction-topToBottom.puml)
+* [activity directions for both layouts](test/puml/activities/direction-optionalParameters.puml)
 
 ### Advanced Styling
 
@@ -574,8 +603,10 @@ In addition to the styling methods described in [Basic styling,](#basic-styling)
 #### Method 4: Element-Specific Style Declarations
 
 In addition to the style declarations,
-already mentioned in [Method 2](#method-2-global-style-declarations) and [Method 3](#method-3-changing-the-elements-shapes-and-icons)
-every actor and work object declares its own style declarations as an extension of the already known declarations `$Actor_XYZ` or `$Object_XYZ`.
+already mentioned in [Method 2](#method-2-global-style-declarations)
+and [Method 3](#method-3-changing-the-elements-shapes-and-icons)
+every actor and work object declares its own style declarations as an extension of the already known declarations
+`$Actor_XYZ` or `$Object_XYZ`.
 
 Therefore, the background of all "person actors" may be controlled via `$Person_BackgroundColor`
 and the icon scale of all "document work object" may be changed via `$Document_IconScale`
@@ -584,7 +615,7 @@ The following diagram shows the hierarchy of style declarations.
 
 ![Style declaration hierarchy](docs/assets/stylePropertyHierarchy.svg)
 
-See the test case [element style declarations](test/styling/customizeElementStyles.puml) for more details.
+See the test case [element style declarations](test/puml/styling/customizeElementStyles.puml) for more details.
 
 #### Method 5: Tag-Specific Style Declarations
 
@@ -601,7 +632,8 @@ customizeStyleProperty($value, $property, $context,  [$kind], [$tag], [$skinPara
 * `$value` is the desired new value
 * `$property` is the name of the style property to be customized
 * `$context` is one of (`Element`, `Actor`, `Object`, `Note`, `Boundary`, `Activity`, `Step`)
-* `$kind` is the kind of actor or work object to be customized, it might also be `""` to style all `$context` elements tagged with `$tag`
+* `$kind` is the kind of actor or work object to be customized, it might also be `""` to style all `$context` elements
+  tagged with `$tag`
 * `$tag` is the tag name you want to customize
 * `$skinParam` is `TRUE` by default and controls if the property is a PlantUML skin paramter too
 
@@ -618,7 +650,7 @@ Person(Alice, $tag="FairyTale")
 
 </details>
 
-See the test case [tag style declarations](test/styling/customizeTagStyles.puml) for more details.
+See the test case [tag style declarations](test/puml/styling/customizeTagStyles.puml) for more details.
 
 #### Method 6: Individually Styled Elements
 
@@ -639,7 +671,7 @@ While `$targetShape`, `$targetScale`, `$targetColor`,
 and `$targetBackground` control the appearance of the newly created `$target` work
 object.
 
-See the test case [individual style customization](test/styling/customizeIndividualStyles.puml) for more details.
+See the test case [individual style customization](test/puml/styling/customizeIndividualStyles.puml) for more details.
 
 ## Advanced Samples
 
