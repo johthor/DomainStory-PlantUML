@@ -225,7 +225,7 @@ a portrait orientation might produce better results.
 
 > [!NOTE]
 > Wrangling diagram elements to an exact position
-> or layout is not what PlantUML is for.
+> or layout is not PlantUML's strength.
 
 If the default layout does not please your inner artist,
 there are some possibilities to improve it.
@@ -313,10 +313,10 @@ note right of wonderland : visit me
 
 See the following test cases for more details
 
-* [Notes on actors and work objects left-to-right orientation](test/puml/notes/elements-leftToRight.puml)
-* [Notes on actors and work objects top-to-bottom orientation](test/puml/notes/elements-topToBottom.puml)
-* [Notes on boundaries left-to-right orientation](test/puml/notes/boundaries-leftToRight.puml)
-* [Notes on boundaries top-to-bottom orientation](test/puml/notes/boundaries-topToBottom.puml)
+* [Notes on actors and work objects left-to-right orientation](test/puml/notes/staticElementCreation-leftToRight.puml)
+* [Notes on actors and work objects top-to-bottom orientation](test/puml/notes/staticElementCreation-topToBottom.puml)
+* [Notes on boundaries left-to-right orientation](test/puml/notes/boundaries-leftToRight-library.IGNORE.puml)
+* [Notes on boundaries top-to-bottom orientation](test/puml/notes/boundaries-topToBottom-library.IGNORE.puml)
 
 ### Basic Styling
 
@@ -549,7 +549,7 @@ See the test cases for more details
 
 * [activity directions for left-to-right layout](test/puml/activities/direction-leftToRight.puml)
 * [activity directions for top-to-bottom layout](test/puml/activities/direction-topToBottom.puml)
-* [activity directions for both layouts](test/puml/activities/direction-optionalParameters.puml)
+* [activity directions for both layouts](test/puml/activities/optionalParameters.puml)
 
 #### Specify the Connecting Arrows Directly
 
@@ -594,7 +594,7 @@ See the test cases again for more details
 
 * [activity directions for left-to-right layout](test/puml/activities/direction-leftToRight.puml)
 * [activity directions for top-to-bottom layout](test/puml/activities/direction-topToBottom.puml)
-* [activity directions for both layouts](test/puml/activities/direction-optionalParameters.puml)
+* [activity directions for both layouts](test/puml/activities/optionalParameters.puml)
 
 ### Advanced Styling
 
@@ -635,7 +635,7 @@ customizeStyleProperty($value, $property, $context,  [$kind], [$tag], [$skinPara
 * `$kind` is the kind of actor or work object to be customized, it might also be `""` to style all `$context` elements
   tagged with `$tag`
 * `$tag` is the tag name you want to customize
-* `$skinParam` is `TRUE` by default and controls if the property is a PlantUML skin paramter too
+* `$skinParam` is `TRUE` by default and controls if the property is a PlantUML skin parameter too
 
 After that, the newly defined tag may be used to customize the appearance of matching elements via the `$tag` parameter.
 
