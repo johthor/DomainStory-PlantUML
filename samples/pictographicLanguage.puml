@@ -3,12 +3,6 @@
 !include ../domainStory.puml
 '!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 
-Boundary(actors) {
-    introduce(person, Person(Person Label))
-    introduce(group, Group(Group Label))
-    introduce(system, System(System Label))
-}
-
 Boundary(objects, work objects) {
     introduce(document, Document(Document Label))
     introduce(folder, Folder(Folder Label))
@@ -17,4 +11,20 @@ Boundary(objects, work objects) {
     introduce(conversation, Conversation(Conversation Label))
     introduce(info, Info(Info Label))
 }
+
+Boundary(actors) {
+    introduce(person, Person(Person Label))
+    introduce(group, Group(Group Label))
+    introduce(system, System(System Label))
+}
+
+person -[hidden]-> group
+group -[hidden]-> system
+
+document -[hidden]-> folder
+email -[hidden]> document
+folder -[hidden]-> call
+group -[hidden]-> system
+email -[hidden]-> conversation
+conversation -[hidden]-> info
 @enduml

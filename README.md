@@ -1,8 +1,10 @@
 # Domain Storytelling with PlantUML
 
-Use [PlantUML](http://plantuml.com/)
+_Use [PlantUML](http://plantuml.com/)
 to describe and document a domain story which was developed in a
-[Domain Storytelling](http://www.domainstorytelling.org) workshop.
+[Domain Storytelling](http://www.domainstorytelling.org) workshop._
+
+[//]: # (Insert nice sample story here to demonstrate more functionality)
 
 DomainStory-PlantUML includes macros, themes, and other tools
 for recording domain stories visually with PlantUML.
@@ -38,6 +40,8 @@ for recording domain stories visually with PlantUML.
 >
 > <details>
 > <summary><strong>Show which version of PlantUML includes which library version</strong></summary>
+>
+> Click the version name to get directly to the matching documentation.
 >
 > | DomainStory                                                                             | PlantUML       |
 > |-----------------------------------------------------------------------------------------|----------------|
@@ -82,43 +86,26 @@ to describe domain stories using the following pictographic language.
 
 ![pictographic language](docs/assets/pictographicLanguage.svg)
 
-[//]: # (> [!WARNING])
+Domain story actors are created with the following macros:
+`Person`, `Group`, and `System`
 
-[//]: # (> **Breaking Change:**)
+And these macros are used to create work objects:
+`Document`, `Folder`, `Call`, `Email`, `Conversation`, `Info`
 
-[//]: # (> The global styling declarations have been rewritten between the versions)
+Each macro takes the following parameters where all but the first `$label` parameter are optional.
 
-[//]: # (> [Delta v0.4.0]&#40;https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.4.0&#41;)
+```
+MACRO_NAME($label[, $note][, $shape][, $scale][, $color][, $background])
+```
 
-[//]: # (> and [Unreleased v0.5.0]&#40;https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.5.0&#41;)
-
-These macros are used to create domain story actors:
-
-* `Person($label[, $note][, $shape][, $scale][, $color][, $background])`
-* `Group($label[, $note][, $shape][, $scale][, $color][, $background])`
-* `System($label[, $note][, $shape][, $scale][, $color][, $background])`
-
-And these are used to create work objects:
-
-* `Document($label[, $note][, $shape][, $scale][, $color][, $background])`
-* `Folder($label[, $note][, $shape][, $scale][, $color][, $background])`
-* `Call($label[, $note][, $shape][, $scale][, $color][, $background])`
-* `Email($label[, $note][, $shape][, $scale][, $color][, $background])`
-* `Conversation($label[, $note][, $shape][, $scale][, $color][, $background])`
-* `Info($label[, $note][, $shape][, $scale][, $color][, $background])`
-
-For compatibility reasons and if you prefer the named element creators
-there also the following `namedXYZ` variants of the macros above:
-
-* `namedPerson($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
-* `namedGroup($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
-* `namedSystem($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
-* `namedDocument($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
-* `namedFolder($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
-* `namedCall($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
-* `namedEmail($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
-* `namedConversation($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
-* `namedInfo($name[, $label][, $note][, $shape][, $scale][, $color][, $background])`
+> [!WARNING]
+> **Breaking Change:**
+> The element creation macros have been rewritten in
+> [Unreleased v0.5.0](https://github.com/johthor/DomainStory-PlantUML/releases/tag/v0.5.0)
+> 
+> If you prefer the old _named_ element creators
+> there also `namedMACRO_NAME` variants of the macros above
+> which take the `$name` as a first parameter. 
 
 Activities between actors and involving work items are described via the `activity` macro:
 
