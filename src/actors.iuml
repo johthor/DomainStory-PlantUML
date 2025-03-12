@@ -1,31 +1,6 @@
 ' Actors
 ' ##################################
 
-!unquoted procedure Actor($kind, $iconName, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    $debug($kind + " : " + $iconName + " : " + $name + " : " + $label + " : " + $tag + " : " + $note + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
-
-    !$shape = $getStyleProperty($shape, Actor, $kind, $tag, Shape)
-    !$scale = $getStyleProperty($scale, Actor, $kind, $tag, IconScale)
-    !$color = $getStyleProperty($color, Actor, $kind, $tag, IconColor)
-
-    !if $label == ""
-        !$label = $name
-    !endif
-
-    ' output below
-    !if $iconName
-        !if $color
-            $shape "<$iconName{scale=$scale,color=$color}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-        !else
-            $shape "<$iconName{scale=$scale}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-        !endif
-    !else
-        $shape $label as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-    !endif
-
-    $createElementNote($name, $note)
-!endprocedure
-
 ' Person Actor
 ' ==================================
 
@@ -53,9 +28,16 @@
     $extendStyleDeclarations("Actor", "Person", "account")
 !endif
 
-!unquoted procedure Person($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Actor("Person", $Person_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function Person($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Actor("Person", $Person_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedPerson($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    introduce($name, Person($label, $tag, $note, $shape, $scale, $color, $background))
+!endfunction
 
 ' Group Actor
 ' ==================================
@@ -68,15 +50,29 @@
     $extendStyleDeclarations("Actor", "Group", "account_multiple")
 !endif
 
-!unquoted procedure Group($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Actor("Group", $Group_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function Group($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Actor("Group", $Group_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedGroup($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    introduce($name, Group($label, $tag, $note, $shape, $scale, $color, $background))
+!endfunction
 
 ' System Actor
 ' ==================================
 
 $extendStyleDeclarations("Actor", "System", "laptop")
 
-!unquoted procedure System($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Actor("System", $System_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function System($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Actor("System", $System_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedSystem($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    introduce($name, System($label, $tag, $note, $shape, $scale, $color, $background))
+!endfunction

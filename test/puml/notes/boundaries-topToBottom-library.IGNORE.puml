@@ -7,37 +7,37 @@
 
 !startsub default
 Boundary(one, $note= default) {
-    Person(Jake)
+    introduce(Person(Jake))
 }
 !endsub
 
 !startsub above
 Boundary(two, $note=^ above) {
-    Person(Simon)
+    introduce(Person(Simon))
 }
 !endsub
 
 !startsub right
 Boundary(three, $note=> !! right) {
-    Person(Sloane)
+    introduce(Person(Sloane))
 }
 !endsub
 
 !startsub below
 Boundary(four, $note=v below) {
-    Person(Marry)
+    introduce(Person(Marry))
 }
 !endsub
 
 !startsub left
 Boundary(five, $note=< left) {
-    Person(Ashley)
+    introduce(Person(Ashley))
 }
 !endsub
 
 !startsub inverse
 Boundary(six, $note=~ inverse) {
-    Person(Sam)
+    introduce(Person(Sam))
 }
 !endsub
 @enduml

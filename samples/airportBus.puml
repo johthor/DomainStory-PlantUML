@@ -5,45 +5,37 @@
 
 !include <material/bus>
 
-!unquoted procedure Bus($name, $label = "", $tag = "", $note = "", $shape = $Object_Shape, $scale = $Object_IconScale, $color = $Object_IconColor, $background = "")
-    Object("Bus", "$ma_bus", $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function Bus($label, $tag = "", $note = "", $shape = $Object_Shape, $scale = $Object_IconScale, $color = $Object_IconColor, $background = "")
+    !return Object("Bus", "$ma_bus", $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
 
-Person(agent, gate agent)
-Person(dispatcher ,bus dispatcher)
-System(dispatching, bus dispatching)
-Person(driver, bus driver)
-Group(passengers)
+introduce(agent, Person(gate agent))
+introduce(dispatcher, Person(bus dispatcher))
+introduce(dispatching, System(bus dispatching))
+introduce(driver, Person(bus driver))
+introduce(Group(passengers))
 
 Boundary(contracting) {
-    Call(busCall, bus)
-    Document(jobOrder, job to order)
-    Call(order)
+    activity(_, agent, orders, Call(bus), from, dispatcher)
+    activity(_, dispatcher, creates, Document(job to order), in, dispatching, <--, -->)
+    activity(_, dispatcher, gives, Call(order), to, driver)
 }
 
 Boundary(transport) {
-    Bus(bus)
+    activity(_, driver, transports by, Bus(bus), passengers, _, <--)
 }
 
 Boundary(logging) {
-    Document(details1, details of the journey)
-    Document(details2, details of the journey)
-    Document(details3, details of the journey)
-    note right of details1
+    activity(_, driver, logs, Document(details of the journey))
+    note right of $lastObjectCreated
         Disruptions,
         number of
         passengers
         transported, etc.
     end note
+    activity(_, driver, hands over, Document(details of the journey), at the end of the shift to, dispatcher)
+    activity(_, dispatcher, enters, Document(details of the journey), in, dispatching, -->, <--)
 }
-
-activity(_, agent, orders, busCall, from, dispatcher)
-activity(_, dispatcher, creates, jobOrder, in, dispatching, <--, -->)
-activity(_, dispatcher, gives, order, to, driver)
-activity(_, driver, transports by, bus, passengers, _, <--)
-activity(_, driver, logs, details1)
-activity(_, driver, hands over, details2, at the end of the shift to, dispatcher)
-activity(_, dispatcher, enters, details3, in, dispatching, -->, <--)
 
 contracting -[hidden]> transport
 @enduml

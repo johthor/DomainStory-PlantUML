@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="173px" preserveAspectRatio="none" style="width:94px;height:173px;background:#FFFFFF;" version="1.1" viewBox="0 0 94 173" width="94px" zoomAndPan="magnify">
+  <defs/>
+  <g>
+    <!--entity actor1-->
+    <g id="elem_actor1">
+      <rect fill="transparent" height="43.3988" rx="2.5" ry="2.5" style="stroke:transparent;stroke-width:1;" width="46.0098" x="24.68" y="124.2"/>
+      <image height="10" width="10" x="42.8849" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAARElEQVR4XmP4//8/AzEYQwAXRuHIaxj///jxkwuIJqgQRIMU41UIU0yUiTDc0TsZRTGKInRTkMWwmoaMMRQSwhgCuDAAJjEShDHHF/QAAAAASUVORK5CYII=" y="134.2"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="26.0098" x="34.68" y="155.0559">Alice</text>
+    </g>
+    <!--entity actor2-->
+    <g id="elem_actor2">
+      <rect fill="transparent" height="81.7988" rx="2.5" ry="2.5" style="stroke:transparent;stroke-width:1;" width="81.377" x="7" y="7"/>
+      <image height="48" width="48" x="23.6885" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB1UlEQVR4Xt2WYZHCMBCFsYAFLGABC1jAAhZqAQtYwAIWsICFvXnH5SbzXtJmm1xn9n58M50v22STbNrszGwXGRHREBENEdEQEQ0R0RARDRHRENHN6zXZ5WJ2ONh39wDPcGjj+E5EdIEkU9I1EMPvdSBiNaeTSbI1EMvvr0TEKmorj9LJSyln0E6IcIO65uTOZ7P3G8v8icEzHMcNOBMi3PDqI1GOSfAkrtd6bCMi3HCJ5CvPoC2Pxbsc40SEG29CPGFudyLCTfgJcELhSggHMU8q3CEO/xkF/ClNhPiRJUJfJRK1ncgZtPIJEd2grnE4+ToNN6DmGRHREBENEavAZ/J+/5QJDihKZr+33xLCMxzaEIPYuR+eAxHNlGrdy4CzIWKR5/Pp+mS2cjyaPR4m4y0gogq2HIPwwDVS2XA5LYExHOUloghWZi4JDIpSQNxcOaANMYidWwyM1bgbIoTSXScNMk3zCS+Bd9FHbXEa+hYhlC5ht5tJXC+YCI8zd7P9QYTAnTasympKu80xhAgh7wx1y+2j4bPB7YQI4V9NIE3iL+HxOB9ChMAdbo0VcsoQIXCHW2OFnDJECNzh1lghpwwR0RARDRHREBENEdEQEQ0R0RARjS+IvXuxVCGPEAAAAABJRU5ErkJggg==" y="17"/>
+      <text fill="#0B0C10" font-family="Arial" font-size="12" lengthAdjust="spacing" textLength="61.377" x="17" y="76.2559">Red Queen</text>
+    </g>
+    <!--SRC=[POtTIWD138NlzoaY5BOBwunuALOeUDb2LNo0xKpif9rDsam6yUsjMEg2a8l3-VdItX27N2F2uxEC0_6RYNxv-AUVccl5EN- -IUQETSnDUoqaisDvy5w7JxSZItLR2seGDcHpGKQ_bsH9r4-UtMxomFQ-NlaVwp- -8JQLM0FEDwX5UBxC5B27BNw88aGbFX3lm192fbEbsCEiX27ZuixTTzq4SAg8tCE5yueHNdwTA5YujVF-W73Xpu9aqOLYxBfl]-->
+  </g>
+</svg>

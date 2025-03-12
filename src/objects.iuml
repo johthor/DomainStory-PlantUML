@@ -1,31 +1,6 @@
 ' Work Objects
 ' ##################################
 
-!unquoted procedure Object($kind, $iconName, $name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    $debug($kind + " : " + $iconName + " : " + $name + " : " + $label + " : " + $tag + " : " + $note + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
-
-    !$shape = $getStyleProperty($shape, Object, $kind, $tag, Shape)
-    !$scale = $getStyleProperty($scale, Object, $kind, $tag, IconScale)
-    !$color = $getStyleProperty($color, Object, $kind, $tag, IconColor)
-
-    !if $label == ""
-        !$label = $name
-    !endif
-
-    ' output below
-    !if $iconName
-        !if $color
-            $shape "<$iconName{scale=$scale,color=$color}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-        !else
-            $shape "<$iconName{scale=$scale}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-        !endif
-    !else
-        $shape $label as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-    !endif
-
-    $createElementNote($name, $note)
-!endprocedure
-
 ' Document Work Object
 ' ==================================
 
@@ -37,8 +12,15 @@
     $extendStyleDeclarations("Object", "Document", "document")
 !endif
 
-!unquoted procedure Document($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Object("Document", $Document_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Document($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Document", $Document_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedDocument($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    introduce($name, Document($label, $tag, $note, $shape, $scale, $color, $background))
 !endprocedure
 
 ' Folder Work Object
@@ -52,8 +34,15 @@
     $extendStyleDeclarations("Object", "Folder", "folder")
 !endif
 
-!unquoted procedure Folder($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Object("Folder", $Folder_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Folder($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Folder", $Folder_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedFolder($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    introduce($name, Folder($label, $tag, $note, $shape, $scale, $color, $background))
 !endprocedure
 
 ' Call Work Object
@@ -61,8 +50,15 @@
 
 $extendStyleDeclarations("Object", "Call", "phone")
 
-!unquoted procedure Call($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Object("Call", $Call_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Call($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Call", $Call_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedCall($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    introduce($name, Call($label, $tag, $note, $shape, $scale, $color, $background))
 !endprocedure
 
 ' Email Work Object
@@ -76,8 +72,15 @@ $extendStyleDeclarations("Object", "Call", "phone")
     $extendStyleDeclarations("Object", "Email", "email")
 !endif
 
-!unquoted procedure Email($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Object("Email", $Email_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Email($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Email", $Email_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedEmail($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    introduce($name, Email($label, $tag, $note, $shape, $scale, $color, $background))
 !endprocedure
 
 ' Conversation Work Object
@@ -91,8 +94,15 @@ $extendStyleDeclarations("Object", "Call", "phone")
     $extendStyleDeclarations("Object", "Conversation", "message")
 !endif
 
-!unquoted procedure Conversation($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Object("Conversation", $Conversation_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Conversation($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Conversation", $Conversation_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedConversation($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    introduce($name, Conversation($label, $tag, $note, $shape, $scale, $color, $background))
 !endprocedure
 
 ' Info Work Object
@@ -106,6 +116,13 @@ $extendStyleDeclarations("Object", "Call", "phone")
     $extendStyleDeclarations("Object", "Info", "information")
 !endif
 
-!unquoted procedure Info($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Object("Info", $Info_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Info($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Info", $Info_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedInfo($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    introduce($name, Info($label, $tag, $note, $shape, $scale, $color, $background))
 !endprocedure

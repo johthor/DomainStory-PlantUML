@@ -1,0 +1,26 @@
+@startuml
+'!include <DomainStory/domainStory>
+'!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
+!include ../domainStory.puml
+
+' Contents inspired by https://domainstorytelling.org/quick-start-guide#putting-it-all-together
+
+activity(+, Person(A), works on, Document(w))
+
+activity(+, Person(A), works on, Document(w), using, Document(v))
+
+startActivity(+, Person(A), works on, Document(w))
+append(using, Document(v))
+append(and, Document(u))
+append(as well as, Document(t))
+
+activity(+, Person(A), hands over, Document(w), to, Person(B))
+
+startActivity(+, Person(A), hands over, Document(w))
+split(to, Person(B))
+continue(and, Person(C))
+
+introduce(Document("w"))
+activity(+, Person(A), collaborates on, w)
+activity(~|, Person(B), collaborates on, w)
+@enduml

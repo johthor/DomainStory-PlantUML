@@ -1,48 +1,96 @@
 ' Activities
 ' ##################################
 
-!unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "", $targetTag="", $targetNote = "", $targetShape = "", $targetScale = "", $targetColor = "", $targetBackground = "")
-    ' Decide on the activity direction
-    !if $objectArr == ""
-        !$objectArr = $computeArrowDirection($step)
+' Appending to the Activity Stream
+' ----------------------------------
 
-        !if $objectArr
+!unquoted procedure startActivity($step, $subject, $predicate, $object, $arrow = "")
+    ' Decide on the activity direction
+    !if $arrow == ""
+        !$arrow = $computeArrowDirection($step)
+
+        !if $arrow
             ' Delete position indicator from $step
             !$step = %substr($step, 1)
         !else
             ' No position indicator was found => follow default story flow
-            !$objectArr = "-->"
+            !$arrow = "-->"
         !endif
     !endif
 
-    !if $targetArr == ""
-        !$targetArr = $objectArr
-    !endif
+    $createLink($subject, $object, $arrow, $predicate, $computeStepLabel($step))
 
+    !global $previousNodeConnected = ""
+    !global $lastSplitLocation = ""
+    !global $previousSplitLocation = ""
+
+    !global $lastNodeConnected = $object
+    !global $currentActivityDirection = $arrow
+!endprocedure
+
+!unquoted procedure append($action, $object, $arrow = "")
+    $createPartial($lastNodeConnected, $object, $action, $arrow)
+!endprocedure
+
+!unquoted procedure split($action, $object, $arrow = "")
+    !global $lastSplitLocation = $lastNodeConnected
+    $createPartial($lastNodeConnected, $object, $action, $arrow)
+!endprocedure
+
+!unquoted procedure splitAgain($action, $object, $arrow = "")
+    !global $previousSplitLocation = $lastSplitLocation
+    !global $lastSplitLocation = $lastNodeConnected
+    $createPartial($lastNodeConnected, $object, $action, $arrow)
+!endprocedure
+
+!unquoted procedure continue($action, $object, $arrow = "")
+    $createPartial($lastSplitLocation, $object, $action, $arrow)
+!endprocedure
+
+!unquoted procedure continueFromBefore($action, $object, $arrow = "")
+    $createPartial($previousSplitLocation, $object, $action, $arrow)
+!endprocedure
+
+' Classic Activity Definition
+' ----------------------------------
+
+!unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "", $targetTag="", $targetNote = "", $targetShape = "", $targetScale = "", $targetColor = "", $targetBackground = "")
     ' Handle first connection between subject and object
     !$object = $ensureElementExists($object, $tag, $note, $shape, $scale, $color, $background)
 
-    $createConnection($subject, $object, $objectArr, $predicate, $computeStepLabel($step))
+    startActivity($step, $subject, $predicate, $object, $objectArr)
 
     ' Handle possible second connection between object and target
-    !$target = $ensureElementExists($target, $targetTag, $targetNote, $targetShape, $targetScale, $targetColor, $targetBackground)
-
     !if $target && $target != "_"
-        !if $post && $post != "_"
-            $createConnection($object, $target, $targetArr, $post)
-        !else
-            $createConnection($object, $target, $targetArr)
-        !endif
-    !else
-        !if $post && $post != "_"
-            $createConnection($object, $post, $targetArr)
-        !endif
+        !$target = $ensureElementExists($target, $targetTag, $targetNote, $targetShape, $targetScale, $targetColor, $targetBackground)
+
+        append($post, $target, $targetArr)
+    !elseif $post && $post != "_"
+        !$target = $ensureElementExists($post, $targetTag, $targetNote, $targetShape, $targetScale, $targetColor, $targetBackground)
+
+        append("", $target, $targetArr)
     !endif
 !endprocedure
 
-!procedure $createConnection($from, $to, $arrow = "-->", $action = "", $stepLabel = "")
+' Activity Helpers
+' ----------------------------------
+
+!procedure $createPartial($from, $to, $action = "", $arrow = "")
+    !if $arrow == ""
+        !$arrow = $currentActivityDirection
+    !endif
+
+    ' create connecting arrows
+    $createLink($from, $to, $arrow, $action)
+
+    !global $previousNodeConnected = $lastNodeConnected
+    !global $lastNodeConnected = $to
+    !global $currentActivityDirection = $arrow
+!endprocedure
+
+!procedure $createLink($from, $to, $arrow = "-->", $action = "", $stepLabel = "")
     !$backwardsArrow = %substr($arrow, 0, 1) == "<"
-    !if $action
+    !if $action && $action != "_"
         !if $stepLabel
             !if $backwardsArrow
                 !if $Step_LabelPosition == "tail"
@@ -80,16 +128,11 @@
     !$separatorPosition = %strpos($element, ":")
 
     !if $separatorPosition > -1
-        !$workObjectCounter = $workObjectCounter + 1
-
         !$elementKind = %substr($element, 0, $separatorPosition)
         !$elementLabel = %substr($element, $separatorPosition + 1)
-        !$elementName = $elementKind + $workObjectCounter
 
-        'Element($kind, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-        %invoke_procedure($elementKind, $elementName, $elementLabel, $tag, $note, $shape, $scale, $color, $background)
-
-        !return $elementName
+        'Element($kind, $label, $tag, $note, $shape, $scale, $color, $background)
+        !return %call_user_func($elementKind, $elementLabel, $tag, $note, $shape, $scale, $color, $background)
     !else
         $createElementNote($element, $note)
 

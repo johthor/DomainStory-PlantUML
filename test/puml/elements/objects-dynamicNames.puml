@@ -1,0 +1,48 @@
+@startuml
+!include ../../../src/domainStoryComposite.puml
+
+introduce(Document(Pete))
+
+!assert $objectCounter == 1
+!assert Pete == "object1"
+
+introduce(Maria, Document(Maria))
+
+!assert $objectCounter == 2
+!assert Maria == "object2"
+
+introduce(Sarah, Document(Smart Sarah))
+
+!assert $objectCounter == 3
+!assert Sarah == "object3"
+
+introduce(Frida, Document(Funny Frida, funny))
+
+!assert $objectCounter == 4
+!assert Frida == "object4"
+
+introduce(Hannah, Document(Happy Hannah, happy, real happy))
+
+!assert $objectCounter == 5
+!assert Hannah == "object5"
+
+introduce(Max, Document(Mindful Max, mindful, thinks a lot, cloud))
+
+!assert $objectCounter == 6
+!assert Max == "object6"
+
+introduce(Noah, Document(Noble Noah, noble, shows high moral qualities, cloud, 2))
+
+!assert $objectCounter == 7
+!assert Noah == "object7"
+
+introduce(Olivia, Document(Orderly Olivia, orderly, is organized, folder, 2, darkblue))
+
+!assert $objectCounter == 8
+!assert Olivia == "object8"
+
+introduce(Quentin, Document(Questioning Quentin, questioning, doubtful, database, 2, red, grey))
+
+!assert $objectCounter == 9
+!assert Quentin == "object9"
+@enduml

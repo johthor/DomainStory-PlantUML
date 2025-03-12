@@ -1,16 +1,16 @@
 @startuml
 !include ../../../src/domainStoryComposite.puml
 
-Person(Alice)
+introduce(Person(Alice))
 
-Info(step_1)
-Info(step_2)
-Info(step_2_)
-Info(hidden_step)
-Info(hidden_step_)
-Info(step_42)
-Info(step_10)
-Info(step_11)
+introduce(Info(step_1))
+introduce(Info(step_2))
+introduce(Info(step_2_))
+introduce(Info(hidden_step))
+introduce(Info(hidden_step_))
+introduce(Info(step_42))
+introduce(Info(step_10))
+introduce(Info(step_11))
 
 ' auto-increment will create step 1
 activity(_, Alice, talks about, step_1)
@@ -30,8 +30,8 @@ activity(=10, Alice, talks about, step_10)
 activity(_, Alice, talks about, step_11)
 
 ' Reset step counter to simulate a new story
-!global $stepCounter = 0
-Person(Bob)
-Info(step_error)
+!global $currentSequenceNumber = 0
+introduce(Person(Bob))
+introduce(Info(step_error))
 activity(|, Bob, talks about, step_error)
 @enduml

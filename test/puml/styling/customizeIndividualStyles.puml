@@ -1,20 +1,20 @@
 @startuml
 !include ../../../src/domainStoryComposite.puml
 
-Person(Alice, $color=green)
+introduce(Person(Alice, $color=green))
 
 Boundary(Home) {
-    Email(spam)
+    introduce(Email(spam))
 }
 
-Person(Bob, $color=blue)
+introduce(Person(Bob, $color=blue))
 
 Boundary(Party, $background=yellow/red) {
-    Conversation(weather, $color=lightgreen)
+    introduce(Conversation(weather, $color=lightgreen))
 }
 
 Boundary(Office, $background=#aee) {
-    Email(proposal, $scale=3, $color=#f03000)
+    introduce(Email(proposal, $scale=3, $color=#f03000))
 }
 
 activity(_, Alice, reads the, spam, _, _, ->)

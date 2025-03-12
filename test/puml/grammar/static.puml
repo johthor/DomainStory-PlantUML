@@ -1,0 +1,40 @@
+@startuml
+' Contents inspired by https://domainstorytelling.org/quick-start-guide#putting-it-all-together
+
+!include ../../../src/domainStoryComposite.puml
+
+introduce(a10, Person("A"))
+introduce(w10, Document("w"))
+activity(+, a10, works on, w10)
+
+introduce(a20, Person("A"))
+introduce(w20, Document("w"))
+introduce(v20, Document("v"))
+activity(+, a20, works on, w20, using, v20)
+
+introduce(xa20, Person("A"))
+introduce(xw20, Document("w"))
+introduce(xv20, Document("v"))
+introduce(xu20, Document("u"))
+introduce(xt20, Document("t"))
+activity(+, xa20, works on, xw20, using, xv20)
+activity(., xv20, and, xu20, as well as, xt20)
+
+introduce(a30, Person("A"))
+introduce(b30, Person("B"))
+introduce(w30, Document("w"))
+activity(+, a30, hands over, w30, to, b30)
+
+introduce(a40, Person("A"))
+introduce(b40, Person("B"))
+introduce(c40, Person("C"))
+introduce(w40, Document("w"))
+activity(+, a40, hands over, w40, to, b40)
+activity(., w40, and, c40)
+
+introduce(a50, Person("A"))
+introduce(b50, Person("B"))
+introduce(w50, Document("w"))
+activity(+, a50, collaborates on, w50)
+activity(|, b50, collaborates on, w50, $objectArr = "<--")
+@enduml

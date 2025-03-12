@@ -631,37 +631,34 @@ skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
             skinparam PackageBackgroundColor<<stored>> orange
 
-            Agent "<$ma_account_outline{scale=1}>\rAlice" as Alice <<Person:windy>><<Person>><<windy>>
+    Agent "<$ma_account_outline{scale=1}>\rAlice" as actor1 <<Person:windy>><<Person>><<windy>>
 
     Package "==Home" as Home <<stored>>  {
+    Database "<$ma_at{scale=.8}>\rspam" as object1 <<Email:stored>><<Email>><<stored>>
 
-            Database "<$ma_at{scale=.8}>\rspam" as spam <<Email:stored>><<Email>><<stored>>
+}
 
-    }
-
-            Agent "<$ma_account_outline{scale=1}>\rBob" as Bob <<Person:friendly>><<Person>><<friendly>>
+    Agent "<$ma_account_outline{scale=1}>\rBob" as actor2 <<Person:friendly>><<Person>><<friendly>>
 
     Rectangle "==Party" as Party <<fun>>  {
+    Card "<$ma_message_outline{scale=.8}>\rweather" as object2 <<Conversation>>
 
-            Card "<$ma_message_outline{scale=.8}>\rweather" as weather <<Conversation>>
-
-    }
+}
 
     Rectangle "==Office" as Office   {
+    Card "<$ma_at{scale=.8,color=red}>\rproposal" as object3 <<Email:important>><<Email>><<important>>
 
-            Card "<$ma_at{scale=.8,color=red}>\rproposal" as proposal <<Email:important>><<Email>><<important>>
+}
 
-    }
+                        actor1 -> object1 : (1) reads the
 
-                        Alice -> spam : (1) reads the
+                        actor1 --> object2 : (2) talks about the
 
-                        Alice --> weather : (2) talks about the
+                    object2 --> actor2 : with
 
-                            weather --> Bob : with
+                        object3 <-- actor2 : (3) writes a
 
-                        proposal <-- Bob : (3) writes a
-
-                            Alice <-- proposal : to
+                    actor1 <-- object3 : to
 
 @enduml
 

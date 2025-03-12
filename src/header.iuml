@@ -7,3 +7,23 @@
 '' Version: 0.4.0
 '' Source: https://github.com/johthor/DomainStory-PlantUML
 ''
+
+'' Use `-darkmode -DPUML_MODE=dark` to activate the support for PlantUML dark mode
+!ifdef PUML_MODE
+    !global $PUML_MODE ?= PUML_MODE
+!else
+    !global $PUML_MODE ?= "light"
+!endif
+
+!global $DST_PUML_ELEMENT_SEPARATOR ?= "+"
+!global $DST_PUML_COMPONENT_SEPARATOR ?= ":"
+
+' Version
+' ##################################
+
+!function DomainStoryVersion()
+    ' This is method is directly copied from C4-PlantUML and only slightly adjusted
+    ' 2 spaces are used as a unique marker, that the release script makes the correct version update
+    !global $DomainStoryVersion  =  "0.4.0"
+    !return $DomainStoryVersion
+!end function

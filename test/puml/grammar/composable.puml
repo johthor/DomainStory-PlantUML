@@ -1,0 +1,31 @@
+@startuml
+' Contents inspired by https://domainstorytelling.org/quick-start-guide#putting-it-all-together
+
+!include ../../../src/domainStoryComposite.puml
+
+startActivity(+, Person(A), works on, Document(w))
+
+startActivity(+, Person(A), works on, Document(w))
+append(using, Document(v))
+
+startActivity(+, Person(A), works on, Document(w))
+append(using, Document(v))
+append(and, Document(u))
+append(as well as, Document(t))
+
+startActivity(+, Person(A), hands over, Document(w))
+append(to, Person(B))
+
+startActivity(+, Person(A), hands over, Document(w))
+split(to, Person(B))
+continue(and, Person(C))
+
+startActivity(+, Person(A), hands over, Document(w))
+split(containing, Info(facts))
+splitAgain(about, Person(B))
+continue(and, Person(C))
+continueFromBefore(and, Info(fiction))
+
+startActivity(+, Person(A), collaborates on, Document(w))
+activity(|, Person(B), collaborates on, $lastObjectCreated, $objectArr = <--)
+@enduml

@@ -93,17 +93,17 @@
 
 !function $computeStepNumber($step)
     !if $step == "_" || $step == "+"
-        !$stepCounter = $stepCounter + 1
-        !return $stepCounter
+        !$currentSequenceNumber = $currentSequenceNumber + 1
+        !return $currentSequenceNumber
     !elseif $step == "|"
-        !if $stepCounter
-            !return $stepCounter
+        !if $currentSequenceNumber
+            !return $currentSequenceNumber
         !else
             !return '?'
         !endif
     !elseif %substr($step, 0, 1) == "="
-        !$stepCounter = %intval(%substr($step, 1))
-        !return $stepCounter
+        !$currentSequenceNumber = %intval(%substr($step, 1))
+        !return $currentSequenceNumber
     !elseif $step == "."
         ' Signal unnumbered step
         !return %false()

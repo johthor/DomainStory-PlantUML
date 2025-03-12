@@ -7,28 +7,28 @@
 
 !startsub above
 Boundary(company) {
-    Person(sarah)
+    introduce(Person(sarah))
 }
 note top of company : above
 !endsub
 
 !startsub right
 Boundary(team) {
-    Person(pete)
+    introduce(Person(pete))
 }
 note right of team : !! right
 !endsub
 
 !startsub below
 Boundary(office) {
-    Call(conference)
+    introduce(Call(conference))
 }
 note bottom of office : below
 !endsub
 
 !startsub left
 Boundary(party) {
-    Group(people)
+    introduce(Group(people))
 }
 note left of party : left
 !endsub

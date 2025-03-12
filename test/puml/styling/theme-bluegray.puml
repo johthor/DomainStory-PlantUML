@@ -4,9 +4,9 @@
 !include ../../../src/domainStoryComposite.puml
 
 Boundary(Party) {
-    Person(Alice)
-    Conversation(weather)
-    Person(Bob)
+    introduce(Person(Alice))
+    introduce(Conversation(weather))
+    introduce(Person(Bob))
 }
 
 activity(1, Alice, talks about the, weather, with, Bob)

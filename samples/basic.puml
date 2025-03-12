@@ -4,10 +4,6 @@
 '!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
 
 Boundary(Party) {
-    Person(Alice)
-    Conversation(weather)
-    Person(Bob)
+    activity(1, Person(Alice), talks about the, Conversation(weather), with, Person(Bob))
 }
-
-activity(1, Alice, talks about the, weather, with, Bob)
 @enduml

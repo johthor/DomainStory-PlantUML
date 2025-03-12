@@ -1,0 +1,31 @@
+@startuml
+' Contents inspired by https://domainstorytelling.org/quick-start-guide#putting-it-all-together
+
+!include ../../../src/domainStoryComposite.puml
+
+introduce(a11, Person("A"))
+activity(+, a11, works on, Document:w)
+
+introduce(a21, Person("A"))
+activity(+, a21, works on, Document:w, using, Document: v)
+
+introduce(xa21, Person("A"))
+introduce(xv21, Document("v"))
+activity(+, xa21, works on, Document:w, using, xv21)
+activity(., xv21, and, Document: u, as well as, Document: t)
+
+introduce(a31, Person("A"))
+introduce(b31, Person("B"))
+activity(+, a31, hands over, Document:w, to, b31)
+
+introduce(a41, Person("A"))
+introduce(b41, Person("B"))
+introduce(c41, Person("C"))
+activity(+, a41, hands over, Document:w, to, b41)
+activity(., $previousNodeConnected, and, c41)
+
+introduce(a51, Person("A"))
+introduce(b51, Person("B"))
+activity(+, a51, collaborates on, Document:w)
+activity(|, b51, collaborates on, $lastNodeConnected, $objectArr = "<--")
+@enduml

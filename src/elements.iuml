@@ -1,0 +1,57 @@
+' Entity Creation
+' ##################################
+
+!unquoted function Actor($kind, $icon, $label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !$actorAlias = $createElement("Actor", $kind, $icon, $label, $tag, $shape, $scale, $color, $background)
+    $createElementNote($actorAlias, $note)
+
+    !global $lastActorCreated = $actorAlias
+    !return $actorAlias
+!endfunction
+
+!unquoted function Object($kind, $icon, $label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !$objectAlias = $createElement("Object", $kind, $icon, $label, $tag, $shape, $scale, $color, $background)
+    $createElementNote($objectAlias, $note)
+
+    !global $lastObjectCreated = $objectAlias
+    !return $objectAlias
+!endfunction
+
+!unquoted procedure introduce($name, $element = "")
+    !if $element
+        %set_variable_value($name, $element)
+    !else
+        ' TODO This could use some more logic
+        %set_variable_value($lastElementLabelUsed, $name)
+    !endif
+!endprocedure
+
+!unquoted function $createElement($type, $kind, $icon, $label, $tag = "", $shape = "", $scale = "", $color = "", $background = "")
+    !$alias = $computeNextAlias($type)
+
+    !$shape = $getStyleProperty($shape, $type, $kind, $tag, Shape)
+    !$scale = $getStyleProperty($scale, $type, $kind, $tag, IconScale)
+    !$color = $getStyleProperty($color, $type, $kind, $tag, IconColor)
+
+    !$backgroundColor = $computeColorName($background)
+    !$stereotypes = $computeStereotypes($kind, $tag)
+
+    $debug($type + "(" + $kind + ", " + $icon + ") " + $alias + " : " + $label + " : " + $tag + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
+
+    ' output below
+    $pumlEntity($shape, $label, $alias, $icon, $scale, $color, $stereotypes, $backgroundColor)
+
+    !global $lastElementCreated = $alias
+    !global $lastElementLabelUsed = $label
+    !return $alias
+!endfunction
+
+!function $computeNextAlias($type)
+    !$prefix = %lower($type)
+    !$counterName = "$" + $prefix + "Counter"
+
+    !$nextValue = %get_variable_value($counterName) + 1
+    %set_variable_value($counterName, $nextValue)
+
+    !return $prefix + %string($nextValue)
+!endfunction

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # This script is intended to be run through run.sh (https://run.jotaen.net)
+shopt -s globstar
 
 PUML_OPTIONS='-Tsvg'
-DS_PUML_URL='https://github.com/johthor/DomainStory-PlantUML'
 LOG_LEVEL="${LOG_LEVEL:-info}"
 
 PROJECT_ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
@@ -22,6 +22,24 @@ puml::convert() {
   fi
 }
 
+run::rewritePUML() {
+  TARGET_DIR="${1:-test/puml}"
+  IN_PLACE="$2"
+
+  for diagram in "$TARGET_DIR"/**/*.puml ; do
+    fileNameWithoutExt=$(basename "$diagram" .puml)
+    subPath=$(dirname "$diagram")
+    testSubject="$subPath/$fileNameWithoutExt"
+
+    if [[ ! "$testSubject" =~ .+REWRITTEN ]]; then
+      /usr/bin/env python3 tools/rewrite.py "$testSubject".puml > "$testSubject".REWRITTEN.puml
+      if [ "$IN_PLACE" ]; then
+        mv "$testSubject".REWRITTEN.puml "$testSubject".puml
+      fi
+    fi
+  done
+}
+
 # Compile split source files into one PUML file
 run::compile() {
   {
@@ -36,6 +54,8 @@ run::compile() {
     cat src/theming.iuml
     echo ''
     cat src/state.iuml
+    echo ''
+    cat src/elements.iuml
     echo ''
     cat src/actors.iuml
     echo ''
@@ -63,6 +83,11 @@ run::convertAssets() {
   done
 
   puml::convert test/puml/styling/theme-bluegray.puml docs/assets
+
+  for asset in docs/assets/*.svg; do
+    xmllint --format "$asset" > "$asset".tmp
+    mv "$asset".tmp "$asset"
+  done
 }
 
 run::compare() {

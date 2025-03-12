@@ -580,55 +580,55 @@ sprite $ma_information_outline [48x48/16] {
 
 skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcustomer" as customer <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcustomer" as actor1 <<Person>>
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rtopic1" as topic1 <<Conversation>>
+    Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rtopic1" as object1 <<Conversation>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcashier1" as cashier1 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcashier1" as actor2 <<Person>>
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rtopic2" as topic2 <<Conversation>>
+    Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rtopic2" as object2 <<Conversation>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcashier2" as cashier2 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcashier2" as actor3 <<Person>>
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rtopic3" as topic3 <<Conversation>>
+    Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rtopic3" as object3 <<Conversation>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcashier3" as cashier3 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcashier3" as actor4 <<Person>>
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rtopic4" as topic4 <<Conversation>>
+    Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rtopic4" as object4 <<Conversation>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcashier4" as cashier4 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcashier4" as actor5 <<Person>>
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rtopic5" as topic5 <<Conversation>>
+    Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rtopic5" as object5 <<Conversation>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcashier5" as cashier5 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcashier5" as actor6 <<Person>>
 
-            Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rtopic6" as topic6 <<Conversation>>
+    Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rtopic6" as object6 <<Conversation>>
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcashier6" as cashier6 <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcashier6" as actor7 <<Person>>
 
-                        customer -> topic1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about
+                        actor1 -> object1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about
 
-                            topic1 -> cashier1 : with
+                    object1 -> actor2 : with
 
-                        customer -> topic2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about
+                        actor1 -> object2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about
 
-                            cashier2 <-- topic2 : with
+                    actor3 <-- object2 : with
 
-                        customer -> topic3 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> talks about
+                        actor1 -> object3 : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> talks about
 
-                            topic3 --> cashier3 : with
+                    object3 --> actor4 : with
 
-                        topic4 <- customer : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> talks about
+                        object4 <- actor1 : <back:#66fcf1><size:16><color:#0B0C10>(4)</color></size></back> talks about
 
-                            cashier4 <- topic4 : with
+                    actor5 <- object4 : with
 
-                        topic5 <- customer : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> talks about
+                        object5 <- actor1 : <back:#66fcf1><size:16><color:#0B0C10>(5)</color></size></back> talks about
 
-                            cashier5 <-- topic5 : with
+                    actor6 <-- object5 : with
 
-                        topic6 <- customer : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> talks about
+                        object6 <- actor1 : <back:#66fcf1><size:16><color:#0B0C10>(6)</color></size></back> talks about
 
-                            topic6 --> cashier6 : with
+                    object6 --> actor7 : with
 
 @enduml
 

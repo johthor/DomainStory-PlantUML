@@ -580,45 +580,45 @@ sprite $ma_information_outline [48x48/16] {
 
 skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rAlice" as Alice <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rAlice" as actor1 <<Person>>
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_1" as step_1 <<Info>>
+    Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_1" as object1 <<Info>>
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_2" as step_2 <<Info>>
+    Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_2" as object2 <<Info>>
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_2_" as step_2_ <<Info>>
+    Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_2_" as object3 <<Info>>
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rhidden_step" as hidden_step <<Info>>
+    Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rhidden_step" as object4 <<Info>>
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rhidden_step_" as hidden_step_ <<Info>>
+    Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rhidden_step_" as object5 <<Info>>
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_42" as step_42 <<Info>>
+    Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_42" as object6 <<Info>>
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_10" as step_10 <<Info>>
+    Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_10" as object7 <<Info>>
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_11" as step_11 <<Info>>
+    Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_11" as object8 <<Info>>
 
-                        Alice --> step_1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about
+                        actor1 --> object1 : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> talks about
 
-                        Alice --> step_2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about
+                        actor1 --> object2 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about
 
-                        Alice --> step_2_ : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about
+                        actor1 --> object3 : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> talks about
 
-                    Alice --> hidden_step : talks about
+                    actor1 --> object4 : talks about
 
-                    Alice --> hidden_step_ : talks about
+                    actor1 --> object5 : talks about
 
-                        Alice --> step_42 : <back:#66fcf1><size:16><color:#0B0C10>(42)</color></size></back> talks about
+                        actor1 --> object6 : <back:#66fcf1><size:16><color:#0B0C10>(42)</color></size></back> talks about
 
-                        Alice --> step_10 : <back:#66fcf1><size:16><color:#0B0C10>(10)</color></size></back> talks about
+                        actor1 --> object7 : <back:#66fcf1><size:16><color:#0B0C10>(10)</color></size></back> talks about
 
-                        Alice --> step_11 : <back:#66fcf1><size:16><color:#0B0C10>(11)</color></size></back> talks about
+                        actor1 --> object8 : <back:#66fcf1><size:16><color:#0B0C10>(11)</color></size></back> talks about
 
-            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rBob" as Bob <<Person>>
+    Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rBob" as actor2 <<Person>>
 
-            Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_error" as step_error <<Info>>
+    Card "<$ma_information_outline{scale=.8,color=#1f2833}>\rstep_error" as object9 <<Info>>
 
-                        Bob --> step_error : <back:#66fcf1><size:16><color:#0B0C10>(?)</color></size></back> talks about
+                        actor2 --> object9 : <back:#66fcf1><size:16><color:#0B0C10>(?)</color></size></back> talks about
 
 @enduml
 

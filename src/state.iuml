@@ -1,5 +1,25 @@
 ' Mutable state
 ' ##################################
 
-!global $stepCounter = 0
-!global $workObjectCounter = 0
+' Element Creation State
+!global $actorCounter = 0
+!global $lastActorCreated = ""
+
+!global $objectCounter = 0
+!global $lastObjectCreated = ""
+
+!global $lastElementCreated = ""
+!global $lastElementLabelUsed = ""
+
+' Boundary Creation State
+!global $lastBoundaryCreated = ""
+
+' Activity State
+!global $currentSequenceNumber = 0
+!global $currentActivityDirection = ""
+
+!global $lastNodeConnected = ""
+!global $previousNodeConnected = ""
+
+!global $lastSplitLocation = ""
+!global $previousSplitLocation = ""

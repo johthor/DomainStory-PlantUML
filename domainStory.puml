@@ -8,6 +8,16 @@
 '' Source: https://github.com/johthor/DomainStory-PlantUML
 ''
 
+'' Use `-darkmode -DPUML_MODE=dark` to activate the support for PlantUML dark mode
+!ifdef PUML_MODE
+    !global $PUML_MODE ?= PUML_MODE
+!else
+    !global $PUML_MODE ?= "light"
+!endif
+
+!global $DST_PUML_ELEMENT_SEPARATOR ?= "+"
+!global $DST_PUML_COMPONENT_SEPARATOR ?= ":"
+
 ' Version
 ' ##################################
 
@@ -27,34 +37,42 @@
     !endif
 !endprocedure
 
-' Story Layout
+' Entity Creation Utilities
 ' ##################################
 
-!global $Story_Layout ?= "left-to-right"
-
-!if $Story_Layout == "left-to-right" || $Story_Layout == "landscape"
-    !global $Story_Layout = "left-to-right"
-    left to right direction
-!else
-    top to bottom direction
-!endif
-
-' Styling
-' ##################################
-
-!function modeAdjustedColor($lightColor, $darkColor = "")
-    !if PUML_MODE == "light"
-        !$result = $lightColor
+/' Creates a colorized sprite
+Params:
+    $sprite:   the sprite for the image
+    $scale:    the scale for the sprite
+    $color:    the color for the sprite '/
+!function $pumlSprite($sprite, $scale = 1, $color = "")
+    !if $color
+        !return "<" + $sprite + "{scale=" + $scale + ",color=" + $color + "}>"
     !else
-        !if $darkColor
-            !$result = $darkColor
-        !else
-            !$result = %reverse_color($lightColor)
-        !endif
+        !return "<" + $sprite + "{scale=" + $scale + "}>"
     !endif
-    $debug(PUML_MODE + " mode with input color " + $lightColor + " and output color " + $result)
-    !return $result
 !endfunction
+
+/' Creates an aliased entity with a colorized sprite, label, and stereotype
+Params:
+    $type:         the entity type (e.g. component, node, agent, etc.)
+    $label:        the label to display under the sprite
+    $alias:        the alias to give the entity
+    $sprite:       the sprite for the image representing the entity
+    $scale:        the scale for the sprite
+    $color:        the color for the sprite
+    $stereo:       the stereotype, which can define additional styling
+    $background:   the background color '/
+!procedure $pumlEntity($type, $label, $alias, $sprite = "", $scale = 1, $color = "", $stereo = "", $background = "")
+    !if $sprite
+$type "$pumlSprite($sprite, $scale, $color)\r##$label" as $alias $stereo $background
+    !else
+$type "$label" as $alias $stereo $background
+    !endif
+!endprocedure
+
+' Various Auxiliary Utilities
+' ##################################
 
 !function $computeStereotypes($kind, $tag, $all = %true())
     !if $kind
@@ -82,6 +100,35 @@
     !else
         !return "$" + $context + "_" + $property
     !endif
+!endfunction
+
+' Story Layout
+' ##################################
+
+!global $Story_Layout ?= "left-to-right"
+
+!if $Story_Layout == "left-to-right" || $Story_Layout == "landscape"
+    !global $Story_Layout = "left-to-right"
+    left to right direction
+!else
+    top to bottom direction
+!endif
+
+' Styling
+' ##################################
+
+!function modeAdjustedColor($lightColor, $darkColor = "")
+    !if $PUML_MODE == "light"
+        !$result = $lightColor
+    !else
+        !if $darkColor
+            !$result = $darkColor
+        !else
+            !$result = %reverse_color($lightColor)
+        !endif
+    !endif
+    $debug(PUML_MODE + " mode with input color " + $lightColor + " and output color " + $result)
+    !return $result
 !endfunction
 
 !function $setStyleProperty($property, $value, $context, $tag = "", $themeable = %false(), $force = %false())
@@ -233,9 +280,6 @@
 ' Global Style declarations
 ' ##################################
 
-' Use `-darkmode -DPUML_MODE=dark` to set a preprocessing variable
-!global PUML_MODE ?= "light"
-
 ' Element Styles
 ' ==================================
 
@@ -324,7 +368,6 @@ $declareStyleProperty($Element_Shadowing, Shadowing, Boundary, $themeable = %tru
 ' Note Styles
 ' ==================================
 
-
 !global $Note_Shape = Note
 
 $declareStyleProperty($Element_FontColor, FontColor, Note, $themeable = %true())
@@ -367,36 +410,89 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
 ' Mutable state
 ' ##################################
 
-!global $stepCounter = 0
-!global $workObjectCounter = 0
+' Element Creation State
+!global $actorCounter = 0
+!global $lastActorCreated = ""
+
+!global $objectCounter = 0
+!global $lastObjectCreated = ""
+
+!global $lastElementCreated = ""
+!global $lastElementLabelUsed = ""
+
+' Boundary Creation State
+!global $lastBoundaryCreated = ""
+
+' Activity State
+!global $currentSequenceNumber = 0
+!global $currentActivityDirection = ""
+
+!global $lastNodeConnected = ""
+!global $previousNodeConnected = ""
+
+!global $lastSplitLocation = ""
+!global $previousSplitLocation = ""
+
+' Entity Creation
+' ##################################
+
+!unquoted function Actor($kind, $icon, $label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !$actorAlias = $createElement("Actor", $kind, $icon, $label, $tag, $shape, $scale, $color, $background)
+    $createElementNote($actorAlias, $note)
+
+    !global $lastActorCreated = $actorAlias
+    !return $actorAlias
+!endfunction
+
+!unquoted function Object($kind, $icon, $label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !$objectAlias = $createElement("Object", $kind, $icon, $label, $tag, $shape, $scale, $color, $background)
+    $createElementNote($objectAlias, $note)
+
+    !global $lastObjectCreated = $objectAlias
+    !return $objectAlias
+!endfunction
+
+!unquoted procedure introduce($name, $element = "")
+    !if $element
+        %set_variable_value($name, $element)
+    !else
+        ' TODO This could use some more logic
+        %set_variable_value($lastElementLabelUsed, $name)
+    !endif
+!endprocedure
+
+!unquoted function $createElement($type, $kind, $icon, $label, $tag = "", $shape = "", $scale = "", $color = "", $background = "")
+    !$alias = $computeNextAlias($type)
+
+    !$shape = $getStyleProperty($shape, $type, $kind, $tag, Shape)
+    !$scale = $getStyleProperty($scale, $type, $kind, $tag, IconScale)
+    !$color = $getStyleProperty($color, $type, $kind, $tag, IconColor)
+
+    !$backgroundColor = $computeColorName($background)
+    !$stereotypes = $computeStereotypes($kind, $tag)
+
+    $debug($type + "(" + $kind + ", " + $icon + ") " + $alias + " : " + $label + " : " + $tag + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
+
+    ' output below
+    $pumlEntity($shape, $label, $alias, $icon, $scale, $color, $stereotypes, $backgroundColor)
+
+    !global $lastElementCreated = $alias
+    !global $lastElementLabelUsed = $label
+    !return $alias
+!endfunction
+
+!function $computeNextAlias($type)
+    !$prefix = %lower($type)
+    !$counterName = "$" + $prefix + "Counter"
+
+    !$nextValue = %get_variable_value($counterName) + 1
+    %set_variable_value($counterName, $nextValue)
+
+    !return $prefix + %string($nextValue)
+!endfunction
 
 ' Actors
 ' ##################################
-
-!unquoted procedure Actor($kind, $iconName, $name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    $debug($kind + " : " + $iconName + " : " + $name + " : " + $label + " : " + $tag + " : " + $note + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
-
-    !$shape = $getStyleProperty($shape, Actor, $kind, $tag, Shape)
-    !$scale = $getStyleProperty($scale, Actor, $kind, $tag, IconScale)
-    !$color = $getStyleProperty($color, Actor, $kind, $tag, IconColor)
-
-    !if $label == ""
-        !$label = $name
-    !endif
-
-    ' output below
-    !if $iconName
-        !if $color
-            $shape "<$iconName{scale=$scale,color=$color}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-        !else
-            $shape "<$iconName{scale=$scale}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-        !endif
-    !else
-        $shape $label as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-    !endif
-
-    $createElementNote($name, $note)
-!endprocedure
 
 ' Person Actor
 ' ==================================
@@ -425,9 +521,16 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
     $extendStyleDeclarations("Actor", "Person", "account")
 !endif
 
-!unquoted procedure Person($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Actor("Person", $Person_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function Person($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Actor("Person", $Person_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedPerson($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    introduce($name, Person($label, $tag, $note, $shape, $scale, $color, $background))
+!endfunction
 
 ' Group Actor
 ' ==================================
@@ -440,46 +543,35 @@ $declareStyleProperty("", BackgroundColor, Step, modeAdjustedColor("#66fcf1"), $
     $extendStyleDeclarations("Actor", "Group", "account_multiple")
 !endif
 
-!unquoted procedure Group($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Actor("Group", $Group_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function Group($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Actor("Group", $Group_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedGroup($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    introduce($name, Group($label, $tag, $note, $shape, $scale, $color, $background))
+!endfunction
 
 ' System Actor
 ' ==================================
 
 $extendStyleDeclarations("Actor", "System", "laptop")
 
-!unquoted procedure System($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Actor("System", $System_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-!endprocedure
+!unquoted function System($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Actor("System", $System_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
 
-' Work Objects
-' ##################################
-
-!unquoted procedure Object($kind, $iconName, $name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    $debug($kind + " : " + $iconName + " : " + $name + " : " + $label + " : " + $tag + " : " + $note + " : " + $shape + " : " + $scale + " : " + $color + " : " + $background)
-
-    !$shape = $getStyleProperty($shape, Object, $kind, $tag, Shape)
-    !$scale = $getStyleProperty($scale, Object, $kind, $tag, IconScale)
-    !$color = $getStyleProperty($color, Object, $kind, $tag, IconColor)
-
+!unquoted procedure namedSystem($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
     !if $label == ""
         !$label = $name
     !endif
+    introduce($name, System($label, $tag, $note, $shape, $scale, $color, $background))
+!endfunction
 
-    ' output below
-    !if $iconName
-        !if $color
-            $shape "<$iconName{scale=$scale,color=$color}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-        !else
-            $shape "<$iconName{scale=$scale}>\r##$label" as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-        !endif
-    !else
-        $shape $label as $name $computeStereotypes($kind, $tag) $computeColorName($background)
-    !endif
-
-    $createElementNote($name, $note)
-!endprocedure
+' Work Objects
+' ##################################
 
 ' Document Work Object
 ' ==================================
@@ -492,8 +584,15 @@ $extendStyleDeclarations("Actor", "System", "laptop")
     $extendStyleDeclarations("Object", "Document", "document")
 !endif
 
-!unquoted procedure Document($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Object("Document", $Document_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Document($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Document", $Document_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedDocument($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    introduce($name, Document($label, $tag, $note, $shape, $scale, $color, $background))
 !endprocedure
 
 ' Folder Work Object
@@ -507,8 +606,15 @@ $extendStyleDeclarations("Actor", "System", "laptop")
     $extendStyleDeclarations("Object", "Folder", "folder")
 !endif
 
-!unquoted procedure Folder($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Object("Folder", $Folder_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Folder($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Folder", $Folder_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedFolder($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    introduce($name, Folder($label, $tag, $note, $shape, $scale, $color, $background))
 !endprocedure
 
 ' Call Work Object
@@ -516,8 +622,15 @@ $extendStyleDeclarations("Actor", "System", "laptop")
 
 $extendStyleDeclarations("Object", "Call", "phone")
 
-!unquoted procedure Call($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Object("Call", $Call_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Call($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Call", $Call_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedCall($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    introduce($name, Call($label, $tag, $note, $shape, $scale, $color, $background))
 !endprocedure
 
 ' Email Work Object
@@ -531,8 +644,15 @@ $extendStyleDeclarations("Object", "Call", "phone")
     $extendStyleDeclarations("Object", "Email", "email")
 !endif
 
-!unquoted procedure Email($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Object("Email", $Email_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Email($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Email", $Email_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedEmail($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    introduce($name, Email($label, $tag, $note, $shape, $scale, $color, $background))
 !endprocedure
 
 ' Conversation Work Object
@@ -546,8 +666,15 @@ $extendStyleDeclarations("Object", "Call", "phone")
     $extendStyleDeclarations("Object", "Conversation", "message")
 !endif
 
-!unquoted procedure Conversation($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Object("Conversation", $Conversation_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Conversation($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Conversation", $Conversation_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedConversation($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    introduce($name, Conversation($label, $tag, $note, $shape, $scale, $color, $background))
 !endprocedure
 
 ' Info Work Object
@@ -561,8 +688,15 @@ $extendStyleDeclarations("Object", "Call", "phone")
     $extendStyleDeclarations("Object", "Info", "information")
 !endif
 
-!unquoted procedure Info($name, $label = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "")
-    Object("Info", $Info_IconName, $name, $label, $tag, $note, $shape, $scale, $color, $background)
+!unquoted function Info($label, $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !return Object("Info", $Info_IconName, $label, $tag, $note, $shape, $scale, $color, $background)
+!endfunction
+
+!unquoted procedure namedInfo($name, $label = "", $tag = "", $note = "", $shape = "", $scale = "", $color = "", $background = "")
+    !if $label == ""
+        !$label = $name
+    !endif
+    introduce($name, Info($label, $tag, $note, $shape, $scale, $color, $background))
 !endprocedure
 
 ' Boundaries
@@ -580,55 +714,105 @@ $extendStyleDeclarations("Object", "Call", "phone")
         $createBoundaryNote($name, $note)
     !endif
 
-    ' output below
+    !$lastBoundaryCreated = $name
+
+    ' do not put anything after the next line
     $shape "==$label" as $name $computeStereotypes("", $tag) $computeColorName($background)
 !endprocedure
 
 ' Activities
 ' ##################################
 
-!unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "", $targetTag="", $targetNote = "", $targetShape = "", $targetScale = "", $targetColor = "", $targetBackground = "")
-    ' Decide on the activity direction
-    !if $objectArr == ""
-        !$objectArr = $computeArrowDirection($step)
+' Appending to the Activity Stream
+' ----------------------------------
 
-        !if $objectArr
+!unquoted procedure startActivity($step, $subject, $predicate, $object, $arrow = "")
+    ' Decide on the activity direction
+    !if $arrow == ""
+        !$arrow = $computeArrowDirection($step)
+
+        !if $arrow
             ' Delete position indicator from $step
             !$step = %substr($step, 1)
         !else
             ' No position indicator was found => follow default story flow
-            !$objectArr = "-->"
+            !$arrow = "-->"
         !endif
     !endif
 
-    !if $targetArr == ""
-        !$targetArr = $objectArr
-    !endif
+    $createLink($subject, $object, $arrow, $predicate, $computeStepLabel($step))
 
+    !global $previousNodeConnected = ""
+    !global $lastSplitLocation = ""
+    !global $previousSplitLocation = ""
+
+    !global $lastNodeConnected = $object
+    !global $currentActivityDirection = $arrow
+!endprocedure
+
+!unquoted procedure append($action, $object, $arrow = "")
+    $createPartial($lastNodeConnected, $object, $action, $arrow)
+!endprocedure
+
+!unquoted procedure split($action, $object, $arrow = "")
+    !global $lastSplitLocation = $lastNodeConnected
+    $createPartial($lastNodeConnected, $object, $action, $arrow)
+!endprocedure
+
+!unquoted procedure splitAgain($action, $object, $arrow = "")
+    !global $previousSplitLocation = $lastSplitLocation
+    !global $lastSplitLocation = $lastNodeConnected
+    $createPartial($lastNodeConnected, $object, $action, $arrow)
+!endprocedure
+
+!unquoted procedure continue($action, $object, $arrow = "")
+    $createPartial($lastSplitLocation, $object, $action, $arrow)
+!endprocedure
+
+!unquoted procedure continueFromBefore($action, $object, $arrow = "")
+    $createPartial($previousSplitLocation, $object, $action, $arrow)
+!endprocedure
+
+' Classic Activity Definition
+' ----------------------------------
+
+!unquoted procedure activity($step, $subject, $predicate, $object, $post = "", $target = "", $objectArr = "", $targetArr = "", $tag="", $note = "", $shape = "", $scale = "", $color = "", $background = "", $targetTag="", $targetNote = "", $targetShape = "", $targetScale = "", $targetColor = "", $targetBackground = "")
     ' Handle first connection between subject and object
     !$object = $ensureElementExists($object, $tag, $note, $shape, $scale, $color, $background)
 
-    $createConnection($subject, $object, $objectArr, $predicate, $computeStepLabel($step))
+    startActivity($step, $subject, $predicate, $object, $objectArr)
 
     ' Handle possible second connection between object and target
-    !$target = $ensureElementExists($target, $targetTag, $targetNote, $targetShape, $targetScale, $targetColor, $targetBackground)
-
     !if $target && $target != "_"
-        !if $post && $post != "_"
-            $createConnection($object, $target, $targetArr, $post)
-        !else
-            $createConnection($object, $target, $targetArr)
-        !endif
-    !else
-        !if $post && $post != "_"
-            $createConnection($object, $post, $targetArr)
-        !endif
+        !$target = $ensureElementExists($target, $targetTag, $targetNote, $targetShape, $targetScale, $targetColor, $targetBackground)
+
+        append($post, $target, $targetArr)
+    !elseif $post && $post != "_"
+        !$target = $ensureElementExists($post, $targetTag, $targetNote, $targetShape, $targetScale, $targetColor, $targetBackground)
+
+        append("", $target, $targetArr)
     !endif
 !endprocedure
 
-!procedure $createConnection($from, $to, $arrow = "-->", $action = "", $stepLabel = "")
+' Activity Helpers
+' ----------------------------------
+
+!procedure $createPartial($from, $to, $action = "", $arrow = "")
+    !if $arrow == ""
+        !$arrow = $currentActivityDirection
+    !endif
+
+    ' create connecting arrows
+    $createLink($from, $to, $arrow, $action)
+
+    !global $previousNodeConnected = $lastNodeConnected
+    !global $lastNodeConnected = $to
+    !global $currentActivityDirection = $arrow
+!endprocedure
+
+!procedure $createLink($from, $to, $arrow = "-->", $action = "", $stepLabel = "")
     !$backwardsArrow = %substr($arrow, 0, 1) == "<"
-    !if $action
+    !if $action && $action != "_"
         !if $stepLabel
             !if $backwardsArrow
                 !if $Step_LabelPosition == "tail"
@@ -666,16 +850,11 @@ $extendStyleDeclarations("Object", "Call", "phone")
     !$separatorPosition = %strpos($element, ":")
 
     !if $separatorPosition > -1
-        !$workObjectCounter = $workObjectCounter + 1
-
         !$elementKind = %substr($element, 0, $separatorPosition)
         !$elementLabel = %substr($element, $separatorPosition + 1)
-        !$elementName = $elementKind + $workObjectCounter
 
-        'Element($kind, $name, $label, $tag, $note, $shape, $scale, $color, $background)
-        %invoke_procedure($elementKind, $elementName, $elementLabel, $tag, $note, $shape, $scale, $color, $background)
-
-        !return $elementName
+        'Element($kind, $label, $tag, $note, $shape, $scale, $color, $background)
+        !return %call_user_func($elementKind, $elementLabel, $tag, $note, $shape, $scale, $color, $background)
     !else
         $createElementNote($element, $note)
 
@@ -847,17 +1026,17 @@ $extendStyleDeclarations("Object", "Call", "phone")
 
 !function $computeStepNumber($step)
     !if $step == "_" || $step == "+"
-        !$stepCounter = $stepCounter + 1
-        !return $stepCounter
+        !$currentSequenceNumber = $currentSequenceNumber + 1
+        !return $currentSequenceNumber
     !elseif $step == "|"
-        !if $stepCounter
-            !return $stepCounter
+        !if $currentSequenceNumber
+            !return $currentSequenceNumber
         !else
             !return '?'
         !endif
     !elseif %substr($step, 0, 1) == "="
-        !$stepCounter = %intval(%substr($step, 1))
-        !return $stepCounter
+        !$currentSequenceNumber = %intval(%substr($step, 1))
+        !return $currentSequenceNumber
     !elseif $step == "."
         ' Signal unnumbered step
         !return %false()
