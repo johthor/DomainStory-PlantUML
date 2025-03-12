@@ -86,6 +86,8 @@ to describe domain stories using the following pictographic language.
 
 ![pictographic language](docs/assets/pictographicLanguage.svg)
 
+### Describing Domain Story Actors and Work Objects
+
 Domain story actors are created with the following macros:
 `Person`, `Group`, and `System`
 
@@ -95,7 +97,25 @@ And these macros are used to create work objects:
 Each macro takes the following parameters where all but the first `$label` parameter are optional.
 
 ```
-MACRO_NAME($label[, $note][, $shape][, $scale][, $color][, $background])
+MACRO_NAME($label[, $tag[, $note[, $shape[, $scale[, $color[, $background ] ] ] ] ] ])
+```
+
+For example, the following lines will introduce characters from _Alice in Wonderland_:
+
+```angular2html
+introduce(alice, Person(Alice, , before drinking the liquid, $scale=0.2))
+introduce(queen, Person(Red Queen, $note=doesn't like Alice, $color=red))
+
+introduce(card, Document(Playing Card))
+```
+
+![basic examples](docs/assets/readme.svg)
+
+The following macro introduces actors and objects identified by a name.
+If you omit the `$name` parameter the `$label` of `$element` will be used if possible.
+
+```angular2html
+introduce([$name, ]$element)
 ```
 
 > [!WARNING]
@@ -105,15 +125,32 @@ MACRO_NAME($label[, $note][, $shape][, $scale][, $color][, $background])
 > 
 > If you prefer the old _named_ element creators
 > there also `namedMACRO_NAME` variants of the macros above
-> which take the `$name` as a first parameter. 
+> which take `$name` as a first parameter and do not require the `introduce` macro.
 
-Activities between actors and involving work items are described via the `activity` macro:
+### Describing Activities
+
+Activities between actors and work items might be simple or rather complex.
+
+The `activity` macro describes simple activities between actors and work objects.
 
 ```puml
-activity($step, $subject, $predicate, $object[, $post][, $target][, $objectArr][, $targetArr]
+activity($step, $subject, $predicate, $object
+    [, $post][, $target]
+    [, $objectArrow][, $targetArrow]
     [, $note][, $shape][, $scale][, $color][, $background]
     [, $targetNote][, $targetShape][, $targetScale][, $targetColor][, $targetBackground])
 ```
+
+For real simple cases only `$step`, `$subject`, `$predicate` and `$object` are required.
+Optionally, `$post` and `$target` add a third interaction element.
+
+The `startActivity` macro enables more complex activity structures.
+
+
+
+
+
+
 
 In addition to these,
 it is also possible to define boundaries via

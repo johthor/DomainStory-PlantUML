@@ -1,0 +1,14 @@
+@startuml
+'!include <DomainStory/domainStory>
+!include ../../domainStory.puml
+'!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
+
+introduce(alice, Person(Alice, , before drinking the liquid, $scale=0.2))
+introduce(queen, Person(Red Queen, $note=doesn't like Alice, $color=red))
+
+introduce(Group(Gerd))
+
+introduce(xx)
+
+rectangle Gerd
+@enduml

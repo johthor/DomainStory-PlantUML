@@ -1,29 +1,39 @@
 @startebnf
 title DomainStory-PlantUML Syntax
 
-domainStory = { actors | workObjects | activities | boundaries }-;
+domainStory = { nestableDomainStory | boundaries }-;
+
+nestableDomainStory = "introduce", "(", [ "$name" ], actors, ")"
+    | namedActors
+    | "introduce", "(", [ name ], workObjects, ")"
+    | namedWorkObjects
+    | activities ;
 
 actors = ( ("Person" | "Group" | "System"), "(", elementPositionalParameters, elementKeywordParameters, ")" )
-    | ( ("namedPerson" | "namedGroup" | "namedSystem"), "(", "$name", [ elementPositionalParameters ], elementKeywordParameters, ")" )
     | ( "Actor", "(", "$kind", "$iconName", elementPositionalParameters, elementKeywordParameters, ")" );
 
+namedActors = ( ("namedPerson" | "namedGroup" | "namedSystem"), "(", "$name", [ elementPositionalParameters ], elementKeywordParameters, ")" );
+
 workObjects = ( ("Document" | "Folder" | "Call" | "Email" | "Conversation" | "Info"), "(", elementPositionalParameters, elementKeywordParameters, ")" )
-    | ( ("namedDocument" | "namedFolder" | "namedCall" | "namedEmail" | "namedConversation" | "namedInfo"), "(", "$name", [ elementPositionalParameters ], elementKeywordParameters, ")" )
     | ( "Object", "(", "$kind", "$iconName", elementPositionalParameters, elementKeywordParameters, ")" );
+
+namedWorkObjects = ( ("namedDocument" | "namedFolder" | "namedCall" | "namedEmail" | "namedConversation" | "namedInfo"), "(", "$name", [ elementPositionalParameters ], elementKeywordParameters, ")" );
 
 elementPositionalParameters = "$label", ["$tag", ["$note"] ];
 
 elementKeywordParameters = [ "<= 6" * ( ?$tag? | ?$note? | ?$shape? | ?$scale? | ?$color? | ?$background? ) ];
 (* each keyword parameter should only be set at most once *)
 
-activities = ( "startActivity", "(", "$step", "$subject", "$predicate", "$object", [ "$arrow" ], ")" )
-    | ( "append", "(", "$action", "$object", [ "$arrow" ], ")" )
+activities = ( "startActivity", "(", "$step", "$subject", "$predicate", "$object", [ "$arrow" ], ")" ), composableActivity
+    | ( "activity", "(", "$step", "$subject", "$predicate", "$object",\
+        [ "$post", ["$target", [ "$objectArr", ["$targetArr"] ] ] ], activityKeywordParameters,")" );
+
+composableActivity =
+    ( "append", "(", "$action", "$object", [ "$arrow" ], ")" )
     | ( "split", "(", "$action", "$object", [ "$arrow" ], ")" )
     | ( "splitAgain", "(", "$action", "$object", [ "$arrow" ], ")" )
     | ( "continue", "(", "$action", "$object", [ "$arrow" ], ")" )
-    | ( "continueFromBefore", "(", "$action", "$object", [ "$arrow" ], ")" )
-    | ( "activity", "(", "$step", "$subject", "$predicate", "$object",\
-        [ "$post", ["$target", [ "$objectArr", ["$targetArr"] ] ] ], activityKeywordParameters,")" );
+    | ( "continueFromBefore", "(", "$action", "$object", [ "$arrow" ], ")" );
 
 activityKeywordParameters = [ "<= 14" * ( ?$objectArr? |?$tag? | ?$note? | ?$shape? | ?$scale? | ?$color? | ?$background?
     | ?$targetArr? | ?$targetTag? | ?$targetNote? | ?$targetShape? | ?$targetScale? | ?$targetColor? | ?$targetBackground? ) ];
@@ -31,6 +41,17 @@ activityKeywordParameters = [ "<= 14" * ( ?$objectArr? |?$tag? | ?$note? | ?$sha
 
 boundaries = "Boundary", "(", "$name", [ "$label", ["$tag", ["$note"] ] ], boundaryKeywordParameters, ")";
 
-boundaryKeywordParameters = [ "<= 4" * ( ?$tag? | ?$note? | ?$shape? | ?$background? ) ];
+boundaryKeywordParameters = [ "<= 4" * (
+      "$tag = ", identifier
+    | "$note = ", noteValue
+    | "$shape = ", shapeValue
+    | "$background = ", colorValue
+ ) ];
 (* each keyword parameter should only be set at most once *)
+
+identifier = ?alphabetic character?, { ?alphabetic character? | ?digit? };
+
+noteValue = [ "^" | ">" | "v" | "<" ], foo;
+
+shapeValue = ?one of the PlantUML node shapes e.g. rectangle or usecase?;
 @endebnf
