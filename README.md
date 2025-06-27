@@ -155,7 +155,7 @@ Some concepts or constructs will be used throughout the library.
 #### Name and Label Parameters
 
 Almost all the parameters declared above are optional and may be omitted for a simplified story description.
-But all of them may be specified via named parameters so that some parameters are skipped.
+All of them may be specified via named parameters so that some parameters are skipped.
 In general, the parameters at the beginning of the parameter list are to be used as positional parameters,
 while parameters at the end of the parameter list are more likely to be used as keyword parameters.
 Keyword parameters may even be skipped as they always have sensible default handling.
@@ -236,7 +236,7 @@ the current step label supports multiple special value specifications to control
 | `n` _any integer_          | step label will be `(n)`                                                                                                | no             |
 | `=n` _equal sign_ prefix   | step label will be `(n)`<br/>and step counter will be set to that integer<br/>_auto-increment will continue from there_ | no             |
 
-See the following test case for more details [step labels and auto increment](test/activities/stepCounter.puml)
+See the following test case for more details [step labels and auto increment](test/puml/activities/stepCounter.puml)
 
 ```puml
 activity(_, Bob, talks about the, weather1) /' auto-increment will create step 1 '/
@@ -288,10 +288,10 @@ note right of wonderland : visit me
 
 See the following test cases for more details
 
-* [Notes on actors and work objects left-to-right orientation](test/notes/elements-leftToRight.puml)
-* [Notes on actors and work objects top-to-bottom orientation](test/notes/elements-topToBottom.puml)
-* [Notes on boundaries left-to-right orientation](test/notes/boundaries-leftToRight.puml)
-* [Notes on boundaries top-to-bottom orientation](test/notes/boundaries-topToBottom.puml)
+* [Notes on actors and work objects left-to-right orientation](test/puml/notes/dynamicElementCreation-leftToRight.puml)
+* [Notes on actors and work objects top-to-bottom orientation](test/puml/notes/dynamicElementCreation-topToBottom.puml)
+* [Notes on boundaries left-to-right orientation](test/puml/notes/boundaries-leftToRight-library.IGNORE.puml)
+* [Notes on boundaries top-to-bottom orientation](test/puml/notes/boundaries-topToBottom-library.IGNORE.puml)
 
 ### Basic Styling
 
@@ -408,7 +408,7 @@ Person(Alice)
 > [!TIP]
 > You might want to set a matching `$Step_BackgroundColor` and `$Step_FontColor` when using themes.
 
-See the test case [Global style declarations](test/styling/customizeGlobalStyles.puml) for more details.
+See the test case [Global style declarations](test/puml/styling/customizeGlobalStyles.puml) for more details.
 
 #### Method 3: Changing the Element's Shapes and Icons
 By default, the library will use the
@@ -446,7 +446,7 @@ The shape and icons used by specific actors and work objects may also be reconfi
 | `$Info_Shape`             | `$Object_Shape` | Shape used by work objects of type info              |
 | `$Info_IconStyle`         | `outline`       | Icon style used by work objects of type info         |
 
-See the test case [element style declarations](test/styling/customizeElementStyles.puml) for more details.
+See the test case [element style declarations](test/puml/styling/customizeElementStyles.puml) for more details.
 
 While most `IconStyle` properties only distinguish between filled icons and icons with outlines,
 the `$Person_IconStyle` property supports also the following styles 
@@ -490,7 +490,7 @@ Boundary(System) {
 > **If you want your dynamically created objects to be placed inside a boundary.**
 > You need to declare the activity inside said boundary.
 
-See the test case for [dynamic object creation](test/activities/objectCreation.puml) for more details.
+See the test case for [dynamic object creation](test/puml/activities/objectCreation.puml) for more details.
 
 ### Advanced Story Layout
 
@@ -518,9 +518,9 @@ the step value may also specify the direction of the activity where `X` is one o
 
 See the test cases for more details
 
-* [activity directions for left-to-right layout](test/activities/direction-leftToRight.puml)
-* [activity directions for top-to-bottom layout](test/activities/direction-topToBottom.puml)
-* [activity directions for both layouts](test/activities/direction-optionalParameters.puml)
+* [activity directions for left-to-right layout](test/puml/activities/direction-leftToRight.puml)
+* [activity directions for top-to-bottom layout](test/puml/activities/direction-topToBottom.puml)
+* [activity directions for both layouts](test/puml/activities/optionalParameters.puml)
 
 #### Specify the Connecting Arrows Directly
 
@@ -563,9 +563,9 @@ Bob ---[hidden]-> Alice
 
 See the test cases again for more details
 
-* [activity directions for left-to-right layout](test/activities/direction-leftToRight.puml)
-* [activity directions for top-to-bottom layout](test/activities/direction-topToBottom.puml)
-* [activity directions for both layouts](test/activities/direction-optionalParameters.puml)
+* [activity directions for left-to-right layout](test/puml/activities/direction-leftToRight.puml)
+* [activity directions for top-to-bottom layout](test/puml/activities/direction-topToBottom.puml)
+* [activity directions for both layouts](test/puml/activities/optionalParameters.puml)
 
 ### Advanced Styling
 
@@ -584,7 +584,7 @@ The following diagram shows the hierarchy of style declarations.
 
 ![Style declaration hierarchy](docs/assets/stylePropertyHierarchy.svg)
 
-See the test case [element style declarations](test/styling/customizeElementStyles.puml) for more details.
+See the test case [element style declarations](test/puml/styling/customizeElementStyles.puml) for more details.
 
 #### Method 5: Tag-Specific Style Declarations
 
@@ -603,7 +603,7 @@ customizeStyleProperty($value, $property, $context,  [$kind], [$tag], [$skinPara
 * `$context` is one of (`Element`, `Actor`, `Object`, `Note`, `Boundary`, `Activity`, `Step`)
 * `$kind` is the kind of actor or work object to be customized, it might also be `""` to style all `$context` elements tagged with `$tag`
 * `$tag` is the tag name you want to customize
-* `$skinParam` is `TRUE` by default and controls if the property is a PlantUML skin paramter too
+* `$skinParam` is `TRUE` by default and controls if the property is a PlantUML skin parameter too
 
 After that, the newly defined tag may be used to customize the appearance of matching elements via the `$tag` parameter.
 
@@ -618,7 +618,7 @@ Person(Alice, $tag="FairyTale")
 
 </details>
 
-See the test case [tag style declarations](test/styling/customizeTagStyles.puml) for more details.
+See the test case [tag style declarations](test/puml/styling/customizeTagStyles.puml) for more details.
 
 #### Method 6: Individually Styled Elements
 
@@ -639,7 +639,7 @@ While `$targetShape`, `$targetScale`, `$targetColor`,
 and `$targetBackground` control the appearance of the newly created `$target` work
 object.
 
-See the test case [individual style customization](test/styling/customizeIndividualStyles.puml) for more details.
+See the test case [individual style customization](test/puml/styling/customizeIndividualStyles.puml) for more details.
 
 ## Advanced Samples
 
