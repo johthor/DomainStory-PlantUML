@@ -146,6 +146,19 @@
     $declareStyleProperty($fallbackValue, $property, $element, $fallbackValue, $kind, "", $themeable, $skinParam)
 !endprocedure
 
+!procedure $includeIcon($name, $library = "material")
+    !if $library == "material"
+        !$stdLibsDetails = %get_all_stdlib(true)
+        !if %json_key_exists($stdLibsDetails, "material2")
+            !$library = "material2"
+        !elseif %json_key_exists($stdLibsDetails, "material2.1.19")
+            !$library = "material2.1.19"
+        !endif
+    !endif
+
+    !include <$library/$name>
+!endprocedure
+
 !procedure $extendStyleDeclarations($element, $kind, $icon)
     $extendStyleProperty(Shape, $element, $kind, $themeable = %false(), $skinParam = %false())
     $extendStyleProperty(IconScale, $element, $kind, $themeable = %false(), $skinParam = %false())
@@ -154,7 +167,7 @@
     !$variableName = $decideVariableName($kind, "", "IconName")
     !if $icon
         !if %not(%variable_exists($variableName))
-            !include <material/$icon>
+            $includeIcon($icon)
             %set_variable_value($variableName, "$ma_" + $icon)
         !endif
     !else
