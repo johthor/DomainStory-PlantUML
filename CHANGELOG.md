@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  
 ### Added
 
-- Add version table and mention breaking changes in README
+- Add a version table and mention breaking changes in README
   ([#24](https://github.com/johthor/DomainStory-PlantUML/pull/24)), ([@johthor][gh-johthor])
 - Add automated snapshot test with [Sharness](https://felipec.github.io/sharness/)
   ([#25](https://github.com/johthor/DomainStory-PlantUML/pull/25)), ([@johthor][gh-johthor])
@@ -30,10 +30,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   ([#25](https://github.com/johthor/DomainStory-PlantUML/pull/25)), ([@johthor][gh-johthor])
 - Fix styling of boundary titles if combined with a boundary note
   ([#25](https://github.com/johthor/DomainStory-PlantUML/pull/25)), ([@johthor][gh-johthor])
+- Include the material icon sprites library with its major version
+  ([#28](https://github.com/johthor/DomainStory-PlantUML/pull/28)), ([@johthor][gh-johthor])
 
 ## Delta [0.4.0] - 2024-11-30
 
-The library now supports the build-in PlantUML themes
+The library now supports the built-in PlantUML themes
 and won't set any colors if a theme declaration is discovered.
 This leads to a complete rewrite of the styling declarations
 and extending the concept for multi-level declarations.
