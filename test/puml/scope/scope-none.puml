@@ -1,0 +1,14 @@
+@startuml
+
+!global $Scope_DisplayAs = "none"
+
+!include ../../../src/domainStoryComposite.puml
+
+Person(Alice)
+Conversation(weather)
+Person(Bob)
+
+activity(1, Alice, talks about the, weather, with, Bob)
+
+Scope($GRANULARITY_SEA, $POINT_IN_TIME_AS_IS, $PURITY_PURE)
+@enduml
