@@ -20,4 +20,6 @@
 
 !include ./notes.iuml
 
+!include ./scope.iuml
+
 !include ./helper.iuml

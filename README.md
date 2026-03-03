@@ -22,6 +22,7 @@ for recording domain stories visually with PlantUML.
     * [Dynamic Creation of Work Objects](#dynamic-creation-of-work-objects)
     * [Advanced Story Layout](#advanced-story-layout)
     * [Advanced Styling](#advanced-styling)
+    * [Describing the Story's Scope](#describing-the-storys-scope)
 * [Advanced Samples](#advanced-samples)
     * [Cinema](#cinema)
     * [Airport Bus](#airport-bus)
@@ -640,6 +641,61 @@ and `$targetBackground` control the appearance of the newly created `$target` wo
 object.
 
 See the test case [individual style customization](test/puml/styling/customizeIndividualStyles.puml) for more details.
+
+### Describing the Story's Scope
+
+The book on Domain Storytelling describes the scope of a domain story as the cross product of three factors:
+
+1. **Granularity** (goal level) — how coarse or fine-grained the story is
+2. **Point in Time** — whether the story describes the current state (_AS-IS_) or a future state (_TO-BE_)
+3. **Domain Purity** — whether the story is _PURE_ (domain-only, no IT) or _DIGITALIZED_ (IT is present)
+
+Use the `Scope` macro to attach this information to your story.
+By default the scope will be shown as a diagram legend.
+
+```puml
+Scope($granularity, $pointInTime, $purity)
+```
+
+All three parameters are optional.
+The following predefined constants cover every valid value for each dimension.
+
+| Parameter       | Constants                                                                                                                               |
+|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| `$granularity`  | `$GRANULARITY_COARSE_GRAINED`, `$GRANULARITY_MEDIUM_GRAINED`, `$GRANULARITY_FINE_GRAINED`                                               |
+|                 | `$GRANULARITY_CLOUD`, `$GRANULARITY_KITE`, `$GRANULARITY_SEA`, `$GRANULARITY_FISH`, `$GRANULARITY_CLAM`                                 |
+| `$pointInTime`  | `$POINT_IN_TIME_AS_IS`, `$POINT_IN_TIME_TO_BE`                                                                                          |
+| `$purity`       | `$PURITY_PURE`, `$PURITY_DIGITALIZED`                                                                                                   |
+
+```puml
+@startuml
+!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
+
+Boundary(Party) {
+    Person(Alice)
+    Conversation(weather)
+    Person(Bob)
+}
+
+activity(1, Alice, talks about the, weather, with, Bob)
+
+Scope($GRANULARITY_SEA, $POINT_IN_TIME_AS_IS, $PURITY_PURE)
+@enduml
+```
+
+The display location of the scope information may be configured via
+`$Scope_DisplayAs` before including the library.
+Supported values are `legend` (default), `footer`, `header`, `caption`, and `none`.
+
+```puml
+!$Scope_DisplayAs = "footer"
+```
+
+See the test cases for more details
+
+* [Scope shown as legend (all dimensions)](test/puml/scope/scope-legend-full.puml)
+* [Scope shown as legend (partial)](test/puml/scope/scope-legend-partial.puml)
+* [Scope shown in the diagram footer](test/puml/scope/scope-footer.puml)
 
 ## Advanced Samples
 

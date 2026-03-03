@@ -1,0 +1,80 @@
+' Scope
+' ##################################
+
+' Granularity constants
+!global $GRANULARITY_COARSE_GRAINED = "COARSE-GRAINED"
+!global $GRANULARITY_MEDIUM_GRAINED = "MEDIUM-GRAINED"
+!global $GRANULARITY_FINE_GRAINED = "FINE-GRAINED"
+!global $GRANULARITY_CLOUD = "Cloud Level"
+!global $GRANULARITY_KITE = "Kite Level"
+!global $GRANULARITY_SEA = "Sea Level"
+!global $GRANULARITY_FISH = "Fish Level"
+!global $GRANULARITY_CLAM = "Clam Level"
+
+' Point in Time constants
+!global $POINT_IN_TIME_AS_IS = "AS-IS"
+!global $POINT_IN_TIME_TO_BE = "TO-BE"
+
+' Domain Purity constants
+!global $PURITY_PURE = "PURE"
+!global $PURITY_DIGITALIZED = "DIGITALIZED"
+
+' Scope display configuration
+' Possible values: "legend", "footer", "header", "caption", "none"
+!global $Scope_DisplayAs ?= "legend"
+
+' Scope state variables
+!global $Story_Granularity = ""
+!global $Story_PointInTime = ""
+!global $Story_Purity = ""
+
+!unquoted procedure Scope($granularity = "", $pointInTime = "", $purity = "")
+    !global $Story_Granularity = $granularity
+    !global $Story_PointInTime = $pointInTime
+    !global $Story_Purity = $purity
+    ShowScope()
+!endprocedure
+
+!procedure ShowScope()
+    !if $Story_Granularity || $Story_PointInTime || $Story_Purity
+        !if $Scope_DisplayAs == "legend"
+            legend
+            !if $Story_Granularity
+                Granularity: $Story_Granularity
+            !endif
+            !if $Story_PointInTime
+                Point in Time: $Story_PointInTime
+            !endif
+            !if $Story_Purity
+                Purity: $Story_Purity
+            !endif
+            endlegend
+        !elseif $Scope_DisplayAs == "footer"
+            footer $buildScopeText()
+        !elseif $Scope_DisplayAs == "header"
+            header $buildScopeText()
+        !elseif $Scope_DisplayAs == "caption"
+            caption $buildScopeText()
+        !endif
+    !endif
+!endprocedure
+
+!function $buildScopeText()
+    !$text = ""
+    !if $Story_Granularity
+        !$text = $Story_Granularity
+    !endif
+    !if $Story_PointInTime
+        !if $text
+            !$text = $text + " | "
+        !endif
+        !$text = $text + $Story_PointInTime
+    !endif
+    !if $Story_Purity
+        !if $text
+            !$text = $text + " | "
+        !endif
+        !$text = $text + $Story_Purity
+    !endif
+    !return $text
+!endfunction

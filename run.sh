@@ -47,6 +47,8 @@ run::compile() {
     echo ''
     cat src/notes.iuml
     echo ''
+    cat src/scope.iuml
+    echo ''
     cat src/helper.iuml
   } > domainStory.puml
 }
