@@ -1,0 +1,70 @@
+' Change Types
+' ##################################
+
+' Change Type Colors
+' ==================================
+
+' Default color for "is new" elements (green / info color)
+!global $Change_isNew_Color ?= modeAdjustedColor("#22bb33")
+
+' Default color for "will change" elements (red / error color)
+!global $Change_willChange_Color ?= modeAdjustedColor("#bf2600")
+
+' Change Type Styles
+' ==================================
+
+' Non-color visual indicators
+!global $Change_isNew_FontStyle ?= bold
+!global $Change_willChange_FontStyle ?= italic
+
+!global $Change_isNew_BorderStyle ?= "solid"
+!global $Change_willChange_BorderStyle ?= "dashed"
+
+!global $Change_isNew_BorderThickness ?= 3
+!global $Change_willChange_BorderThickness ?= 3
+
+' Apply change type styles to Actor (Agent) elements
+skinparam AgentBorderColor<<isNew>> $Change_isNew_Color
+skinparam AgentBorderThickness<<isNew>> $Change_isNew_BorderThickness
+skinparam AgentFontStyle<<isNew>> $Change_isNew_FontStyle
+
+skinparam AgentBorderColor<<willChange>> $Change_willChange_Color
+skinparam AgentBorderThickness<<willChange>> $Change_willChange_BorderThickness
+skinparam AgentFontStyle<<willChange>> $Change_willChange_FontStyle
+
+' Apply change type styles to Work Object (Card) elements
+skinparam CardBorderColor<<isNew>> $Change_isNew_Color
+skinparam CardBorderStyle<<isNew>> $Change_isNew_BorderStyle
+skinparam CardBorderThickness<<isNew>> $Change_isNew_BorderThickness
+skinparam CardFontStyle<<isNew>> $Change_isNew_FontStyle
+
+skinparam CardBorderColor<<willChange>> $Change_willChange_Color
+skinparam CardBorderStyle<<willChange>> $Change_willChange_BorderStyle
+skinparam CardBorderThickness<<willChange>> $Change_willChange_BorderThickness
+skinparam CardFontStyle<<willChange>> $Change_willChange_FontStyle
+
+' Apply change type styles to Boundary (Rectangle) elements
+skinparam RectangleBorderColor<<isNew>> $Change_isNew_Color
+skinparam RectangleBorderStyle<<isNew>> $Change_isNew_BorderStyle
+skinparam RectangleBorderThickness<<isNew>> $Change_isNew_BorderThickness
+skinparam RectangleFontStyle<<isNew>> $Change_isNew_FontStyle
+
+skinparam RectangleBorderColor<<willChange>> $Change_willChange_Color
+skinparam RectangleBorderStyle<<willChange>> $Change_willChange_BorderStyle
+skinparam RectangleBorderThickness<<willChange>> $Change_willChange_BorderThickness
+skinparam RectangleFontStyle<<willChange>> $Change_willChange_FontStyle
+
+' Change Type Legend
+' ==================================
+
+!unquoted procedure ChangeLegend($position = "")
+    !if $position
+        legend $position
+    !else
+        legend
+    !endif
+    |= Change Type |= Meaning |
+    | <color:$Change_isNew_Color>**new**</color> | is new |
+    | <color:$Change_willChange_Color>//change//</color> | will change |
+    endlegend
+!endprocedure

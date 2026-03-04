@@ -1,0 +1,22 @@
+@startuml
+!include ../../../src/domainStoryComposite.puml
+
+Boundary(Office, $tag=willChange) {
+    Person(Clerk, $tag=willChange)
+    Document(form, $tag=willChange)
+}
+
+Boundary(Digital, $tag=isNew) {
+    Person(Customer, $tag=isNew)
+    Email(request, $tag=isNew)
+}
+
+Person(Manager)
+Document(report)
+
+activity(1, Customer, submits the, request, to, Clerk)
+activity(2, Clerk, fills in the, form)
+activity(3, Manager, approves the, report)
+
+ChangeLegend()
+@enduml

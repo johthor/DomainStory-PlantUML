@@ -580,6 +580,34 @@ sprite $ma_information_outline [48x48/16] {
 
 skinparam folderBackgroundColor<<MA INFORMATION_OUTLINE>> White
 
+skinparam AgentBorderColor<<isNew>> #22bb33
+skinparam AgentBorderThickness<<isNew>> 3
+skinparam AgentFontStyle<<isNew>> bold
+
+skinparam AgentBorderColor<<willChange>> #bf2600
+skinparam AgentBorderThickness<<willChange>> 3
+skinparam AgentFontStyle<<willChange>> italic
+
+skinparam CardBorderColor<<isNew>> #22bb33
+skinparam CardBorderStyle<<isNew>> solid
+skinparam CardBorderThickness<<isNew>> 3
+skinparam CardFontStyle<<isNew>> bold
+
+skinparam CardBorderColor<<willChange>> #bf2600
+skinparam CardBorderStyle<<willChange>> dashed
+skinparam CardBorderThickness<<willChange>> 3
+skinparam CardFontStyle<<willChange>> italic
+
+skinparam RectangleBorderColor<<isNew>> #22bb33
+skinparam RectangleBorderStyle<<isNew>> solid
+skinparam RectangleBorderThickness<<isNew>> 3
+skinparam RectangleFontStyle<<isNew>> bold
+
+skinparam RectangleBorderColor<<willChange>> #bf2600
+skinparam RectangleBorderStyle<<willChange>> dashed
+skinparam RectangleBorderThickness<<willChange>> 3
+skinparam RectangleFontStyle<<willChange>> italic
+
             Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rcustomer" as customer <<Person>>
 
             Card "<$ma_message_outline{scale=.8,color=#1f2833}>\rtopic1" as topic1 <<Conversation>>
