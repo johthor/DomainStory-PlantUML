@@ -48,6 +48,8 @@ run::compile() {
     cat src/notes.iuml
     echo ''
     cat src/helper.iuml
+    echo ''
+    cat src/changes.iuml
   } > domainStory.puml
 }
 

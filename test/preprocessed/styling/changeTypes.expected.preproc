@@ -1,167 +1,107 @@
 @startuml
 
-<style>
-  root {
-    BackgroundColor #282828
-    FontColor #FFB000
-    FontName Verdana
-    HyperLinkColor #FFCC00
-    LineColor #FFB000
-    LineThickness 1
-    Margin 5
-  }
-  box {
-    LineStyle 12-18
-    LineThickness 3
-  }
-  document {
-    caption {
-      LineThickness 0
-    }
-    footer {
-      LineThickness 0
-    }
-    header {
-      LineThickness 0
-    }
-    title {
-      FontSize 22
-      LineThickness 0
-    }
-  }
-  groupHeader {
-    BackgroundColor #FFB000
-    FontColor #282828
-    FontStyle bold
-  }
-  node {
-    MaximumWidth 300
-  }
-  referenceHeader {
-    BackgroundColor #FFB000
-    FontColor #282828
-    FontStyle bold
-  }
-  separator {
-    BackgroundColor #FFB000
-    FontColor #282828
-    FontStyle bold
-  }
-</style>
+    left to right direction
 
-skinparam ArrowLollipopColor #FFB000
-skinparam BackgroundColor #282828
-skinparam DefaultFontName Verdana
-skinparam DefaultMonospacedFontName Courier
-skinparam LifelineStrategy solid
-skinparam ParticipantPadding 10
-skinparam SequenceLifeLineBorderColor #FFB000
-skinparam Shadowing false
-skinparam UseBetaStyle true
+            skinparam DefaultFontColor #0B0C10
 
-skinparam Activity {
-  BackgroundColor #282828
-  BarColor #FFB000
-  BorderColor #FFB000
-  FontColor #FFB000
-  FontName Verdana
-}
-skinparam Boundary {
-  FontColor #FFB000
-}
-skinparam Box {
-  Padding 5
-}
-skinparam CircledCharacter {
-  FontColor #282828
-  FontName Courier
-  Radius 9
-}
-skinparam Class {
-  BackgroundColor #282828
-  BorderColor #FFB000
-  FontColor #FFB000
-  FontName Verdana
-}
-skinparam ClassAttribute {
-  FontColor #FFB000
-  FontName Verdana
-}
-skinparam ClassStereotype {
-  FontColor #FFB000
-  FontName Verdana
-}
-skinparam Footer {
-  FontColor #FFB000
-  FontName Verdana
-}
-skinparam Header {
-  FontColor #FFB000
-  FontName Verdana
-}
-skinparam Hyperlink {
-  Color #FFCC00
-}
-skinparam IconPackage {
-  Color #FFB000
-  BackgroundColor #282828
-}
-skinparam IconPrivate {
-  Color #FFB000
-  BackgroundColor #282828
-}
-skinparam IconProtected {
-  Color #FFB000
-  BackgroundColor #282828
-}
-skinparam IconPublic {
-  Color #FFB000
-  BackgroundColor #282828
-}
-skinparam Note {
-  FontColor #FFB000
-  FontName Verdana
-}
-skinparam Object {
-  BorderColor #FFB000
-}
-skinparam Package {
-  BorderColor #FFB000
-  FontColor #FFB000
-  FontName Verdana
-}
-skinparam State {
-  BackgroundColor #282828
-  BorderColor #FFB000
-}
-skinparam StereotypeA {
-  BackgroundColor #FFB000
-  BorderColor #FFB000
-}
-skinparam StereotypeC {
-  BackgroundColor #FFB000
-  BorderColor #FFB000
-}
-skinparam StereotypeE {
-  BackgroundColor #FFB000
-  BorderColor #FFB000
-}
-skinparam StereotypeI {
-  BackgroundColor #FFB000
-  BorderColor #FFB000
-}
-skinparam StereotypeN {
-  BackgroundColor #FFB000
-  BorderColor #FFB000
-}
-skinparam UseCaseStereoType {
-  FontColor #FFB000
-  FontName Verdana
-}
+            skinparam DefaultFontName Arial, Helvetica, SansSerif
 
-    top to bottom direction
+            skinparam DefaultFontSize 12
+
+            skinparam DefaultFontStyle normal
+
+            skinparam DefaultTextAlignment center
+
+            skinparam DefaultBackgroundColor none
+
+            skinparam DefaultBorderStyle none
+
+            skinparam DefaultBorderColor none
+
+            skinparam DefaultBorderThickness 1
 
 hide stereotypes
+    skinparam Shadowing false
+
+            skinparam AgentFontColor #0B0C10
+
+            skinparam AgentFontName Arial, Helvetica, SansSerif
+
+            skinparam AgentFontSize 12
+
+            skinparam AgentFontStyle normal
+
+            skinparam AgentTextAlignment center
+
+            skinparam AgentBackgroundColor none
+
+            skinparam AgentBorderStyle none
+
+            skinparam AgentBorderColor none
+
+            skinparam AgentBorderThickness 1
+
+            skinparam CardFontColor #0B0C10
+
+            skinparam CardFontName Arial, Helvetica, SansSerif
+
+            skinparam CardFontSize 12
+
+            skinparam CardFontStyle normal
+
+            skinparam CardTextAlignment center
+
+            skinparam CardBackgroundColor none
+
+            skinparam CardBorderStyle none
+
+            skinparam CardBorderColor none
+
+            skinparam CardBorderThickness 1
+
+            skinparam RectangleFontColor #0B0C10
+
+            skinparam RectangleFontName Arial, Helvetica, SansSerif
+
+            skinparam RectangleFontSize 12
+
+            skinparam RectangleFontStyle normal
+
+            skinparam RectangleTextAlignment center
+
+            skinparam RectangleBackgroundColor none
+
+            skinparam RectangleBorderStyle dashed
+
+            skinparam RectangleBorderColor #1f2833
+
+            skinparam RectangleBorderThickness 2
+
+            skinparam RectangleRoundCorner 15
+
+            skinparam NoteFontColor #0B0C10
+
+            skinparam NoteFontName Arial, Helvetica, SansSerif
+
+            skinparam NoteFontSize 12
+
+            skinparam NoteFontStyle normal
+
+            skinparam NoteTextAlignment left
+
+            skinparam NoteBackgroundColor #c5c6c7
+
+            skinparam NoteBorderStyle none
+
+            skinparam NoteBorderColor #1f2833
+
+            skinparam NoteBorderThickness 1
+
+            skinparam ArrowFontColor #0B0C10
+
+            skinparam ArrowMessageAlignment left
+
+            skinparam ArrowColor #c5c6c7
 
 sprite $ma_account_outline [48x48/16] {
 000000000000000000000000000000000000000000000000
@@ -668,19 +608,39 @@ skinparam RectangleBorderStyle<<willChange>> dashed
 skinparam RectangleBorderThickness<<willChange>> 3
 skinparam RectangleFontStyle<<willChange>> italic
 
-    Rectangle "==Party" as Party   {
+    Rectangle "==Office" as Office <<willChange>>  {
 
-            Agent "<$ma_account_outline{scale=1}>\rAlice" as Alice <<Person>>
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rClerk" as Clerk <<Person:willChange>><<Person>><<willChange>>
 
-            Card "<$ma_message_outline{scale=.8}>\rweather" as weather <<Conversation>>
-
-            Agent "<$ma_account_outline{scale=1}>\rBob" as Bob <<Person>>
+            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rform" as form <<Document:willChange>><<Document>><<willChange>>
 
     }
 
-                        Alice --> weather : (1) talks about the
+    Rectangle "==Digital" as Digital <<isNew>>  {
 
-                            weather --> Bob : with
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rCustomer" as Customer <<Person:isNew>><<Person>><<isNew>>
+
+            Card "<$ma_at{scale=.8,color=#1f2833}>\rrequest" as request <<Email:isNew>><<Email>><<isNew>>
+
+    }
+
+            Agent "<$ma_account_outline{scale=1,color=#1f2833}>\rManager" as Manager <<Person>>
+
+            Card "<$ma_file_document{scale=.8,color=#1f2833}>\rreport" as report <<Document>>
+
+                        Customer --> request : <back:#66fcf1><size:16><color:#0B0C10>(1)</color></size></back> submits the
+
+                            request --> Clerk : to
+
+                        Clerk --> form : <back:#66fcf1><size:16><color:#0B0C10>(2)</color></size></back> fills in the
+
+                        Manager --> report : <back:#66fcf1><size:16><color:#0B0C10>(3)</color></size></back> approves the
+
+        legend
+    |= Change Type |= Meaning |
+    | <color:#22bb33>**new**</color> | is new |
+    | <color:#bf2600>//change//</color> | will change |
+    endlegend
 @enduml
 
 
